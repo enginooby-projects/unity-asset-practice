@@ -1,0 +1,198 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<PrefabConfig>
+	<PrefabTags>
+		<Tag>
+			<Name>Low Poly</Name>
+			<Active>True</Active>
+		</Tag>
+		<Tag>
+			<Name>Stylized</Name>
+			<Active>True</Active>
+		</Tag>
+		<Tag>
+			<Name>Realistic</Name>
+			<Active>False</Active>
+		</Tag>
+		<Tag>
+			<Name>Snowy</Name>
+			<Active>False</Active>
+		</Tag>
+	</PrefabTags>
+	<PrefabCategories>
+		<Category>
+			<Name>Default</Name>
+		</Category>
+		<Category>
+			<Name>Tree</Name>
+			<Prefab>
+				<Name>Acacia_Tree_crk_l_01</Name>
+				<Path>Assets/Asset Packs/Environment/Low Poly Trees Pack/Tree Assets/Prefabs/Trees/NoLOD/No_Bottoms/Mesh_Colliders/Acacia_Trees/Acacia_Tree_crk_l_01.prefab</Path>
+				<Offset_From_Grid_Surface>0</Offset_From_Grid_Surface>
+				<Offset_From_Object_Surface>0</Offset_From_Object_Surface>
+				<Tag>Low Poly</Tag>
+			</Prefab>
+			<Prefab>
+				<Name>Acacia_Tree_crk_l_01</Name>
+				<Path>Assets/Asset Packs/Environment/Low Poly Trees Pack/Tree Assets/Prefabs/Trees/NoLOD/No_Bottoms/Capsule_Colliders/Acacia_Trees/Acacia_Tree_crk_l_01.prefab</Path>
+				<Offset_From_Grid_Surface>0</Offset_From_Grid_Surface>
+				<Offset_From_Object_Surface>0</Offset_From_Object_Surface>
+				<Tag>Low Poly</Tag>
+			</Prefab>
+			<Prefab>
+				<Name>Acacia_Tree_crk_l_01_LOD</Name>
+				<Path>Assets/Asset Packs/Environment/Low Poly Trees Pack/Tree Assets/Prefabs/Trees/LOD/No_Bottoms/Acacia_Trees/Acacia_Tree_crk_l_01_LOD.prefab</Path>
+				<Offset_From_Grid_Surface>0</Offset_From_Grid_Surface>
+				<Offset_From_Object_Surface>0</Offset_From_Object_Surface>
+				<Tag>Low Poly</Tag>
+			</Prefab>
+			<Prefab>
+				<Name>Acacia_Tree_crk_l_02</Name>
+				<Path>Assets/Asset Packs/Environment/Low Poly Trees Pack/Tree Assets/Prefabs/Trees/NoLOD/No_Bottoms/Mesh_Colliders/Acacia_Trees/Acacia_Tree_crk_l_02.prefab</Path>
+				<Offset_From_Grid_Surface>0</Offset_From_Grid_Surface>
+				<Offset_From_Object_Surface>0</Offset_From_Object_Surface>
+				<Tag>Low Poly</Tag>
+			</Prefab>
+			<Prefab>
+				<Name>Acacia_Tree_crk_l_02</Name>
+				<Path>Assets/Asset Packs/Environment/Low Poly Trees Pack/Tree Assets/Prefabs/Trees/NoLOD/No_Bottoms/Capsule_Colliders/Acacia_Trees/Acacia_Tree_crk_l_02.prefab</Path>
+				<Offset_From_Grid_Surface>0</Offset_From_Grid_Surface>
+				<Offset_From_Object_Surface>0</Offset_From_Object_Surface>
+				<Tag>Low Poly</Tag>
+			</Prefab>
+			<Prefab>
+				<Name>Acacia_Tree_crk_l_02_LOD</Name>
+				<Path>Assets/Asset Packs/Environment/Low Poly Trees Pack/Tree Assets/Prefabs/Trees/LOD/No_Bottoms/Acacia_Trees/Acacia_Tree_crk_l_02_LOD.prefab</Path>
+				<Offset_From_Grid_Surface>0</Offset_From_Grid_Surface>
+				<Offset_From_Object_Surface>0</Offset_From_Object_Surface>
+				<Tag>Low Poly</Tag>
+			</Prefab>
+			<Prefab>
+				<Name>Acacia_Tree_crk_l_03</Name>
+				<Path>Assets/Asset Packs/Environment/Low Poly Trees Pack/Tree Assets/Prefabs/Trees/NoLOD/No_Bottoms/Capsule_Colliders/Acacia_Trees/Acacia_Tree_crk_l_03.prefab</Path>
+				<Offset_From_Grid_Surface>0</Offset_From_Grid_Surface>
+				<Offset_From_Object_Surface>0</Offset_From_Object_Surface>
+				<Tag>Low Poly</Tag>
+			</Prefab>
+			<Prefab>
+				<Name>Tree1</Name>
+				<Path>Assets/Asset Packs/Environment/StylizedNature/Standard/Prefabs/Tree1.prefab</Path>
+				<Offset_From_Grid_Surface>0</Offset_From_Grid_Surface>
+				<Offset_From_Object_Surface>0</Offset_From_Object_Surface>
+				<Tag>Stylized</Tag>
+			</Prefab>
+			<Prefab>
+				<Name>Tree2</Name>
+				<Path>Assets/Asset Packs/Environment/StylizedNature/Standard/Prefabs/Tree2.prefab</Path>
+				<Offset_From_Grid_Surface>0</Offset_From_Grid_Surface>
+				<Offset_From_Object_Surface>0</Offset_From_Object_Surface>
+				<Tag>Stylized</Tag>
+			</Prefab>
+			<Prefab>
+				<Name>Tree3</Name>
+				<Path>Assets/Asset Packs/Environment/StylizedNature/Standard/Prefabs/Tree3.prefab</Path>
+				<Offset_From_Grid_Surface>0</Offset_From_Grid_Surface>
+				<Offset_From_Object_Surface>0</Offset_From_Object_Surface>
+				<Tag>Stylized</Tag>
+			</Prefab>
+			<Prefab>
+				<Name>Tree4</Name>
+				<Path>Assets/Asset Packs/Environment/StylizedNature/Standard/Prefabs/Tree4.prefab</Path>
+				<Offset_From_Grid_Surface>0</Offset_From_Grid_Surface>
+				<Offset_From_Object_Surface>0</Offset_From_Object_Surface>
+				<Tag>Stylized</Tag>
+			</Prefab>
+			<Prefab>
+				<Name>Tree5</Name>
+				<Path>Assets/Asset Packs/Environment/StylizedNature/Standard/Prefabs/Tree5.prefab</Path>
+				<Offset_From_Grid_Surface>0</Offset_From_Grid_Surface>
+				<Offset_From_Object_Surface>0</Offset_From_Object_Surface>
+				<Tag>Stylized</Tag>
+			</Prefab>
+			<Prefab>
+				<Name>Tree6</Name>
+				<Path>Assets/Asset Packs/Environment/StylizedNature/Standard/Prefabs/Tree6.prefab</Path>
+				<Offset_From_Grid_Surface>0</Offset_From_Grid_Surface>
+				<Offset_From_Object_Surface>0</Offset_From_Object_Surface>
+				<Tag>Stylized</Tag>
+			</Prefab>
+			<Prefab>
+				<Name>Acacia_Tree_crk_m_01</Name>
+				<Path>Assets/Asset Packs/Environment/Low Poly Trees Pack/Tree Assets/Prefabs/Trees/NoLOD/No_Bottoms/Capsule_Colliders/Acacia_Trees/Acacia_Tree_crk_m_01.prefab</Path>
+				<Offset_From_Grid_Surface>0</Offset_From_Grid_Surface>
+				<Offset_From_Object_Surface>0</Offset_From_Object_Surface>
+				<Tag>Low Poly</Tag>
+			</Prefab>
+			<Prefab>
+				<Name>Acacia_Tree_crk_m_01_LOD</Name>
+				<Path>Assets/Asset Packs/Environment/Low Poly Trees Pack/Tree Assets/Prefabs/Trees/LOD/No_Bottoms/Acacia_Trees/Acacia_Tree_crk_m_01_LOD.prefab</Path>
+				<Offset_From_Grid_Surface>0</Offset_From_Grid_Surface>
+				<Offset_From_Object_Surface>0</Offset_From_Object_Surface>
+				<Tag>Low Poly</Tag>
+			</Prefab>
+			<Prefab>
+				<Name>Acacia_Tree_crk_m_02</Name>
+				<Path>Assets/Asset Packs/Environment/Low Poly Trees Pack/Tree Assets/Prefabs/Trees/NoLOD/No_Bottoms/Capsule_Colliders/Acacia_Trees/Acacia_Tree_crk_m_02.prefab</Path>
+				<Offset_From_Grid_Surface>0</Offset_From_Grid_Surface>
+				<Offset_From_Object_Surface>0</Offset_From_Object_Surface>
+				<Tag>Low Poly</Tag>
+			</Prefab>
+			<Prefab>
+				<Name>Acacia_Tree_crk_m_02</Name>
+				<Path>Assets/Asset Packs/Environment/Low Poly Trees Pack/Tree Assets/Prefabs/Trees/NoLOD/No_Bottoms/Mesh_Colliders/Acacia_Trees/Acacia_Tree_crk_m_02.prefab</Path>
+				<Offset_From_Grid_Surface>0</Offset_From_Grid_Surface>
+				<Offset_From_Object_Surface>0</Offset_From_Object_Surface>
+				<Tag>Low Poly</Tag>
+			</Prefab>
+			<Prefab>
+				<Name>Acacia_Tree_crk_m_02_LOD</Name>
+				<Path>Assets/Asset Packs/Environment/Low Poly Trees Pack/Tree Assets/Prefabs/Trees/LOD/No_Bottoms/Acacia_Trees/Acacia_Tree_crk_m_02_LOD.prefab</Path>
+				<Offset_From_Grid_Surface>0</Offset_From_Grid_Surface>
+				<Offset_From_Object_Surface>0</Offset_From_Object_Surface>
+				<Tag>Low Poly</Tag>
+			</Prefab>
+			<Prefab>
+				<Name>Acacia_Tree_crk_m_03</Name>
+				<Path>Assets/Asset Packs/Environment/Low Poly Trees Pack/Tree Assets/Prefabs/Trees/NoLOD/No_Bottoms/Capsule_Colliders/Acacia_Trees/Acacia_Tree_crk_m_03.prefab</Path>
+				<Offset_From_Grid_Surface>0</Offset_From_Grid_Surface>
+				<Offset_From_Object_Surface>0</Offset_From_Object_Surface>
+				<Tag>Low Poly</Tag>
+			</Prefab>
+			<Prefab>
+				<Name>Acacia_Tree_crk_m_03</Name>
+				<Path>Assets/Asset Packs/Environment/Low Poly Trees Pack/Tree Assets/Prefabs/Trees/NoLOD/No_Bottoms/Mesh_Colliders/Acacia_Trees/Acacia_Tree_crk_m_03.prefab</Path>
+				<Offset_From_Grid_Surface>0</Offset_From_Grid_Surface>
+				<Offset_From_Object_Surface>0</Offset_From_Object_Surface>
+				<Tag>Low Poly</Tag>
+			</Prefab>
+			<Prefab>
+				<Name>Acacia_Tree_l_BT_06</Name>
+				<Path>Assets/Asset Packs/Environment/Low Poly Trees Pack/Tree Assets/Prefabs/Trees/NoLOD/With_Bottoms/Mesh_Colliders/Acacia_Trees/Acacia_Tree_l_BT_06.prefab</Path>
+				<Offset_From_Grid_Surface>0</Offset_From_Grid_Surface>
+				<Offset_From_Object_Surface>0</Offset_From_Object_Surface>
+				<Tag>Low Poly</Tag>
+			</Prefab>
+			<Prefab>
+				<Name>Acacia_Tree_NoLeaves_crk_l_01</Name>
+				<Path>Assets/Asset Packs/Environment/Low Poly Trees Pack/Tree Assets/Prefabs/Trees/NoLOD/No_Bottoms/Capsule_Colliders/Acacia_Trees/Acacia_Tree_NoLeaves_crk_l_01.prefab</Path>
+				<Offset_From_Grid_Surface>0</Offset_From_Grid_Surface>
+				<Offset_From_Object_Surface>0</Offset_From_Object_Surface>
+				<Tag>Low Poly</Tag>
+			</Prefab>
+			<Prefab>
+				<Name>Acacia_Tree_NoLeaves_crk_l_01</Name>
+				<Path>Assets/Asset Packs/Environment/Low Poly Trees Pack/Tree Assets/Prefabs/Trees/NoLOD/No_Bottoms/Mesh_Colliders/Acacia_Trees/Acacia_Tree_NoLeaves_crk_l_01.prefab</Path>
+				<Offset_From_Grid_Surface>0</Offset_From_Grid_Surface>
+				<Offset_From_Object_Surface>0</Offset_From_Object_Surface>
+				<Tag>Low Poly</Tag>
+			</Prefab>
+		</Category>
+	</PrefabCategories>
+		<PrefabScrollViewLookAndFeel>
+			<NumPrefabsPerRow>10</NumPrefabsPerRow>
+			<PrefabPreviewScale>0.6</PrefabPreviewScale>
+			<PrefabScrollViewHeight>200</PrefabScrollViewHeight>
+			<ActivePrefabTint>0.639,0.909,1,1</ActivePrefabTint>
+			<ShowPrefabNames>False</ShowPrefabNames>
+			<PrefabNameLabelColor>0,0,0,1</PrefabNameLabelColor>
+		</PrefabScrollViewLookAndFeel>
+</PrefabConfig>

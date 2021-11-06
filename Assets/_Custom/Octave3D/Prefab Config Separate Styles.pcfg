@@ -1,0 +1,737 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<PrefabConfig>
+	<PrefabTags>
+		<Tag>
+			<Name>_Tagless</Name>
+			<Active>False</Active>
+		</Tag>
+		<Tag>
+			<Name>Tree_Branch</Name>
+			<Active>False</Active>
+		</Tag>
+		<Tag>
+			<Name>Tree_Whole</Name>
+			<Active>False</Active>
+		</Tag>
+		<Tag>
+			<Name>Tree_Log</Name>
+			<Active>False</Active>
+		</Tag>
+		<Tag>
+			<Name>Tree-Leaf</Name>
+			<Active>False</Active>
+		</Tag>
+		<Tag>
+			<Name>Tree-Leafless</Name>
+			<Active>False</Active>
+		</Tag>
+		<Tag>
+			<Name>Snowy</Name>
+			<Active>False</Active>
+		</Tag>
+		<Tag>
+			<Name>Tree_Brush</Name>
+			<Active>False</Active>
+		</Tag>
+	</PrefabTags>
+	<PrefabCategories>
+		<Category>
+			<Name>Default</Name>
+		</Category>
+		<Category>
+			<Name>Tree [Low Poly]</Name>
+			<Prefab>
+				<Name>P_ENV_branch_north_01</Name>
+				<Path>Assets/Asset Packs/Environment/Story Northern Nature/prefabs/Environment/P_ENV_branch_north_01.prefab</Path>
+				<Offset_From_Grid_Surface>0</Offset_From_Grid_Surface>
+				<Offset_From_Object_Surface>0</Offset_From_Object_Surface>
+				<Tag>Tree-Leafless</Tag>
+				<Tag>Tree_Branch</Tag>
+			</Prefab>
+			<Prefab>
+				<Name>P_ENV_branch_north_02</Name>
+				<Path>Assets/Asset Packs/Environment/Story Northern Nature/prefabs/Environment/P_ENV_branch_north_02.prefab</Path>
+				<Offset_From_Grid_Surface>0</Offset_From_Grid_Surface>
+				<Offset_From_Object_Surface>0</Offset_From_Object_Surface>
+				<Tag>Tree-Leafless</Tag>
+				<Tag>Tree_Branch</Tag>
+			</Prefab>
+			<Prefab>
+				<Name>P_ENV_branch_north_03</Name>
+				<Path>Assets/Asset Packs/Environment/Story Northern Nature/prefabs/Environment/P_ENV_branch_north_03.prefab</Path>
+				<Offset_From_Grid_Surface>0</Offset_From_Grid_Surface>
+				<Offset_From_Object_Surface>0</Offset_From_Object_Surface>
+				<Tag>Tree-Leafless</Tag>
+				<Tag>Tree_Branch</Tag>
+			</Prefab>
+			<Prefab>
+				<Name>P_ENV_branch_north_04</Name>
+				<Path>Assets/Asset Packs/Environment/Story Northern Nature/prefabs/Environment/P_ENV_branch_north_04.prefab</Path>
+				<Offset_From_Grid_Surface>0</Offset_From_Grid_Surface>
+				<Offset_From_Object_Surface>0</Offset_From_Object_Surface>
+				<Tag>Tree-Leafless</Tag>
+				<Tag>Tree_Branch</Tag>
+			</Prefab>
+			<Prefab>
+				<Name>P_ENV_branch_north_05</Name>
+				<Path>Assets/Asset Packs/Environment/Story Northern Nature/prefabs/Environment/P_ENV_branch_north_05.prefab</Path>
+				<Offset_From_Grid_Surface>0</Offset_From_Grid_Surface>
+				<Offset_From_Object_Surface>0</Offset_From_Object_Surface>
+				<Tag>Tree-Leafless</Tag>
+				<Tag>Tree_Branch</Tag>
+			</Prefab>
+			<Prefab>
+				<Name>P_ENV_bush_north_01</Name>
+				<Path>Assets/Asset Packs/Environment/Story Northern Nature/prefabs/Environment/P_ENV_bush_north_01.prefab</Path>
+				<Offset_From_Grid_Surface>0</Offset_From_Grid_Surface>
+				<Offset_From_Object_Surface>0</Offset_From_Object_Surface>
+				<Tag>Snowy</Tag>
+				<Tag>Tree_Brush</Tag>
+			</Prefab>
+			<Prefab>
+				<Name>P_ENV_bush_north_02</Name>
+				<Path>Assets/Asset Packs/Environment/Story Northern Nature/prefabs/Environment/P_ENV_bush_north_02.prefab</Path>
+				<Offset_From_Grid_Surface>0</Offset_From_Grid_Surface>
+				<Offset_From_Object_Surface>0</Offset_From_Object_Surface>
+				<Tag>Snowy</Tag>
+				<Tag>Tree_Brush</Tag>
+			</Prefab>
+			<Prefab>
+				<Name>P_ENV_bush_north_03</Name>
+				<Path>Assets/Asset Packs/Environment/Story Northern Nature/prefabs/Environment/P_ENV_bush_north_03.prefab</Path>
+				<Offset_From_Grid_Surface>0</Offset_From_Grid_Surface>
+				<Offset_From_Object_Surface>0</Offset_From_Object_Surface>
+				<Tag>Snowy</Tag>
+				<Tag>Tree_Brush</Tag>
+			</Prefab>
+			<Prefab>
+				<Name>P_ENV_bush_north_04</Name>
+				<Path>Assets/Asset Packs/Environment/Story Northern Nature/prefabs/Environment/P_ENV_bush_north_04.prefab</Path>
+				<Offset_From_Grid_Surface>0</Offset_From_Grid_Surface>
+				<Offset_From_Object_Surface>0</Offset_From_Object_Surface>
+				<Tag>Tree-Leafless</Tag>
+				<Tag>Tree_Brush</Tag>
+			</Prefab>
+			<Prefab>
+				<Name>P_ENV_bush_north_05</Name>
+				<Path>Assets/Asset Packs/Environment/Story Northern Nature/prefabs/Environment/P_ENV_bush_north_05.prefab</Path>
+				<Offset_From_Grid_Surface>0</Offset_From_Grid_Surface>
+				<Offset_From_Object_Surface>0</Offset_From_Object_Surface>
+				<Tag>Tree-Leafless</Tag>
+				<Tag>Tree_Brush</Tag>
+			</Prefab>
+			<Prefab>
+				<Name>P_ENV_tree_maple_north_01</Name>
+				<Path>Assets/Asset Packs/Environment/Story Northern Nature/prefabs/Environment/P_ENV_tree_maple_north_01.prefab</Path>
+				<Offset_From_Grid_Surface>0</Offset_From_Grid_Surface>
+				<Offset_From_Object_Surface>0</Offset_From_Object_Surface>
+				<Tag>Snowy</Tag>
+				<Tag>Tree_Whole</Tag>
+				<Tag>Tree-Leaf</Tag>
+			</Prefab>
+			<Prefab>
+				<Name>P_ENV_tree_maple_north_02</Name>
+				<Path>Assets/Asset Packs/Environment/Story Northern Nature/prefabs/Environment/P_ENV_tree_maple_north_02.prefab</Path>
+				<Offset_From_Grid_Surface>0</Offset_From_Grid_Surface>
+				<Offset_From_Object_Surface>0</Offset_From_Object_Surface>
+				<Tag>Snowy</Tag>
+				<Tag>Tree_Whole</Tag>
+				<Tag>Tree-Leaf</Tag>
+			</Prefab>
+			<Prefab>
+				<Name>P_ENV_tree_maple_north_03</Name>
+				<Path>Assets/Asset Packs/Environment/Story Northern Nature/prefabs/Environment/P_ENV_tree_maple_north_03.prefab</Path>
+				<Offset_From_Grid_Surface>0</Offset_From_Grid_Surface>
+				<Offset_From_Object_Surface>0</Offset_From_Object_Surface>
+				<Tag>Snowy</Tag>
+				<Tag>Tree_Whole</Tag>
+				<Tag>Tree-Leaf</Tag>
+			</Prefab>
+			<Prefab>
+				<Name>P_ENV_tree_pine_north_01</Name>
+				<Path>Assets/Asset Packs/Environment/Story Northern Nature/prefabs/Environment/P_ENV_tree_pine_north_01.prefab</Path>
+				<Offset_From_Grid_Surface>0</Offset_From_Grid_Surface>
+				<Offset_From_Object_Surface>0</Offset_From_Object_Surface>
+				<Tag>Snowy</Tag>
+				<Tag>Tree_Whole</Tag>
+				<Tag>Tree-Leaf</Tag>
+			</Prefab>
+			<Prefab>
+				<Name>P_ENV_tree_pine_north_02</Name>
+				<Path>Assets/Asset Packs/Environment/Story Northern Nature/prefabs/Environment/P_ENV_tree_pine_north_02.prefab</Path>
+				<Offset_From_Grid_Surface>0</Offset_From_Grid_Surface>
+				<Offset_From_Object_Surface>0</Offset_From_Object_Surface>
+				<Tag>Snowy</Tag>
+				<Tag>Tree_Whole</Tag>
+				<Tag>Tree-Leaf</Tag>
+			</Prefab>
+			<Prefab>
+				<Name>P_ENV_tree_pine_north_03</Name>
+				<Path>Assets/Asset Packs/Environment/Story Northern Nature/prefabs/Environment/P_ENV_tree_pine_north_03.prefab</Path>
+				<Offset_From_Grid_Surface>0</Offset_From_Grid_Surface>
+				<Offset_From_Object_Surface>0</Offset_From_Object_Surface>
+				<Tag>Snowy</Tag>
+				<Tag>Tree_Whole</Tag>
+				<Tag>Tree-Leaf</Tag>
+			</Prefab>
+			<Prefab>
+				<Name>P_ENV_tree_pine_north_04</Name>
+				<Path>Assets/Asset Packs/Environment/Story Northern Nature/prefabs/Environment/P_ENV_tree_pine_north_04.prefab</Path>
+				<Offset_From_Grid_Surface>0</Offset_From_Grid_Surface>
+				<Offset_From_Object_Surface>0</Offset_From_Object_Surface>
+				<Tag>Snowy</Tag>
+				<Tag>Tree_Whole</Tag>
+				<Tag>Tree-Leaf</Tag>
+			</Prefab>
+			<Prefab>
+				<Name>P_ENV_tree_pine_north_05</Name>
+				<Path>Assets/Asset Packs/Environment/Story Northern Nature/prefabs/Environment/P_ENV_tree_pine_north_05.prefab</Path>
+				<Offset_From_Grid_Surface>0</Offset_From_Grid_Surface>
+				<Offset_From_Object_Surface>0</Offset_From_Object_Surface>
+				<Tag>Snowy</Tag>
+				<Tag>Tree_Whole</Tag>
+				<Tag>Tree-Leaf</Tag>
+			</Prefab>
+			<Prefab>
+				<Name>P_ENV_tree_pine_north_06</Name>
+				<Path>Assets/Asset Packs/Environment/Story Northern Nature/prefabs/Environment/P_ENV_tree_pine_north_06.prefab</Path>
+				<Offset_From_Grid_Surface>0</Offset_From_Grid_Surface>
+				<Offset_From_Object_Surface>0</Offset_From_Object_Surface>
+				<Tag>Snowy</Tag>
+				<Tag>Tree_Whole</Tag>
+				<Tag>Tree-Leaf</Tag>
+			</Prefab>
+			<Prefab>
+				<Name>P_ENV_tree_maple_north_06</Name>
+				<Path>Assets/Asset Packs/Environment/Story Northern Nature/prefabs/Environment/P_ENV_tree_maple_north_06.prefab</Path>
+				<Offset_From_Grid_Surface>0</Offset_From_Grid_Surface>
+				<Offset_From_Object_Surface>0</Offset_From_Object_Surface>
+				<Tag>Snowy</Tag>
+				<Tag>Tree_Whole</Tag>
+				<Tag>Tree-Leafless</Tag>
+			</Prefab>
+			<Prefab>
+				<Name>P_ENV_tree_maple_north_05</Name>
+				<Path>Assets/Asset Packs/Environment/Story Northern Nature/prefabs/Environment/P_ENV_tree_maple_north_05.prefab</Path>
+				<Offset_From_Grid_Surface>0</Offset_From_Grid_Surface>
+				<Offset_From_Object_Surface>0</Offset_From_Object_Surface>
+				<Tag>Snowy</Tag>
+				<Tag>Tree_Whole</Tag>
+				<Tag>Tree-Leafless</Tag>
+			</Prefab>
+			<Prefab>
+				<Name>P_ENV_tree_maple_north_04</Name>
+				<Path>Assets/Asset Packs/Environment/Story Northern Nature/prefabs/Environment/P_ENV_tree_maple_north_04.prefab</Path>
+				<Offset_From_Grid_Surface>0</Offset_From_Grid_Surface>
+				<Offset_From_Object_Surface>0</Offset_From_Object_Surface>
+				<Tag>Snowy</Tag>
+				<Tag>Tree_Whole</Tag>
+				<Tag>Tree-Leafless</Tag>
+			</Prefab>
+			<Prefab>
+				<Name>P_ENV_tree_pine_north_07</Name>
+				<Path>Assets/Asset Packs/Environment/Story Northern Nature/prefabs/Environment/P_ENV_tree_pine_north_07.prefab</Path>
+				<Offset_From_Grid_Surface>0</Offset_From_Grid_Surface>
+				<Offset_From_Object_Surface>0</Offset_From_Object_Surface>
+				<Tag>Tree_Whole</Tag>
+				<Tag>Tree-Leafless</Tag>
+			</Prefab>
+			<Prefab>
+				<Name>P_ENV_tree_stump_north_01</Name>
+				<Path>Assets/Asset Packs/Environment/Story Northern Nature/prefabs/Environment/P_ENV_tree_stump_north_01.prefab</Path>
+				<Offset_From_Grid_Surface>0</Offset_From_Grid_Surface>
+				<Offset_From_Object_Surface>0</Offset_From_Object_Surface>
+				<Tag>Tree_Log</Tag>
+				<Tag>Tree-Leafless</Tag>
+			</Prefab>
+			<Prefab>
+				<Name>P_ENV_tree_stump_north_02</Name>
+				<Path>Assets/Asset Packs/Environment/Story Northern Nature/prefabs/Environment/P_ENV_tree_stump_north_02.prefab</Path>
+				<Offset_From_Grid_Surface>0</Offset_From_Grid_Surface>
+				<Offset_From_Object_Surface>0</Offset_From_Object_Surface>
+				<Tag>Tree_Log</Tag>
+				<Tag>Tree-Leafless</Tag>
+			</Prefab>
+			<Prefab>
+				<Name>P_ENV_tree_stump_north_03</Name>
+				<Path>Assets/Asset Packs/Environment/Story Northern Nature/prefabs/Environment/P_ENV_tree_stump_north_03.prefab</Path>
+				<Offset_From_Grid_Surface>0</Offset_From_Grid_Surface>
+				<Offset_From_Object_Surface>0</Offset_From_Object_Surface>
+				<Tag>Tree_Log</Tag>
+				<Tag>Tree-Leafless</Tag>
+			</Prefab>
+			<Prefab>
+				<Name>P_ENV_tree_stump_north_04</Name>
+				<Path>Assets/Asset Packs/Environment/Story Northern Nature/prefabs/Environment/P_ENV_tree_stump_north_04.prefab</Path>
+				<Offset_From_Grid_Surface>0</Offset_From_Grid_Surface>
+				<Offset_From_Object_Surface>0</Offset_From_Object_Surface>
+				<Tag>Tree_Log</Tag>
+				<Tag>Tree-Leafless</Tag>
+			</Prefab>
+			<Prefab>
+				<Name>P_ENV_tree_stump_north_05</Name>
+				<Path>Assets/Asset Packs/Environment/Story Northern Nature/prefabs/Environment/P_ENV_tree_stump_north_05.prefab</Path>
+				<Offset_From_Grid_Surface>0</Offset_From_Grid_Surface>
+				<Offset_From_Object_Surface>0</Offset_From_Object_Surface>
+				<Tag>Tree_Log</Tag>
+				<Tag>Tree-Leafless</Tag>
+			</Prefab>
+			<Prefab>
+				<Name>P_ENV_tree_stump_north_06</Name>
+				<Path>Assets/Asset Packs/Environment/Story Northern Nature/prefabs/Environment/P_ENV_tree_stump_north_06.prefab</Path>
+				<Offset_From_Grid_Surface>0</Offset_From_Grid_Surface>
+				<Offset_From_Object_Surface>0</Offset_From_Object_Surface>
+				<Tag>Tree_Log</Tag>
+				<Tag>Tree-Leafless</Tag>
+			</Prefab>
+			<Prefab>
+				<Name>P_ENV_tree_trunk_north_03</Name>
+				<Path>Assets/Asset Packs/Environment/Story Northern Nature/prefabs/Environment/P_ENV_tree_trunk_north_03.prefab</Path>
+				<Offset_From_Grid_Surface>0</Offset_From_Grid_Surface>
+				<Offset_From_Object_Surface>0</Offset_From_Object_Surface>
+				<Tag>Tree_Log</Tag>
+				<Tag>Tree-Leafless</Tag>
+			</Prefab>
+			<Prefab>
+				<Name>P_ENV_tree_trunk_north_04</Name>
+				<Path>Assets/Asset Packs/Environment/Story Northern Nature/prefabs/Environment/P_ENV_tree_trunk_north_04.prefab</Path>
+				<Offset_From_Grid_Surface>0</Offset_From_Grid_Surface>
+				<Offset_From_Object_Surface>0</Offset_From_Object_Surface>
+				<Tag>Tree_Log</Tag>
+				<Tag>Tree-Leafless</Tag>
+			</Prefab>
+			<Prefab>
+				<Name>P_ENV_tree_trunk_north_02</Name>
+				<Path>Assets/Asset Packs/Environment/Story Northern Nature/prefabs/Environment/P_ENV_tree_trunk_north_02.prefab</Path>
+				<Offset_From_Grid_Surface>0</Offset_From_Grid_Surface>
+				<Offset_From_Object_Surface>0</Offset_From_Object_Surface>
+				<Tag>Tree_Log</Tag>
+				<Tag>Snowy</Tag>
+				<Tag>Tree-Leafless</Tag>
+			</Prefab>
+			<Prefab>
+				<Name>P_ENV_tree_trunk_north_01</Name>
+				<Path>Assets/Asset Packs/Environment/Story Northern Nature/prefabs/Environment/P_ENV_tree_trunk_north_01.prefab</Path>
+				<Offset_From_Grid_Surface>0</Offset_From_Grid_Surface>
+				<Offset_From_Object_Surface>0</Offset_From_Object_Surface>
+				<Tag>Tree_Log</Tag>
+				<Tag>Snowy</Tag>
+				<Tag>Tree-Leafless</Tag>
+			</Prefab>
+		</Category>
+		<Category>
+			<Name>Tree [Stylized]</Name>
+			<Prefab>
+				<Name>Tree14</Name>
+				<Path>Assets/Asset Packs/Environment/StylizedNature/Standard/Prefabs/Tree14.prefab</Path>
+				<Offset_From_Grid_Surface>0</Offset_From_Grid_Surface>
+				<Offset_From_Object_Surface>0</Offset_From_Object_Surface>
+				<Tag>Tree-Leaf</Tag>
+				<Tag>Tree_Whole</Tag>
+			</Prefab>
+			<Prefab>
+				<Name>Tree1</Name>
+				<Path>Assets/Asset Packs/Environment/StylizedNature/Standard/Prefabs/Tree1.prefab</Path>
+				<Offset_From_Grid_Surface>0</Offset_From_Grid_Surface>
+				<Offset_From_Object_Surface>0</Offset_From_Object_Surface>
+				<Tag>Tree-Leaf</Tag>
+				<Tag>Tree_Whole</Tag>
+			</Prefab>
+			<Prefab>
+				<Name>Tree2</Name>
+				<Path>Assets/Asset Packs/Environment/StylizedNature/Standard/Prefabs/Tree2.prefab</Path>
+				<Offset_From_Grid_Surface>0</Offset_From_Grid_Surface>
+				<Offset_From_Object_Surface>0</Offset_From_Object_Surface>
+				<Tag>Tree-Leaf</Tag>
+				<Tag>Tree_Whole</Tag>
+			</Prefab>
+			<Prefab>
+				<Name>Tree3</Name>
+				<Path>Assets/Asset Packs/Environment/StylizedNature/Standard/Prefabs/Tree3.prefab</Path>
+				<Offset_From_Grid_Surface>0</Offset_From_Grid_Surface>
+				<Offset_From_Object_Surface>0</Offset_From_Object_Surface>
+				<Tag>Tree-Leaf</Tag>
+				<Tag>Tree_Whole</Tag>
+			</Prefab>
+			<Prefab>
+				<Name>Tree4</Name>
+				<Path>Assets/Asset Packs/Environment/StylizedNature/Standard/Prefabs/Tree4.prefab</Path>
+				<Offset_From_Grid_Surface>0</Offset_From_Grid_Surface>
+				<Offset_From_Object_Surface>0</Offset_From_Object_Surface>
+				<Tag>Tree-Leaf</Tag>
+				<Tag>Tree_Whole</Tag>
+			</Prefab>
+			<Prefab>
+				<Name>Tree5</Name>
+				<Path>Assets/Asset Packs/Environment/StylizedNature/Standard/Prefabs/Tree5.prefab</Path>
+				<Offset_From_Grid_Surface>0</Offset_From_Grid_Surface>
+				<Offset_From_Object_Surface>0</Offset_From_Object_Surface>
+				<Tag>Tree-Leaf</Tag>
+				<Tag>Tree_Whole</Tag>
+			</Prefab>
+			<Prefab>
+				<Name>Tree6</Name>
+				<Path>Assets/Asset Packs/Environment/StylizedNature/Standard/Prefabs/Tree6.prefab</Path>
+				<Offset_From_Grid_Surface>0</Offset_From_Grid_Surface>
+				<Offset_From_Object_Surface>0</Offset_From_Object_Surface>
+				<Tag>Tree-Leaf</Tag>
+				<Tag>Tree_Whole</Tag>
+			</Prefab>
+			<Prefab>
+				<Name>Tree7</Name>
+				<Path>Assets/Asset Packs/Environment/StylizedNature/Standard/Prefabs/Tree7.prefab</Path>
+				<Offset_From_Grid_Surface>0</Offset_From_Grid_Surface>
+				<Offset_From_Object_Surface>0</Offset_From_Object_Surface>
+				<Tag>Tree-Leaf</Tag>
+				<Tag>Tree_Whole</Tag>
+			</Prefab>
+			<Prefab>
+				<Name>Tree8</Name>
+				<Path>Assets/Asset Packs/Environment/StylizedNature/Standard/Prefabs/Tree8.prefab</Path>
+				<Offset_From_Grid_Surface>0</Offset_From_Grid_Surface>
+				<Offset_From_Object_Surface>0</Offset_From_Object_Surface>
+				<Tag>Tree-Leaf</Tag>
+				<Tag>Tree_Whole</Tag>
+			</Prefab>
+			<Prefab>
+				<Name>Tree9</Name>
+				<Path>Assets/Asset Packs/Environment/StylizedNature/Standard/Prefabs/Tree9.prefab</Path>
+				<Offset_From_Grid_Surface>0</Offset_From_Grid_Surface>
+				<Offset_From_Object_Surface>0</Offset_From_Object_Surface>
+				<Tag>Tree-Leaf</Tag>
+				<Tag>Tree_Whole</Tag>
+			</Prefab>
+			<Prefab>
+				<Name>Tree10</Name>
+				<Path>Assets/Asset Packs/Environment/StylizedNature/Standard/Prefabs/Tree10.prefab</Path>
+				<Offset_From_Grid_Surface>0</Offset_From_Grid_Surface>
+				<Offset_From_Object_Surface>0</Offset_From_Object_Surface>
+				<Tag>Tree-Leaf</Tag>
+				<Tag>Tree_Whole</Tag>
+			</Prefab>
+			<Prefab>
+				<Name>Tree11</Name>
+				<Path>Assets/Asset Packs/Environment/StylizedNature/Standard/Prefabs/Tree11.prefab</Path>
+				<Offset_From_Grid_Surface>0</Offset_From_Grid_Surface>
+				<Offset_From_Object_Surface>0</Offset_From_Object_Surface>
+				<Tag>Tree-Leaf</Tag>
+				<Tag>Tree_Whole</Tag>
+			</Prefab>
+			<Prefab>
+				<Name>Tree12</Name>
+				<Path>Assets/Asset Packs/Environment/StylizedNature/Standard/Prefabs/Tree12.prefab</Path>
+				<Offset_From_Grid_Surface>0</Offset_From_Grid_Surface>
+				<Offset_From_Object_Surface>0</Offset_From_Object_Surface>
+				<Tag>Tree-Leaf</Tag>
+				<Tag>Tree_Whole</Tag>
+			</Prefab>
+			<Prefab>
+				<Name>Tree13</Name>
+				<Path>Assets/Asset Packs/Environment/StylizedNature/Standard/Prefabs/Tree13.prefab</Path>
+				<Offset_From_Grid_Surface>0</Offset_From_Grid_Surface>
+				<Offset_From_Object_Surface>0</Offset_From_Object_Surface>
+				<Tag>Tree-Leaf</Tag>
+				<Tag>Tree_Whole</Tag>
+			</Prefab>
+			<Prefab>
+				<Name>PTree</Name>
+				<Path>Assets/Asset Packs/Environment/StylizedNature/Standard/Prefabs/PTree.prefab</Path>
+				<Offset_From_Grid_Surface>0</Offset_From_Grid_Surface>
+				<Offset_From_Object_Surface>0</Offset_From_Object_Surface>
+				<Tag>Tree-Leaf</Tag>
+				<Tag>Tree_Whole</Tag>
+			</Prefab>
+			<Prefab>
+				<Name>PTree2</Name>
+				<Path>Assets/Asset Packs/Environment/StylizedNature/Standard/Prefabs/PTree2.prefab</Path>
+				<Offset_From_Grid_Surface>0</Offset_From_Grid_Surface>
+				<Offset_From_Object_Surface>0</Offset_From_Object_Surface>
+				<Tag>Tree-Leaf</Tag>
+				<Tag>Tree_Whole</Tag>
+			</Prefab>
+			<Prefab>
+				<Name>PTree3</Name>
+				<Path>Assets/Asset Packs/Environment/StylizedNature/Standard/Prefabs/PTree3.prefab</Path>
+				<Offset_From_Grid_Surface>0</Offset_From_Grid_Surface>
+				<Offset_From_Object_Surface>0</Offset_From_Object_Surface>
+				<Tag>Tree-Leaf</Tag>
+				<Tag>Tree_Whole</Tag>
+			</Prefab>
+			<Prefab>
+				<Name>Bush</Name>
+				<Path>Assets/Asset Packs/Environment/StylizedNature/Standard/Prefabs/Bush.prefab</Path>
+				<Offset_From_Grid_Surface>0</Offset_From_Grid_Surface>
+				<Offset_From_Object_Surface>0</Offset_From_Object_Surface>
+				<Tag>Tree_Brush</Tag>
+				<Tag>Tree-Leaf</Tag>
+			</Prefab>
+			<Prefab>
+				<Name>Bush2</Name>
+				<Path>Assets/Asset Packs/Environment/StylizedNature/Standard/Prefabs/Bush2.prefab</Path>
+				<Offset_From_Grid_Surface>0</Offset_From_Grid_Surface>
+				<Offset_From_Object_Surface>0</Offset_From_Object_Surface>
+				<Tag>Tree_Brush</Tag>
+				<Tag>Tree-Leaf</Tag>
+			</Prefab>
+		</Category>
+		<Category>
+			<Name>Grass [Stylized]</Name>
+			<Prefab>
+				<Name>Grass#2</Name>
+				<Path>Assets/Asset Packs/Environment/StylizedNature/Standard/Prefabs/Grass#2.prefab</Path>
+				<Offset_From_Grid_Surface>0</Offset_From_Grid_Surface>
+				<Offset_From_Object_Surface>0</Offset_From_Object_Surface>
+				<Tag>_Tagless</Tag>
+			</Prefab>
+			<Prefab>
+				<Name>Grass#4</Name>
+				<Path>Assets/Asset Packs/Environment/StylizedNature/Standard/Prefabs/Grass#4.prefab</Path>
+				<Offset_From_Grid_Surface>0</Offset_From_Grid_Surface>
+				<Offset_From_Object_Surface>0</Offset_From_Object_Surface>
+				<Tag>_Tagless</Tag>
+			</Prefab>
+			<Prefab>
+				<Name>Grass</Name>
+				<Path>Assets/Asset Packs/Environment/StylizedNature/Standard/Prefabs/Grass.prefab</Path>
+				<Offset_From_Grid_Surface>0</Offset_From_Grid_Surface>
+				<Offset_From_Object_Surface>0</Offset_From_Object_Surface>
+				<Tag>_Tagless</Tag>
+			</Prefab>
+			<Prefab>
+				<Name>Grass3</Name>
+				<Path>Assets/Asset Packs/Environment/StylizedNature/Standard/Prefabs/Grass3.prefab</Path>
+				<Offset_From_Grid_Surface>0</Offset_From_Grid_Surface>
+				<Offset_From_Object_Surface>0</Offset_From_Object_Surface>
+				<Tag>_Tagless</Tag>
+			</Prefab>
+		</Category>
+		<Category>
+			<Name>Stone [Low Poly]</Name>
+			<Prefab>
+				<Name>stone_01</Name>
+				<Path>Assets/Asset Packs/Environment/StylizedNature/Standard/Prefabs/stone_01.prefab</Path>
+				<Offset_From_Grid_Surface>0</Offset_From_Grid_Surface>
+				<Offset_From_Object_Surface>0</Offset_From_Object_Surface>
+				<Tag>_Tagless</Tag>
+			</Prefab>
+			<Prefab>
+				<Name>stone_02</Name>
+				<Path>Assets/Asset Packs/Environment/StylizedNature/Standard/Prefabs/stone_02.prefab</Path>
+				<Offset_From_Grid_Surface>0</Offset_From_Grid_Surface>
+				<Offset_From_Object_Surface>0</Offset_From_Object_Surface>
+				<Tag>_Tagless</Tag>
+			</Prefab>
+			<Prefab>
+				<Name>stone_03</Name>
+				<Path>Assets/Asset Packs/Environment/StylizedNature/Standard/Prefabs/stone_03.prefab</Path>
+				<Offset_From_Grid_Surface>0</Offset_From_Grid_Surface>
+				<Offset_From_Object_Surface>0</Offset_From_Object_Surface>
+				<Tag>_Tagless</Tag>
+			</Prefab>
+			<Prefab>
+				<Name>stone_04</Name>
+				<Path>Assets/Asset Packs/Environment/StylizedNature/Standard/Prefabs/stone_04.prefab</Path>
+				<Offset_From_Grid_Surface>0</Offset_From_Grid_Surface>
+				<Offset_From_Object_Surface>0</Offset_From_Object_Surface>
+				<Tag>_Tagless</Tag>
+			</Prefab>
+			<Prefab>
+				<Name>P_ENV_stone_snow_07</Name>
+				<Path>Assets/Asset Packs/Environment/Story Northern Nature/prefabs/Environment/P_ENV_stone_snow_07.prefab</Path>
+				<Offset_From_Grid_Surface>0</Offset_From_Grid_Surface>
+				<Offset_From_Object_Surface>0</Offset_From_Object_Surface>
+				<Tag>Snowy</Tag>
+			</Prefab>
+			<Prefab>
+				<Name>P_ENV_rock_snow_01</Name>
+				<Path>Assets/Asset Packs/Environment/Story Northern Nature/prefabs/Environment/P_ENV_rock_snow_01.prefab</Path>
+				<Offset_From_Grid_Surface>0</Offset_From_Grid_Surface>
+				<Offset_From_Object_Surface>0</Offset_From_Object_Surface>
+				<Tag>Snowy</Tag>
+			</Prefab>
+			<Prefab>
+				<Name>P_ENV_rock_snow_02</Name>
+				<Path>Assets/Asset Packs/Environment/Story Northern Nature/prefabs/Environment/P_ENV_rock_snow_02.prefab</Path>
+				<Offset_From_Grid_Surface>0</Offset_From_Grid_Surface>
+				<Offset_From_Object_Surface>0</Offset_From_Object_Surface>
+				<Tag>Snowy</Tag>
+			</Prefab>
+			<Prefab>
+				<Name>P_ENV_rock_snow_03</Name>
+				<Path>Assets/Asset Packs/Environment/Story Northern Nature/prefabs/Environment/P_ENV_rock_snow_03.prefab</Path>
+				<Offset_From_Grid_Surface>0</Offset_From_Grid_Surface>
+				<Offset_From_Object_Surface>0</Offset_From_Object_Surface>
+				<Tag>Snowy</Tag>
+			</Prefab>
+			<Prefab>
+				<Name>P_ENV_rock_snow_04</Name>
+				<Path>Assets/Asset Packs/Environment/Story Northern Nature/prefabs/Environment/P_ENV_rock_snow_04.prefab</Path>
+				<Offset_From_Grid_Surface>0</Offset_From_Grid_Surface>
+				<Offset_From_Object_Surface>0</Offset_From_Object_Surface>
+				<Tag>Snowy</Tag>
+			</Prefab>
+			<Prefab>
+				<Name>P_ENV_rock_snow_05</Name>
+				<Path>Assets/Asset Packs/Environment/Story Northern Nature/prefabs/Environment/P_ENV_rock_snow_05.prefab</Path>
+				<Offset_From_Grid_Surface>0</Offset_From_Grid_Surface>
+				<Offset_From_Object_Surface>0</Offset_From_Object_Surface>
+				<Tag>Snowy</Tag>
+			</Prefab>
+			<Prefab>
+				<Name>P_ENV_rock_snow_06</Name>
+				<Path>Assets/Asset Packs/Environment/Story Northern Nature/prefabs/Environment/P_ENV_rock_snow_06.prefab</Path>
+				<Offset_From_Grid_Surface>0</Offset_From_Grid_Surface>
+				<Offset_From_Object_Surface>0</Offset_From_Object_Surface>
+				<Tag>Snowy</Tag>
+			</Prefab>
+			<Prefab>
+				<Name>P_ENV_rock_snow_07</Name>
+				<Path>Assets/Asset Packs/Environment/Story Northern Nature/prefabs/Environment/P_ENV_rock_snow_07.prefab</Path>
+				<Offset_From_Grid_Surface>0</Offset_From_Grid_Surface>
+				<Offset_From_Object_Surface>0</Offset_From_Object_Surface>
+				<Tag>Snowy</Tag>
+			</Prefab>
+			<Prefab>
+				<Name>P_ENV_rock_snow_08</Name>
+				<Path>Assets/Asset Packs/Environment/Story Northern Nature/prefabs/Environment/P_ENV_rock_snow_08.prefab</Path>
+				<Offset_From_Grid_Surface>0</Offset_From_Grid_Surface>
+				<Offset_From_Object_Surface>0</Offset_From_Object_Surface>
+				<Tag>Snowy</Tag>
+			</Prefab>
+			<Prefab>
+				<Name>P_ENV_rock_snow_09</Name>
+				<Path>Assets/Asset Packs/Environment/Story Northern Nature/prefabs/Environment/P_ENV_rock_snow_09.prefab</Path>
+				<Offset_From_Grid_Surface>0</Offset_From_Grid_Surface>
+				<Offset_From_Object_Surface>0</Offset_From_Object_Surface>
+				<Tag>Snowy</Tag>
+			</Prefab>
+			<Prefab>
+				<Name>P_ENV_rock_snow_waterfall_01</Name>
+				<Path>Assets/Asset Packs/Environment/Story Northern Nature/prefabs/Environment/P_ENV_rock_snow_waterfall_01.prefab</Path>
+				<Offset_From_Grid_Surface>0</Offset_From_Grid_Surface>
+				<Offset_From_Object_Surface>0</Offset_From_Object_Surface>
+				<Tag>Snowy</Tag>
+			</Prefab>
+			<Prefab>
+				<Name>P_ENV_rock_snow_waterfall_02</Name>
+				<Path>Assets/Asset Packs/Environment/Story Northern Nature/prefabs/Environment/P_ENV_rock_snow_waterfall_02.prefab</Path>
+				<Offset_From_Grid_Surface>0</Offset_From_Grid_Surface>
+				<Offset_From_Object_Surface>0</Offset_From_Object_Surface>
+				<Tag>Snowy</Tag>
+			</Prefab>
+			<Prefab>
+				<Name>P_ENV_snowpile_01</Name>
+				<Path>Assets/Asset Packs/Environment/Story Northern Nature/prefabs/Environment/P_ENV_snowpile_01.prefab</Path>
+				<Offset_From_Grid_Surface>0</Offset_From_Grid_Surface>
+				<Offset_From_Object_Surface>0</Offset_From_Object_Surface>
+				<Tag>Snowy</Tag>
+			</Prefab>
+			<Prefab>
+				<Name>P_ENV_snowpile_02</Name>
+				<Path>Assets/Asset Packs/Environment/Story Northern Nature/prefabs/Environment/P_ENV_snowpile_02.prefab</Path>
+				<Offset_From_Grid_Surface>0</Offset_From_Grid_Surface>
+				<Offset_From_Object_Surface>0</Offset_From_Object_Surface>
+				<Tag>Snowy</Tag>
+			</Prefab>
+			<Prefab>
+				<Name>P_ENV_snowpile_03</Name>
+				<Path>Assets/Asset Packs/Environment/Story Northern Nature/prefabs/Environment/P_ENV_snowpile_03.prefab</Path>
+				<Offset_From_Grid_Surface>0</Offset_From_Grid_Surface>
+				<Offset_From_Object_Surface>0</Offset_From_Object_Surface>
+				<Tag>Snowy</Tag>
+			</Prefab>
+			<Prefab>
+				<Name>P_ENV_snowpile_04</Name>
+				<Path>Assets/Asset Packs/Environment/Story Northern Nature/prefabs/Environment/P_ENV_snowpile_04.prefab</Path>
+				<Offset_From_Grid_Surface>0</Offset_From_Grid_Surface>
+				<Offset_From_Object_Surface>0</Offset_From_Object_Surface>
+				<Tag>Snowy</Tag>
+			</Prefab>
+			<Prefab>
+				<Name>P_ENV_snowpile_05</Name>
+				<Path>Assets/Asset Packs/Environment/Story Northern Nature/prefabs/Environment/P_ENV_snowpile_05.prefab</Path>
+				<Offset_From_Grid_Surface>0</Offset_From_Grid_Surface>
+				<Offset_From_Object_Surface>0</Offset_From_Object_Surface>
+				<Tag>Snowy</Tag>
+			</Prefab>
+			<Prefab>
+				<Name>P_ENV_snowpile_06</Name>
+				<Path>Assets/Asset Packs/Environment/Story Northern Nature/prefabs/Environment/P_ENV_snowpile_06.prefab</Path>
+				<Offset_From_Grid_Surface>0</Offset_From_Grid_Surface>
+				<Offset_From_Object_Surface>0</Offset_From_Object_Surface>
+				<Tag>Snowy</Tag>
+			</Prefab>
+			<Prefab>
+				<Name>P_ENV_snowpile_tree_01</Name>
+				<Path>Assets/Asset Packs/Environment/Story Northern Nature/prefabs/Environment/P_ENV_snowpile_tree_01.prefab</Path>
+				<Offset_From_Grid_Surface>0</Offset_From_Grid_Surface>
+				<Offset_From_Object_Surface>0</Offset_From_Object_Surface>
+				<Tag>Snowy</Tag>
+			</Prefab>
+			<Prefab>
+				<Name>P_ENV_snowpile_tree_02</Name>
+				<Path>Assets/Asset Packs/Environment/Story Northern Nature/prefabs/Environment/P_ENV_snowpile_tree_02.prefab</Path>
+				<Offset_From_Grid_Surface>0</Offset_From_Grid_Surface>
+				<Offset_From_Object_Surface>0</Offset_From_Object_Surface>
+				<Tag>Snowy</Tag>
+			</Prefab>
+			<Prefab>
+				<Name>P_ENV_snowpile_tree_03</Name>
+				<Path>Assets/Asset Packs/Environment/Story Northern Nature/prefabs/Environment/P_ENV_snowpile_tree_03.prefab</Path>
+				<Offset_From_Grid_Surface>0</Offset_From_Grid_Surface>
+				<Offset_From_Object_Surface>0</Offset_From_Object_Surface>
+				<Tag>Snowy</Tag>
+			</Prefab>
+			<Prefab>
+				<Name>P_ENV_stone_snow_01</Name>
+				<Path>Assets/Asset Packs/Environment/Story Northern Nature/prefabs/Environment/P_ENV_stone_snow_01.prefab</Path>
+				<Offset_From_Grid_Surface>0</Offset_From_Grid_Surface>
+				<Offset_From_Object_Surface>0</Offset_From_Object_Surface>
+				<Tag>Snowy</Tag>
+			</Prefab>
+			<Prefab>
+				<Name>P_ENV_stone_snow_02</Name>
+				<Path>Assets/Asset Packs/Environment/Story Northern Nature/prefabs/Environment/P_ENV_stone_snow_02.prefab</Path>
+				<Offset_From_Grid_Surface>0</Offset_From_Grid_Surface>
+				<Offset_From_Object_Surface>0</Offset_From_Object_Surface>
+				<Tag>Snowy</Tag>
+			</Prefab>
+			<Prefab>
+				<Name>P_ENV_stone_snow_03</Name>
+				<Path>Assets/Asset Packs/Environment/Story Northern Nature/prefabs/Environment/P_ENV_stone_snow_03.prefab</Path>
+				<Offset_From_Grid_Surface>0</Offset_From_Grid_Surface>
+				<Offset_From_Object_Surface>0</Offset_From_Object_Surface>
+				<Tag>Snowy</Tag>
+			</Prefab>
+			<Prefab>
+				<Name>P_ENV_stone_snow_04</Name>
+				<Path>Assets/Asset Packs/Environment/Story Northern Nature/prefabs/Environment/P_ENV_stone_snow_04.prefab</Path>
+				<Offset_From_Grid_Surface>0</Offset_From_Grid_Surface>
+				<Offset_From_Object_Surface>0</Offset_From_Object_Surface>
+				<Tag>Snowy</Tag>
+			</Prefab>
+			<Prefab>
+				<Name>P_ENV_stone_snow_05</Name>
+				<Path>Assets/Asset Packs/Environment/Story Northern Nature/prefabs/Environment/P_ENV_stone_snow_05.prefab</Path>
+				<Offset_From_Grid_Surface>0</Offset_From_Grid_Surface>
+				<Offset_From_Object_Surface>0</Offset_From_Object_Surface>
+				<Tag>Snowy</Tag>
+			</Prefab>
+			<Prefab>
+				<Name>P_ENV_stone_snow_06</Name>
+				<Path>Assets/Asset Packs/Environment/Story Northern Nature/prefabs/Environment/P_ENV_stone_snow_06.prefab</Path>
+				<Offset_From_Grid_Surface>0</Offset_From_Grid_Surface>
+				<Offset_From_Object_Surface>0</Offset_From_Object_Surface>
+				<Tag>Snowy</Tag>
+			</Prefab>
+		</Category>
+	</PrefabCategories>
+		<PrefabScrollViewLookAndFeel>
+			<NumPrefabsPerRow>16</NumPrefabsPerRow>
+			<PrefabPreviewScale>0.6</PrefabPreviewScale>
+			<PrefabScrollViewHeight>200</PrefabScrollViewHeight>
+			<ActivePrefabTint>0.639,0.909,1,1</ActivePrefabTint>
+			<ShowPrefabNames>False</ShowPrefabNames>
+			<PrefabNameLabelColor>0,0,0,1</PrefabNameLabelColor>
+		</PrefabScrollViewLookAndFeel>
+</PrefabConfig>

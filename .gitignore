@@ -88,7 +88,7 @@ Assets/Plugins/Rewired/Internal/Assets
 # Extensions folder (personal convention) contains productivity assets (editor)
 /Assets/Extensions/ 
 **/_Demo*
-/Assets
+/Assets/*
 !/Assets/_Custom
 !/Assets/_Pratice
 !/Assets/_Shared
