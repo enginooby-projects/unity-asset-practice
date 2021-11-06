@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/_Practice/GaiaPro/Mask/Mask.unity
+    guid: 5e8db02ae06f1f8469787f41dfa6ce2b
+  - enabled: 1
     path: Assets/Scenes/Low Poly/Test Low-Res Low Poly.unity
     guid: 2c79773fd76ec1d489d9832b7df4e46d
   - enabled: 1
