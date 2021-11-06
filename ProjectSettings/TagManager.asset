@@ -1,0 +1,69 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags:
+  - Stair
+  - Climb
+  - Fly
+  - PW - Nature
+  - PW - Building
+  - PW - Prop
+  - Synty Medium Farm
+  - Synty Small Farm
+  - Synty Tree
+  - water
+  - Collection
+  - dirt
+  - HerdChild
+  - Water
+  - Ground
+  - a_Listener
+  - Head
+  - charaVoiceOverAudioSource
+  - Enemy
+  - LevelGoal
+  - Waypoint
+  - concrete
+  - wood
+  - Ship
+  - ShipCamera
+  - Animal
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - 
+  - Water
+  - UI
+  - Post Processing
+  - Terrain
+  - PW_VFX
+  - PW_Object_Small
+  - PW_Object_Medium
+  - PW_Object_Large
+  - Road
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - Animal
+  - 
+  - 
+  - Enemy
+  - 
+  - Ground
+  - HerdSim
+  - 
+  - 
+  - 
+  - Item
+  - 
+  m_SortingLayers:
+  - name: Default
+    uniqueID: 0
+    locked: 0
