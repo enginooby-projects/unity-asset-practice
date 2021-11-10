@@ -30,6 +30,8 @@ TagManager:
   - Ship
   - ShipCamera
   - Animal
+  - Obstacle
+  - Selectable
   layers:
   - Default
   - TransparentFX

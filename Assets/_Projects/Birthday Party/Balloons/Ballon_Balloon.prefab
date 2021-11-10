@@ -1,0 +1,309 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &485495634726441351
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8926543804081392945}
+  - component: {fileID: 3540348927647494459}
+  - component: {fileID: 6281617976291052870}
+  m_Layer: 0
+  m_Name: String1_Ballon
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8926543804081392945
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 485495634726441351}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.01, y: 0.34, z: 0.005}
+  m_LocalScale: {x: 1.39, y: 0.25, z: 0.73}
+  m_Children: []
+  m_Father: {fileID: 6757075873833031565}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!33 &3540348927647494459
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 485495634726441351}
+  m_Mesh: {fileID: 5487834217385064580, guid: d72cc6c535748524490efdce17e9a04c, type: 3}
+--- !u!23 &6281617976291052870
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 485495634726441351}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 6928917606427477627, guid: d72cc6c535748524490efdce17e9a04c, type: 3}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &2285260836413432193
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6757075873833031565}
+  - component: {fileID: 3794106828942886490}
+  - component: {fileID: 2498620042890703137}
+  - component: {fileID: 852142514226009262}
+  - component: {fileID: 852142514226009257}
+  - component: {fileID: 1268779619}
+  m_Layer: 0
+  m_Name: Ballon_Balloon
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6757075873833031565
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2285260836413432193}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 11.966204, y: 0.10605639, z: 11.23563}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_Children:
+  - {fileID: 8926543804081392945}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!33 &3794106828942886490
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2285260836413432193}
+  m_Mesh: {fileID: 3473737762468508159, guid: d72cc6c535748524490efdce17e9a04c, type: 3}
+--- !u!23 &2498620042890703137
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2285260836413432193}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 72a365803d705c741895dbd275e4079c, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!54 &852142514226009262
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2285260836413432193}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!136 &852142514226009257
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2285260836413432193}
+  m_Material: {fileID: 13400000, guid: 08d9fe82d82790749be64e184f573a90, type: 2}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.443574
+  m_Height: 1.188368
+  m_Direction: 1
+  m_Center: {x: 0.0000005066395, y: 0.97758, z: 0}
+--- !u!114 &1268779619
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2285260836413432193}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95fba3e4936b8f243a058d36fe6db3cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lifespan: 0
+  enableGravityChange: 0
+  gravityPercent: 100
+  enableJump: 0
+  jumpKey:
+    inputType: 0
+    inputTypeName: A
+    keyCode: 32
+    keyTriggerEvent: 4
+    inputAxis: 0
+    modifierKey: 1
+  jumpForce: 10
+  jumpForceMode: 1
+  jumpMaxTimes: 1
+  checkingGroundForJump: 0
+  jumpableHeightRange: {x: 0, y: 0}
+  dynamicMinMax: {x: 0, y: 20}
+  enableVerticalMovement: 0
+  verticalKey:
+    inputType: 1
+    inputTypeName: A
+    keyCode: 0
+    keyTriggerEvent: 4
+    inputAxis: 2
+    modifierKey: 1
+  verticalSpeed: 5
+  verticalForceMode: 1
+  checkingGroundForVertical: 1
+  verticalMovementRange: {x: 0, y: 0}
+  dynamicMinMaxForVerticalRange: {x: -20, y: 20}
+  enableVerticalBoost: 0
+  verticalBoostSpeed: 2
+  verticalBoostVfx: {fileID: 0}
+  verticalBoostSfx: {fileID: 0}
+  verticalBoostKey:
+    inputType: 0
+    inputTypeName: A
+    keyCode: 32
+    keyTriggerEvent: 8
+    inputAxis: 0
+    modifierKey: 1
+  enableHorizontalMovement: 0
+  horizontalKey:
+    inputType: 1
+    inputTypeName: A
+    keyCode: 0
+    keyTriggerEvent: 4
+    inputAxis: 1
+    modifierKey: 1
+  horizontalSpeed: 5
+  horizontalForceMode: 1
+  checkingGroundForHorizontal: 1
+  horizontalMovementRange: {x: 0, y: 0}
+  dynamicMinMaxForHorizontalRange: {x: -20, y: 20}
+  enableFocalPoint: 0
+  focalPoint: {fileID: 0}
+  enableInitialForce: 1
+  initialForceAxis: 4
+  initialForceMode: 1
+  initalForceRange: {x: 0.05, y: 0.15}
+  initialTorqueMode: 1
+  initalTorqueRange:
+    title: Torque Range
+    xRange:
+      OnValueChange:
+        m_PersistentCalls:
+          m_Calls: []
+      Value: {x: 0, y: 0}
+      min: -10
+      max: 10
+    yRange:
+      OnValueChange:
+        m_PersistentCalls:
+          m_Calls: []
+      Value: {x: 0, y: 0}
+      min: -10
+      max: 10
+    zRange:
+      OnValueChange:
+        m_PersistentCalls:
+          m_Calls: []
+      Value: {x: 0, y: 0}
+      min: -10
+      max: 10
+    all:
+      OnValueChange:
+        m_PersistentCalls:
+          m_Calls: []
+      Value: {x: 0, y: 0}
+      min: -10
+      max: 10
+    initialMinMax: {x: 0, y: 0}
+  fallVfx: {fileID: 0}
+  runningVfx: {fileID: 0}
+  jumpSfx: {fileID: 0}
+  crashSfx: {fileID: 0}
+  enableEvent: 0
