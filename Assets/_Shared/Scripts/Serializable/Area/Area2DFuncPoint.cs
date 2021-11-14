@@ -29,6 +29,11 @@ public class Area2DFuncPoint : AreaPoint {
 
   protected override void UpdatePoints() {
     base.UpdatePoints();
+    if (!origin.GameObject) { // TODO: implement this in base
+      Debug.LogWarning("Origin is not set.");
+      return;
+    }
+
     UpdateFormula();
     Vector3 originPos = origin.GameObject.transform.position;
     for (int i = 0; i < pointAmount; i++) {

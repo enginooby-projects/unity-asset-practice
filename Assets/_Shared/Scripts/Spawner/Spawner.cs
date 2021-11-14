@@ -107,6 +107,7 @@ public class Spawner : MonoBehaviourBase {
   #endregion ===================================================================================================================================
 
   #region ASSET COLLECTION ===================================================================================================================================
+  [NaughtyAttributes.HorizontalLine(color: NaughtyAttributes.EColor.Red)]
   [PropertySpace(SpaceBefore = SECTION_SPACE + 10)]
   [HideLabel, DisplayAsString(false), ShowInInspector]
   const string OBJECT_SELECTION_SPACE = "Configure resources and selection mode to spawn";

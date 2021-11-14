@@ -14,6 +14,11 @@ public class AreaAxisPoint : AreaPoint {
 
   protected override void UpdatePoints() {
     base.UpdatePoints();
+    if (!origin.GameObject) {
+      Debug.LogWarning("Origin is not set.");
+      return;
+    }
+
     Vector3 originPos = origin.GameObject.transform.position;
     for (int i = 0; i < pointAmount.x; i++) {
       for (int j = 0; j < pointAmount.y; j++) {

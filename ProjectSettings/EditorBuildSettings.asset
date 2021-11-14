@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/_Projects/RPG/Scene.unity
+    guid: 4a70a31dccfb48b43a18c44d46825803
+  - enabled: 1
     path: Assets/_Projects/Birthday Party/Template 1.unity
     guid: 063b1729770fe9449b376d5afaccce5e
   m_configObjects: {}

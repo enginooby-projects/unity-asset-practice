@@ -5,31 +5,33 @@ using System.Collections.Generic;
 using System;
 using UnityEngine.Events;
 
+namespace Enginoobz {
 
-[Serializable, InlineProperty]
-public class ColliderEvent : TriggerEvent {
-  [PropertyOrder(-1)] public bool enableForAll = false;
+  [Serializable, InlineProperty]
+  public class ColliderEvent : TriggerEvent {
+    [PropertyOrder(-1)] public bool enableForAll = false;
 
-  [DisableIf(nameof(enableForAll))]
-  [PropertyOrder(-1)] public List<Reference> targets = new List<Reference>();
+    [DisableIf(nameof(enableForAll))]
+    [PropertyOrder(-1)] public List<Reference> targets = new List<Reference>();
 
-  public List<string> Tags {
-    get {
-      List<string> tags = new List<string>();
-      targets.ForEach(target => {
-        if (target.findMethod == Reference.FindMethod.Tag) tags.Add(target.tag);
-      });
-      return tags;
+    public List<string> Tags {
+      get {
+        List<string> tags = new List<string>();
+        targets.ForEach(target => {
+          if (target.findMethod == Reference.FindMethod.Tag) tags.Add(target.tag);
+        });
+        return tags;
+      }
     }
-  }
 
-  /// <summary>
-  /// Check if the GameObject is valid by target list to invoke the event
-  /// </summary>
-  public bool IsTriggerBy(GameObject go) {
-    if (enableForAll) return true;
+    /// <summary>
+    /// Check if the GameObject is valid by target list to invoke the event
+    /// </summary>
+    public bool IsTriggerBy(GameObject go) {
+      if (enableForAll) return true;
 
-    // TODO: valid ref/name/type
-    return Tags.Contains(go.tag);
+      // TODO: valid ref/name/type
+      return Tags.Contains(go.tag);
+    }
   }
 }
