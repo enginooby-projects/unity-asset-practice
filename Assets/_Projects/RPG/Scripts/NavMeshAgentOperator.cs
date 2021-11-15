@@ -3,11 +3,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using Enginoobz.Core;
 
 // TODO: Move into Library
 namespace Enginoobz.Operator {
   [RequireComponent(typeof(NavMeshAgent))]
-  public class NavMeshAgentOperator : MonoBehaviour {
+  public class NavMeshAgentOperator : MonoBehaviour, IAction {
     [AutoRef, SerializeField, HideInInspector]
     private NavMeshAgent _agent;
 
@@ -19,6 +20,12 @@ namespace Enginoobz.Operator {
       _agent.destination = dest;
     }
 
+    public void Cancel() {
+      _agent.isStopped = true;
+    }
+
     public Vector3 LocalVelocity => transform.InverseTransformVector(_agent.velocity);
+
+
   }
 }
