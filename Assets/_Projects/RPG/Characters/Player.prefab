@@ -12,6 +12,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: 'Player '
       objectReference: {fileID: 0}
+    - target: {fileID: 513835039588576337, guid: 3d9a9594c83c85048a3a7bbbb52ecc31,
+        type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     - target: {fileID: 513835039588576346, guid: 3d9a9594c83c85048a3a7bbbb52ecc31,
         type: 3}
       propertyPath: _attackRange
@@ -20,7 +25,7 @@ PrefabInstance:
     - target: {fileID: 513835039588576346, guid: 3d9a9594c83c85048a3a7bbbb52ecc31,
         type: 3}
       propertyPath: _attackDamage
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 513835039588576349, guid: 3d9a9594c83c85048a3a7bbbb52ecc31,
         type: 3}

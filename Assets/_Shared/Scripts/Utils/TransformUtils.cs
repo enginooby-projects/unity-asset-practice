@@ -60,8 +60,9 @@ public static class TransformUtils {
   }
 
   public static float DistanceFrom(this Transform transform, Vector3 targetPos) {
-    // ? Optimize performance w/ Vector3.sqrMagnitude
-    return Vector3.Distance(transform.position, targetPos);
+    // optimizer than Vector3.Distance()
+    float x = Vector3.SqrMagnitude(transform.position - targetPos);
+    return x * x;
   }
 
   public static float DistanceFrom(this Transform transform, Transform targetTransform) {

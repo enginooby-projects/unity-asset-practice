@@ -11,7 +11,7 @@ namespace Project.RPG.Combat {
     [Tooltip("Move to target and stop at this distance to attack.")]
     [SerializeField] private float _attackRange = 2;
     [SerializeField] private int _attackDamage = 1;
-    [SerializeField, Min(0.5f)] private float _attackRate = 1f;
+    [SerializeField, Min(0.5f)] private float _attackRate = 1f; // TODO: Implement rate not delay
 
     [AutoRef, SerializeField, HideInInspector]
     private NavMeshAgentOperator _agentOpr;
@@ -82,7 +82,7 @@ namespace Project.RPG.Combat {
 
     // animation events
     void OnHit() {
-      _currentTarget.TakeDamage(_attackDamage);
+      _currentTarget?.TakeDamage(_attackDamage);
     }
 
     public void Cancel() {
