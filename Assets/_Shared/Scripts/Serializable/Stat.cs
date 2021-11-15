@@ -28,8 +28,14 @@ public class Stat {
   // [ToggleGroup(nameof(enable))]
   [FoldoutGroup("$statName"), EnableIf(nameof(enable))]
   [HorizontalGroup("$statName/Value"), LabelWidth(LABEL_WIDTH_1)]
-  [OnValueChanged(nameof(UpdateStatUI))]
+  [OnValueChanged(nameof(OnInitialValueChanged))]
   public int InitialValue;
+
+  private void OnInitialValueChanged() {
+    CurrentValue = InitialValue;
+    UpdateStatUI();
+  }
+
   [HideInInspector] public int CurrentValue;
 
   // [ToggleGroup(nameof(enable))]
@@ -96,26 +102,37 @@ public class Stat {
   #endregion ===================================================================================================================================
 
   #region PUBLIC METHODS ===================================================================================================================================
+  /// <summary>
+  /// Constraint the given amount in range of min-max then add to the current stat value.
+  /// </summary>
   public void Update(int amountToAdd) {
     int valueAfterUpdate = CurrentValue + amountToAdd;
-
-    if (enableMin && valueAfterUpdate < MinValue) {
-      valueAfterUpdate = MinValue;
-    }
-
-    if (enableMax && valueAfterUpdate > MaxValue) {
-      valueAfterUpdate = MaxValue;
-    }
-
+    ConstraintMinMax(valueAfterUpdate);
     Set(valueAfterUpdate);
     if (amountToAdd > 0) OnStatIncrease.Invoke();
     if (amountToAdd < 0) OnStatDecrease.Invoke();
   }
 
+  private void ConstraintMinMax(int rawValue) {
+    if (enableMin && rawValue < MinValue) {
+      rawValue = MinValue;
+    }
+
+    if (enableMax && rawValue > MaxValue) {
+      rawValue = MaxValue;
+    }
+  }
+
+  /// <summary>
+  /// Increase current stat value by 1.
+  /// </summary>
   public void Increase() {
     Update(1);
   }
 
+  /// <summary>
+  /// Descrease current stat value by 1.
+  /// </summary>
   public void Descrease() {
     Update(-1);
   }
