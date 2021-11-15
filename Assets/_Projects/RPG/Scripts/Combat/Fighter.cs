@@ -19,6 +19,7 @@ namespace Project.RPG.Combat {
     [AutoRef, SerializeField, HideInInspector]
     private Animator _animator;
     private readonly int attackHash = Animator.StringToHash("attack");
+    private readonly int stopAttackHash = Animator.StringToHash("stopAttack");
 
     private CombatTarget _currentTarget;
     private bool _isAttacking;
@@ -60,6 +61,7 @@ namespace Project.RPG.Combat {
 
     public void Cancel() {
       _isAttacking = false;
+      _animator.SetTrigger(stopAttackHash);
     }
   }
 }

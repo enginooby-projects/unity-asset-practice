@@ -49,7 +49,7 @@ namespace Project.RPG.Controller {
     // ? Move to Mover
     [AutoRef, SerializeField, HideInInspector]
     private Animator _animator;
-    private int _forwardSpeedHash = Animator.StringToHash("forwardSpeed");
+    private readonly int _forwardSpeedHash = Animator.StringToHash("forwardSpeed");
 
     private void HandleAnimation() {
       _animator.SetFloat(_forwardSpeedHash, _mover.LocalVelocity.z);

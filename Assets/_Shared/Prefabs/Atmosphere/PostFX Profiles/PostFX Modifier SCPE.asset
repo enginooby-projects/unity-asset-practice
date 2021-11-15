@@ -846,10 +846,10 @@ MonoBehaviour:
     m_Value: 1
   height:
     m_OverrideState: 1
-    m_Value: 162.7
+    m_Value: 168.6
   heightDensity:
     m_OverrideState: 1
-    m_Value: -0.09
+    m_Value: 0.14
   heightFogNoise:
     m_OverrideState: 0
     m_Value: 1
