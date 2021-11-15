@@ -12,6 +12,11 @@ namespace Project.RPG.Combat {
 
     [AutoRef, SerializeField, HideInInspector]
     private NavMeshAgentOperator _agentOpr;
+
+    [AutoRef, SerializeField, HideInInspector]
+    private Animator _animator;
+    private readonly int attackHash = Animator.StringToHash("attack");
+
     private CombatTarget _currentTarget;
     private bool _isAttacking;
 
@@ -29,10 +34,17 @@ namespace Project.RPG.Combat {
         // FIX: agent does not guarantee to arrive at the range (e.g target is on the air)
         _agentOpr.MoveTo(_currentTarget.transform.position, _attackRange);
       } else {
-        transform.DOLookAt(_currentTarget.transform.position, 1).OnComplete(() => {
-          print("Attacking " + _currentTarget.name);
-        });
+        _animator.SetTrigger(attackHash);
+        // transform.DOLookAt(_currentTarget.transform.position, 1).OnComplete(() => {
+        //   // print("Attacking " + _currentTarget.name);
+        //   // _animator.SetBool(_isAttackingHash, true);
+        // });
       }
+    }
+
+    // animation events
+    void OnHit() {
+      print("On Hit");
     }
 
     public void Cancel() {

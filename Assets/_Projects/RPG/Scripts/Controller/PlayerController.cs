@@ -46,6 +46,7 @@ namespace Project.RPG.Controller {
     #endregion ===================================================================================================================================
 
     #region ANIMATION ===================================================================================================================================
+    // ? Move to Mover
     [AutoRef, SerializeField, HideInInspector]
     private Animator _animator;
     private int _forwardSpeedHash = Animator.StringToHash("forwardSpeed");
