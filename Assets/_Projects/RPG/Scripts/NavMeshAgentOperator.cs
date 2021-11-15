@@ -16,6 +16,7 @@ namespace Enginoobz.Operator {
     /// Not in Update().
     /// </summary>
     public void MoveTo(Vector3 dest, float stoppingDistance = 0) {
+      _agent.isStopped = false;
       _agent.stoppingDistance = stoppingDistance;
       _agent.destination = dest;
     }

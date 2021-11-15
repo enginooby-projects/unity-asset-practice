@@ -2,24 +2,33 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Enginoobz.Operator;
+using Enginoobz.Core;
 using Project.RPG.Combat;
 using static RayUtils;
 
 namespace Project.RPG.Controller {
   [RequireComponent(typeof(NavMeshAgentOperator))]
+  /// <summary>
+  /// Handling inputs which invokes different actions of the player.
+  /// </summary>
   public class PlayerController : MonoBehaviour {
+
+    [AutoRef, SerializeField, HideInInspector]
+    private ActionScheduler _actionScheduler;
+
     void Update() {
       if (CanAttack) {
         HandleCombat();
       } else if (CanMove) {
         HandleMovement();
-        HandleAnimation();
       }
+
+      HandleAnimation();
     }
 
     #region MOVEMENT ===================================================================================================================================
     [AutoRef, SerializeField, HideInInspector]
-    private NavMeshAgentOperator _agentOpr;
+    private NavMeshAgentOperator _mover;
     private Ray _lastRay;
     private bool CanMove => IsMouseRayHit;
 
@@ -27,9 +36,11 @@ namespace Project.RPG.Controller {
       Debug.DrawRay(_lastRay.origin, _lastRay.direction * 100, Color.red);
 
       if (!MouseButton.Left.IsHeld()) return;
+
+      _actionScheduler.SwitchAction(_mover);
       _lastRay = MouseRay;
       if (Physics.Raycast(_lastRay, out RaycastHit hit)) {
-        _agentOpr.MoveTo(hit.point);
+        _mover.MoveTo(hit.point);
       }
     }
     #endregion ===================================================================================================================================
@@ -40,7 +51,7 @@ namespace Project.RPG.Controller {
     private int _forwardSpeedHash = Animator.StringToHash("forwardSpeed");
 
     private void HandleAnimation() {
-      _animator.SetFloat(_forwardSpeedHash, _agentOpr.LocalVelocity.z);
+      _animator.SetFloat(_forwardSpeedHash, _mover.LocalVelocity.z);
     }
     #endregion ===================================================================================================================================
 
@@ -59,6 +70,7 @@ namespace Project.RPG.Controller {
     private void HandleCombat() {
       if (!MouseButton.Left.IsDown()) return;
 
+      _actionScheduler.SwitchAction(_fighter);
       currentAttackableTargets.ForEach(_fighter.Attack);
     }
     #endregion ===================================================================================================================================

@@ -12,24 +12,27 @@ namespace Project.RPG.Combat {
 
     [AutoRef, SerializeField, HideInInspector]
     private NavMeshAgentOperator _agentOpr;
-    private CombatTarget _target;
+    private CombatTarget _currentTarget;
     private bool _isAttacking;
 
     private void Update() {
-      if (_isAttacking) Attack(_target);
+      if (_isAttacking) AttackCurrentTarget();
     }
 
     public void Attack(CombatTarget target) {
       _isAttacking = true;
-      if (transform.DistanceFrom(target.transform) > _attackRange) {
-        // FIX: agent does not guarantee to arrive at the range (e.g target is on the air)
-        _agentOpr.MoveTo(target.transform.position, _attackRange);
-      } else {
-        transform.DOLookAt(target.transform.position, 1);
-      }
+      _currentTarget = target;
+    }
 
-      // TODO: Only attack after finish movement & in attack range
-      print("Attacking " + target.name);
+    public void AttackCurrentTarget() {
+      if (transform.DistanceFrom(_currentTarget.transform) > _attackRange) {
+        // FIX: agent does not guarantee to arrive at the range (e.g target is on the air)
+        _agentOpr.MoveTo(_currentTarget.transform.position, _attackRange);
+      } else {
+        transform.DOLookAt(_currentTarget.transform.position, 1).OnComplete(() => {
+          print("Attacking " + _currentTarget.name);
+        });
+      }
     }
 
     public void Cancel() {
