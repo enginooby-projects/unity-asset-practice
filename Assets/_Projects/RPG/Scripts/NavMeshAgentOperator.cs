@@ -5,14 +5,20 @@ using UnityEngine;
 using UnityEngine.AI;
 
 // TODO: Move into Library
-[RequireComponent(typeof(NavMeshAgent))]
-public class NavMeshAgentOperator : MonoBehaviour {
-  [AutoRef, SerializeField, HideInInspector]
-  private NavMeshAgent _agent;
+namespace Enginoobz.Operator {
+  [RequireComponent(typeof(NavMeshAgent))]
+  public class NavMeshAgentOperator : MonoBehaviour {
+    [AutoRef, SerializeField, HideInInspector]
+    private NavMeshAgent _agent;
 
-  public void MoveTo(Vector3 dest) {
-    _agent.destination = dest;
+    /// <summary>
+    /// Not in Update().
+    /// </summary>
+    public void MoveTo(Vector3 dest, float stoppingDistance = 0) {
+      _agent.stoppingDistance = stoppingDistance;
+      _agent.destination = dest;
+    }
+
+    public Vector3 LocalVelocity => transform.InverseTransformVector(_agent.velocity);
   }
-
-  public Vector3 LocalVelocity => transform.InverseTransformVector(_agent.velocity);
 }

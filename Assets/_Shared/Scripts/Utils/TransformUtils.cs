@@ -58,4 +58,13 @@ public static class TransformUtils {
     transform.rotation = target.transform.rotation;
     transform.localScale = target.transform.localScale;
   }
+
+  public static float DistanceFrom(this Transform transform, Vector3 targetPos) {
+    // ? Optimize performance w/ Vector3.sqrMagnitude
+    return Vector3.Distance(transform.position, targetPos);
+  }
+
+  public static float DistanceFrom(this Transform transform, Transform targetTransform) {
+    return transform.DistanceFrom(targetTransform.position);
+  }
 }
