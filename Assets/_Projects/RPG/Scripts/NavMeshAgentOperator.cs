@@ -15,7 +15,8 @@ namespace Enginoobz.Operator {
     /// <summary>
     /// Not in Update().
     /// </summary>
-    public void MoveTo(Vector3 dest, float stoppingDistance = 0) {
+    // ! distance 0 sometimes cause jiggering/shaking movement
+    public void MoveTo(Vector3 dest, float stoppingDistance = 0.5f) {
       _agent.isStopped = false;
       _agent.stoppingDistance = stoppingDistance;
       _agent.destination = dest;
