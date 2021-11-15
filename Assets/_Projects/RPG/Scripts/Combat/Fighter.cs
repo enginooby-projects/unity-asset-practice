@@ -10,7 +10,7 @@ namespace Project.RPG.Combat {
   public class Fighter : MonoBehaviour, IAction {
     [Tooltip("Move to target and stop at this distance to attack.")]
     [SerializeField] private float _attackRange = 2;
-
+    [SerializeField] private int _attackDamage = 1;
     [SerializeField, Min(0.5f)] private float _attackRate = 1f;
 
     [AutoRef, SerializeField, HideInInspector]
@@ -25,7 +25,7 @@ namespace Project.RPG.Combat {
     private float timeSinceLastAttack;
 
     private void Update() {
-      if (_isAttacking) ApproachAndAttackCurrentTarget();
+      if (_isAttacking && _currentTarget) ApproachAndAttackCurrentTarget();
     }
 
     public void Attack(CombatTarget target) {
@@ -55,7 +55,7 @@ namespace Project.RPG.Combat {
 
     // animation events
     void OnHit() {
-      print("On Hit");
+      _currentTarget.TakeDamage(_attackDamage);
     }
 
     public void Cancel() {

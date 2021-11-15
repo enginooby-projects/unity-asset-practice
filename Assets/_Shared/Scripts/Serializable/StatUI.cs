@@ -55,7 +55,7 @@ public class StatUI {
   public void Update(int amount) {
     switch (uiType) {
       case UIType.Text:
-        label.text = prefix + amount + suffix;
+        if (label) label.text = prefix + amount + suffix;
         break;
     }
   }
