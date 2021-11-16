@@ -22,6 +22,11 @@ PrefabInstance:
       propertyPath: _attackRange
       value: 2.5
       objectReference: {fileID: 0}
+    - target: {fileID: 513835039588576346, guid: 3d9a9594c83c85048a3a7bbbb52ecc31,
+        type: 3}
+      propertyPath: _attackCooldown
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 513835039588576347, guid: 3d9a9594c83c85048a3a7bbbb52ecc31,
         type: 3}
       propertyPath: m_Speed
@@ -164,6 +169,49 @@ MonoBehaviour:
   _fighter: {fileID: 0}
   _navMover: {fileID: 0}
   _agentOpr: {fileID: 0}
+--- !u!114 &406519182
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1524613326836173757}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a533480686bbd2d4d9a67e51991f5ce0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pathContainer: {fileID: 0}
+  onStart: 1
+  moveToPath: 1
+  reverse: 0
+  startPoint: 0
+  currentPoint: 0
+  closeLoop: 1
+  updateRotation: 1
+  loopType: 3
+  waypoints: []
+  movementStart:
+    m_PersistentCalls:
+      m_Calls: []
+  movementChange:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 406519182}
+        m_TargetAssemblyTypeName: SWS.navMove, Assembly-CSharp-firstpass
+        m_MethodName: Pause
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 2
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  movementEnd:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &5513271375675031050
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -255,49 +303,6 @@ MonoBehaviour:
             m_BoolArgument: 0
           m_CallState: 2
   _animator: {fileID: 0}
---- !u!114 &406519182
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1524613326836173757}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a533480686bbd2d4d9a67e51991f5ce0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pathContainer: {fileID: 0}
-  onStart: 1
-  moveToPath: 1
-  reverse: 0
-  startPoint: 0
-  currentPoint: 0
-  closeLoop: 1
-  updateRotation: 1
-  loopType: 3
-  waypoints: []
-  movementStart:
-    m_PersistentCalls:
-      m_Calls: []
-  movementChange:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 406519182}
-        m_TargetAssemblyTypeName: SWS.navMove, Assembly-CSharp-firstpass
-        m_MethodName: Pause
-        m_Mode: 4
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 2
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  movementEnd:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!1001 &5036323811146615862
 PrefabInstance:
   m_ObjectHideFlags: 0

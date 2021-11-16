@@ -16,13 +16,14 @@ namespace Enginoobz.Operator {
     /// Not in Update().
     /// </summary>
     // ! distance 0 sometimes cause jiggering/shaking movement
-    public void MoveTo(Vector3 dest, float stoppingDistance = 0.5f, float delay = 0f) {
+    public void MoveTo(Vector3 dest, float stoppingDistance = 0.5f, float delay = 0f, Nullable<float> speed = null) {
       if (!_agent && !_agent.enabled) return;
-      StartCoroutine(MoveToCoroutine(dest, stoppingDistance, delay));
+      StartCoroutine(MoveToCoroutine(dest, stoppingDistance, delay, speed));
     }
 
-    private IEnumerator MoveToCoroutine(Vector3 dest, float stoppingDistance, float delay) {
+    private IEnumerator MoveToCoroutine(Vector3 dest, float stoppingDistance, float delay, Nullable<float> speed) {
       yield return new WaitForSeconds(delay);
+      if (speed.HasValue) _agent.speed = speed.Value;
       _agent.isStopped = false;
       _agent.stoppingDistance = stoppingDistance;
       _agent.destination = dest;
@@ -48,7 +49,14 @@ namespace Enginoobz.Operator {
       Destroy(_agent);
       Destroy(this);
     }
-    #endregion
+
+    /// <summary>
+    /// Wrapper to change agent speed.
+    /// <summary>
+    public void SetSpeed(float value) {
+      _agent.speed = value;
+    }
+    #endregion ===================================================================================================================================
 
     #region ANIMATION ===================================================================================================================================
     [SerializeField] private bool enableAnimation = true;

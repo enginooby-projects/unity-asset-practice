@@ -13,6 +13,7 @@ namespace Project.RPG.Controller {
 
     [Tooltip("Duration enemy stay in place before return patrolling when lose track of player.")]
     [SerializeField] private Vector2Wrapper _suspiciousTime = new Vector2Wrapper(new Vector2(2, 5), 0, 10);
+    [SerializeField] private float _patrolSpeed = 2f;
 
     [AutoRef, SerializeField, HideInInspector] private Fighter _fighter;
     [AutoRef, SerializeField, HideInInspector] private navMove _navMover; // ? Create a wrapper for SWS.navMove
@@ -22,17 +23,23 @@ namespace Project.RPG.Controller {
 
     void Update() {
       if (_vision.Contains(_playerRef)) {
-        _fighter.Attack(_playerRef);
-        isPatrolling = false;
-        _navMover.Pause();
+        HandleAttacking();
       } else {
         HandlePatrolling();
       }
     }
 
+    private void HandleAttacking() {
+      _fighter.Attack(_playerRef);
+      isPatrolling = false;
+      if (!_navMover.IsPaused()) _navMover.Pause();
+    }
+
     private void HandlePatrolling() {
       _fighter.Cancel();
       if (!isPatrolling) {
+        _navMover.ChangeSpeed(_patrolSpeed);
+        print(_patrolSpeed);
         _navMover.Resume();
         isPatrolling = true;
       }

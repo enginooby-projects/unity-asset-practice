@@ -25,7 +25,17 @@ PrefabInstance:
     - target: {fileID: 513835039588576346, guid: 3d9a9594c83c85048a3a7bbbb52ecc31,
         type: 3}
       propertyPath: _attackDamage
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 513835039588576346, guid: 3d9a9594c83c85048a3a7bbbb52ecc31,
+        type: 3}
+      propertyPath: _attackCooldown
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 513835039588576347, guid: 3d9a9594c83c85048a3a7bbbb52ecc31,
+        type: 3}
+      propertyPath: m_Speed
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 513835039588576349, guid: 3d9a9594c83c85048a3a7bbbb52ecc31,
         type: 3}
