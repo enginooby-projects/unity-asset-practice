@@ -97,18 +97,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1299571620133136364}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1524613326836173750 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 513835039588576346, guid: 3d9a9594c83c85048a3a7bbbb52ecc31,
-    type: 3}
-  m_PrefabInstance: {fileID: 1299571620133136364}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1524613326836173757}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aa0ff278780860e49855d4d6db473fee, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1524613326836173749 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 513835039588576345, guid: 3d9a9594c83c85048a3a7bbbb52ecc31,
@@ -146,7 +134,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b5d0b49c33b5234c84495b9df0b43e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _fighter: {fileID: 0}
   _playerRef:
     componentOwner: {fileID: 0}
     gameObjectRef: {fileID: 0}
@@ -167,6 +154,16 @@ MonoBehaviour:
     radius: 10
     angle: 100
     gizmosWire: 1
+  _suspiciousTime:
+    OnValueChange:
+      m_PersistentCalls:
+        m_Calls: []
+    Value: {x: 2, y: 5}
+    min: 0
+    max: 10
+  _fighter: {fileID: 0}
+  _navMover: {fileID: 0}
+  _agentOpr: {fileID: 0}
 --- !u!114 &5513271375675031050
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -221,22 +218,10 @@ MonoBehaviour:
     OnStatZero:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1524613326836173750}
-          m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
-          m_MethodName: set_enabled
-          m_Mode: 6
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
         - m_Target: {fileID: 102689425}
-          m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
-          m_MethodName: set_enabled
-          m_Mode: 6
+          m_TargetAssemblyTypeName: Project.RPG.Controller.AIController, AsmProjectRpg
+          m_MethodName: OnDead
+          m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -270,6 +255,49 @@ MonoBehaviour:
             m_BoolArgument: 0
           m_CallState: 2
   _animator: {fileID: 0}
+--- !u!114 &406519182
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1524613326836173757}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a533480686bbd2d4d9a67e51991f5ce0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pathContainer: {fileID: 0}
+  onStart: 1
+  moveToPath: 1
+  reverse: 0
+  startPoint: 0
+  currentPoint: 0
+  closeLoop: 1
+  updateRotation: 1
+  loopType: 3
+  waypoints: []
+  movementStart:
+    m_PersistentCalls:
+      m_Calls: []
+  movementChange:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 406519182}
+        m_TargetAssemblyTypeName: SWS.navMove, Assembly-CSharp-firstpass
+        m_MethodName: Pause
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 2
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  movementEnd:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1001 &5036323811146615862
 PrefabInstance:
   m_ObjectHideFlags: 0
