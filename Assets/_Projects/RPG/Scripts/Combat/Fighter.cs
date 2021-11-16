@@ -11,7 +11,14 @@ namespace Project.RPG.Combat {
     [Tooltip("Move to target and stop at this distance to attack.")]
     [SerializeField] private float _attackRange = 2;
     [SerializeField] private int _attackDamage = 1;
-    [SerializeField, Min(0.5f)] private float _attackRate = 1f; // TODO: Implement rate not delay
+
+    [Tooltip("Delay between attacks - Opposite of rate.")]
+    [SerializeField, Min(0.5f)] private float _attackCooldown = 1f;
+
+    [Tooltip("Override agent speed when approaching target before attack.")]
+    [SerializeField, Min(0.5f)] private float _chaseSpeed = 5f;
+
+    public float ChaseSpeed { get => _chaseSpeed; set { if (value > 0.5f) _chaseSpeed = value; } }
 
     [AutoRef, SerializeField, HideInInspector]
     private NavMeshAgentOperator _agentOpr;
@@ -34,6 +41,9 @@ namespace Project.RPG.Combat {
     }
 
     // ? Rename to set target
+    /// <summary>
+    /// [Update-safe method]
+    /// </summary>
     public void Attack(CombatTarget target) {
       if (_isAttacking && target == _currentTarget) return;
 
@@ -41,6 +51,7 @@ namespace Project.RPG.Combat {
       _isAttacking = true;
       _currentTarget = target;
       _isLookingAtCurrentTarget = false;
+      _agentOpr.SetSpeed(_chaseSpeed);
       _animator.ResetTrigger(stopAttackHash);
     }
 
@@ -56,7 +67,7 @@ namespace Project.RPG.Combat {
         _agentOpr.MoveTo(_currentTarget.transform.position, _attackRange);
         _isLookingAtCurrentTarget = true; // agent auto turn towards to the destination (target)
       } else {
-        if (Time.time - timeSinceLastAttack > _attackRate) {
+        if (Time.time - timeSinceLastAttack > _attackCooldown) {
           LookAtAndAttackCurrentTarget();
           timeSinceLastAttack = Time.time;
         }
@@ -93,6 +104,11 @@ namespace Project.RPG.Combat {
       if (!_currentTarget) _isAttacking = false; // target dead
     }
 
+
+    /// <summary>
+    /// [Update-safe method]
+    /// </summary>
+    // TIP: use flag to make update-safe method: method is ok to call in Update() w/o high performance cost
     public void Cancel() {
       if (!_isAttacking) return;
 

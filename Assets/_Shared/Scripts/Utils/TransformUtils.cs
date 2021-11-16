@@ -2,7 +2,6 @@ using UnityEngine;
 
 // namespace ExtentionMethods {
 public static class TransformUtils {
-
   /// <summary>Reset position, rotation, scale</summary>
   public static void Reset(this Transform transform) {
     transform.ResetPosition();
@@ -73,6 +72,7 @@ public static class TransformUtils {
   /// Check if distance to target is less than given range.
   /// </summary>
   public static bool IsInRange(this Transform transform, Transform targetTransform, float range) {
+    // optimizer than Vector3.Distance()
     float distanceSquare = Vector3.SqrMagnitude(transform.position - targetTransform.position);
     return distanceSquare <= range * range;
   }

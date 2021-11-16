@@ -76,29 +76,36 @@ public class Stat {
   [FoldoutGroup("$statName/Manual Events")]
   public UnityEvent OnStatIncrease = new UnityEvent();
 
+  // TIP: Create both C# event and UnityEvent -> Use C# event (bind in script) instead of UnityEvent (bind in Inspector) for better performance.
+  public event Action OnStatIncreaseEvent;
+
   // [ToggleGroup(nameof(enable))]
   // [FoldoutGroup("enable/Manual Events")]
   [FoldoutGroup("$statName"), ShowIf(nameof(enable))]
   [FoldoutGroup("$statName/Manual Events")]
   public UnityEvent OnStatDecrease = new UnityEvent();
+  public event Action OnStatDecreaseEvent;
 
   // [ToggleGroup(nameof(enable))]
   // [FoldoutGroup("enable/Manual Events")]
   [FoldoutGroup("$statName"), ShowIf(nameof(enable))]
   [FoldoutGroup("$statName/Manual Events")]
   public UnityEvent OnStatMin = new UnityEvent();
+  public event Action OnStatMinEvent;
 
   // [ToggleGroup(nameof(enable))]
   // [FoldoutGroup("enable/Manual Events")]
   [FoldoutGroup("$statName"), ShowIf(nameof(enable))]
   [FoldoutGroup("$statName/Manual Events")]
   public UnityEvent OnStatMax = new UnityEvent();
+  public event Action OnStatMaxEvent;
 
   // [ToggleGroup(nameof(enable))]
   // [FoldoutGroup("enable/Manual Events")]
   [FoldoutGroup("$statName"), ShowIf(nameof(enable))]
   [FoldoutGroup("$statName/Manual Events")]
   public UnityEvent OnStatZero = new UnityEvent();
+  public event Action OnStatZeroEvent;
   #endregion ===================================================================================================================================
 
   #region PUBLIC METHODS ===================================================================================================================================
@@ -109,8 +116,15 @@ public class Stat {
     int valueAfterUpdate = CurrentValue + amountToAdd;
     ConstraintMinMax(valueAfterUpdate);
     Set(valueAfterUpdate);
-    if (amountToAdd > 0) OnStatIncrease.Invoke();
-    if (amountToAdd < 0) OnStatDecrease.Invoke();
+
+    if (amountToAdd > 0) {
+      OnStatIncrease.Invoke();
+      OnStatDecreaseEvent?.Invoke();
+    }
+    if (amountToAdd < 0) {
+      OnStatDecrease.Invoke();
+      OnStatDecreaseEvent?.Invoke();
+    }
   }
 
   private void ConstraintMinMax(int rawValue) {
@@ -140,9 +154,19 @@ public class Stat {
   public void Set(int value) {
     CurrentValue = value;
     ui?.Update(CurrentValue);
-    if (value <= 0) OnStatZero.Invoke();
-    if (enableMin && value == MinValue) OnStatMin.Invoke();
-    if (enableMax && value == MaxValue) OnStatMax.Invoke();
+
+    if (value <= 0) {
+      OnStatZero.Invoke();
+      OnStatZeroEvent?.Invoke();
+    }
+    if (enableMin && value == MinValue) {
+      OnStatMin.Invoke();
+      OnStatMinEvent?.Invoke();
+    }
+    if (enableMax && value == MaxValue) {
+      OnStatMax.Invoke();
+      OnStatMaxEvent?.Invoke();
+    }
   }
 
   public void SetZero() {
