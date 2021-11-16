@@ -12,7 +12,6 @@ namespace Project.RPG.Controller {
   /// Handling inputs which invokes different actions of the player.
   /// </summary>
   public class PlayerController : MonoBehaviour {
-
     [AutoRef, SerializeField, HideInInspector]
     private ActionScheduler _actionScheduler;
 
@@ -22,8 +21,6 @@ namespace Project.RPG.Controller {
       } else if (CanMove) {
         HandleMovement();
       }
-
-      HandleAnimation();
     }
 
     #region MOVEMENT ===================================================================================================================================
@@ -42,17 +39,6 @@ namespace Project.RPG.Controller {
       if (Physics.Raycast(_lastRay, out RaycastHit hit)) {
         _mover.MoveTo(hit.point);
       }
-    }
-    #endregion ===================================================================================================================================
-
-    #region ANIMATION ===================================================================================================================================
-    // ? Move to Mover
-    [AutoRef, SerializeField, HideInInspector]
-    private Animator _animator;
-    private readonly int _forwardSpeedHash = Animator.StringToHash("forwardSpeed");
-
-    private void HandleAnimation() {
-      _animator.SetFloat(_forwardSpeedHash, _mover.LocalVelocity.z);
     }
     #endregion ===================================================================================================================================
 
