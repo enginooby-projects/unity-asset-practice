@@ -7,10 +7,14 @@ using Enginoobz.Operator;
 
 namespace Project.RPG.Controller {
   public class AIController : MonoBehaviour {
-    [AutoRef, SerializeField, HideInInspector] private Fighter _fighter;
-    [AutoRef, SerializeField, HideInInspector] private NavMeshAgentOperator _agentOpr;
     [SerializeField] private Reference _playerRef;
     [SerializeField, HideLabel] private AreaCircular _vision = new AreaCircular(label: "Vision", radius: 5, angle: 90);
+
+    [Tooltip("Duration enemy stay in place before returning to guarding point when lose tracking of player.")]
+    [SerializeField] private Vector2Wrapper _suspiciousTime = new Vector2Wrapper(new Vector2(2, 5), 0, 10);
+
+    [AutoRef, SerializeField, HideInInspector] private Fighter _fighter;
+    [AutoRef, SerializeField, HideInInspector] private NavMeshAgentOperator _agentOpr;
 
     private Vector3 guardPos;
     private bool isReturningToGuardPos;
@@ -31,7 +35,7 @@ namespace Project.RPG.Controller {
     private void HandleGuarding() {
       _fighter.Cancel();
       if (!isReturningToGuardPos) {
-        _agentOpr.MoveTo(guardPos);
+        _agentOpr.MoveTo(guardPos, delay: _suspiciousTime.Random);
         isReturningToGuardPos = true;
       }
     }
