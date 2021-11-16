@@ -26,9 +26,7 @@ namespace Project.RPG.Combat {
     private bool _isAttacking;
     private float timeSinceLastAttack;
 
-    [ShowInInspector]
     private bool _isLookingAtCurrentTarget;
-    [ShowInInspector]
     private bool _isTurningToCurrentTarget;
 
     private void Update() {
@@ -37,14 +35,23 @@ namespace Project.RPG.Combat {
 
     // ? Rename to set target
     public void Attack(CombatTarget target) {
+      if (_isAttacking && target == _currentTarget) return;
+
+      print("Start attack " + target.name);
       _isAttacking = true;
       _currentTarget = target;
       _isLookingAtCurrentTarget = false;
       _animator.ResetTrigger(stopAttackHash);
     }
 
+    public void Attack(Reference targetRef) {
+      if (targetRef.GameObject.TryGetComponent<CombatTarget>(out CombatTarget target)) {
+        Attack(target);
+      }
+    }
+
     public void ApproachAndAttackCurrentTarget() {
-      if (transform.DistanceFrom(_currentTarget.transform) > _attackRange) {
+      if (!transform.IsInRange(_currentTarget.transform, _attackRange)) {
         // FIX: agent does not guarantee to arrive at the range (e.g target is on the air)
         _agentOpr.MoveTo(_currentTarget.transform.position, _attackRange);
         _isLookingAtCurrentTarget = true; // agent auto turn towards to the destination (target)
@@ -83,9 +90,13 @@ namespace Project.RPG.Combat {
     // animation events
     void OnHit() {
       _currentTarget?.TakeDamage(_attackDamage);
+      if (!_currentTarget) _isAttacking = false; // target dead
     }
 
     public void Cancel() {
+      if (!_isAttacking) return;
+
+      print("Cancel attack");
       _isAttacking = false;
       _isLookingAtCurrentTarget = false;
       _animator.SetTrigger(stopAttackHash);
