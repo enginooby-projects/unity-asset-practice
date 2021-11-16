@@ -62,10 +62,18 @@ public static class TransformUtils {
   public static float DistanceFrom(this Transform transform, Vector3 targetPos) {
     // optimizer than Vector3.Distance()
     float x = Vector3.SqrMagnitude(transform.position - targetPos);
-    return x * x;
+    return Mathf.Pow(x, .5f);
   }
 
   public static float DistanceFrom(this Transform transform, Transform targetTransform) {
     return transform.DistanceFrom(targetTransform.position);
+  }
+
+  /// <summary>
+  /// Check if distance to target is less than given range.
+  /// </summary>
+  public static bool IsInRange(this Transform transform, Transform targetTransform, float range) {
+    float distanceSquare = Vector3.SqrMagnitude(transform.position - targetTransform.position);
+    return distanceSquare <= range * range;
   }
 }

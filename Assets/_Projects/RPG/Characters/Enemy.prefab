@@ -12,6 +12,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy
       objectReference: {fileID: 0}
+    - target: {fileID: 513835039588576346, guid: 3d9a9594c83c85048a3a7bbbb52ecc31,
+        type: 3}
+      propertyPath: _attackRate
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 513835039588576346, guid: 3d9a9594c83c85048a3a7bbbb52ecc31,
+        type: 3}
+      propertyPath: _attackRange
+      value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 513835039588576347, guid: 3d9a9594c83c85048a3a7bbbb52ecc31,
+        type: 3}
+      propertyPath: m_Speed
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 513835039588576349, guid: 3d9a9594c83c85048a3a7bbbb52ecc31,
         type: 3}
       propertyPath: m_RootOrder
@@ -82,6 +97,30 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1299571620133136364}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1524613326836173750 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 513835039588576346, guid: 3d9a9594c83c85048a3a7bbbb52ecc31,
+    type: 3}
+  m_PrefabInstance: {fileID: 1299571620133136364}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1524613326836173757}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa0ff278780860e49855d4d6db473fee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1524613326836173749 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 513835039588576345, guid: 3d9a9594c83c85048a3a7bbbb52ecc31,
+    type: 3}
+  m_PrefabInstance: {fileID: 1299571620133136364}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1524613326836173757}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb005458c5ae06846bb211d92243eefa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!65 &102689424
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -95,6 +134,39 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 3.39, z: 1}
   m_Center: {x: 0, y: 1.75, z: 0}
+--- !u!114 &102689425
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1524613326836173757}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b5d0b49c33b5234c84495b9df0b43e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _fighter: {fileID: 0}
+  _playerRef:
+    componentOwner: {fileID: 0}
+    gameObjectRef: {fileID: 0}
+    tag: Player
+    name: Player
+    type: 
+    findMethod: 1
+  _vision:
+    componentOwner: {fileID: 0}
+    origin:
+      componentOwner: {fileID: 0}
+      gameObjectRef: {fileID: 1524613326836173757}
+      tag: Player
+      name: Player
+      type: 
+      findMethod: 0
+    label: Vision
+    radius: 10
+    angle: 100
+    gizmosWire: 1
 --- !u!114 &5513271375675031050
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -149,6 +221,42 @@ MonoBehaviour:
     OnStatZero:
       m_PersistentCalls:
         m_Calls:
+        - m_Target: {fileID: 1524613326836173750}
+          m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
+          m_MethodName: set_enabled
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 102689425}
+          m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
+          m_MethodName: set_enabled
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 1524613326836173749}
+          m_TargetAssemblyTypeName: Enginoobz.Core.ActionScheduler, Library
+          m_MethodName: CancelCurrentAction
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
         - m_Target: {fileID: 5513271375675031050}
           m_TargetAssemblyTypeName: Project.RPG.Combat.CombatTarget, AsmProjectRpg
           m_MethodName: Die
@@ -162,38 +270,6 @@ MonoBehaviour:
             m_BoolArgument: 0
           m_CallState: 2
   _animator: {fileID: 0}
---- !u!114 &102689425
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1524613326836173757}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0b5d0b49c33b5234c84495b9df0b43e1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _playerRef:
-    componentOwner: {fileID: 0}
-    gameObjectRef: {fileID: 0}
-    tag: Player
-    name: Player
-    type: 
-    findMethod: 1
-  _vision:
-    componentOwner: {fileID: 0}
-    origin:
-      componentOwner: {fileID: 0}
-      gameObjectRef: {fileID: 1524613326836173757}
-      tag: Player
-      name: Player
-      type: 
-      findMethod: 0
-    label: Vision
-    radius: 10
-    angle: 90
-    gizmosWire: 1
 --- !u!1001 &5036323811146615862
 PrefabInstance:
   m_ObjectHideFlags: 0

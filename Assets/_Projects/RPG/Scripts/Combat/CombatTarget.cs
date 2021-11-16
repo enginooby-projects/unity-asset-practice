@@ -4,6 +4,7 @@ using UnityEngine;
 using Sirenix.OdinInspector;
 
 namespace Project.RPG.Combat {
+  // ? Rename AttackableTarget implementing IAttackable
   public class CombatTarget : MonoBehaviour {
     [SerializeField, HideLabel] private Stat healthStat = new Stat("Health", 10);
 

@@ -10,7 +10,7 @@ PrefabInstance:
     - target: {fileID: 513835039588576337, guid: 3d9a9594c83c85048a3a7bbbb52ecc31,
         type: 3}
       propertyPath: m_Name
-      value: 'Player '
+      value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 513835039588576337, guid: 3d9a9594c83c85048a3a7bbbb52ecc31,
         type: 3}
@@ -20,7 +20,7 @@ PrefabInstance:
     - target: {fileID: 513835039588576346, guid: 3d9a9594c83c85048a3a7bbbb52ecc31,
         type: 3}
       propertyPath: _attackRange
-      value: 3
+      value: 2.5
       objectReference: {fileID: 0}
     - target: {fileID: 513835039588576346, guid: 3d9a9594c83c85048a3a7bbbb52ecc31,
         type: 3}

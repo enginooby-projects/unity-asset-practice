@@ -18,5 +18,9 @@ namespace Enginoobz.Core {
       currentAction?.Cancel();
       currentAction = nextAction;
     }
+
+    public void CancelCurrentAction() {
+      currentAction?.Cancel();
+    }
   }
 }
