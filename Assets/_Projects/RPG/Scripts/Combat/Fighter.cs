@@ -34,6 +34,8 @@ namespace Project.RPG.Combat {
 
     public float ChaseSpeed { get => _chaseSpeed; set { if (value > 0.5f) _chaseSpeed = value; } }
 
+    private Spawner projectileSpawner;
+
     private void Start() {
       EquipWeapon(_weaponData);
     }
@@ -42,6 +44,7 @@ namespace Project.RPG.Combat {
       _weaponData = weaponData;
       Transform weaponSlot = (_weaponData.IsRightHand) ? handRight : handLeft;
       _weaponData.Init(weaponSlot, _animator);
+      if (_weaponData.HasProjectile) projectileSpawner = weaponSlot.GetComponentInChildren<Spawner>();
     }
 
     private void Update() {
@@ -55,7 +58,7 @@ namespace Project.RPG.Combat {
     public void Attack(CombatTarget target) {
       if (_isAttacking && target == _currentTarget) return;
 
-      print("Start attack " + target.name);
+      // print("Start attack " + target.name);
       _isAttacking = true;
       _currentTarget = target;
       _isLookingAtCurrentTarget = false;
@@ -106,12 +109,6 @@ namespace Project.RPG.Combat {
               });
     }
 
-    // animation events
-    void OnHit() {
-      _currentTarget?.TakeDamage(_weaponData.Damage);
-      if (!_currentTarget) _isAttacking = false; // target dead
-    }
-
     /// <summary>
     /// [Update-safe method]
     /// </summary>
@@ -119,10 +116,47 @@ namespace Project.RPG.Combat {
     public void Cancel() {
       if (!_isAttacking) return;
 
-      print("Cancel attack");
+      // print("Cancel attack");
       _isAttacking = false;
       _isLookingAtCurrentTarget = false;
       _animator.SetTrigger(stopAttackHash);
+    }
+
+    // animation events
+    void OnHit() {
+      _currentTarget?.TakeDamage(_weaponData.Damage);
+      if (!_currentTarget) _isAttacking = false; // target dead
+    }
+
+    /// <summary>
+    /// Enemy hit by projectile does not have to be the current target.
+    /// </summary>
+    void OnHit(CombatTarget combatTarget) {
+      print("Damage on: " + combatTarget.name);
+      combatTarget.TakeDamage(_weaponData.Damage);
+    }
+
+    void OnShoot() {
+      if (_currentTarget && _weaponData.HasProjectile) {
+        // ? Move projectile spawning logic to Spawner
+        List<GameObject> projectilesGo = projectileSpawner.Spawn();
+
+        projectilesGo.ForEach(go => {
+          if (go.TryGetComponent<Projectile>(out Projectile projectile)) {
+            projectile.SetTarget(_currentTarget.transform);
+            projectile.onHitCombatTarget += OnHit;
+          }
+        });
+      }
+    }
+
+    // TIP: guarding animation events (simply delegate if animation event has similiar name)
+    void Hit() {
+      OnHit();
+    }
+
+    void Shoot() {
+      OnShoot();
     }
   }
 }
