@@ -14,6 +14,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 513835039588576346, guid: 3d9a9594c83c85048a3a7bbbb52ecc31,
         type: 3}
+      propertyPath: handLeft
+      value: 
+      objectReference: {fileID: 5036323811146537786}
+    - target: {fileID: 513835039588576346, guid: 3d9a9594c83c85048a3a7bbbb52ecc31,
+        type: 3}
+      propertyPath: handRight
+      value: 
+      objectReference: {fileID: 5036323811146480440}
+    - target: {fileID: 513835039588576346, guid: 3d9a9594c83c85048a3a7bbbb52ecc31,
+        type: 3}
       propertyPath: weaponSlot
       value: 
       objectReference: {fileID: 5036323811146480440}
@@ -384,6 +394,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 30cf93deff988e74e88a144bd2127c18, type: 3}
+--- !u!4 &5036323811146537786 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 481036, guid: 30cf93deff988e74e88a144bd2127c18,
+    type: 3}
+  m_PrefabInstance: {fileID: 5036323811146615862}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &5036323811146480440 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 423694, guid: 30cf93deff988e74e88a144bd2127c18,

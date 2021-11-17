@@ -17,3 +17,4 @@ MonoBehaviour:
   Range: 3.5
   Damage: 2
   Cooldown: 1
+  IsRightHand: 1

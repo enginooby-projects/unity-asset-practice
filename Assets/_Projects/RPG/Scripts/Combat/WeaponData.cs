@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Sirenix.OdinInspector;
 
 namespace Project.RPG.Combat {
   [CreateAssetMenu(fileName = "Weapon", menuName = "Project/RPG/Weapon Data", order = 0)]
@@ -14,6 +15,7 @@ namespace Project.RPG.Combat {
 
     [Tooltip("Delay between attacks - Opposite of rate.")]
     [SerializeField, Min(0.5f)] public float Cooldown = 1f;
+    [SerializeField] public bool IsRightHand = true;
 
     public void Init(Transform weaponSlot, Animator animator) {
       if (Prefab) Instantiate(Prefab, parent: weaponSlot);

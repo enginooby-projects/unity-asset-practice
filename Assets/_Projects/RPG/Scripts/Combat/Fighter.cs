@@ -10,11 +10,11 @@ namespace Project.RPG.Combat {
   public class Fighter : MonoBehaviour, IAction {
     [Tooltip("Override agent speed when approaching target before attack.")]
     [SerializeField, Min(0.5f)] private float _chaseSpeed = 5f;
-    [SerializeField] private Transform weaponSlot;
+    [SerializeField] private Transform handRight;
+    [SerializeField] private Transform handLeft;
 
     [InlineEditor]
     [SerializeField] private WeaponData _weaponData;
-
 
     [AutoRef, SerializeField, HideInInspector]
     private NavMeshAgentOperator _agentOpr;
@@ -40,6 +40,7 @@ namespace Project.RPG.Combat {
 
     public void EquipWeapon(WeaponData weaponData) {
       _weaponData = weaponData;
+      Transform weaponSlot = (_weaponData.IsRightHand) ? handRight : handLeft;
       _weaponData.Init(weaponSlot, _animator);
     }
 
