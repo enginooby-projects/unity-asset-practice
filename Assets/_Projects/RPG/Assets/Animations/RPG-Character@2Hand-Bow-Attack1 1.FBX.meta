@@ -753,7 +753,7 @@ ModelImporter:
       curves: []
       events:
       - time: 0.6047859
-        functionName: OnHit
+        functionName: OnShoot
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0

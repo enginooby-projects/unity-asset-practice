@@ -39,7 +39,6 @@ namespace Project.RPG.Controller {
       _fighter.Cancel();
       if (!isPatrolling) {
         _navMover.ChangeSpeed(_patrolSpeed);
-        print(_patrolSpeed);
         _navMover.Resume();
         isPatrolling = true;
       }

@@ -155,7 +155,7 @@ public class Stat {
     CurrentValue = value;
     ui?.Update(CurrentValue);
 
-    if (value <= 0) {
+    if (value == 0) {
       OnStatZero.Invoke();
       OnStatZeroEvent?.Invoke();
     }

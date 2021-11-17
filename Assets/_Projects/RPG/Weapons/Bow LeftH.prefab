@@ -1,5 +1,211 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &301231777825000844
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7680491551714329900}
+  - component: {fileID: 667171725073249620}
+  m_Layer: 0
+  m_Name: Arrow Spawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7680491551714329900
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 301231777825000844}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.82, z: -0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1150528930215760838}
+  m_Father: {fileID: 5041627984334512073}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &667171725073249620
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 301231777825000844}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1fca99b89463ac4fabff536e30decf8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lifespan: 0
+  assetCollection:
+    items:
+    - {fileID: 1537987007596756900, guid: 1b238fdb484838143832523013a4a315, type: 3}
+    currentItem: {fileID: 1537987007596756900, guid: 1b238fdb484838143832523013a4a315,
+      type: 3}
+    retrieveMode: 1
+    deactivateExceptCurrent: 0
+    enableEvent: 1
+    onCurrentItemChanged:
+      m_PersistentCalls:
+        m_Calls: []
+    onItemsChanged:
+      m_PersistentCalls:
+        m_Calls: []
+    enableHotkey: 1
+    switchPreviousKey:
+      keyCode: 0
+      modifierKey: 1
+      keyTriggerEvent: 4
+    switchNextKey:
+      keyCode: 0
+      modifierKey: 1
+      keyTriggerEvent: 4
+    switchRandomKey:
+      keyCode: 0
+      modifierKey: 1
+      keyTriggerEvent: 4
+  parentObject: {fileID: 0}
+  activeMode: 2
+  rotationMode: 1
+  keepPrefabPosition: 1
+  enableLifeTime: 0
+  lifeTimeRange:
+    OnValueChange:
+      m_PersistentCalls:
+        m_Calls: []
+    Value: {x: 0, y: 0}
+    min: 0
+    max: 10
+  spawningArea:
+    componentOwner: {fileID: 0}
+    areaType: 1
+    areaAxis:
+      componentOwner: {fileID: 0}
+      origins: []
+      box:
+        title: Axes
+        xRange:
+          OnValueChange:
+            m_PersistentCalls:
+              m_Calls: []
+          Value: {x: 0, y: 0}
+          min: -100
+          max: 100
+        yRange:
+          OnValueChange:
+            m_PersistentCalls:
+              m_Calls: []
+          Value: {x: 0, y: 0}
+          min: -100
+          max: 100
+        zRange:
+          OnValueChange:
+            m_PersistentCalls:
+              m_Calls: []
+          Value: {x: 0, y: 0}
+          min: -100
+          max: 100
+        all:
+          OnValueChange:
+            m_PersistentCalls:
+              m_Calls: []
+          Value: {x: 0, y: 0}
+          min: -10
+          max: 10
+        initialMinMax: {x: 0, y: 0}
+    areaPoint:
+      componentOwner: {fileID: 0}
+      origin:
+        componentOwner: {fileID: 0}
+        gameObjectRef: {fileID: 301231777825000844}
+        tag: Player
+        name: Player
+        type: 
+        findMethod: 0
+      pointRadius: 0.1
+      pointPositions:
+      - {x: 0.2682398, y: 0.035694078, z: 0.0843578}
+      useTransforms: 1
+      pointTransforms:
+      - {fileID: 1150528930215760838}
+      pointAmount: {x: 1, y: 1, z: 1}
+      pointDistance: {x: 1, y: 1, z: 1}
+    area2DFuncPoint:
+      componentOwner: {fileID: 0}
+      origin:
+        componentOwner: {fileID: 0}
+        gameObjectRef: {fileID: 0}
+        tag: Player
+        name: Player
+        type: 
+        findMethod: 0
+      pointRadius: 0.5
+      pointPositions: []
+      useTransforms: 1
+      pointTransforms: []
+      pointAmount: 10
+      pointStep: 1
+      degree0: 0
+      degree1: 0
+      degree2: 0
+    areaCircular:
+      componentOwner: {fileID: 0}
+      origin:
+        componentOwner: {fileID: 0}
+        gameObjectRef: {fileID: 0}
+        tag: Player
+        name: Player
+        type: 
+        findMethod: 0
+      label: Circula Area
+      radius: 10
+      angle: 360
+      gizmosWire: 0
+  pointSpawnMode: 0
+  pointProbability: 50
+  enableAdjacentSpawning: 0
+  moveSpawnerToMark: 1
+  adjacentMarkPrefab: {fileID: 0}
+  adjacentMark: {fileID: 0}
+  adjacentOffset: 0
+  autoSpawnEnabled: 0
+  autoSpawnRateRange: {x: 1, y: 1}
+  autoSpawnDelay: 1
+  activeSpawnKey: 0
+  activeRate: 5
+  activeMaxAmount: 10
+  activeReloadTime: 1
+  enableTriggerSpawning: 0
+  enableWaveSpawning: 0
+  waveSpawningDelayFirst: 0
+  waveSpawningDelay: 0
+  waveObjectSpawningDelay: 0
+  firstWaveAmount: 0
+  amountIncrementRange: {x: 0, y: 0}
+  enablePool: 1
+  poolCollisionCheck: 1
+  poolObjectReleaseOnBecameInvisible: 0
+  poolObjectReleaseByLifespan: 3
+  poolMaxSize: 8
+  poolDefaultCapacity: 1000
+  spawnAmountRangePerTime:
+    OnValueChange:
+      m_PersistentCalls:
+        m_Calls: []
+    Value: {x: 1, y: 1}
+    min: 0
+    max: 10
+  gizmosMode: 1
+  moveToLastSpawnedObject: 0
+  saveSpawnedObjects: 0
 --- !u!1 &5041850620089340307
 GameObject:
   m_ObjectHideFlags: 0
@@ -29,6 +235,36 @@ Transform:
   m_Children:
   - {fileID: 5041627984334512073}
   m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &5244111127971362386
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1150528930215760838}
+  m_Layer: 0
+  m_Name: Area Point
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1150528930215760838
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5244111127971362386}
+  m_LocalRotation: {x: 0.109339945, y: 0.6303273, z: 0.70224357, w: 0.31238812}
+  m_LocalPosition: {x: -0.000000037252903, y: 0.00000017881393, z: -0.00000022351742}
+  m_LocalScale: {x: 1.2499996, y: 1.2499996, z: 1.2499998}
+  m_Children: []
+  m_Father: {fileID: 7680491551714329900}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &5041850619747068355

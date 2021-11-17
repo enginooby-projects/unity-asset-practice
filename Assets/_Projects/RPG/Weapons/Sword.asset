@@ -15,6 +15,8 @@ MonoBehaviour:
   Prefab: {fileID: 1473131018973647664, guid: 4615213151e7ec042b121697af8ed21e, type: 3}
   AnimController: {fileID: 22100000, guid: 463088119c6f1964c826b043fea1528c, type: 2}
   Range: 3.5
-  Damage: 2
+  Damage: 4
   Cooldown: 1
   IsRightHand: 1
+  HasProjectile: 0
+  ProjectileSpawner: {fileID: 0}
