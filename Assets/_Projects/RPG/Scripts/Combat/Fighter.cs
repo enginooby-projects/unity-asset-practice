@@ -20,6 +20,7 @@ namespace Project.RPG.Combat {
 
     [SerializeField] private GameObject weaponPrefab;
     [SerializeField] private Transform weaponSlot;
+    [SerializeField] private AnimatorOverrideController weaponAnimController;
 
     public float ChaseSpeed { get => _chaseSpeed; set { if (value > 0.5f) _chaseSpeed = value; } }
 
@@ -41,13 +42,16 @@ namespace Project.RPG.Combat {
 
 
     private void Start() {
-      if (weaponPrefab) {
-        Instantiate(weaponPrefab, parent: weaponSlot);
-      }
+      if (weaponPrefab) InitWeapon();
     }
 
     private void Update() {
       if (_isAttacking && _currentTarget) ApproachAndAttackCurrentTarget();
+    }
+
+    private void InitWeapon() {
+      Instantiate(weaponPrefab, parent: weaponSlot);
+      _animator.runtimeAnimatorController = weaponAnimController;
     }
 
     // ? Rename to set target
