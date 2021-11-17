@@ -14,9 +14,20 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 513835039588576346, guid: 3d9a9594c83c85048a3a7bbbb52ecc31,
         type: 3}
+      propertyPath: weaponSlot
+      value: 
+      objectReference: {fileID: 5036323811146480440}
+    - target: {fileID: 513835039588576346, guid: 3d9a9594c83c85048a3a7bbbb52ecc31,
+        type: 3}
       propertyPath: _attackRate
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 513835039588576346, guid: 3d9a9594c83c85048a3a7bbbb52ecc31,
+        type: 3}
+      propertyPath: _weaponData
+      value: 
+      objectReference: {fileID: 11400000, guid: 21eabcbf6009c4942b1efc2bee04c904,
+        type: 2}
     - target: {fileID: 513835039588576346, guid: 3d9a9594c83c85048a3a7bbbb52ecc31,
         type: 3}
       propertyPath: _attackRange
@@ -166,6 +177,7 @@ MonoBehaviour:
     Value: {x: 2, y: 5}
     min: 0
     max: 10
+  _patrolSpeed: 2
   _fighter: {fileID: 0}
   _navMover: {fileID: 0}
   _agentOpr: {fileID: 0}
@@ -372,3 +384,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 30cf93deff988e74e88a144bd2127c18, type: 3}
+--- !u!4 &5036323811146480440 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 423694, guid: 30cf93deff988e74e88a144bd2127c18,
+    type: 3}
+  m_PrefabInstance: {fileID: 5036323811146615862}
+  m_PrefabAsset: {fileID: 0}

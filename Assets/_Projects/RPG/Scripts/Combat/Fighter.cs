@@ -8,21 +8,13 @@ using Sirenix.OdinInspector;
 
 namespace Project.RPG.Combat {
   public class Fighter : MonoBehaviour, IAction {
-    [Tooltip("Move to target and stop at this distance to attack.")]
-    [SerializeField] private float _attackRange = 2;
-    [SerializeField] private int _attackDamage = 1;
-
-    [Tooltip("Delay between attacks - Opposite of rate.")]
-    [SerializeField, Min(0.5f)] private float _attackCooldown = 1f;
-
     [Tooltip("Override agent speed when approaching target before attack.")]
     [SerializeField, Min(0.5f)] private float _chaseSpeed = 5f;
-
-    [SerializeField] private GameObject weaponPrefab;
     [SerializeField] private Transform weaponSlot;
-    [SerializeField] private AnimatorOverrideController weaponAnimController;
 
-    public float ChaseSpeed { get => _chaseSpeed; set { if (value > 0.5f) _chaseSpeed = value; } }
+    [InlineEditor]
+    [SerializeField] private WeaponData _weaponData;
+
 
     [AutoRef, SerializeField, HideInInspector]
     private NavMeshAgentOperator _agentOpr;
@@ -40,18 +32,14 @@ namespace Project.RPG.Combat {
     private bool _isLookingAtCurrentTarget;
     private bool _isTurningToCurrentTarget;
 
+    public float ChaseSpeed { get => _chaseSpeed; set { if (value > 0.5f) _chaseSpeed = value; } }
 
     private void Start() {
-      if (weaponPrefab) InitWeapon();
+      _weaponData.Init(weaponSlot, _animator);
     }
 
     private void Update() {
       if (_isAttacking && _currentTarget) ApproachAndAttackCurrentTarget();
-    }
-
-    private void InitWeapon() {
-      Instantiate(weaponPrefab, parent: weaponSlot);
-      _animator.runtimeAnimatorController = weaponAnimController;
     }
 
     // ? Rename to set target
@@ -76,12 +64,12 @@ namespace Project.RPG.Combat {
     }
 
     public void ApproachAndAttackCurrentTarget() {
-      if (!transform.IsInRange(_currentTarget.transform, _attackRange)) {
+      if (!transform.IsInRange(_currentTarget.transform, _weaponData.Range)) {
         // FIX: agent does not guarantee to arrive at the range (e.g target is on the air)
-        _agentOpr.MoveTo(_currentTarget.transform.position, _attackRange);
+        _agentOpr.MoveTo(_currentTarget.transform.position, _weaponData.Range);
         _isLookingAtCurrentTarget = true; // agent auto turn towards to the destination (target)
       } else {
-        if (Time.time - timeSinceLastAttack > _attackCooldown) {
+        if (Time.time - timeSinceLastAttack > _weaponData.Cooldown) {
           LookAtAndAttackCurrentTarget();
           timeSinceLastAttack = Time.time;
         }
@@ -114,7 +102,7 @@ namespace Project.RPG.Combat {
 
     // animation events
     void OnHit() {
-      _currentTarget?.TakeDamage(_attackDamage);
+      _currentTarget?.TakeDamage(_weaponData.Damage);
       if (!_currentTarget) _isAttacking = false; // target dead
     }
 
