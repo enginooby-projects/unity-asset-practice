@@ -18,6 +18,9 @@ namespace Project.RPG.Combat {
     [Tooltip("Override agent speed when approaching target before attack.")]
     [SerializeField, Min(0.5f)] private float _chaseSpeed = 5f;
 
+    [SerializeField] private GameObject weaponPrefab;
+    [SerializeField] private Transform weaponSlot;
+
     public float ChaseSpeed { get => _chaseSpeed; set { if (value > 0.5f) _chaseSpeed = value; } }
 
     [AutoRef, SerializeField, HideInInspector]
@@ -35,6 +38,13 @@ namespace Project.RPG.Combat {
 
     private bool _isLookingAtCurrentTarget;
     private bool _isTurningToCurrentTarget;
+
+
+    private void Start() {
+      if (weaponPrefab) {
+        Instantiate(weaponPrefab, parent: weaponSlot);
+      }
+    }
 
     private void Update() {
       if (_isAttacking && _currentTarget) ApproachAndAttackCurrentTarget();
@@ -103,7 +113,6 @@ namespace Project.RPG.Combat {
       _currentTarget?.TakeDamage(_attackDamage);
       if (!_currentTarget) _isAttacking = false; // target dead
     }
-
 
     /// <summary>
     /// [Update-safe method]
