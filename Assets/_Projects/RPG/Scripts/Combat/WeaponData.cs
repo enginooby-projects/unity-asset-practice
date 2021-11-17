@@ -19,7 +19,9 @@ namespace Project.RPG.Combat {
 
     public void Init(Transform weaponSlot, Animator animator) {
       if (Prefab) Instantiate(Prefab, parent: weaponSlot);
-      if (AnimController) animator.runtimeAnimatorController = AnimController;
+      if (AnimController) {
+        animator.runtimeAnimatorController = AnimController;
+      }
     }
   }
 }

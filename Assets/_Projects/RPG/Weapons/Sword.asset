@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Sword
   m_EditorClassIdentifier: 
   Prefab: {fileID: 1473131018973647664, guid: 4615213151e7ec042b121697af8ed21e, type: 3}
-  AnimController: {fileID: 22100000, guid: 79f6796edd711bf4c9ef2453b93dff44, type: 2}
+  AnimController: {fileID: 22100000, guid: 463088119c6f1964c826b043fea1528c, type: 2}
   Range: 3.5
   Damage: 2
   Cooldown: 1
