@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 513835039588576346}
   - component: {fileID: 513835039588576350}
   - component: {fileID: 513835039588576345}
+  - component: {fileID: 2716293465847226959}
   m_Layer: 0
   m_Name: Character
   m_TagString: Untagged
@@ -105,9 +106,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa0ff278780860e49855d4d6db473fee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _attackRange: 4.5
-  _attackDamage: 1
-  _attackRate: 1
+  _chaseSpeed: 5
+  weaponSlot: {fileID: 0}
+  _weaponData: {fileID: 0}
   _agentOpr: {fileID: 0}
   _animator: {fileID: 0}
 --- !u!114 &513835039588576350
@@ -137,3 +138,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb005458c5ae06846bb211d92243eefa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!136 &2716293465847226959
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 513835039588576337}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.5
+  m_Height: 3.74
+  m_Direction: 1
+  m_Center: {x: 0, y: 1.82, z: 0}

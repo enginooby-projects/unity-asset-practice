@@ -35,6 +35,11 @@ namespace Project.RPG.Combat {
     public float ChaseSpeed { get => _chaseSpeed; set { if (value > 0.5f) _chaseSpeed = value; } }
 
     private void Start() {
+      EquipWeapon(_weaponData);
+    }
+
+    public void EquipWeapon(WeaponData weaponData) {
+      _weaponData = weaponData;
       _weaponData.Init(weaponSlot, _animator);
     }
 
