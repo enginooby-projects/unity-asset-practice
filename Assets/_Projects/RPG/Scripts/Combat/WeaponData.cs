@@ -34,12 +34,15 @@ namespace Project.RPG.Combat {
       if (HasProjectile) ProjectileSpawner = Prefab.GetComponentInChildren<Spawner>();
     }
 
-    public void Init(Transform weaponSlot, Animator animator) {
-      if (Prefab) Instantiate(Prefab, parent: weaponSlot);
+    public GameObject Init(Transform weaponSlot, Animator animator) {
+      GameObject weapon = null;
+      if (Prefab) weapon = Instantiate(Prefab, parent: weaponSlot);
 
       if (AnimController) {
         animator.runtimeAnimatorController = AnimController;
       }
+
+      return weapon;
     }
   }
 }

@@ -4,9 +4,8 @@ using UnityEngine;
 using Sirenix.OdinInspector;
 
 namespace Project.RPG.Combat {
-  [TypeInfoBox("To add new pickup, create new prefab variant from root prefab then add model as child of it.")]
+  [TypeInfoBox("To add new pickup, create new prefab variant from root prefab, add model as child, assign pickup data.")]
   public class WeaponPickup : MonoBehaviour {
-
     [SerializeField] private WeaponData weaponData;
 
     private void Start() {

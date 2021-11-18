@@ -25,6 +25,7 @@ namespace Project.RPG.Combat {
     private readonly int stopAttackHash = Animator.StringToHash("stopAttack");
     private readonly int isTurning = Animator.StringToHash("isTurning");
 
+    private GameObject _currentWeapon;
     private CombatTarget _currentTarget;
     private bool _isAttacking;
     private float timeSinceLastAttack;
@@ -41,9 +42,10 @@ namespace Project.RPG.Combat {
     }
 
     public void EquipWeapon(WeaponData weaponData) {
+      Destroy(_currentWeapon);
       _weaponData = weaponData;
       Transform weaponSlot = (_weaponData.IsRightHand) ? handRight : handLeft;
-      _weaponData.Init(weaponSlot, _animator);
+      _currentWeapon = _weaponData.Init(weaponSlot, _animator);
       if (_weaponData.HasProjectile) projectileSpawner = weaponSlot.GetComponentInChildren<Spawner>();
     }
 
