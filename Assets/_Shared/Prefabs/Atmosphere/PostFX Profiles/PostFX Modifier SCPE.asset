@@ -765,13 +765,13 @@ MonoBehaviour:
   m_AdvancedMode: 0
   useSceneSettings:
     m_OverrideState: 1
-    m_Value: 1
+    m_Value: 0
   fogMode:
     m_OverrideState: 1
     m_Value: 2
   globalDensity:
     m_OverrideState: 1
-    m_Value: 0.151
+    m_Value: 0.034
     min: 0
     max: 1
   fogStartDistance:

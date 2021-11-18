@@ -36,17 +36,21 @@ namespace Project.RPG.Combat {
     public float ChaseSpeed { get => _chaseSpeed; set { if (value > 0.5f) _chaseSpeed = value; } }
 
     private Spawner projectileSpawner;
+    private ParticleSystem[] weaponVfxs;
 
     private void Start() {
       EquipWeapon(_weaponData);
     }
 
     public void EquipWeapon(WeaponData weaponData) {
+      if (!weaponData) return;
+
       Destroy(_currentWeapon);
       _weaponData = weaponData;
       Transform weaponSlot = (_weaponData.IsRightHand) ? handRight : handLeft;
       _currentWeapon = _weaponData.Init(weaponSlot, _animator);
-      if (_weaponData.HasProjectile) projectileSpawner = weaponSlot.GetComponentInChildren<Spawner>();
+      if (_weaponData.HasProjectile) projectileSpawner = _currentWeapon.GetComponentInChildren<Spawner>();
+      weaponVfxs = _currentWeapon?.GetComponentsInChildren<ParticleSystem>();
     }
 
     private void Update() {
@@ -127,6 +131,7 @@ namespace Project.RPG.Combat {
     // animation events
     void OnHit() {
       _currentTarget?.TakeDamage(_weaponData.Damage);
+      weaponVfxs?.Play();
       if (!_currentTarget) _isAttacking = false; // target dead
     }
 

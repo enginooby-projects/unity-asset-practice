@@ -9,8 +9,8 @@ namespace Project.RPG.Combat {
     [SerializeField] private WeaponData weaponData;
 
     private void Start() {
-      GameObject prefab = GetComponentInChildren<MeshFilter>().gameObject;
-      prefab.AddAndSetupColliderIfNotExist(isTrigger: true);
+      GameObject prefab = GetComponentInChildren<MeshFilter>()?.gameObject;
+      prefab?.AddAndSetupColliderIfNotExist(isTrigger: true);
     }
 
     private void OnTriggerEnter(Collider other) {
