@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using DG.Tweening;
+using Sirenix.OdinInspector;
 
 namespace Project.RPG.Combat {
   // ? Create Projectile<TargetType> generic (replace CombatTarget)
@@ -9,9 +11,15 @@ namespace Project.RPG.Combat {
     [SerializeField] private Transform _target; // ? Constraint target transform by type
     [SerializeField] private float _speed = 10f;
     [SerializeField] private bool _chasingTarget;
+
+    [SerializeField, LabelText("Impact VFX")] private ParticleSystem impactVfx;
+    private float impactDuration;
+
     [SerializeField] private bool _stayOnCollisionPoint;
     [SerializeField] private float _stayOnCollisionDuration = 3f;
 
+    private new Collider collider;
+    private MeshRenderer meshRenderer;
     public event Action<CombatTarget> onHitCombatTarget;
 
     /// <summary>
@@ -19,11 +27,15 @@ namespace Project.RPG.Combat {
     /// </summary>
     private Vector3 initialTargetPos;
     private PoolObject poolComponent;
-
+    private bool enableFlying = true;
 
     void Start() {
       GetInitialTargerPos();
+      if (impactVfx) impactDuration = impactVfx.main.duration;
       poolComponent = GetComponent<PoolObject>();
+      poolComponent.onEnable += ResetForPool;
+      collider = GetComponent<Collider>();
+      meshRenderer = GetComponent<MeshRenderer>();
     }
 
     private void GetInitialTargerPos() {
@@ -32,7 +44,7 @@ namespace Project.RPG.Combat {
     }
 
     void Update() {
-      MoveToTarget();
+      Fly();
     }
 
     public void SetTarget(Transform target) {
@@ -40,7 +52,9 @@ namespace Project.RPG.Combat {
       GetInitialTargerPos();
     }
 
-    private void MoveToTarget() {
+    private void Fly() {
+      if (!enableFlying) return;
+
       // TODO: Paramiterize axis
       if (_chasingTarget)
         transform.LookAtAndMoveY(_target.GetColliderCenter(), distance: _speed);
@@ -50,7 +64,9 @@ namespace Project.RPG.Combat {
     }
 
     private IEnumerator OnTriggerEnter(Collider other) {
-      // print(gameObject.name + " hit " + other.name);
+      print(gameObject.name + " hit " + other.name);
+      if (impactVfx) impactVfx.Play();
+
       // TODO: option ignore everything not target type (only realse when hit target)
       if (other.TryGetComponent<CombatTarget>(out CombatTarget combatTarget)) {
         onHitCombatTarget?.Invoke(combatTarget);
@@ -58,15 +74,35 @@ namespace Project.RPG.Combat {
 
       // TIP: reset event to prevent action invokes mutiple times because projectile is reused by pool
       onHitCombatTarget = null;
+      enableFlying = false;
+      collider.enabled = false;
 
       if (!_stayOnCollisionPoint) {
-        poolComponent?.ReleaseToPool();
+        meshRenderer.enabled = false;
+        yield return new WaitForSeconds(impactDuration);
       } else {
-        Transform oldParent = transform.parent;
+        Transform initialParent = transform.parent;
         transform.SetParent(other.transform);
+        Vector3 initialScale = transform.localScale;
+        transform.DOScale(Vector3.zero, _stayOnCollisionDuration);
+
         yield return new WaitForSeconds(_stayOnCollisionDuration);
-        poolComponent?.ReleaseToPool();
-        transform.SetParent(oldParent);
+        transform.SetParent(initialParent);
+        transform.localScale = initialScale;
+      }
+
+      poolComponent?.ReleaseToPool();
+    }
+
+    /// <summary>
+    /// Clean dirty pooled projectile for reuse.
+    /// </summary>
+    public void ResetForPool() {
+      enableFlying = true;
+      collider.enabled = true;
+
+      if (!_stayOnCollisionPoint) {
+        meshRenderer.enabled = true;
       }
     }
   }

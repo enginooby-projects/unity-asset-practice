@@ -14,6 +14,11 @@ public class PoolObject : MonoBehaviour {
   // [BoxGroup("Release Mode")]
   [Min(0f)] public float lifespan;
 
+  /// <summary>
+  /// Event to add additional logic for cleaning specific pooled object (e.g. re-enable projectile to flying when reuse).
+  /// </summary>
+  public event System.Action onEnable;
+
   // ? Add Area
 
   private void Start() {
@@ -22,6 +27,7 @@ public class PoolObject : MonoBehaviour {
 
   private void OnEnable() {
     ProcessLifespan();
+    onEnable?.Invoke();
   }
 
   private void ProcessLifespan() {

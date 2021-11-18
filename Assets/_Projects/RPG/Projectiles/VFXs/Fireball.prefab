@@ -12,6 +12,11 @@ PrefabInstance:
       propertyPath: _stayOnCollisionPoint
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6958619474170877277, guid: 78b1bde13b64c9345a761778b7049c1d,
+        type: 3}
+      propertyPath: _stayOnCollisionDuration
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 6958619474170877278, guid: 78b1bde13b64c9345a761778b7049c1d,
         type: 3}
       propertyPath: m_Name

@@ -60,7 +60,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 0.3
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &6958619474170877277
 MonoBehaviour:
@@ -77,3 +77,5 @@ MonoBehaviour:
   _target: {fileID: 0}
   _speed: 10
   _chasingTarget: 1
+  _stayOnCollisionPoint: 0
+  _stayOnCollisionDuration: 3
