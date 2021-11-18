@@ -129,6 +129,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6158962978062698585, guid: 3d9a9594c83c85048a3a7bbbb52ecc31,
+        type: 3}
+      propertyPath: healthStat.CurrentValue
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 6158962978062698585, guid: 3d9a9594c83c85048a3a7bbbb52ecc31,
+        type: 3}
+      propertyPath: healthStat.InitialValue
+      value: 50
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3d9a9594c83c85048a3a7bbbb52ecc31, type: 3}
 --- !u!1 &7190920011259911118 stripped
@@ -143,7 +153,7 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 7271841806322923423}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1586851327
+--- !u!114 &-7138939078944456383
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -152,64 +162,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 7190920011259911118}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aa7456758bcbb284398019d891ac2870, type: 3}
+  m_Script: {fileID: 11500000, guid: 064acd193e9dcff46bc39a9a461458c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthStat:
-    statName: Health
-    enable: 1
-    InitialValue: 100
-    CurrentValue: 100
-    enableMin: 0
-    MinValue: 0
-    enableMax: 0
-    MaxValue: 0
-    ui:
-      statName: UI
-      uiType: 0
-      label: {fileID: 0}
-      prefix: 'Health: '
-      suffix: 
-    OnStatIncrease:
-      m_PersistentCalls:
-        m_Calls: []
-    OnStatDecrease:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 1586851327}
-          m_TargetAssemblyTypeName: Project.RPG.Combat.CombatTarget, AsmProjectRpg
-          m_MethodName: LogHeath
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-    OnStatMin:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 1586851327}
-          m_TargetAssemblyTypeName: Project.RPG.Combat.CombatTarget, AsmProjectRpg
-          m_MethodName: Die
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-    OnStatMax:
-      m_PersistentCalls:
-        m_Calls: []
-    OnStatZero:
-      m_PersistentCalls:
-        m_Calls: []
-  _animator: {fileID: 0}
+  _actionScheduler: {fileID: 0}
+  _mover: {fileID: 0}
+  _fighter: {fileID: 0}
 --- !u!1001 &8711725156339119340
 PrefabInstance:
   m_ObjectHideFlags: 0
