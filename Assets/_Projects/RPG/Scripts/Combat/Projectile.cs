@@ -4,8 +4,9 @@ using UnityEngine;
 using System;
 
 namespace Project.RPG.Combat {
+  // ? Create Projectile<TargetType> generic (replace CombatTarget)
   public class Projectile : MonoBehaviour {
-    [SerializeField] private Transform _target;
+    [SerializeField] private Transform _target; // ? Constraint target transform by type
     [SerializeField] private float _speed = 10f;
     [SerializeField] private bool _chasingTarget;
 
@@ -47,6 +48,7 @@ namespace Project.RPG.Combat {
     }
 
     private void OnTriggerEnter(Collider other) {
+      // TODO: option ignore everything not target type (only realse when hit target)
       if (other.TryGetComponent<CombatTarget>(out CombatTarget combatTarget)) {
         onHitCombatTarget?.Invoke(combatTarget);
       }
