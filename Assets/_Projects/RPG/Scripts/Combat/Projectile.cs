@@ -47,14 +47,13 @@ namespace Project.RPG.Combat {
     }
 
     private void OnTriggerEnter(Collider other) {
-      poolComponent?.ReleaseToPool();
-      print("Projectile hit " + other.name);
       if (other.TryGetComponent<CombatTarget>(out CombatTarget combatTarget)) {
         onHitCombatTarget?.Invoke(combatTarget);
       }
 
       // TIP: reset event to prevent action invokes mutiple times because projectile is reused by pool
       onHitCombatTarget = null;
+      poolComponent?.ReleaseToPool();
     }
   }
 }

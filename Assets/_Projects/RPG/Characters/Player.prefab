@@ -10,7 +10,7 @@ PrefabInstance:
     - target: {fileID: 513835039588576337, guid: 3d9a9594c83c85048a3a7bbbb52ecc31,
         type: 3}
       propertyPath: m_Name
-      value: 'Player '
+      value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 513835039588576337, guid: 3d9a9594c83c85048a3a7bbbb52ecc31,
         type: 3}
@@ -190,12 +190,6 @@ MonoBehaviour:
           m_CallState: 2
     OnStatMin:
       m_PersistentCalls:
-        m_Calls: []
-    OnStatMax:
-      m_PersistentCalls:
-        m_Calls: []
-    OnStatZero:
-      m_PersistentCalls:
         m_Calls:
         - m_Target: {fileID: 1586851327}
           m_TargetAssemblyTypeName: Project.RPG.Combat.CombatTarget, AsmProjectRpg
@@ -209,6 +203,12 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+    OnStatMax:
+      m_PersistentCalls:
+        m_Calls: []
+    OnStatZero:
+      m_PersistentCalls:
+        m_Calls: []
   _animator: {fileID: 0}
 --- !u!1001 &8711725156339119340
 PrefabInstance:

@@ -159,11 +159,11 @@ public class Stat {
       OnStatZero.Invoke();
       OnStatZeroEvent?.Invoke();
     }
-    if (enableMin && value == MinValue) {
+    if (enableMin && value <= MinValue) {
       OnStatMin.Invoke();
       OnStatMinEvent?.Invoke();
     }
-    if (enableMax && value == MaxValue) {
+    if (enableMax && value >= MaxValue) {
       OnStatMax.Invoke();
       OnStatMaxEvent?.Invoke();
     }

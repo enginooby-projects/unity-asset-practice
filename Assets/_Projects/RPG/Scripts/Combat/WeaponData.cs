@@ -9,6 +9,7 @@ namespace Project.RPG.Combat {
   /// Invoke Init() to setup weapon data.
   /// </summary>
   public class WeaponData : ScriptableObject {
+    [OnValueChanged(nameof(GetProjectileSpawner))]
     public GameObject Prefab;
     public AnimatorOverrideController AnimController;
 
@@ -20,7 +21,7 @@ namespace Project.RPG.Combat {
     [Min(0.5f)] public float Cooldown = 1f;
     public bool IsRightHand = true;
 
-    [OnValueChanged(nameof(OnHasProjectileChanged))]
+    [OnValueChanged(nameof(GetProjectileSpawner))]
     public bool HasProjectile;
 
     [ShowIf(nameof(HasProjectile))]
@@ -29,7 +30,7 @@ namespace Project.RPG.Combat {
     // this links to Spawner in prefab, hence changes auto update
     public Spawner ProjectileSpawner;
 
-    private void OnHasProjectileChanged() {
+    private void GetProjectileSpawner() {
       if (HasProjectile) ProjectileSpawner = Prefab.GetComponentInChildren<Spawner>();
     }
 
