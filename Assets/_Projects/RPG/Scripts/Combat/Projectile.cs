@@ -9,6 +9,8 @@ namespace Project.RPG.Combat {
     [SerializeField] private Transform _target; // ? Constraint target transform by type
     [SerializeField] private float _speed = 10f;
     [SerializeField] private bool _chasingTarget;
+    [SerializeField] private bool _stayOnCollisionPoint;
+    [SerializeField] private float _stayOnCollisionDuration = 3f;
 
     public event Action<CombatTarget> onHitCombatTarget;
 
@@ -47,8 +49,8 @@ namespace Project.RPG.Combat {
       }
     }
 
-    private void OnTriggerEnter(Collider other) {
-      print(gameObject.name + " hit " + other.name);
+    private IEnumerator OnTriggerEnter(Collider other) {
+      // print(gameObject.name + " hit " + other.name);
       // TODO: option ignore everything not target type (only realse when hit target)
       if (other.TryGetComponent<CombatTarget>(out CombatTarget combatTarget)) {
         onHitCombatTarget?.Invoke(combatTarget);
@@ -56,7 +58,16 @@ namespace Project.RPG.Combat {
 
       // TIP: reset event to prevent action invokes mutiple times because projectile is reused by pool
       onHitCombatTarget = null;
-      poolComponent?.ReleaseToPool();
+
+      if (!_stayOnCollisionPoint) {
+        poolComponent?.ReleaseToPool();
+      } else {
+        Transform oldParent = transform.parent;
+        transform.SetParent(other.transform);
+        yield return new WaitForSeconds(_stayOnCollisionDuration);
+        poolComponent?.ReleaseToPool();
+        transform.SetParent(oldParent);
+      }
     }
   }
 }
