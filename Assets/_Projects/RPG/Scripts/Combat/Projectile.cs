@@ -48,6 +48,7 @@ namespace Project.RPG.Combat {
     }
 
     private void OnTriggerEnter(Collider other) {
+      print(gameObject.name + " hit " + other.name);
       // TODO: option ignore everything not target type (only realse when hit target)
       if (other.TryGetComponent<CombatTarget>(out CombatTarget combatTarget)) {
         onHitCombatTarget?.Invoke(combatTarget);

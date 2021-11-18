@@ -128,19 +128,11 @@ namespace Project.RPG.Combat {
       _animator.SetTrigger(stopAttackHash);
     }
 
-    // animation events
+    #region ANIMATION EVENTS
     void OnHit() {
       _currentTarget?.TakeDamage(_weaponData.Damage);
       weaponVfxs?.Play();
       if (!_currentTarget) _isAttacking = false; // target dead
-    }
-
-    /// <summary>
-    /// Enemy hit by projectile does not have to be the current target.
-    /// </summary>
-    void OnHit(CombatTarget combatTarget) {
-      print("Damage on: " + combatTarget.name);
-      combatTarget.TakeDamage(_weaponData.Damage);
     }
 
     void OnShoot() {
@@ -151,10 +143,19 @@ namespace Project.RPG.Combat {
         projectilesGo.ForEach(go => {
           if (go.TryGetComponent<Projectile>(out Projectile projectile)) {
             projectile.SetTarget(_currentTarget.transform);
-            projectile.onHitCombatTarget += OnHit;
+            projectile.onHitCombatTarget += OnProjectileHit;
           }
         });
       }
+    }
+
+    /// <summary>
+    /// Enemy hit by projectile does not have to be the current target.
+    /// </summary>
+    // ! Overloading method of animation event should be place below the event method in script, other delegate to it.
+    // ! E.g. if OnHit(CombatTarget) is above OnHit(), animation invoke this will cause error
+    void OnProjectileHit(CombatTarget combatTarget) {
+      combatTarget.TakeDamage(_weaponData.Damage);
     }
 
     // TIP: guarding animation events (simply delegate if animation event has similiar name)
@@ -165,5 +166,6 @@ namespace Project.RPG.Combat {
     void Shoot() {
       OnShoot();
     }
+    #endregion
   }
 }

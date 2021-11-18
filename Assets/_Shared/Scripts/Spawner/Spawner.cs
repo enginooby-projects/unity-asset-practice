@@ -114,10 +114,15 @@ public class Spawner : MonoBehaviourBase {
   [HideLabel, DisplayAsString(false), ShowInInspector]
   const string OBJECT_SELECTION_SPACE = "Configure resources and selection mode to spawn";
 
+  [OnValueChanged(nameof(OnAssetCollectionChanged), true)]
   [InfoBox("If using SceneAsset, pay attention not to destroy the asset blueprint.", InfoMessageType.Warning)]
   [BoxGroup("Asset Collection")]
   [SerializeField, HideLabel] public AssetCollection<GameObject> assetCollection = new AssetCollection<GameObject>();
   private GameObject currentPrefab;
+
+  private void OnAssetCollectionChanged() {
+    assetCollection.OnItemsChanged();
+  }
   #endregion ===================================================================================================================================
 
   #region UNIVERSAL SPAWNED ATTRIBUTES ===================================================================================================================================
