@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 2716293465847226959}
   - component: {fileID: 513835039588576346}
   - component: {fileID: 6158962978062698585}
+  - component: {fileID: -4704725939118203982}
   m_Layer: 0
   m_Name: _Character
   m_TagString: Untagged
@@ -152,9 +153,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthStat:
     statName: Health
+    CurrentValue: 10
     enable: 1
     InitialValue: 10
-    CurrentValue: 10
     enableMin: 1
     MinValue: 0
     enableMax: 0
@@ -216,4 +217,49 @@ MonoBehaviour:
     OnStatZero:
       m_PersistentCalls:
         m_Calls: []
+  _characterBaseStats: {fileID: 0}
   _animator: {fileID: 0}
+--- !u!114 &-4704725939118203982
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 513835039588576337}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e5ebaf59ff973b4fbc2f49b6a689bcb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _characterType: 0
+  _levelStat:
+    statName: Level
+    CurrentValue: 1
+    enable: 1
+    InitialValue: 1
+    enableMin: 1
+    MinValue: 0
+    enableMax: 0
+    MaxValue: 0
+    ui:
+      statName: UI
+      uiType: 0
+      label: {fileID: 0}
+      prefix: 'Level: '
+      suffix: 
+    OnStatIncrease:
+      m_PersistentCalls:
+        m_Calls: []
+    OnStatDecrease:
+      m_PersistentCalls:
+        m_Calls: []
+    OnStatMin:
+      m_PersistentCalls:
+        m_Calls: []
+    OnStatMax:
+      m_PersistentCalls:
+        m_Calls: []
+    OnStatZero:
+      m_PersistentCalls:
+        m_Calls: []
+  _statsProgressions: {fileID: 11400000, guid: 66ad7e0a3a54bb64c87b2cc02dfc147d, type: 2}

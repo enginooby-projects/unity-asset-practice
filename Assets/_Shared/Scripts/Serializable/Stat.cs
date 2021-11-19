@@ -7,6 +7,9 @@ using UnityEngine.Events;
 [Serializable, InlineProperty]
 public class Stat {
   [HideInInspector] public string statName;
+  //  public StatName StatName(){
+  // StatName.
+  //  }
 
   public Stat(string statName, int initialValue = 0) {
     this.statName = statName;
@@ -17,6 +20,10 @@ public class Stat {
   }
 
   private const float LABEL_WIDTH_1 = 80f;
+
+  [FoldoutGroup("$statName"), EnableIf(nameof(enable))]
+  // [HorizontalGroup("$statName/Value"), LabelWidth(LABEL_WIDTH_1)]
+  [DisplayAsString] public int CurrentValue;
 
   // [ToggleGroup(nameof(enable), groupTitle: "$statName")]
   [FoldoutGroup("$statName")]
@@ -35,8 +42,6 @@ public class Stat {
     CurrentValue = InitialValue;
     UpdateStatUI();
   }
-
-  [HideInInspector] public int CurrentValue;
 
   // [ToggleGroup(nameof(enable))]
   [FoldoutGroup("$statName"), EnableIf(nameof(enable))]
@@ -70,6 +75,15 @@ public class Stat {
   }
 
   #region EVENTS ===================================================================================================================================
+  // [ToggleGroup(nameof(enable))]
+  // [FoldoutGroup("enable/Manual Events")]
+  [FoldoutGroup("$statName"), ShowIf(nameof(enable))]
+  [FoldoutGroup("$statName/Manual Events")]
+  public UnityEvent OnStatChange = new UnityEvent();
+
+  // TIP: Create both C# event and UnityEvent -> Use C# event (bind in script) instead of UnityEvent (bind in Inspector) for better performance.
+  public event Action OnStatChangeEvent;
+
   // [ToggleGroup(nameof(enable))]
   // [FoldoutGroup("enable/Manual Events")]
   [FoldoutGroup("$statName"), ShowIf(nameof(enable))]
@@ -152,6 +166,11 @@ public class Stat {
   }
 
   public void Set(int value) {
+    if (value != CurrentValue) {
+      OnStatChange.Invoke();
+      OnStatChangeEvent?.Invoke();
+    }
+
     CurrentValue = value;
     ui?.Update(CurrentValue);
 

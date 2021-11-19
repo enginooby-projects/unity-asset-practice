@@ -193,7 +193,7 @@ MonoBehaviour:
   enablePool: 1
   poolCollisionCheck: 1
   poolObjectReleaseOnBecameInvisible: 0
-  poolObjectReleaseByLifespan: 3
+  poolObjectReleaseByLifespan: 10
   poolMaxSize: 8
   poolDefaultCapacity: 1000
   spawnAmountRangePerTime:

@@ -129,14 +129,13 @@ namespace Project.RPG.Combat {
     }
 
     #region ANIMATION EVENTS
-    void OnHit() {
-      _currentTarget?.TakeDamage(_weaponData.Damage);
-      weaponVfxs?.Play();
-      if (!_currentTarget) _isAttacking = false; // target dead
-    }
+    void AttackByAnimationEvent() {
+      if (!_currentTarget) {
+        _isAttacking = false; // target dead
+        return;
+      }
 
-    void OnShoot() {
-      if (_currentTarget && _weaponData.HasProjectile) {
+      if (_weaponData.HasProjectile) {
         // ? Move projectile spawning logic to Spawner
         List<GameObject> projectilesGo = projectileSpawner.Spawn();
 
@@ -146,7 +145,11 @@ namespace Project.RPG.Combat {
             projectile.onHitCombatTarget += OnProjectileHit;
           }
         });
+      } else {
+        _currentTarget?.TakeDamage(_weaponData.Damage);
       }
+
+      weaponVfxs?.Play();
     }
 
     /// <summary>
@@ -158,13 +161,21 @@ namespace Project.RPG.Combat {
       combatTarget.TakeDamage(_weaponData.Damage);
     }
 
+    void OnHit() {
+      AttackByAnimationEvent();
+    }
+
+    void OnShoot() {
+      AttackByAnimationEvent();
+    }
+
     // TIP: guarding animation events (simply delegate if animation event has similiar name)
     void Hit() {
-      OnHit();
+      AttackByAnimationEvent();
     }
 
     void Shoot() {
-      OnShoot();
+      AttackByAnimationEvent();
     }
     #endregion
   }

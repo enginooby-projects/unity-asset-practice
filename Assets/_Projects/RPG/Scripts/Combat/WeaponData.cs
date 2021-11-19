@@ -11,6 +11,8 @@ namespace Project.RPG.Combat {
   public class WeaponData : ScriptableObject {
     [OnValueChanged(nameof(GetProjectileSpawner))]
     public GameObject Prefab;
+
+    // TODO: add multiple random AnimatorOverrideController
     public AnimatorOverrideController AnimController;
 
     [Tooltip("Move to target and stop at this distance to attack.")]
@@ -22,6 +24,7 @@ namespace Project.RPG.Combat {
     public bool IsRightHand = true;
 
     [OnValueChanged(nameof(GetProjectileSpawner))]
+    [InfoBox("If use projectile, make sure animation has OnShoot/Shoot/OnHit/Hit() event")]
     public bool HasProjectile;
 
     [ShowIf(nameof(HasProjectile))]
@@ -38,8 +41,11 @@ namespace Project.RPG.Combat {
       GameObject weapon = null;
       if (Prefab) weapon = Instantiate(Prefab, parent: weaponSlot);
 
+      var overrideController = animator.runtimeAnimatorController as AnimatorOverrideController;
       if (AnimController) {
         animator.runtimeAnimatorController = AnimController;
+      } else if (overrideController) {
+        animator.runtimeAnimatorController = overrideController.runtimeAnimatorController;
       }
 
       return weapon;
