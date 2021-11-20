@@ -238,6 +238,10 @@ public enum StatName : int {
   [StringValue("Experience")]
   Experience,
 
+  [StringValue("ExperienceReward")]
+  ExperienceReward,
+
+
   [StringValue("Scores")]
   Scores,
 

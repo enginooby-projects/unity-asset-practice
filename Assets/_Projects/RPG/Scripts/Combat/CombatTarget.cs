@@ -18,14 +18,19 @@ namespace Project.RPG.Combat {
     private Animator _animator;
     private readonly int getHitHash = Animator.StringToHash("getHit");
     private readonly int dieHash = Animator.StringToHash("die");
+
     private bool _isDead;
+    private Attacker _lastAttacker;
+    private int _experienceReward = 10;
+
 
     private void Start() {
       UpdateStatsByLevel();
     }
 
     public override void GetAttacked(Attacker attacker, int damage) {
-      print(attacker.name + " attacked " + name);
+      // print(attacker.name + " attacked " + name);
+      _lastAttacker = attacker;
       healthStat.Update(-damage);
       if (!_isDead) _animator.SetTrigger(getHitHash);
     }
@@ -33,6 +38,9 @@ namespace Project.RPG.Combat {
     public override void Die() {
       _isDead = true;
       _animator.SetTrigger(dieHash);
+      if (_lastAttacker.TryGetComponent<PlayerStats>(out PlayerStats playerStats)) {
+        playerStats.ExperienceStat.Add(_experienceReward);
+      }
       Destroy(this);
     }
 
@@ -56,6 +64,8 @@ namespace Project.RPG.Combat {
       int currentHealthValue = _characterBaseStats.GetStatValue(healthStat.statName.ToEnumString<StatName>());
       healthStat.Set(currentHealthValue);
       healthStat.MaxValue = currentHealthValue;
+
+      _experienceReward = _characterBaseStats.GetStatValue(StatName.ExperienceReward);
     }
     #endregion
   }
