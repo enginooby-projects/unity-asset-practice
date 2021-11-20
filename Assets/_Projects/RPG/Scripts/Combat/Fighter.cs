@@ -7,36 +7,39 @@ using Enginoobz.Core;
 using Sirenix.OdinInspector;
 
 namespace Project.RPG.Combat {
-  public class Fighter : MonoBehaviour, IAction {
+  public class Fighter : Attacker, IAction {
     [Tooltip("Override agent speed when approaching target before attack.")]
-    [SerializeField, Min(0.5f)] private float _chaseSpeed = 5f;
-    [SerializeField] private Transform handRight;
-    [SerializeField] private Transform handLeft;
+    [SerializeField, Min(0.5f)]
+    private float _chaseSpeed = 5f;
 
-    [InlineEditor]
-    [SerializeField] private WeaponData _weaponData;
+    [SerializeField]
+    private Transform handRight;
+
+    [SerializeField]
+    private Transform handLeft;
+
+    [InlineEditor, SerializeField]
+    private WeaponData _weaponData;
 
     [AutoRef, SerializeField, HideInInspector]
     private NavMeshAgentOperator _agentOpr;
 
     [AutoRef, SerializeField, HideInInspector]
     private Animator _animator;
+
     private readonly int attackHash = Animator.StringToHash("attack");
     private readonly int stopAttackHash = Animator.StringToHash("stopAttack");
     private readonly int isTurning = Animator.StringToHash("isTurning");
-
     private GameObject _currentWeapon;
-    private CombatTarget _currentTarget;
+    private Attackable _currentTarget;
     private bool _isAttacking;
     private float timeSinceLastAttack;
-
     private bool _isLookingAtCurrentTarget;
     private bool _isTurningToCurrentTarget;
-
-    public float ChaseSpeed { get => _chaseSpeed; set { if (value > 0.5f) _chaseSpeed = value; } }
-
     private Spawner projectileSpawner;
     private ParticleSystem[] weaponVfxs;
+
+    public float ChaseSpeed { get => _chaseSpeed; set { if (value > 0.5f) _chaseSpeed = value; } }
 
     private void Start() {
       EquipWeapon(_weaponData);
@@ -54,14 +57,14 @@ namespace Project.RPG.Combat {
     }
 
     private void Update() {
-      if (_isAttacking && _currentTarget) ApproachAndAttackCurrentTarget();
+      if (_isAttacking && _currentTarget != null) ApproachAndAttackCurrentTarget();
     }
 
     // ? Rename to set target
     /// <summary>
     /// [Update-safe method]
     /// </summary>
-    public void Attack(CombatTarget target) {
+    public override void Attack(Attackable target) {
       if (_isAttacking && target == _currentTarget) return;
 
       // print("Start attack " + target.name);
@@ -72,13 +75,7 @@ namespace Project.RPG.Combat {
       _animator.ResetTrigger(stopAttackHash);
     }
 
-    public void Attack(Reference targetRef) {
-      if (targetRef.GameObject.TryGetComponent<CombatTarget>(out CombatTarget target)) {
-        Attack(target);
-      }
-    }
-
-    public void ApproachAndAttackCurrentTarget() {
+    private void ApproachAndAttackCurrentTarget() {
       if (!transform.IsInRange(_currentTarget.transform, _weaponData.Range)) {
         // FIX: agent does not guarantee to arrive at the range (e.g target is on the air)
         _agentOpr.MoveTo(_currentTarget.transform.position, _weaponData.Range);
@@ -142,11 +139,12 @@ namespace Project.RPG.Combat {
         projectilesGo.ForEach(go => {
           if (go.TryGetComponent<Projectile>(out Projectile projectile)) {
             projectile.SetTarget(_currentTarget.transform);
-            projectile.onHitCombatTarget += OnProjectileHit;
+            projectile.Owner = this;
+            projectile.onHitAttackableTarget += OnProjectileHit;
           }
         });
       } else {
-        _currentTarget?.TakeDamage(_weaponData.Damage);
+        _currentTarget?.GetAttacked(this, _weaponData.Damage);
       }
 
       weaponVfxs?.Play();
@@ -157,8 +155,8 @@ namespace Project.RPG.Combat {
     /// </summary>
     // ! Overloading method of animation event should be place below the event method in script, other delegate to it.
     // ! E.g. if OnHit(CombatTarget) is above OnHit(), animation invoke this will cause error
-    void OnProjectileHit(CombatTarget combatTarget) {
-      combatTarget.TakeDamage(_weaponData.Damage);
+    void OnProjectileHit(Attacker attacker, Attackable target) {
+      target.GetAttacked(attacker, _weaponData.Damage);
     }
 
     void OnHit() {
@@ -171,11 +169,11 @@ namespace Project.RPG.Combat {
 
     // TIP: guarding animation events (simply delegate if animation event has similiar name)
     void Hit() {
-      AttackByAnimationEvent();
+      OnHit();
     }
 
     void Shoot() {
-      AttackByAnimationEvent();
+      OnShoot();
     }
     #endregion
   }

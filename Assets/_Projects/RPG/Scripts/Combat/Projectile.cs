@@ -18,9 +18,10 @@ namespace Project.RPG.Combat {
     [SerializeField] private bool _stayOnCollisionPoint;
     [SerializeField] private float _stayOnCollisionDuration = 3f;
 
+    private Attacker _owner;
     private new Collider collider;
     private MeshRenderer meshRenderer;
-    public event Action<CombatTarget> onHitCombatTarget;
+    public event Action<Attacker, Attackable> onHitAttackableTarget;
 
     /// <summary>
     /// If not chasing target, then only aim at inital position.
@@ -28,6 +29,11 @@ namespace Project.RPG.Combat {
     private Vector3 initialTargetPos;
     private PoolObject poolComponent;
     private bool enableFlying = true;
+
+    public Attacker Owner {
+      get => _owner;
+      set => _owner = value;
+    }
 
     void Start() {
       GetInitialTargerPos();
@@ -64,16 +70,16 @@ namespace Project.RPG.Combat {
     }
 
     private IEnumerator OnTriggerEnter(Collider other) {
-      print(gameObject.name + " hit " + other.name);
+      print(_owner.name + " shot " + gameObject.name + " hit " + other.name);
       if (impactVfx) impactVfx.Play();
 
       // TODO: option ignore everything not target type (only realse when hit target)
-      if (other.TryGetComponent<CombatTarget>(out CombatTarget combatTarget)) {
-        onHitCombatTarget?.Invoke(combatTarget);
+      if (other.TryGetComponent<Attackable>(out Attackable target)) {
+        onHitAttackableTarget?.Invoke(_owner, target);
       }
 
       // TIP: reset event to prevent action invokes mutiple times because projectile is reused by pool
-      onHitCombatTarget = null;
+      onHitAttackableTarget = null;
       enableFlying = false;
       collider.enabled = false;
 

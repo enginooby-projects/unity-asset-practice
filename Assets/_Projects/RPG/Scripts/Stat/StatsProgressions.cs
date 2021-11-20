@@ -13,13 +13,14 @@ namespace Project.RPG.Stats {
     [SerializeField, InlineEditor] List<StatsProgressionIndividual> _statsProgressionIndividuals;
 
     [Button]
-    public int GetStatValue(string statName, int level, CharacterType characterType) {
+    public int GetStatValue(StatName statName, int level, CharacterType characterType) {
       foreach (var statsProgression in _statsProgressionIndividuals) {
         if (statsProgression.CharacterType == characterType) {
           return statsProgression.GetStatValue(statName, level);
         }
       }
 
+      Debug.LogError("Stat value not set in progression file.");
       return 0;
     }
   }

@@ -23,6 +23,8 @@ public class StatUI {
   [BoxGroup("$statName")]
   [LabelWidth(LABEL_WIDTH)]
   [ShowIf(nameof(uiType), UIType.Text)]
+  [InlineEditor]
+  [HideLabel]
   public TextMeshProUGUI label;
 
   // [BoxGroup("$statName")]
@@ -43,14 +45,6 @@ public class StatUI {
   // [ShowIf(nameof(statType), StatType.Icon)]
   // public Image?? statIcon;
   #endregion
-
-  public void OnGameStart() {
-
-  }
-
-  public void OnGameOver() {
-
-  }
 
   public void Update(int amount) {
     switch (uiType) {

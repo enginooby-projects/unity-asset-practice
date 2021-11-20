@@ -8,6 +8,9 @@ using Enginoobz.Core;
 // TODO: Move into Library
 namespace Enginoobz.Operator {
   [RequireComponent(typeof(NavMeshAgent))]
+  /// <summary>
+  /// * Use case: Mover (esp. on terrain)
+  /// </summary>
   public class NavMeshAgentOperator : MonoBehaviourBase, IAction {
     [AutoRef, SerializeField, HideInInspector]
     private NavMeshAgent _agent;
@@ -60,9 +63,11 @@ namespace Enginoobz.Operator {
 
     #region ANIMATION ===================================================================================================================================
     [SerializeField] private bool enableAnimation = true;
+
     // ! SPECIFIC
     [AutoRef, SerializeField, HideInInspector]
     private Animator _animator;
+
     private readonly int _forwardSpeedHash = Animator.StringToHash("forwardSpeed");
 
     private void HandleAnimation() {

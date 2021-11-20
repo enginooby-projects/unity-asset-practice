@@ -2,28 +2,35 @@ using UnityEngine;
 using Sirenix.OdinInspector;
 using System;
 using UnityEngine.Events;
+using System.Collections.Generic;
 
 // ? Make generics for int/float
 [Serializable, InlineProperty]
 public class Stat {
   [HideInInspector] public string statName;
-  //  public StatName StatName(){
-  // StatName.
-  //  }
 
   public Stat(string statName, int initialValue = 0) {
     this.statName = statName;
     this.InitialValue = initialValue;
     this.CurrentValue = initialValue;
     // this.ui.statName = statName;
-    this.ui.prefix = statName + ": ";
+    this.uis.ForEach(ui => ui.prefix = statName + ": ");
   }
 
   private const float LABEL_WIDTH_1 = 80f;
 
   [FoldoutGroup("$statName"), EnableIf(nameof(enable))]
-  // [HorizontalGroup("$statName/Value"), LabelWidth(LABEL_WIDTH_1)]
-  [DisplayAsString] public int CurrentValue;
+  [HorizontalGroup("$statName/Debug"), LabelWidth(LABEL_WIDTH_1)]
+  // [ProgressBar(nameof(MinValue), nameof(MaxValue), r: 1, g: 1, b: 1, Height = 30)]
+  [DisplayAsString]
+  public int CurrentValue;
+
+  [FoldoutGroup("$statName")]
+  // [EnableIf(nameof(EnableStatAndMax))]
+  // [HorizontalGroup("$statName/Debug"), LabelWidth(LABEL_WIDTH_1)]
+  // [Button]
+  public float CurrentPercentage => CurrentValue * 100 / MaxValue;
+
 
   // [ToggleGroup(nameof(enable), groupTitle: "$statName")]
   [FoldoutGroup("$statName")]
@@ -40,7 +47,7 @@ public class Stat {
 
   private void OnInitialValueChanged() {
     CurrentValue = InitialValue;
-    UpdateStatUI();
+    InitStatUIs();
   }
 
   // [ToggleGroup(nameof(enable))]
@@ -55,30 +62,38 @@ public class Stat {
 
   [FoldoutGroup("$statName"), EnableIf(nameof(enable))]
   [HorizontalGroup("$statName/Enable"), LabelWidth(LABEL_WIDTH_1)]
-
   public bool enableMax;
 
   [FoldoutGroup("$statName"), EnableIf(nameof(EnableStatAndMax))]
   [HorizontalGroup("$statName/Value"), LabelWidth(LABEL_WIDTH_1)]
   [PropertySpace(SpaceAfter = 10, SpaceBefore = 0)]
-  public int MaxValue;
+  public int MaxValue = 100;
   private bool EnableStatAndMax() { return enable && enableMax; }
+  private bool EnableStatAndDisableMax() { return enable && !enableMax; }
   #endregion ===================================================================================================================================
 
+  // TODO: Implement multiple UIs (? scriptable objects)
   // [ToggleGroup(nameof(enable))]
   [FoldoutGroup("$statName"), ShowIf(nameof(enable))]
-  [OnValueChanged(nameof(UpdateStatUI), true)]
-  [HideLabel] public StatUI ui = new StatUI();
+  [OnValueChanged(nameof(InitStatUIs), true)]
+  // [HideLabel]
+  [LabelText("UIs")]
+  public List<StatUI> uis = new List<StatUI>() { new StatUI() };
 
-  private void UpdateStatUI() {
-    ui.Update(InitialValue);
+  private void InitStatUIs() {
+    UpdateStatUIs(InitialValue);
+    // this.uis.ForEach(ui => ui.prefix = statName + ": ");
+  }
+
+  private void UpdateStatUIs(int value) {
+    uis.ForEach(ui => ui.Update(value));
   }
 
   #region EVENTS ===================================================================================================================================
   // [ToggleGroup(nameof(enable))]
   // [FoldoutGroup("enable/Manual Events")]
   [FoldoutGroup("$statName"), ShowIf(nameof(enable))]
-  [FoldoutGroup("$statName/Manual Events")]
+  [FoldoutGroup("$statName/Events")]
   public UnityEvent OnStatChange = new UnityEvent();
 
   // TIP: Create both C# event and UnityEvent -> Use C# event (bind in script) instead of UnityEvent (bind in Inspector) for better performance.
@@ -87,7 +102,7 @@ public class Stat {
   // [ToggleGroup(nameof(enable))]
   // [FoldoutGroup("enable/Manual Events")]
   [FoldoutGroup("$statName"), ShowIf(nameof(enable))]
-  [FoldoutGroup("$statName/Manual Events")]
+  [FoldoutGroup("$statName/Events")]
   public UnityEvent OnStatIncrease = new UnityEvent();
 
   // TIP: Create both C# event and UnityEvent -> Use C# event (bind in script) instead of UnityEvent (bind in Inspector) for better performance.
@@ -96,28 +111,28 @@ public class Stat {
   // [ToggleGroup(nameof(enable))]
   // [FoldoutGroup("enable/Manual Events")]
   [FoldoutGroup("$statName"), ShowIf(nameof(enable))]
-  [FoldoutGroup("$statName/Manual Events")]
+  [FoldoutGroup("$statName/Events")]
   public UnityEvent OnStatDecrease = new UnityEvent();
   public event Action OnStatDecreaseEvent;
 
   // [ToggleGroup(nameof(enable))]
   // [FoldoutGroup("enable/Manual Events")]
   [FoldoutGroup("$statName"), ShowIf(nameof(enable))]
-  [FoldoutGroup("$statName/Manual Events")]
+  [FoldoutGroup("$statName/Events")]
   public UnityEvent OnStatMin = new UnityEvent();
   public event Action OnStatMinEvent;
 
   // [ToggleGroup(nameof(enable))]
   // [FoldoutGroup("enable/Manual Events")]
   [FoldoutGroup("$statName"), ShowIf(nameof(enable))]
-  [FoldoutGroup("$statName/Manual Events")]
+  [FoldoutGroup("$statName/Events")]
   public UnityEvent OnStatMax = new UnityEvent();
   public event Action OnStatMaxEvent;
 
   // [ToggleGroup(nameof(enable))]
   // [FoldoutGroup("enable/Manual Events")]
   [FoldoutGroup("$statName"), ShowIf(nameof(enable))]
-  [FoldoutGroup("$statName/Manual Events")]
+  [FoldoutGroup("$statName/Events")]
   public UnityEvent OnStatZero = new UnityEvent();
   public event Action OnStatZeroEvent;
   #endregion ===================================================================================================================================
@@ -126,6 +141,7 @@ public class Stat {
   /// <summary>
   /// Constraint the given amount in range of min-max then add to the current stat value.
   /// </summary>
+  // ? Rename to Add()
   public void Update(int amountToAdd) {
     int valueAfterUpdate = CurrentValue + amountToAdd;
     ConstraintMinMax(valueAfterUpdate);
@@ -139,6 +155,10 @@ public class Stat {
       OnStatDecrease.Invoke();
       OnStatDecreaseEvent?.Invoke();
     }
+  }
+
+  public void Add(int amount) {
+    Update(amount);
   }
 
   private void ConstraintMinMax(int rawValue) {
@@ -172,7 +192,7 @@ public class Stat {
     }
 
     CurrentValue = value;
-    ui?.Update(CurrentValue);
+    UpdateStatUIs(CurrentValue);
 
     if (value == 0) {
       OnStatZero.Invoke();
@@ -200,4 +220,27 @@ public class Stat {
     Set(MaxValue);
   }
   #endregion ===================================================================================================================================
+}
+
+public enum StatName : int {
+  [StringValue("Health")]
+  Health,
+
+  [StringValue("Level")]
+  Level,
+
+  [StringValue("Mana")]
+  Mana,
+
+  [StringValue("Stamia")]
+  Stamia,
+
+  [StringValue("Experience")]
+  Experience,
+
+  [StringValue("Scores")]
+  Scores,
+
+  [StringValue("Lives")]
+  Lives,
 }

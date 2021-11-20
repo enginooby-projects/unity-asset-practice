@@ -4,7 +4,13 @@ using UnityEngine;
 using Sirenix.OdinInspector;
 
 namespace Project.RPG.Stats {
-  public enum CharacterType { Player, Grunt, Archer, Mage }
+  public enum CharacterType {
+    Player,
+    Grunt,
+    Archer,
+    Mage,
+    Warrior,
+  }
 
   /// <summary>
   /// Centralize all stats for each type of character based on level.
@@ -17,7 +23,7 @@ namespace Project.RPG.Stats {
     public Stat LevelStat => _levelStat;
 
     // TODO: using enum string for stat name
-    public int GetStatValue(string statName) {
+    public int GetStatValue(StatName statName) {
       return _statsProgressions.GetStatValue(statName, _levelStat.CurrentValue, _characterType);
     }
   }

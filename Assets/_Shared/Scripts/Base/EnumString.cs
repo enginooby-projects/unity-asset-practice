@@ -6,24 +6,15 @@ using System;
 [AttributeUsage(AttributeTargets.Field)]
 public class StringValueAttribute : Attribute {
   /// <summary>
-  /// Holds the stringvalue for a value in an enum.
+  /// Holds the string value for a value in an enum.
   /// </summary>
   public string StringValue { get; protected set; }
 
   /// <summary>
-  /// Constructor used to init a StringValue Attribute
+  /// Constructor used to init a StringValue Attribute.
   /// </summary>
   /// <param name="value"></param>
   public StringValueAttribute(string value) {
     this.StringValue = value;
   }
-}
-
-
-public enum StatName : int {
-  [StringValue("Health")]
-  Health,
-
-  [StringValue("Level")]
-  Level
 }

@@ -153,19 +153,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthStat:
     statName: Health
-    CurrentValue: 10
+    CurrentValue: 24
     enable: 1
-    InitialValue: 10
+    InitialValue: 24
     enableMin: 1
     MinValue: 0
-    enableMax: 0
-    MaxValue: 0
-    ui:
-      statName: UI
+    enableMax: 1
+    MaxValue: 100
+    uis:
+    - statName: UI
       uiType: 0
       label: {fileID: 0}
       prefix: 'Health: '
       suffix: 
+    OnStatChange:
+      m_PersistentCalls:
+        m_Calls: []
     OnStatIncrease:
       m_PersistentCalls:
         m_Calls: []
@@ -241,12 +244,15 @@ MonoBehaviour:
     MinValue: 0
     enableMax: 0
     MaxValue: 0
-    ui:
-      statName: UI
+    uis:
+    - statName: UI
       uiType: 0
       label: {fileID: 0}
       prefix: 'Level: '
       suffix: 
+    OnStatChange:
+      m_PersistentCalls:
+        m_Calls: []
     OnStatIncrease:
       m_PersistentCalls:
         m_Calls: []

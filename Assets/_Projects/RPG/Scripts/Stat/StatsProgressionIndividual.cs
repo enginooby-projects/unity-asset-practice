@@ -19,10 +19,10 @@ namespace Project.RPG.Stats {
     public Dictionary<StatName, List<int>> StatsProgression => _statsProgression;
 
     // UTIL
-    public int GetStatValue(string statName, int level) {
+    public int GetStatValue(StatName statName, int level) {
       int value = 0;
       foreach (var dic in _statsProgression) {
-        if (dic.Key.ToString() == statName) value = dic.Value[level - 1];
+        if (dic.Key == statName) value = dic.Value[level - 1];
       }
 
       return value;
