@@ -9,7 +9,7 @@ namespace Project.RPG.Combat {
   // ? Rename AttackableTarget implementing IAttackable (TakeDamage, Die)
   public class CombatTarget : Attackable {
     [SerializeField, HideLabel]
-    private Stat healthStat = new Stat(StatName.Health.ToString(), 10);
+    private Stat healthStat = new Stat(StatName.Health, 10);
 
     [AutoRef, SerializeField, HideInInspector]
     private CharacterBaseStats _characterBaseStats;
@@ -49,7 +49,6 @@ namespace Project.RPG.Combat {
     }
 
     #region STAT
-    // TODO: health not update on level changed
     private void OnEnable() {
       if (!_characterBaseStats) _characterBaseStats = GetComponent<CharacterBaseStats>();
       healthStat.enableMax = true;
@@ -65,7 +64,9 @@ namespace Project.RPG.Combat {
       healthStat.Set(currentHealthValue);
       healthStat.MaxValue = currentHealthValue;
 
-      _experienceReward = _characterBaseStats.GetStatValue(StatName.ExperienceReward);
+      if (!gameObject.CompareTag("Player")) { // REFACTOR
+        _experienceReward = _characterBaseStats.GetStatValue(StatName.ExperienceReward);
+      }
     }
     #endregion
   }

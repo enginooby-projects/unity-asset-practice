@@ -17,12 +17,12 @@ namespace Project.RPG.Stats {
   /// </summary>
   public class CharacterBaseStats : MonoBehaviour {
     [SerializeField] private CharacterType _characterType;
-    [SerializeField, HideLabel] private Stat _levelStat = new Stat(StatName.Level.ToString(), initialValue: 1);
+    [SerializeField, HideLabel] private Stat _levelStat = new Stat(StatName.Level, initialValue: 1);
     [SerializeField, InlineEditor] private StatsProgressions _statsProgressions;
 
     public Stat LevelStat => _levelStat;
+    public StatsProgressions StatsProgressions => _statsProgressions;
 
-    // TODO: using enum string for stat name
     public int GetStatValue(StatName statName) {
       return _statsProgressions.GetStatValue(statName, _levelStat.CurrentValue, _characterType);
     }

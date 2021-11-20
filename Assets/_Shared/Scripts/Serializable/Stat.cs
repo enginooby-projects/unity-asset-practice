@@ -14,7 +14,16 @@ public class Stat {
     this.InitialValue = initialValue;
     this.CurrentValue = initialValue;
     // this.ui.statName = statName;
-    this.uis.ForEach(ui => ui.prefix = statName + ": ");
+    this.uis.ForEach(ui => ui.prefix = this.statName + ": ");
+  }
+
+  // REFACTOR
+  public Stat(StatName statName, int initialValue = 0) {
+    this.statName = statName.ToString();
+    this.InitialValue = initialValue;
+    this.CurrentValue = initialValue;
+    // this.ui.statName = statName;
+    this.uis.ForEach(ui => ui.prefix = this.statName + ": ");
   }
 
   private const float LABEL_WIDTH_1 = 80f;
@@ -238,9 +247,17 @@ public enum StatName : int {
   [StringValue("Experience")]
   Experience,
 
+  /// <summary>
+  /// Used for enemy.
+  /// </summary>
   [StringValue("ExperienceReward")]
   ExperienceReward,
 
+  /// <summary>
+  /// Used for player to convert amount of XP to level for progression.
+  /// </summary>
+  [StringValue("ExperienceToLevel")]
+  ExperienceToLevel,
 
   [StringValue("Scores")]
   Scores,
