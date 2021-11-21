@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using Sirenix.OdinInspector;
 using System;
@@ -45,7 +43,6 @@ namespace Project.RPG.Stats {
     }
 
     private void OnLevelUp() {
-      print("Play VFX");
       _levelUpVfx?.Play();
     }
   }

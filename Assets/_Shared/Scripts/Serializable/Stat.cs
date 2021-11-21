@@ -225,38 +225,3 @@ public class Stat {
   }
   #endregion ===================================================================================================================================
 }
-
-public enum StatName : int {
-  [StringValue("Health")]
-  Health,
-
-  [StringValue("Level")]
-  Level,
-
-  [StringValue("Mana")]
-  Mana,
-
-  [StringValue("Stamia")]
-  Stamia,
-
-  [StringValue("Experience")]
-  Experience,
-
-  /// <summary>
-  /// Used for enemy.
-  /// </summary>
-  [StringValue("ExperienceReward")]
-  ExperienceReward,
-
-  /// <summary>
-  /// Used for player to convert amount of XP to level for progression.
-  /// </summary>
-  [StringValue("ExperienceToLevel")]
-  ExperienceToLevel,
-
-  [StringValue("Scores")]
-  Scores,
-
-  [StringValue("Lives")]
-  Lives,
-}

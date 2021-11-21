@@ -1,12 +1,14 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using Sirenix.OdinInspector;
 using Enginoobz.Operator;
 using Enginoobz.Core;
-using Sirenix.OdinInspector;
 
 namespace Project.RPG.Combat {
+  /// <summary>
+  /// Chasing attacker. 
+  /// </summary>
   public class Fighter : Attacker, IAction {
     [Tooltip("Override agent speed when approaching target before attack.")]
     [SerializeField, Min(0.5f)]
@@ -21,12 +23,8 @@ namespace Project.RPG.Combat {
     [InlineEditor, SerializeField]
     private WeaponData _weaponData;
 
-    [AutoRef, SerializeField, HideInInspector]
     private NavMeshAgentOperator _agentOpr;
-
-    [AutoRef, SerializeField, HideInInspector]
     private Animator _animator;
-
     private readonly int attackHash = Animator.StringToHash("attack");
     private readonly int stopAttackHash = Animator.StringToHash("stopAttack");
     private readonly int isTurning = Animator.StringToHash("isTurning");
@@ -39,9 +37,15 @@ namespace Project.RPG.Combat {
     private Spawner projectileSpawner;
     private ParticleSystem[] weaponVfxs;
 
+    protected virtual int AttackDamage => _weaponData.Damage;
     public float ChaseSpeed { get => _chaseSpeed; set { if (value > 0.5f) _chaseSpeed = value; } }
 
-    private void Start() {
+    protected virtual void OnEnable() { }
+    protected virtual void OnDisable() { }
+
+    protected virtual void Start() {
+      _animator = GetComponent<Animator>();
+      _agentOpr = GetComponent<NavMeshAgentOperator>();
       EquipWeapon(_weaponData);
     }
 
@@ -126,7 +130,7 @@ namespace Project.RPG.Combat {
       _animator.SetTrigger(stopAttackHash);
     }
 
-    #region ANIMATION EVENTS
+    #region ANIMATION EVENTS ===================================================================================================================================
     void OnAttackTriggeredByAnim() {
       if (!_currentTarget || _currentTarget.IsDead) {
         _isAttacking = false;
@@ -145,7 +149,7 @@ namespace Project.RPG.Combat {
           }
         });
       } else {
-        _currentTarget?.GetAttacked(this, _weaponData.Damage);
+        _currentTarget?.GetAttacked(this, AttackDamage);
       }
 
       weaponVfxs?.Play();
@@ -157,7 +161,7 @@ namespace Project.RPG.Combat {
     // ! Overloading method of animation event should be place below the event method in script, other delegate to it.
     // ! E.g. if OnHit(CombatTarget) is above OnHit(), animation invoke this will cause error
     void OnProjectileHit(Attacker attacker, Attackable target) {
-      target.GetAttacked(attacker, _weaponData.Damage);
+      target.GetAttacked(attacker, AttackDamage);
     }
 
     void OnHit() {
@@ -176,6 +180,6 @@ namespace Project.RPG.Combat {
     void Shoot() {
       OnShoot();
     }
-    #endregion
+    #endregion ===================================================================================================================================
   }
 }

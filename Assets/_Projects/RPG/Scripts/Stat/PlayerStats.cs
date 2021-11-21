@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Sirenix.OdinInspector;
@@ -11,12 +10,15 @@ namespace Project.RPG.Stats {
     [SerializeField, HideLabel]
     private Stat _experienceStat = new Stat(StatName.Experience);
 
+
+    private Stat _experienceToLevel = new Stat(StatName.ExperienceToLevel);
+
     [AutoRef, SerializeField, HideInInspector]
     private CharacterBaseStats _characterBaseStats;
-    private Stat _experienceToLevel = new Stat(StatName.ExperienceToLevel);
     private List<int> _requiredXpOnLevel = new List<int>();
 
     public Stat ExperienceStat => _experienceStat;
+
 
     private void Start() {
       _requiredXpOnLevel = _characterBaseStats.StatsProgressions.GetStatProgression(StatName.ExperienceToLevel, CharacterType.Player);
@@ -32,7 +34,6 @@ namespace Project.RPG.Stats {
     }
 
     public void UpdateLevel() {
-      // print("Calculating level based on total XP...");
       int currentLevel = _characterBaseStats.LevelStat.CurrentValue;
       int maxLevel = _requiredXpOnLevel.Count;
       int currentXp = _experienceStat.CurrentValue;

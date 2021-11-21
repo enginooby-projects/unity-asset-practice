@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using Sirenix.OdinInspector;
 using Project.RPG.Stats;
@@ -28,7 +26,7 @@ namespace Project.RPG.Combat {
     }
 
     public override void GetAttacked(Attacker attacker, int damage) {
-      // print(attacker.name + " attacked " + name);
+      // print(attacker.name + " attacked " + name + " - damage: " + damage);
       _lastAttacker = attacker;
       healthStat.Update(-damage);
       if (!_isDead) _animator.SetTrigger(getHitHash);
