@@ -16,15 +16,16 @@ namespace Project.RPG.Stats {
     // [SerializeField, InlineEditor] Dictionary<CharacterType, Dictionary<StatName, List<int>>> _statsProgressions;
 
     [Button]
-    public int GetStatValue(StatName statName, int level, CharacterType characterType) {
+    public Nullable<int> GetStatValue(StatName statName, int level, CharacterType characterType) {
       foreach (var statsProgression in _statsProgressionIndividuals) {
         if (statsProgression.CharacterType == characterType) {
+          if (level > statsProgression.StatsProgression[statName].Count) return null;
           return statsProgression.StatsProgression[statName][level - 1];
         }
       }
 
       Debug.LogError("Stat value not set in progression file.");
-      return 0;
+      return null;
     }
 
     public List<int> GetStatProgression(StatName statName, CharacterType characterType) {

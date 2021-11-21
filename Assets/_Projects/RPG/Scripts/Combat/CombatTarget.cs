@@ -19,7 +19,6 @@ namespace Project.RPG.Combat {
     private readonly int getHitHash = Animator.StringToHash("getHit");
     private readonly int dieHash = Animator.StringToHash("die");
 
-    private bool _isDead;
     private Attacker _lastAttacker;
     private int _experienceReward = 10;
 
@@ -45,7 +44,7 @@ namespace Project.RPG.Combat {
     }
 
     public void LogHeath() {
-      print(healthStat.CurrentValue);
+      // print(name + " health: " + healthStat.CurrentValue);
     }
 
     #region STAT
@@ -60,12 +59,14 @@ namespace Project.RPG.Combat {
     }
 
     public void UpdateStatsByLevel() {
-      int currentHealthValue = _characterBaseStats.GetStatValue(healthStat.statName.ToEnumString<StatName>());
-      healthStat.Set(currentHealthValue);
-      healthStat.MaxValue = currentHealthValue;
+      Nullable<int> currentHealthValue = _characterBaseStats.GetStatValue(healthStat.statName.ToEnumString<StatName>());
+      if (currentHealthValue.HasValue) {
+        healthStat.Set(currentHealthValue.Value);
+        healthStat.MaxValue = currentHealthValue.Value;
+      }
 
       if (!gameObject.CompareTag("Player")) { // REFACTOR
-        _experienceReward = _characterBaseStats.GetStatValue(StatName.ExperienceReward);
+        _experienceReward = _characterBaseStats.GetStatValue(StatName.ExperienceReward).Value;
       }
     }
     #endregion

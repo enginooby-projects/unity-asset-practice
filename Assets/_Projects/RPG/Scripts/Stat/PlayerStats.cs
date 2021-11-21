@@ -38,15 +38,15 @@ namespace Project.RPG.Stats {
       int currentXp = _experienceStat.CurrentValue;
 
       // TODO: Fix index offset
-      for (int i = currentLevel - 1; i < maxLevel; i++) {
+      for (int i = currentLevel; i < maxLevel; i++) {
         // print("Require " + _requiredXpOnLevel[i] + " for level " + (i + 1));
         if (currentXp < _requiredXpOnLevel[i]) {
-          _characterBaseStats.LevelStat.Set(i + 1);
+          _characterBaseStats.LevelStat.Set(i);
           return;
         }
       }
 
-      _characterBaseStats.LevelStat.Set(maxLevel + 1);
+      _characterBaseStats.LevelStat.Set(maxLevel);
     }
   }
 }

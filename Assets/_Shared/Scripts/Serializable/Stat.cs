@@ -147,37 +147,13 @@ public class Stat {
   #endregion ===================================================================================================================================
 
   #region PUBLIC METHODS ===================================================================================================================================
-  /// <summary>
-  /// Constraint the given amount in range of min-max then add to the current stat value.
-  /// </summary>
   // ? Rename to Add()
   public void Update(int amountToAdd) {
-    int valueAfterUpdate = CurrentValue + amountToAdd;
-    ConstraintMinMax(valueAfterUpdate);
-    Set(valueAfterUpdate);
-
-    if (amountToAdd > 0) {
-      OnStatIncrease.Invoke();
-      OnStatDecreaseEvent?.Invoke();
-    }
-    if (amountToAdd < 0) {
-      OnStatDecrease.Invoke();
-      OnStatDecreaseEvent?.Invoke();
-    }
+    Set(CurrentValue + amountToAdd);
   }
 
   public void Add(int amount) {
     Update(amount);
-  }
-
-  private void ConstraintMinMax(int rawValue) {
-    if (enableMin && rawValue < MinValue) {
-      rawValue = MinValue;
-    }
-
-    if (enableMax && rawValue > MaxValue) {
-      rawValue = MaxValue;
-    }
   }
 
   /// <summary>
@@ -194,24 +170,43 @@ public class Stat {
     Update(-1);
   }
 
+  /// <summary>
+  /// Constraint the given amount in range of min-max (if enable) then set current stat value.
+  /// </summary>
+  // REFACTOR
   public void Set(int value) {
-    if (value != CurrentValue) {
-      OnStatChange.Invoke();
-      OnStatChangeEvent?.Invoke();
+    if (enableMin && value < MinValue) {
+      value = MinValue;
+    }
+    if (enableMax && value > MaxValue) {
+      value = MaxValue;
     }
 
+    if (value == CurrentValue) return;
+
+    int oldValue = CurrentValue;
     CurrentValue = value;
     UpdateStatUIs(CurrentValue);
 
-    if (value == 0) {
+    if (CurrentValue > oldValue) {
+      OnStatIncrease.Invoke();
+      OnStatIncreaseEvent?.Invoke();
+    }
+    if (CurrentValue < oldValue) {
+      OnStatDecrease.Invoke();
+      OnStatDecreaseEvent?.Invoke();
+    }
+    OnStatChange.Invoke();
+    OnStatChangeEvent?.Invoke();
+    if (CurrentValue == 0) {
       OnStatZero.Invoke();
       OnStatZeroEvent?.Invoke();
     }
-    if (enableMin && value <= MinValue) {
+    if (enableMin && CurrentValue <= MinValue) {
       OnStatMin.Invoke();
       OnStatMinEvent?.Invoke();
     }
-    if (enableMax && value >= MaxValue) {
+    if (enableMax && CurrentValue >= MaxValue) {
       OnStatMax.Invoke();
       OnStatMaxEvent?.Invoke();
     }

@@ -70,7 +70,7 @@ namespace Project.RPG.Combat {
     }
 
     private IEnumerator OnTriggerEnter(Collider other) {
-      print(_owner.name + " shot " + gameObject.name + " hit " + other.name);
+      // print(_owner.name + " shot " + gameObject.name + " hit " + other.name);
       if (impactVfx) impactVfx.Play();
 
       // TODO: option ignore everything not target type (only realse when hit target)

@@ -57,7 +57,7 @@ namespace Project.RPG.Combat {
     }
 
     private void Update() {
-      if (_isAttacking && _currentTarget != null) ApproachAndAttackCurrentTarget();
+      if (_isAttacking && _currentTarget) ApproachAndAttackCurrentTarget();
     }
 
     // ? Rename to set target
@@ -65,7 +65,7 @@ namespace Project.RPG.Combat {
     /// [Update-safe method]
     /// </summary>
     public override void Attack(Attackable target) {
-      if (_isAttacking && target == _currentTarget) return;
+      if (_isAttacking && target == _currentTarget || target.IsDead) return;
 
       // print("Start attack " + target.name);
       _isAttacking = true;
@@ -96,6 +96,7 @@ namespace Project.RPG.Combat {
     }
 
     private void AttackCurrentTarget() {
+      if (_currentTarget.IsDead) return;
       _animator.SetTrigger(attackHash);
     }
 
@@ -126,9 +127,9 @@ namespace Project.RPG.Combat {
     }
 
     #region ANIMATION EVENTS
-    void AttackByAnimationEvent() {
-      if (!_currentTarget) {
-        _isAttacking = false; // target dead
+    void OnAttackTriggeredByAnim() {
+      if (!_currentTarget || _currentTarget.IsDead) {
+        _isAttacking = false;
         return;
       }
 
@@ -160,11 +161,11 @@ namespace Project.RPG.Combat {
     }
 
     void OnHit() {
-      AttackByAnimationEvent();
+      OnAttackTriggeredByAnim();
     }
 
     void OnShoot() {
-      AttackByAnimationEvent();
+      OnAttackTriggeredByAnim();
     }
 
     // TIP: guarding animation events (simply delegate if animation event has similiar name)
