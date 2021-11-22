@@ -1,8 +1,8 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Enginoobz.Operator;
 using Enginoobz.Core;
+using Enginoobz.UI;
 using Project.RPG.Combat;
 using static RayUtils;
 
@@ -12,14 +12,33 @@ namespace Project.RPG.Controller {
   /// Handling inputs which invokes different actions of the player.
   /// </summary>
   public class PlayerController : MonoBehaviour {
+    [SerializeField] CursorData _cursorNone;
+    [SerializeField] CursorData _cursorAttack;
+    [SerializeField] CursorData _cursorMove;
+    private CursorData _currentCursor;
+
+    /// <summary>
+    /// [Safe-Update method]
+    /// </summary>
+    private void SetCurrentCursor(CursorData cursorData) {
+      if (_currentCursor != cursorData) {
+        _currentCursor = cursorData;
+        _currentCursor.SetCursor();
+      }
+    }
+
     [AutoRef, SerializeField, HideInInspector]
     private ActionScheduler _actionScheduler;
 
     void Update() {
-      if (CanAttack) {
+      if (CanAttackAtCursor) {
         HandleCombat();
-      } else if (CanMove) {
+        SetCurrentCursor(_cursorAttack);
+      } else if (CanMoveToCursor) {
         HandleMovement();
+        SetCurrentCursor(_cursorMove);
+      } else {
+        SetCurrentCursor(_cursorNone);
       }
     }
 
@@ -27,7 +46,7 @@ namespace Project.RPG.Controller {
     [AutoRef, SerializeField, HideInInspector]
     private NavMeshAgentOperator _mover;
     private Ray _lastRay;
-    private bool CanMove => IsMouseRayHit;
+    private bool CanMoveToCursor => IsMouseRayHit;
 
     private void HandleMovement() {
       Debug.DrawRay(_lastRay.origin, _lastRay.direction * 100, Color.red);
@@ -45,11 +64,11 @@ namespace Project.RPG.Controller {
     #region COMBAT ===================================================================================================================================
     [AutoRef, SerializeField, HideInInspector]
     private Fighter _fighter;
-    private List<CombatTarget> currentAttackableTargets = new List<CombatTarget>();
+    private List<Attackable> currentAttackableTargets = new List<Attackable>();
 
-    private bool CanAttack {
+    private bool CanAttackAtCursor {
       get {
-        currentAttackableTargets = GetComponentsViaMouseRay<CombatTarget>();
+        currentAttackableTargets = GetComponentsViaMouseRay<Attackable>();
         return currentAttackableTargets.Count > 0;
       }
     }
