@@ -10,13 +10,13 @@ PrefabInstance:
     - target: {fileID: 63261242131414432, guid: c06ad7441140ee94ab0fa1ae9db508cb,
         type: 3}
       propertyPath: m_Name
-      value: Solider Archer
+      value: Archer
       objectReference: {fileID: 0}
     - target: {fileID: 63261242131414443, guid: c06ad7441140ee94ab0fa1ae9db508cb,
         type: 3}
       propertyPath: _weaponData
       value: 
-      objectReference: {fileID: 11400000, guid: 8b4074dd93709034fb90df9f7d3aa576,
+      objectReference: {fileID: 11400000, guid: f8fa04703166d7545bdddcff03ccda15,
         type: 2}
     - target: {fileID: 63261242131414444, guid: c06ad7441140ee94ab0fa1ae9db508cb,
         type: 3}

@@ -4,7 +4,8 @@
     "references": [
         "AsmAutoRefs",
         "Library",
-        "AsmSws"
+        "AsmSws",
+        "ch.giezi.tools.ScriptableObjectVariant"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

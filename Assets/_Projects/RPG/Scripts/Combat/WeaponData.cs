@@ -1,9 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using Sirenix.OdinInspector;
+using Giezi.Tools;
 
 namespace Project.RPG.Combat {
+  [SOVariant]
   [CreateAssetMenu(fileName = "Weapon", menuName = "Project/RPG/Weapon Data", order = 0)]
   /// <summary>
   /// Invoke Init() to setup weapon data.
