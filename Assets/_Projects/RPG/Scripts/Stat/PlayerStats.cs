@@ -6,6 +6,7 @@ namespace Project.RPG.Stats {
   /// <summary>
   /// Stats that belong specific to player, not other characters.
   /// </summary>
+  // ? Merge into FighterPlayer
   public class PlayerStats : MonoBehaviour {
     [SerializeField, HideLabel]
     private Stat _experienceStat = new Stat(StatName.Experience);

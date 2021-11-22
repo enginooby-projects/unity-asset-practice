@@ -144,7 +144,8 @@ PrefabInstance:
       propertyPath: healthStat.InitialValue
       value: 50
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 513835039588576346, guid: 3d9a9594c83c85048a3a7bbbb52ecc31, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 3d9a9594c83c85048a3a7bbbb52ecc31, type: 3}
 --- !u!1 &7190920011259911118 stripped
 GameObject:
@@ -199,6 +200,56 @@ MonoBehaviour:
       uiType: 0
       label: {fileID: 0}
       prefix: 'Experience: '
+      suffix: 
+    OnStatChange:
+      m_PersistentCalls:
+        m_Calls: []
+    OnStatIncrease:
+      m_PersistentCalls:
+        m_Calls: []
+    OnStatDecrease:
+      m_PersistentCalls:
+        m_Calls: []
+    OnStatMin:
+      m_PersistentCalls:
+        m_Calls: []
+    OnStatMax:
+      m_PersistentCalls:
+        m_Calls: []
+    OnStatZero:
+      m_PersistentCalls:
+        m_Calls: []
+  _characterBaseStats: {fileID: 0}
+--- !u!114 &1103871476
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7190920011259911118}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90d4dbd8e487aee42af9940a3f1f9d28, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _chaseSpeed: 10
+  handRight: {fileID: 8711725156338924904}
+  handLeft: {fileID: 8711725156338982144}
+  _weaponData: {fileID: 11400000, guid: 21eabcbf6009c4942b1efc2bee04c904, type: 2}
+  _strengthStat:
+    statName: Strength
+    CurrentValue: 0
+    enable: 1
+    InitialValue: 0
+    enableMin: 1
+    MinValue: 0
+    enableMax: 0
+    MaxValue: 100
+    uis:
+    - statName: UI
+      uiType: 0
+      label: {fileID: 0}
+      prefix: 'Strength: '
       suffix: 
     OnStatChange:
       m_PersistentCalls:
