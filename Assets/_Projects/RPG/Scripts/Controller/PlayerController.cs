@@ -4,6 +4,7 @@ using Enginoobz.Operator;
 using Enginoobz.Core;
 using Enginoobz.UI;
 using Project.RPG.Combat;
+using Sirenix.OdinInspector;
 using static RayUtils;
 
 namespace Project.RPG.Controller {
@@ -12,33 +13,25 @@ namespace Project.RPG.Controller {
   /// Handling inputs which invokes different actions of the player.
   /// </summary>
   public class PlayerController : MonoBehaviour {
-    [SerializeField] CursorData _cursorNone;
-    [SerializeField] CursorData _cursorAttack;
-    [SerializeField] CursorData _cursorMove;
-    private CursorData _currentCursor;
-
-    /// <summary>
-    /// [Safe-Update method]
-    /// </summary>
-    private void SetCurrentCursor(CursorData cursorData) {
-      if (_currentCursor != cursorData) {
-        _currentCursor = cursorData;
-        _currentCursor.SetCursor();
-      }
-    }
+    [SerializeField, InlineEditor, LabelText("Cursor Preset")]
+    private CursorDataPreset _cursor;
 
     [AutoRef, SerializeField, HideInInspector]
     private ActionScheduler _actionScheduler;
 
+    private void Start() {
+      _cursor.Init();
+    }
+
     void Update() {
       if (CanAttackAtCursor) {
         HandleCombat();
-        SetCurrentCursor(_cursorAttack);
+        _cursor.Set(CursorName.Attack);
       } else if (CanMoveToCursor) {
         HandleMovement();
-        SetCurrentCursor(_cursorMove);
+        _cursor.Set(CursorName.Move);
       } else {
-        SetCurrentCursor(_cursorNone);
+        _cursor.Set(CursorName.None);
       }
     }
 
