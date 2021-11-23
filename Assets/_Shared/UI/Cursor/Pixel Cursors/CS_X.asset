@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4639a89ffd2dfd4584e83a5a2a08434, type: 3}
   m_Name: CS_X
   m_EditorClassIdentifier: 
+  _name: 0
   _texture: {fileID: 2800000, guid: 21628736160fcc9488493401da3ef621, type: 3}
-  _hotSpot: {x: 0, y: 0}
+  _hotSpot: {x: 16, y: 16}

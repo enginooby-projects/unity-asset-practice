@@ -6,11 +6,12 @@ using Enginoobz.UI;
 using Project.RPG.Combat;
 using Sirenix.OdinInspector;
 using static RayUtils;
+using UnityEngine.EventSystems;
 
 namespace Project.RPG.Controller {
   [RequireComponent(typeof(NavMeshAgentOperator))]
   /// <summary>
-  /// Handling inputs which invokes different actions of the player.
+  /// Point and click controller.
   /// </summary>
   public class PlayerController : MonoBehaviour {
     [SerializeField, InlineEditor, LabelText("Cursor Preset")]
@@ -19,19 +20,25 @@ namespace Project.RPG.Controller {
     [AutoRef, SerializeField, HideInInspector]
     private ActionScheduler _actionScheduler;
 
+    // ! Set Event mask on Physics Raycaster to UI layer
+    private bool CursorAtUI => EventSystem.current.IsPointerOverGameObject();
+
     private void Start() {
-      _cursor.Init();
+      _cursor?.Init();
     }
 
     void Update() {
+      if (CursorAtUI) {
+        _cursor?.Set(CursorName.UI);
+      } else
       if (CanAttackAtCursor) {
         HandleCombat();
-        _cursor.Set(CursorName.Attack);
+        _cursor?.Set(CursorName.Attack);
       } else if (CanMoveToCursor) {
         HandleMovement();
-        _cursor.Set(CursorName.Move);
+        _cursor?.Set(CursorName.Move);
       } else {
-        _cursor.Set(CursorName.None);
+        _cursor?.Set(CursorName.None);
       }
     }
 

@@ -171,55 +171,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 064acd193e9dcff46bc39a9a461458c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _cursor: {fileID: 11400000, guid: 30de0ffefdd6fc941a67d51f10a550ce, type: 2}
   _actionScheduler: {fileID: 0}
   _mover: {fileID: 0}
   _fighter: {fileID: 0}
---- !u!114 &6623096159538248421
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7190920011259911118}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4b695a54359af714dad3a7b803b993bf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _experienceStat:
-    statName: Experience
-    CurrentValue: 0
-    enable: 1
-    InitialValue: 0
-    enableMin: 1
-    MinValue: 0
-    enableMax: 0
-    MaxValue: 100
-    uis:
-    - statName: UI
-      uiType: 0
-      label: {fileID: 0}
-      prefix: 'Experience: '
-      suffix: 
-    OnStatChange:
-      m_PersistentCalls:
-        m_Calls: []
-    OnStatIncrease:
-      m_PersistentCalls:
-        m_Calls: []
-    OnStatDecrease:
-      m_PersistentCalls:
-        m_Calls: []
-    OnStatMin:
-      m_PersistentCalls:
-        m_Calls: []
-    OnStatMax:
-      m_PersistentCalls:
-        m_Calls: []
-    OnStatZero:
-      m_PersistentCalls:
-        m_Calls: []
-  _characterBaseStats: {fileID: 0}
 --- !u!114 &1103871476
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -250,6 +205,52 @@ MonoBehaviour:
       uiType: 0
       label: {fileID: 0}
       prefix: 'Strength: '
+      suffix: 
+    OnStatChange:
+      m_PersistentCalls:
+        m_Calls: []
+    OnStatIncrease:
+      m_PersistentCalls:
+        m_Calls: []
+    OnStatDecrease:
+      m_PersistentCalls:
+        m_Calls: []
+    OnStatMin:
+      m_PersistentCalls:
+        m_Calls: []
+    OnStatMax:
+      m_PersistentCalls:
+        m_Calls: []
+    OnStatZero:
+      m_PersistentCalls:
+        m_Calls: []
+  _characterBaseStats: {fileID: 0}
+--- !u!114 &6623096159538248421
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7190920011259911118}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b695a54359af714dad3a7b803b993bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _experienceStat:
+    statName: Experience
+    CurrentValue: 0
+    enable: 1
+    InitialValue: 0
+    enableMin: 1
+    MinValue: 0
+    enableMax: 0
+    MaxValue: 100
+    uis:
+    - statName: UI
+      uiType: 0
+      label: {fileID: 0}
+      prefix: 'Experience: '
       suffix: 
     OnStatChange:
       m_PersistentCalls:

@@ -1,11 +1,21 @@
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace Enginoobz.UI {
   [CreateAssetMenu(fileName = "CS_", menuName = "UI/Cusor Data", order = 0)]
   public class CursorData : ScriptableObject {
-    [SerializeField] private CursorName _name;
-    [SerializeField] private Texture2D _texture;
-    [SerializeField] private Vector2 _hotSpot;
+    [SerializeField]
+    private CursorName _name;
+
+    [SerializeField, OnValueChanged(nameof(CentralizeHotSpot))]
+    private Texture2D _texture;
+
+    [SerializeField, InlineButton(nameof(CentralizeHotSpot), label: "Center")]
+    private Vector2 _hotSpot;
+
+    public void CentralizeHotSpot() {
+      _hotSpot = new Vector2(_texture.width / 2, _texture.height / 2);
+    }
 
     public bool CompareName(CursorName nameTarget) {
       return _name == nameTarget;
@@ -24,5 +34,6 @@ namespace Enginoobz.UI {
     None = 0,
     Move = 1,
     Attack = 2,
+    UI = 3,
   }
 }

@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: CSPreset_Pixel
   m_EditorClassIdentifier: 
   _cursorDatas:
+  - {fileID: 11400000, guid: bdafc7766cace0842b8820b648efbcaa, type: 2}
   - {fileID: 11400000, guid: 783292463af8b0c40a875b21160047c6, type: 2}
   - {fileID: 11400000, guid: d338c942c8526424b921615ba66da354, type: 2}
-  - {fileID: 11400000, guid: bdafc7766cace0842b8820b648efbcaa, type: 2}
+  - {fileID: 11400000, guid: 0b6188ef6480bb1429069b3bca8a8975, type: 2}
