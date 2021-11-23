@@ -2,12 +2,16 @@ using UnityEngine;
 using Sirenix.OdinInspector;
 using Project.RPG.Stats;
 using System;
+using TMPro;
 
 namespace Project.RPG.Combat {
   // ? Rename AttackableTarget implementing IAttackable (TakeDamage, Die)
   public class CombatTarget : Attackable {
     [SerializeField, HideLabel]
     private Stat healthStat = new Stat(StatName.Health, 10);
+
+    [SerializeField]
+    private Spawner _damageLabelSpawner;
 
     [AutoRef, SerializeField, HideInInspector]
     private CharacterBaseStats _characterBaseStats;
@@ -29,6 +33,11 @@ namespace Project.RPG.Combat {
       // print(attacker.name + " attacked " + name + " - damage: " + damage);
       _lastAttacker = attacker;
       healthStat.Update(-damage);
+      // OPTIM: cache?
+      _damageLabelSpawner.Spawn().ForEach(label => {
+        var damageTMP = label.GetComponent<TextMeshProUGUI>();
+        damageTMP.text = damage.ToString();
+      });
       if (!_isDead) _animator.SetTrigger(getHitHash);
     }
 

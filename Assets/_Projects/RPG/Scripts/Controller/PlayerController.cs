@@ -30,8 +30,7 @@ namespace Project.RPG.Controller {
     void Update() {
       if (CursorAtUI) {
         _cursor?.Set(CursorName.UI);
-      } else
-      if (CanAttackAtCursor) {
+      } else if (CursorAtAttacker) {
         HandleCombat();
         _cursor?.Set(CursorName.Attack);
       } else if (CanMoveToCursor) {
@@ -66,7 +65,7 @@ namespace Project.RPG.Controller {
     private Fighter _fighter;
     private List<Attackable> currentAttackableTargets = new List<Attackable>();
 
-    private bool CanAttackAtCursor {
+    private bool CursorAtAttacker {
       get {
         currentAttackableTargets = GetComponentsViaMouseRay<Attackable>();
         return currentAttackableTargets.Count > 0;

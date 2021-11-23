@@ -3,7 +3,6 @@ using UnityEngine;
 using Sirenix.OdinInspector;
 using System.Collections.Generic;
 using System;
-using UnityEngine.Events;
 
 namespace Enginoobz {
 
@@ -18,7 +17,7 @@ namespace Enginoobz {
       get {
         List<string> tags = new List<string>();
         targets.ForEach(target => {
-          if (target.findMethod == Reference.FindMethod.Tag) tags.Add(target.tag);
+          if (target.findMethod == Reference.FindMethod.Tag) tags.Add(target.Tag);
         });
         return tags;
       }

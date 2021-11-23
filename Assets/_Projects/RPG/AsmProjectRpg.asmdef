@@ -5,13 +5,18 @@
         "AsmAutoRefs",
         "Library",
         "AsmSws",
-        "ch.giezi.tools.ScriptableObjectVariant"
+        "ch.giezi.tools.ScriptableObjectVariant",
+        "DOTweenAsm",
+        "Unity.TextMeshPro",
+        "Outlinable"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],
     "allowUnsafeCode": false,
     "overrideReferences": false,
-    "precompiledReferences": [],
+    "precompiledReferences": [
+        "DOTweenPro.dll"
+    ],
     "autoReferenced": true,
     "defineConstraints": [],
     "versionDefines": [],

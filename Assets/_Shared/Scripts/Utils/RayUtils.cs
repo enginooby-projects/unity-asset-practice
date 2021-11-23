@@ -31,4 +31,16 @@ public static class RayUtils {
 
     return targets;
   }
+
+  /// <summary>
+  /// Check if there is any GOs has the given component type is under cursor and store those component in the given list.
+  /// </summary>
+  public static bool IsMouseAtComponent<T>(out List<T> components) where T : Component {
+    components = GetComponentsViaMouseRay<T>();
+    return components.Count > 0;
+  }
+
+  public static bool IsMouseAtComponent<T>() where T : Component {
+    return GetComponentsViaMouseRay<T>().Count > 0;
+  }
 }

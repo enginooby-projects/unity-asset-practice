@@ -35,5 +35,6 @@ namespace Enginoobz.UI {
     Move = 1,
     Attack = 2,
     UI = 3,
+    Pickup = 4,
   }
 }

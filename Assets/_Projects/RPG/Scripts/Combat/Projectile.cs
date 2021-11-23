@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using System;
 using DG.Tweening;
@@ -7,7 +6,7 @@ using Sirenix.OdinInspector;
 
 namespace Project.RPG.Combat {
   // ? Create Projectile<TargetType> generic (replace CombatTarget)
-  public class Projectile : MonoBehaviour {
+  public class Projectile : MonoBehaviour, IPoolObject {
     [SerializeField] private Transform _target; // ? Constraint target transform by type
     [SerializeField] private float _speed = 10f;
     [SerializeField] private bool _chasingTarget;
@@ -39,7 +38,6 @@ namespace Project.RPG.Combat {
       GetInitialTargerPos();
       if (impactVfx) impactDuration = impactVfx.main.duration;
       poolComponent = GetComponent<PoolObject>();
-      poolComponent.onEnable += ResetForPool;
       collider = GetComponent<Collider>();
       meshRenderer = GetComponent<MeshRenderer>();
     }
@@ -100,10 +98,7 @@ namespace Project.RPG.Combat {
       poolComponent?.ReleaseToPool();
     }
 
-    /// <summary>
-    /// Clean dirty pooled projectile for reuse.
-    /// </summary>
-    public void ResetForPool() {
+    public void OnPoolReuse() {
       enableFlying = true;
       collider.enabled = true;
 

@@ -90,45 +90,45 @@ public static class TransformUtils {
   }
 
   /// <summary>
-  /// Rotate local X (red axis) to (stop at) target.
+  /// Rotate local X (red axis) to target.
   /// </summary>
   public static void LookAtX(this Transform transform, Transform target) {
     transform.LookAtX(target.position);
   }
 
   /// <summary>
-  /// Rotate local Y (green axis) to (stop at) target.
+  /// Rotate local Y (green axis) to target.
   /// </summary>
   public static void LookAtY(this Transform transform, Transform target) {
     transform.LookAtY(target.position);
   }
 
   /// <summary>
-  /// Rotate local Z (green axis) to (stop at) target.
+  /// Rotate local Z (blue axis) to target.
   /// </summary>
   public static void LookAtZ(this Transform transform, Transform target) {
     transform.LookAtZ(target.position);
   }
 
   /// <summary>
-  /// Rotate local X (red axis) to (stop at) destination.
+  /// Rotate local X (red axis) to destination.
   /// </summary>
   public static void LookAtX(this Transform transform, Vector3 dest) {
     transform.right = dest - transform.position;
   }
 
   /// <summary>
-  /// Rotate local Y (green axis) to (stop at) destination.
+  /// Rotate local Y (green axis) to destination.
   /// </summary>
   public static void LookAtY(this Transform transform, Vector3 dest) {
     transform.up = dest - transform.position;
   }
 
   /// <summary>
-  /// Rotate local Z (green axis) to (stop at) destination.
+  /// Rotate local Z (blue axis) to destination.
   /// </summary>
   public static void LookAtZ(this Transform transform, Vector3 dest) {
-    transform.up = dest - transform.position;
+    transform.forward = dest - transform.position;
   }
 
   /// <summary>
