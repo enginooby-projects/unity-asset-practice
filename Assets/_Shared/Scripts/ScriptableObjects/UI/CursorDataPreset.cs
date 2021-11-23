@@ -24,7 +24,7 @@ namespace Enginoobz.UI {
     /// Set to the first cursor in the preset.
     /// </summary>
     public void Init() {
-      Debug.Log("Init cursor");
+      // Debug.Log("Init cursor");
       _currentCursor = _cursorDatas[0];
       _currentCursor.SetCursor();
     }

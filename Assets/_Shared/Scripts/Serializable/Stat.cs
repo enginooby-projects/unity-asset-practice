@@ -94,8 +94,10 @@ public class Stat {
     // this.uis.ForEach(ui => ui.prefix = statName + ": ");
   }
 
-  private void UpdateStatUIs(int value) {
-    uis.ForEach(ui => ui.Update(value));
+  private void UpdateStatUIs(int currentValue) {
+    Nullable<int> maxValue = (enableMax) ? (int?)MaxValue : null;
+    Nullable<int> minValue = (enableMin) ? (int?)MinValue : null;
+    uis.ForEach(ui => ui.Update(currentValue, maxValue, minValue));
   }
 
   #region EVENTS ===================================================================================================================================

@@ -371,6 +371,36 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 1183850487
+--- !u!1 &6349590271204260760
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2836704585396786607}
+  m_Layer: 0
+  m_Name: Area Point
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2836704585396786607
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6349590271204260760}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 100, y: 100, z: 1}
+  m_Children: []
+  m_Father: {fileID: 6801937219462245278}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6737283759362367571
 GameObject:
   m_ObjectHideFlags: 0
@@ -399,7 +429,7 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 1915676417519660772}
+  - {fileID: 2836704585396786607}
   m_Father: {fileID: 2628081154779743786}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -508,10 +538,10 @@ MonoBehaviour:
         findMethod: 0
       pointRadius: 0.14
       pointPositions:
-      - {x: 0, y: 0, z: 0}
+      - {x: 0, y: 0.0421, z: 0}
       useTransforms: 1
       pointTransforms:
-      - {fileID: 1915676417519660772}
+      - {fileID: 2836704585396786607}
       pointAmount: {x: 1, y: 1, z: 1}
       pointDistance: {x: 1, y: 1, z: 1}
     area2DFuncPoint:
@@ -582,36 +612,6 @@ MonoBehaviour:
   gizmosMode: 1
   moveToLastSpawnedObject: 0
   saveSpawnedObjects: 0
---- !u!1 &7583421806717206927
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1915676417519660772}
-  m_Layer: 0
-  m_Name: Area Point
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1915676417519660772
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7583421806717206927}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 6801937219462245278}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1150116119796141274
 PrefabInstance:
   m_ObjectHideFlags: 0

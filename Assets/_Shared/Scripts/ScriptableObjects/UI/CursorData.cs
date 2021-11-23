@@ -25,7 +25,7 @@ namespace Enginoobz.UI {
       if (!_texture) return;
 
       Cursor.SetCursor(_texture, _hotSpot, CursorMode.Auto);
-      Debug.Log("Set Cursor");
+      // Debug.Log("Set Cursor");
     }
   }
 

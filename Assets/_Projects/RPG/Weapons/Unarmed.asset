@@ -17,3 +17,6 @@ MonoBehaviour:
   Range: 2
   Damage: 1
   Cooldown: 2
+  IsRightHand: 1
+  HasProjectile: 0
+  ProjectileSpawner: {fileID: 0}
