@@ -17,8 +17,16 @@ namespace Project.RPG.Controller {
     [SerializeField]
     private Vector2Wrapper _suspiciousTime = new Vector2Wrapper(new Vector2(2, 5), 0, 10);
 
+    [Tooltip("Enemy stays triggered duration this duration when get attacked.")]
     [SerializeField]
     private Vector2 _aggravationTime = new Vector2(3f, 5f);
+
+    [Tooltip("When get attacked, notify other enemies within this radius.")]
+    [SerializeField]
+    private float _notifyDistance = 5f; // TODO: draw Gizmos
+
+    [SerializeField]
+    private bool _notifyOnAttack;
 
     [SerializeField]
     private float _patrolSpeed = 2f;
@@ -35,7 +43,6 @@ namespace Project.RPG.Controller {
     private bool isPatrolling;
     private bool _isAggravated;
 
-
     void Update() {
       if (_vision.Contains(_playerRef) || _isAggravated) {
         HandleAttacking();
@@ -49,12 +56,22 @@ namespace Project.RPG.Controller {
       StartCoroutine(StopAggravationCoroutine(_aggravationTime.Random()));
     }
 
+    public void NotifyNeighbours() {
+      RaycastHit[] hits = Physics.SphereCastAll(transform.position, _notifyDistance, Vector3.up, 0);
+      foreach (var hit in hits) {
+        if (hit.transform.TryGetComponent<AIController>(out var ai)) {
+          ai?.Aggravate();
+        }
+      }
+    }
+
     private IEnumerator StopAggravationCoroutine(float delay) {
       yield return new WaitForSeconds(delay);
       _isAggravated = false;
     }
 
     private void HandleAttacking() {
+      if (_notifyOnAttack && !_isAggravated) NotifyNeighbours();
       _fighter.Attack(_playerRef);
       isPatrolling = false;
       if (!_navMover.IsPaused()) _navMover.Pause();

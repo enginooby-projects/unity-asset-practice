@@ -12,6 +12,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Health Bar InGame
       objectReference: {fileID: 0}
+    - target: {fileID: 6270473760096386600, guid: 697784a04c6d44a44b83ec49711c5925,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6270473760096386600, guid: 697784a04c6d44a44b83ec49711c5925,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8348213954010197200, guid: 697784a04c6d44a44b83ec49711c5925,
         type: 3}
       propertyPath: m_Pivot.x
@@ -339,7 +349,7 @@ PrefabInstance:
     - target: {fileID: 6158962978062698585, guid: 3d9a9594c83c85048a3a7bbbb52ecc31,
         type: 3}
       propertyPath: healthStat.OnStatDecrease.m_PersistentCalls.m_Calls.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6158962978062698585, guid: 3d9a9594c83c85048a3a7bbbb52ecc31,
         type: 3}
@@ -363,6 +373,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6158962978062698585, guid: 3d9a9594c83c85048a3a7bbbb52ecc31,
         type: 3}
+      propertyPath: healthStat.OnStatDecrease.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6158962978062698585, guid: 3d9a9594c83c85048a3a7bbbb52ecc31,
+        type: 3}
       propertyPath: healthStat.OnStatMin.m_PersistentCalls.m_Calls.Array.data[2].m_CallState
       value: 2
       objectReference: {fileID: 0}
@@ -378,13 +393,28 @@ PrefabInstance:
       objectReference: {fileID: 2872914451589176464}
     - target: {fileID: 6158962978062698585, guid: 3d9a9594c83c85048a3a7bbbb52ecc31,
         type: 3}
+      propertyPath: healthStat.OnStatDecrease.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 2872914451589176464}
+    - target: {fileID: 6158962978062698585, guid: 3d9a9594c83c85048a3a7bbbb52ecc31,
+        type: 3}
       propertyPath: healthStat.OnStatDecrease.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6158962978062698585, guid: 3d9a9594c83c85048a3a7bbbb52ecc31,
+        type: 3}
+      propertyPath: healthStat.OnStatDecrease.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6158962978062698585, guid: 3d9a9594c83c85048a3a7bbbb52ecc31,
         type: 3}
       propertyPath: healthStat.OnStatDecrease.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: Aggravate
+      objectReference: {fileID: 0}
+    - target: {fileID: 6158962978062698585, guid: 3d9a9594c83c85048a3a7bbbb52ecc31,
+        type: 3}
+      propertyPath: healthStat.OnStatDecrease.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: NotifyNeighbours
       objectReference: {fileID: 0}
     - target: {fileID: 6158962978062698585, guid: 3d9a9594c83c85048a3a7bbbb52ecc31,
         type: 3}
@@ -398,12 +428,22 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6158962978062698585, guid: 3d9a9594c83c85048a3a7bbbb52ecc31,
         type: 3}
+      propertyPath: healthStat.OnStatDecrease.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: Project.RPG.Controller.AIController, AsmProjectRpg
+      objectReference: {fileID: 0}
+    - target: {fileID: 6158962978062698585, guid: 3d9a9594c83c85048a3a7bbbb52ecc31,
+        type: 3}
       propertyPath: healthStat.OnStatMin.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 6158962978062698585, guid: 3d9a9594c83c85048a3a7bbbb52ecc31,
         type: 3}
       propertyPath: healthStat.OnStatDecrease.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 6158962978062698585, guid: 3d9a9594c83c85048a3a7bbbb52ecc31,
+        type: 3}
+      propertyPath: healthStat.OnStatDecrease.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 7992971881590152370, guid: 3d9a9594c83c85048a3a7bbbb52ecc31,
@@ -495,6 +535,9 @@ MonoBehaviour:
     Value: {x: 2, y: 5}
     min: 0
     max: 10
+  _aggravationTime: {x: 3, y: 5}
+  _notifyDistance: 5
+  _notifyOnAttack: 1
   _patrolSpeed: 2
   _fighter: {fileID: 0}
   _navMover: {fileID: 0}
