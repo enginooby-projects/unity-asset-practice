@@ -3,6 +3,8 @@ using Sirenix.OdinInspector;
 using Project.RPG.Stats;
 using System;
 using TMPro;
+using Enginoobz.Operator;
+using Enginoobz.Audio;
 
 namespace Project.RPG.Combat {
   // ? Rename AttackableTarget implementing IAttackable (TakeDamage, Die)
@@ -12,6 +14,9 @@ namespace Project.RPG.Combat {
 
     [SerializeField]
     private Spawner _damageLabelSpawner;
+
+    [SerializeField]
+    private AudioSourceOperator _audioSourceOpt;
 
     [AutoRef, SerializeField, HideInInspector]
     private CharacterBaseStats _characterBaseStats;
@@ -38,6 +43,8 @@ namespace Project.RPG.Combat {
         var damageTMP = label.GetComponent<TextMeshProUGUI>();
         damageTMP.text = damage.ToString();
       });
+
+      _audioSourceOpt?.Play(SFXAction.Damaged);
       if (!_isDead) _animator.SetTrigger(getHitHash);
     }
 

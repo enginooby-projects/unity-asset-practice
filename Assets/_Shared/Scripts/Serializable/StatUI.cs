@@ -51,27 +51,33 @@ public class StatUI {
   #endregion ===================================================================================================================================
 
   #region SLIDER ===================================================================================================================================
+  [BoxGroup("$statName")]
   [ShowIf(nameof(uiType), UIType.Slider)]
   [SerializeField]
   private Slider _slider;
 
+  [BoxGroup("$statName")]
   [ShowIf(nameof(uiType), UIType.Slider)]
   [SerializeField, LabelText("Update Speed")]
   [Range(.1f, 1f)]
   private float _sliderUpdateSpeed = .5f; // TODO: ease update
 
+  [BoxGroup("$statName")]
   [ShowIf(nameof(uiType), UIType.Slider)]
   [SerializeField, LabelText("Destroy On Zero")]
   private bool _destroySliderOnZero;
 
+  [BoxGroup("$statName")]
   [ShowIf(nameof(uiType), UIType.Slider)]
   [SerializeField, LabelText("Enable Fill Gradient")]
   private bool _enableSliderFillGradient;
 
+  [BoxGroup("$statName")]
   [ShowIf(nameof(uiType), UIType.Slider)]
   [SerializeField, EnableIf(nameof(_enableSliderFillGradient)), LabelText("Fill Gradient")]
   private Gradient _sliderFillGradient;
 
+  [BoxGroup("$statName")]
   [ShowIf(nameof(uiType), UIType.Slider)]
   [SerializeField, EnableIf(nameof(_enableSliderFillGradient)), LabelText("Fill Image")]
   private Image _sliderFillImage;
@@ -83,7 +89,9 @@ public class StatUI {
   public void Update(int currentValue, Nullable<int> maxValue = null, Nullable<int> minValue = null) {
     switch (uiType) {
       case UIType.Text:
-        if (label) label.text = prefix + currentValue + suffix;
+        if (label) {
+          label.text = prefix + currentValue + suffix;
+        }
         break;
       case UIType.Slider:
         if (maxValue.HasValue && _slider) {
