@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b7d177f8642f95f41891796f50ab4454, type: 3}
-  m_Name: Wand
+  m_Name: Wand Fireball
   m_EditorClassIdentifier: 
   Prefab: {fileID: 140182, guid: 6a007d7f207fec84da7d99d4cfa2328c, type: 3}
   AnimController: {fileID: 22100000, guid: 9bca4fbead951c04faf4e2c15693d400, type: 2}
@@ -18,6 +18,8 @@ MonoBehaviour:
   Damage: 3
   Cooldown: 2
   IsRightHand: 1
+  _sfxsOnLaunch: {fileID: 11400000, guid: 0eee5e5f0da307646a0719b025c34e30, type: 2}
+  _sfxsOnHit: {fileID: 0}
   HasProjectile: 1
   ProjectileSpawner: {fileID: 8586295886552992324, guid: 6a007d7f207fec84da7d99d4cfa2328c,
     type: 3}

@@ -57,7 +57,7 @@ public static class CollectionUtils {
   /// Return a random element which is different than the given one (can be null).
   /// </summary>
   public static T GetRandomOtherThan<T>(this List<T> list, T excludingElement) {
-    if (excludingElement == null) return list.GetRandom();
+    if (excludingElement == null || list.Count == 1) return list.GetRandom();
     int excludingIndex = list.IndexOf(excludingElement);
     int randomIndex = excludingIndex;
     while (randomIndex == excludingIndex) {

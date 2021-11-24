@@ -24,11 +24,11 @@ namespace Project.RPG.Combat {
     [Min(0.5f)] public float Cooldown = 1f;
     public bool IsRightHand = true;
 
-    [SerializeField]
+    [SerializeField, InlineEditor]
     [LabelText("SFXs On Launch")]
     private SFXData _sfxsOnLaunch;
 
-    [SerializeField]
+    [SerializeField, InlineEditor]
     [LabelText("SFXs On Hit")]
     private SFXData _sfxsOnHit; // ? Enable if HasProjectile
 
