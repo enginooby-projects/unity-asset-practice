@@ -23,6 +23,9 @@ namespace Project.RPG.Combat {
     [InlineEditor, SerializeField]
     private WeaponData _weaponData;
 
+    [SerializeField]
+    private AudioSource _audioSource;
+
     private NavMeshAgentOperator _agentOpr;
     private Animator _animator;
     private readonly int attackHash = Animator.StringToHash("attack");
@@ -66,7 +69,7 @@ namespace Project.RPG.Combat {
 
     // ? Rename to set target
     /// <summary>
-    /// [Update-safe method]
+    /// [Update-safe method] Trigger attacker to start approaching then attack target.
     /// </summary>
     public override void Attack(Attackable target) {
       if (_isAttacking && target == _currentTarget || target.IsDead) return;
@@ -152,6 +155,7 @@ namespace Project.RPG.Combat {
         _currentTarget?.GetAttacked(this, AttackDamage);
       }
 
+      if (_weaponData.SfxsOnLaunch) _weaponData.SfxsOnLaunch.PlayRandom(_audioSource);
       weaponVfxs?.Play();
     }
 
@@ -162,6 +166,7 @@ namespace Project.RPG.Combat {
     // ! E.g. if OnHit(CombatTarget) is above OnHit(), animation invoke this will cause error
     void OnProjectileHit(Attacker attacker, Attackable target) {
       target.GetAttacked(attacker, AttackDamage);
+      if (_weaponData.SfxsOnHit) _weaponData.SfxsOnHit.PlayRandom(_audioSource);
     }
 
     void OnHit() {

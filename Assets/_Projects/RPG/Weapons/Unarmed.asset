@@ -18,5 +18,7 @@ MonoBehaviour:
   Damage: 1
   Cooldown: 2
   IsRightHand: 1
+  _sfxsOnLaunch: {fileID: 11400000, guid: 413acd7239b230a42ac52f9de3eb3dfc, type: 2}
+  _sfxsOnHit: {fileID: 0}
   HasProjectile: 0
   ProjectileSpawner: {fileID: 0}

@@ -12,6 +12,8 @@ namespace Enginoobz.Audio {
 
     private AudioSource _audioSource;
 
+    public AudioSource AudioSource => _audioSource;
+
     public void Play(SFXAction sfxAction) {
       _sfxDataPreset.PlayRandom(_audioSource, _sfxTarget, sfxAction);
     }

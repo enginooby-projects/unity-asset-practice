@@ -3,7 +3,6 @@ using Sirenix.OdinInspector;
 using Project.RPG.Stats;
 using System;
 using TMPro;
-using Enginoobz.Operator;
 using Enginoobz.Audio;
 
 namespace Project.RPG.Combat {
@@ -44,8 +43,10 @@ namespace Project.RPG.Combat {
         damageTMP.text = damage.ToString();
       });
 
-      _audioSourceOpt?.Play(SFXAction.Damaged);
-      if (!_isDead) _animator.SetTrigger(getHitHash);
+      if (!_isDead) {
+        _animator.SetTrigger(getHitHash);
+        _audioSourceOpt?.Play(SFXAction.Damaged);
+      }
     }
 
     public override void Die() {
@@ -54,6 +55,7 @@ namespace Project.RPG.Combat {
       if (_lastAttacker.TryGetComponent<PlayerStats>(out PlayerStats playerStats)) {
         playerStats.ExperienceStat.Add(_experienceReward);
       }
+      _audioSourceOpt?.Play(SFXAction.Die);
       Destroy(this);
     }
 

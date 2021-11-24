@@ -174,6 +174,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 7271841806322923423}
   m_PrefabAsset: {fileID: 0}
+--- !u!82 &7701777335535083947 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 1011322231584675380, guid: 3d9a9594c83c85048a3a7bbbb52ecc31,
+    type: 3}
+  m_PrefabInstance: {fileID: 7271841806322923423}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &-7138939078944456383
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -206,6 +212,7 @@ MonoBehaviour:
   handRight: {fileID: 8711725156338924904}
   handLeft: {fileID: 8711725156338982144}
   _weaponData: {fileID: 11400000, guid: 21eabcbf6009c4942b1efc2bee04c904, type: 2}
+  _audioSource: {fileID: 7701777335535083947}
   _strengthStat:
     statName: Strength
     CurrentValue: 0

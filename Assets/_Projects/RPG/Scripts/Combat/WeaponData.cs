@@ -1,6 +1,7 @@
 using UnityEngine;
 using Sirenix.OdinInspector;
 using Giezi.Tools;
+using Enginoobz.Audio;
 
 namespace Project.RPG.Combat {
   [SOVariant]
@@ -23,6 +24,14 @@ namespace Project.RPG.Combat {
     [Min(0.5f)] public float Cooldown = 1f;
     public bool IsRightHand = true;
 
+    [SerializeField]
+    [LabelText("SFXs On Launch")]
+    private SFXData _sfxsOnLaunch;
+
+    [SerializeField]
+    [LabelText("SFXs On Hit")]
+    private SFXData _sfxsOnHit; // ? Enable if HasProjectile
+
     [OnValueChanged(nameof(GetProjectileSpawner))]
     [InfoBox("If use projectile, make sure animation has OnShoot/Shoot/OnHit/Hit() event")]
     public bool HasProjectile;
@@ -32,6 +41,9 @@ namespace Project.RPG.Combat {
     // TODO: Validate if projectile spawner exist in prefab
     // this links to Spawner in prefab, hence changes auto update
     public Spawner ProjectileSpawner;
+
+    public SFXData SfxsOnLaunch => _sfxsOnLaunch;
+    public SFXData SfxsOnHit => _sfxsOnHit;
 
     private void GetProjectileSpawner() {
       if (HasProjectile) ProjectileSpawner = Prefab.GetComponentInChildren<Spawner>();

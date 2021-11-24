@@ -139,6 +139,7 @@ MonoBehaviour:
   handRight: {fileID: 0}
   handLeft: {fileID: 0}
   _weaponData: {fileID: 0}
+  _audioSource: {fileID: 1011322231584675380}
 --- !u!114 &6158962978062698585
 MonoBehaviour:
   m_ObjectHideFlags: 0
