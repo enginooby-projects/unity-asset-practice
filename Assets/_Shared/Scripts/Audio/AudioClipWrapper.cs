@@ -18,7 +18,7 @@ namespace Enginoobz.Audio {
     private Vector2 _volumeRange = Vector2.one;
 
     [FoldoutGroup("$GROUP_NAME")]
-    [SerializeField, MinMaxSlider(-3, 3, true)]
+    [SerializeField, MinMaxSlider(0, 3, true)]
     private Vector2 _pitchRange = Vector2.one;
 
     public Vector2 VolumeRange {
@@ -35,7 +35,6 @@ namespace Enginoobz.Audio {
     public void PlayInEditMode() {
       if (_audioClip) PlayClip(_audioClip);
     }
-
     public void Play(AudioSource audioSource) {
       audioSource.volume = _volumeRange.Random();
       audioSource.pitch = _pitchRange.Random();

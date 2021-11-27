@@ -56,6 +56,11 @@ namespace Project.RPG.Controller {
       StartCoroutine(StopAggravationCoroutine(_aggravationTime.Random()));
     }
 
+    private IEnumerator StopAggravationCoroutine(float delay) {
+      yield return new WaitForSeconds(delay);
+      _isAggravated = false;
+    }
+
     public void NotifyNeighbours() {
       RaycastHit[] hits = Physics.SphereCastAll(transform.position, _notifyDistance, Vector3.up, 0);
       foreach (var hit in hits) {
@@ -63,11 +68,6 @@ namespace Project.RPG.Controller {
           ai?.Aggravate();
         }
       }
-    }
-
-    private IEnumerator StopAggravationCoroutine(float delay) {
-      yield return new WaitForSeconds(delay);
-      _isAggravated = false;
     }
 
     private void HandleAttacking() {

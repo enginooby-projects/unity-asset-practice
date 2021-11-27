@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using Sirenix.OdinInspector;
+using UnityEditor;
 using UnityEngine;
 
 namespace Enginoobz.Audio {
@@ -36,6 +37,23 @@ namespace Enginoobz.Audio {
     private List<AudioClipWrapper> _audioClipWrappers = new List<AudioClipWrapper>();
 
     private AudioClipWrapper _lastClipWrapper;
+
+    private AudioSource _previewAudioSource;
+
+    private void OnEnable() {
+      _previewAudioSource = EditorUtility
+        .CreateGameObjectWithHideFlags("Audio Preview", HideFlags.HideAndDontSave,
+        typeof(AudioSource)).GetComponent<AudioSource>();
+    }
+
+    private void OnDisable() {
+      DestroyImmediate(_previewAudioSource);
+    }
+
+    [Button]
+    public void Preview() {
+      PlayRandom(_previewAudioSource);
+    }
 
     // [SerializeField]
     // [InlineEditor]

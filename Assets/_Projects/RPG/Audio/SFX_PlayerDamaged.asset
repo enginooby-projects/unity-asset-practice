@@ -16,10 +16,6 @@ MonoBehaviour:
   _action: 0
   _globalVolumeRange: {x: 0.8, y: 1}
   _globalPitchRange: {x: 1, y: 1}
-  _clips:
-  - {fileID: 8300000, guid: c67b8f28ccb1a184cba5b958315fb75f, type: 3}
-  - {fileID: 8300000, guid: 3298d4d468badd044b2ca8930315e21d, type: 3}
-  - {fileID: 8300000, guid: da4f5695bff34bf4b88959334d31f55f, type: 3}
   _audioClipWrappers:
   - _audioClip: {fileID: 8300000, guid: c67b8f28ccb1a184cba5b958315fb75f, type: 3}
     _volumeRange: {x: 0.8, y: 1}

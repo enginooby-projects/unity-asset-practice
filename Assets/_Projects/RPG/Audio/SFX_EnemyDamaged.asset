@@ -14,15 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _target: 2
   _action: 0
-  _globalVolumeRange: {x: 0.8, y: 1}
-  _globalPitchRange: {x: 1, y: 1}
-  _clips:
-  - {fileID: 8300000, guid: 2ebf38d5081e6024eb5214ce611bd747, type: 3}
-  - {fileID: 8300000, guid: e7a068fc894ced2438c719feae89ea40, type: 3}
+  _globalVolumeRange: {x: 0.2455136, y: 1}
+  _globalPitchRange: {x: 1, y: 3}
   _audioClipWrappers:
   - _audioClip: {fileID: 8300000, guid: 2ebf38d5081e6024eb5214ce611bd747, type: 3}
-    _volumeRange: {x: 0.8, y: 1}
-    _pitchRange: {x: 1, y: 1}
+    _volumeRange: {x: 0.2455136, y: 1}
+    _pitchRange: {x: 1, y: 3}
   - _audioClip: {fileID: 8300000, guid: e7a068fc894ced2438c719feae89ea40, type: 3}
-    _volumeRange: {x: 0.8, y: 1}
-    _pitchRange: {x: 1, y: 1}
+    _volumeRange: {x: 0.2455136, y: 1}
+    _pitchRange: {x: 1, y: 3}
