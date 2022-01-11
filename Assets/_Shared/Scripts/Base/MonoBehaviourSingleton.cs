@@ -13,11 +13,26 @@ public class MonoBehaviourSingleton<T> : MonoBehaviour where T : Component {
         }
         if (_instance == null) {
           GameObject obj = new GameObject();
-          obj.hideFlags = HideFlags.HideAndDontSave;
+          obj.HideAndDontSave();
           _instance = obj.AddComponent<T>();
         }
       }
       return _instance;
     }
   }
+
+  public virtual void Awake() {
+    if (_instance) {
+      Destroy(gameObject);
+    } else {
+      _instance = this as T;
+      DontDestroyOnLoad(gameObject);
+      AwakeSingleton();
+    }
+  }
+
+  /// <summary>
+  /// Override to add addictional Awake logic for the singleton.
+  /// </summary>
+  public virtual void AwakeSingleton() { }
 }

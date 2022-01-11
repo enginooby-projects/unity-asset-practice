@@ -7,10 +7,18 @@ public static class CollectionUtils {
     return list == null || list.Count == 0;
   }
 
+  /// <summary>
+  /// Check if list has at least 1 element.
+  /// </summary>
+  public static bool IsSet<T>(this IList<T> list) {
+    return list != null && list.Count > 0;
+  }
+
   public static bool ValidateIndex<T>(this IList<T> list, int index) {
     return 0 <= index && index < list.Count;
   }
 
+  #region ELEMENT RETRIEVAL
   // TODO: rename GetNext
   public static T NavNext<T>(this List<T> list, T currentItem) {
     int currentIndex = list.IndexOf(currentItem);
@@ -49,6 +57,16 @@ public static class CollectionUtils {
     return list[previous];
   }
 
+  public static T GetLast<T>(this IList<T> list) {
+    return list[list.Count - 1];
+  }
+
+  public static void RemoveLast<T>(this IList<T> list) {
+    if (!list.IsSet()) return;
+
+    list.RemoveAt(list.Count - 1);
+  }
+
   public static T GetRandom<T>(this List<T> list) {
     return list[Random.Range(0, list.Count)];
   }
@@ -66,6 +84,46 @@ public static class CollectionUtils {
     return list[randomIndex];
   }
 
+  /// <summary>
+  /// Return true if the element exists and not null.
+  /// </summary>
+  public static bool TryGetById<T>(this List<UnityEngine.Object> objects, int id, out T element) where T : UnityEngine.Object {
+    if (objects.Count > id) {
+      element = objects[id] as T;
+      return element ? true : false;
+    } else {
+      element = null;
+      return false;
+    }
+  }
+
+  /// <summary>
+  /// Return true if the element exists and not null.
+  /// </summary>
+  public static bool TryGetById<T>(this UnityEngine.Object[] objects, int id, out T element) where T : UnityEngine.Object {
+    if (objects.Length > id) {
+      element = objects[id] as T;
+      return element ? true : false;
+    } else {
+      element = null;
+      return false;
+    }
+  }
+
+  /// <summary>
+  /// Return true if the element exists and not null.
+  /// </summary>
+  public static bool TryGetById(this UnityEngine.Object[] objects, int id, out UnityEngine.Object element) {
+    if (objects.Length > id) {
+      element = objects[id];
+      return element ? true : false;
+    } else {
+      element = null;
+      return false;
+    }
+  }
+  #endregion
+
   private static System.Random rng = new System.Random();
   public static void Shuffle<T>(this IList<T> list) {
     Debug.Log("Shuffle");
@@ -79,10 +137,6 @@ public static class CollectionUtils {
     }
   }
 
-  public static T GetLast<T>(this List<T> list) {
-    return list[list.Count - 1];
-  }
-
   // ! not pass by ref => not modify original list
   public static List<GameObject> OrderByName(this List<GameObject> list) {
     list = list.OrderBy(item => item.name).ToList();
@@ -94,6 +148,9 @@ public static class CollectionUtils {
   /// </summary>
   public static void Destroy<T>(this T[] components) where T : MonoBehaviour {
     foreach (T component in components) {
+#if UNITY_EDITOR
+      if (!UnityEditor.EditorApplication.isPlaying) Object.DestroyImmediate(component.gameObject);
+#endif
       Object.Destroy(component.gameObject);
     }
   }
@@ -101,6 +158,7 @@ public static class CollectionUtils {
   /// <summary>
   /// Return the GameObject in the list which is nearest to the given position.
   /// </summary>
+  // REFACTOR
   public static GameObject GetNearestTo(this IList<GameObject> list, Vector3 pos) {
     int nearestIndex = 0;
     float lastDist = Mathf.Infinity;
@@ -115,7 +173,6 @@ public static class CollectionUtils {
 
     return list[nearestIndex];
   }
-
 
   /// <summary>
   /// Return the GameObject in the list which is nearest to the given position.
@@ -134,4 +191,5 @@ public static class CollectionUtils {
 
     return list[nearestIndex];
   }
+
 }

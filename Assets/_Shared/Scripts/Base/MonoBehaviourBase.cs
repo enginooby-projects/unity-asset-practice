@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using Sirenix.OdinInspector;
 
@@ -12,8 +10,12 @@ using Sirenix.OdinInspector;
 /// * vs. ComponentOperator base is for built-in Unity Components
 /// </summary>
 public abstract class MonoBehaviourBase : MonoBehaviour {
+  // [SerializeField, HideInInspector]
+  // private Vector3? _initalPosition = null;
+  // public Vector3 InitialPosition => _initalPosition ??= transform.position;
+
   [FoldoutGroup("MonoBehaviour Common")]
-  [Button]
+  // [Button]
   public void GetAutoReferences() {
 #if UNITY_EDITOR
     UnityEditor.EditorApplication.ExecuteMenuItem("Tools/AutoRefs/Set AutoRefs");
@@ -24,9 +26,8 @@ public abstract class MonoBehaviourBase : MonoBehaviour {
   [FoldoutGroup("MonoBehaviour Common")]
   [SerializeField, Min(0f)] float lifespan;
 
-  public void DisableForSecs(float seconds) {
-    this.Disable(seconds);
-  }
+  public void DisableForSecs(float seconds) => this.Disable(seconds);
+
 
   public void ToggleActive() {
 

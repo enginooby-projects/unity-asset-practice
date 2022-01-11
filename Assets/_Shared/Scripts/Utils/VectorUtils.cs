@@ -1,30 +1,46 @@
 using UnityEngine;
 
 public static class VectorUtils {
-  public static Vector3 v000 = Vector3.zero;
+  public static readonly Vector3 v000 = Vector3.zero;
 
   /// <summary>
   /// Vector3.zero
   /// </summary>
-  public static Vector3 v0 = Vector3.zero;
-  public static Vector3 v111 = Vector3.one;
+  public static readonly Vector3 v0 = Vector3.zero;
+  public static readonly Vector3 v111 = Vector3.one;
 
   /// <summary>
   /// Vector3.one
   /// </summary>
-  public static Vector3 v1 = Vector3.one;
-  public static Vector3 v001 = Vector3.forward;
-  public static Vector3 v011 = new Vector3(0, 1, 1);
-  public static Vector3 v101 = new Vector3(1, 0, 1);
-  public static Vector3 v110 = new Vector3(1, 1, 0);
-  public static Vector3 vm10m1 = new Vector3(-1, 0, -1);
-  public static Vector3 vm101 = new Vector3(-1, 0, 1);
-  public static Vector3 v10m1 = new Vector3(1, 0, -1);
-  public static Vector3 v00m1 = Vector3.back;
-  public static Vector3 v010 = Vector3.up;
-  public static Vector3 v0m10 = Vector3.down;
-  public static Vector3 vm100 = Vector3.left;
-  public static Vector3 v100 = Vector3.right;
+  public static readonly Vector3 v1 = Vector3.one;
+  public static readonly Vector3 v001 = Vector3.forward;
+  public static readonly Vector3 v011 = new Vector3(0, 1, 1);
+  public static readonly Vector3 v101 = new Vector3(1, 0, 1);
+  public static readonly Vector3 v110 = new Vector3(1, 1, 0);
+  public static readonly Vector3 vm10m1 = new Vector3(-1, 0, -1);
+  public static readonly Vector3 vm101 = new Vector3(-1, 0, 1);
+
+  /// <summary>
+  /// Vector3(-1, 1, 0)
+  /// </summary>
+  public static readonly Vector3 vm110 = new Vector3(-1, 1, 0);
+
+  /// <summary>
+  /// Vector3(1, -1, 0)
+  /// </summary>
+  public static readonly Vector3 v1m10 = new Vector3(1, -1, 0);
+
+  /// <summary>
+  /// Vector3(-1, -1, 0)
+  /// </summary>
+  public static readonly Vector3 vm1m10 = new Vector3(-1, -1, 0);
+
+  public static readonly Vector3 v10m1 = new Vector3(1, 0, -1);
+  public static readonly Vector3 v00m1 = Vector3.back;
+  public static readonly Vector3 v010 = Vector3.up;
+  public static readonly Vector3 v0m10 = Vector3.down;
+  public static readonly Vector3 vm100 = Vector3.left;
+  public static readonly Vector3 v100 = Vector3.right;
 
   /// <summary>Return true if Vector2.zero, used to treat unset Vector as infinite Vector (e.g. in Boundary)</summary>
   public static bool ContainsIgnoreZero(this Vector2 vect, float value) {
@@ -37,6 +53,10 @@ public static class VectorUtils {
   public static bool Contains(this Vector2 vect, float value) {
     return (vect.x <= value && value <= vect.y);
   }
+
+  // public static bool Equals(this Vector3 vect1, Vector3 vect2, AxisFlag axises){
+
+  // }
 
   /// <summary> Uses a Vector2 where x is min and y is max. </summary>
   public static float Clamp(this Vector2 vect, float value) {
@@ -61,6 +81,37 @@ public static class VectorUtils {
 
   public static Vector2 Offset(this Vector2 vect, float offset) {
     return new Vector2(vect.x + offset, vect.y + offset);
+  }
+
+  public static Vector3 WithX(this Vector3 vect, float newX) {
+    return new Vector3(newX, vect.y, vect.z);
+  }
+
+  public static Vector3 WithY(this Vector3 vect, float newY) {
+    return new Vector3(vect.x, newY, vect.z);
+  }
+
+  public static Vector3 WithNegativeY(this Vector3 vect) {
+    return new Vector3(vect.x, -Mathf.Abs(vect.y), vect.z);
+  }
+
+  public static Vector3 WithPositiveY(this Vector3 vect) {
+    return new Vector3(vect.x, Mathf.Abs(vect.y), vect.z);
+  }
+
+  public static Vector3 OffsetX(this Vector3 vect, float offset) {
+    return new Vector3(vect.x + offset, vect.y, vect.z);
+  }
+  public static Vector3 OffsetY(this Vector3 vect, float offset) {
+    return new Vector3(vect.x, vect.y + offset, vect.z);
+  }
+
+  public static Vector3 OffsetZ(this Vector3 vect, float offset) {
+    return new Vector3(vect.x, vect.y, vect.z + offset);
+  }
+
+  public static Vector3 WithZ(this Vector3 vect, float newZ) {
+    return new Vector3(vect.x, vect.y, newZ);
   }
 
   public static Vector3 SetX(this Vector3 vect, float newX) {

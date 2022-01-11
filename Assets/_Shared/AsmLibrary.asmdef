@@ -12,7 +12,10 @@
         "DOTweenAsm",
         "MeshEffect",
         "Outlinable",
-        "ch.giezi.tools.ScriptableObjectVariant"
+        "ch.giezi.tools.ScriptableObjectVariant",
+        "AsmIUnified",
+        "ALINE",
+        "Unity.Mathematics"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

@@ -3,6 +3,7 @@ using static VectorUtils;
 
 // namespace ExtentionMethods {
 public static class TransformUtils {
+  #region RESET =======================================================================================================================================================================
   /// <summary>
   /// Reset position, rotation, scale
   /// </summary>
@@ -32,7 +33,26 @@ public static class TransformUtils {
   public static void ResetScale(this Transform transform) {
     transform.localScale = new Vector3(1, 1, 1);
   }
+  #endregion RESET ====================================================================================================================================================================
 
+  #region POSITION ===================================================================================================================================
+  public static void SetPosX(this Transform transform, float x) {
+    transform.position = new Vector3(x, transform.position.y, transform.position.z);
+  }
+
+  public static void SetPosY(this Transform transform, float y) {
+    transform.position = new Vector3(transform.position.x, y, transform.position.z);
+  }
+
+  public static void SetPosZ(this Transform transform, float z) {
+    transform.position = new Vector3(transform.position.x, transform.position.y, z);
+  }
+
+  public static void SetPos(this Transform transform, Vector3 pos) {
+    transform.position = pos;
+  }
+
+  // + REMOVE
   public static void PosX(this Transform transform, float x) {
     transform.position = new Vector3(x, transform.position.y, transform.position.z);
   }
@@ -45,7 +65,9 @@ public static class TransformUtils {
     transform.position = new Vector3(transform.position.x, transform.position.y, z);
   }
 
-  /// <summary>E.g. Update (1, 1, 1) with (2, 2, 2) with Axis.XZ => (2, 1, 2)</summary>
+  /// <summary>
+  /// E.g. Update (1, 1, 1) with (2, 2, 2) with Axis.XZ => (2, 1, 2)
+  /// </summary>
   public static void UpdatePosOnAxis(this Transform transform, Transform target, AxisFlag axis) {
     if (axis.HasFlag(AxisFlag.X)) transform.PosX(target.position.x);
     if (axis.HasFlag(AxisFlag.Y)) transform.PosY(target.position.y);
@@ -55,7 +77,7 @@ public static class TransformUtils {
   /// <summary>
   /// Copy position, rotation & localScale values from target Transform.
   /// </summary>
-  public static void CopyFrom(this Transform transform, Transform target) {
+  public static void Copy(this Transform transform, Transform target) {
     transform.position = target.position;
     transform.rotation = target.rotation;
     transform.localScale = target.localScale;
@@ -64,11 +86,47 @@ public static class TransformUtils {
   /// <summary>
   /// Copy position, rotation & localScale values from target GameObject's Transform.
   /// </summary>
-  public static void CopyFrom(this Transform transform, GameObject target) {
+  public static void Copy(this Transform transform, GameObject target) {
     transform.position = target.transform.position;
     transform.rotation = target.transform.rotation;
     transform.localScale = target.transform.localScale;
   }
+  #endregion POSITION ================================================================================================================================
+
+  #region SCALE ===================================================================================================================================
+  /// <summary>
+  /// Multiply transform.localScale.y by the given factor.
+  /// </summary>
+  /// <param name="transform"></param>
+  public static void MultiplyScaleY(this Transform transform, float factor) {
+    transform.SetScaleY(transform.localScale.y * factor);
+  }
+
+  public static void SetScaleY(this Transform transform, float value) {
+    transform.localScale = new Vector3(transform.localScale.x, value, transform.localScale.z);
+  }
+
+  /// <summary>
+  /// Set localScale.x/y/z to the given value.
+  /// </summary>
+  public static void SetScale(this Transform transform, float value) {
+    transform.localScale = Vector3.one * value;
+  }
+
+  /// <summary>
+  /// Set localScale.x/y/z to the given value.
+  /// </summary>
+  public static void SetScale(this MonoBehaviour monoBehaviour, float value) {
+    monoBehaviour.transform.localScale = Vector3.one * value;
+  }
+
+  /// <summary>
+  /// Set localScale.x/y/z to the given value.
+  /// </summary>
+  public static void SetScale(this GameObject go, float value) {
+    go.transform.localScale = Vector3.one * value;
+  }
+  #endregion SCALE ================================================================================================================================
 
   public static float DistanceFrom(this Transform transform, Vector3 targetPos) {
     // optimizer than Vector3.Distance()
@@ -132,6 +190,7 @@ public static class TransformUtils {
   }
 
   /// <summary>
+  /// [In-update] <br/>
   /// Translate on local X (included deltaTime).
   /// </summary>
   public static void MoveX(this Transform transform, float distance = 1f) {
@@ -143,6 +202,17 @@ public static class TransformUtils {
   /// </summary>
   public static void MoveY(this Transform transform, float distance = 1f) {
     transform.Translate(v010 * Time.deltaTime * distance);
+  }
+
+  /// <summary>
+  /// This looping movement is based on Time.time so don't need extra direction flag in the MonoBehaviour<br/>
+  /// Howerver, if the speed is changed in runtime, the position may be teleported.
+  /// </summary>
+  public static void MoveYInRange(this Transform transform, float minY, float maxY, float speed = 1f) {
+    Vector3 pos1 = transform.position.WithY(minY);
+    Vector3 pos2 = transform.position.WithY(maxY);
+    transform.position = Vector3.Lerp(pos1, pos2, (Mathf.Sin(speed * Time.time) + 1.0f) / 2.0f);
+    // transform.position = Vector3.Lerp(pos1, pos2, Mathf.PingPong(Time.time * speed, 1.0f));
   }
 
   /// <summary>
@@ -176,5 +246,13 @@ public static class TransformUtils {
       return collider.bounds.center;
     }
     return transform.position;
+  }
+
+  /// <summary>
+  /// Destroy all child GameObjects safely.
+  /// </summary>
+  public static void DestroyChildren(this Transform transform) {
+    // OPTIM: not convert to array
+    transform.gameObject.GetComponentsInChildrenOnly<Transform>().ToArray().DestroyGameObjects();
   }
 }
