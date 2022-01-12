@@ -509,21 +509,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _playerRef:
-    componentOwner: {fileID: 0}
-    gameObjectRef: {fileID: 0}
+    GameObject: {fileID: 0}
+    _gameObjectRef: {fileID: 0}
     _tag: Player
     _name: Player
     _type: 
     findMethod: 1
   _vision:
-    componentOwner: {fileID: 0}
+    GameObject: {fileID: 0}
     origin:
-      componentOwner: {fileID: 0}
-      gameObjectRef: {fileID: 8548620411866863588}
+      GameObject: {fileID: 0}
+      _gameObjectRef: {fileID: 0}
       _tag: Player
       _name: Player
       _type: 
-      findMethod: 0
+      findMethod: 1
     label: Vision
     radius: 10
     angle: 90

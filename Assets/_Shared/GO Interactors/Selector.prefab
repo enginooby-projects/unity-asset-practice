@@ -46,7 +46,8 @@ MonoBehaviour:
   selectMode: 0
   canToggleSelection: 1
   selectEffect: 0
-  highlighter: {fileID: 0}
+  highlighter: {fileID: 1793849010438909549, guid: ed15883872d4d1a4380f82046b2d09d5,
+    type: 3}
   allTagsSelectableOlmc: 1
   selectableTagsOlmc: []
   unselectableTagsOlmc: []

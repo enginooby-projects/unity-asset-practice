@@ -1,6 +1,5 @@
-﻿/* Usage: invoke Select() or assign tag and add collider on target */
+﻿// * Usage: invoke Select() or assign tag and add collider on target
 
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Sirenix.OdinInspector;
