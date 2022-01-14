@@ -54,29 +54,29 @@ public class Selector : MonoBehaviour {
   }
 
   void Update() {
-    if (selectableTagsOlmc.Count > 0 || allTagsSelectableOlmc) ProcessOlmc();
-    if (selectableTagsOmh.Count > 0 || allTagsSelectableOmh) ProcessOmh();
+    if (selectableTagsOlmc.Count > 0 || allTagsSelectableOlmc) ProcessOLMC();
+    if (selectableTagsOmh.Count > 0 || allTagsSelectableOmh) ProcessOMH();
   }
 
-  private void ProcessOlmc() {
+  private void ProcessOLMC() {
     if (MouseButton.Left.IsDown()) {
       ray = mainCamera.ScreenPointToRay(Input.mousePosition);
       if (Physics.Raycast(ray, out hit) && IsTagSelectableOlmc(hit.collider.tag)) {
-        SelectOrDeselect(hit.collider.gameObject);
+        Toggle(hit.collider.gameObject);
       }
     }
   }
 
-  private void ProcessOmh() {
+  private void ProcessOMH() {
     ray = mainCamera.ScreenPointToRay(Input.mousePosition);
     if (Physics.Raycast(ray, out hit) && IsTagSelectableOmh(hit.collider.tag)) {
       if (!CurrentSelectedObject || CurrentSelectedObject != hit.collider.gameObject) {
-        SelectOrDeselect(hit.collider.gameObject);
+        Toggle(hit.collider.gameObject);
       }
     }
   }
 
-  private void SelectOrDeselect(GameObject target) {
+  private void Toggle(GameObject target) {
     if (target == CurrentSelectedObject) {
       if (canToggleSelection) Deselect(target);
     } else {

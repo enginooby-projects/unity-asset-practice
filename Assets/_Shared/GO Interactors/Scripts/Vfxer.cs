@@ -4,9 +4,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Sirenix.OdinInspector;
-using System;
 using QFSW.QC;
 
+//? Rename to MeshVFXer
 public class Vfxer : MonoBehaviour {
   // Add a small delay when changing effect 
   // to prevent destroying the previous effect to also destroy the material of the next effect
@@ -14,13 +14,17 @@ public class Vfxer : MonoBehaviour {
 
   // TODO: Replace by Collection
   [ValueDropdown(nameof(vfxPrefabs))]
-  [SerializeField] private PSMeshRendererUpdater currentVfxPrefab;
-  [SerializeField] private List<PSMeshRendererUpdater> vfxPrefabs;
+  [SerializeField]
+  private PSMeshRendererUpdater currentVfxPrefab;
+  [SerializeField]
+  private List<PSMeshRendererUpdater> vfxPrefabs;
 
   [Header("[Specialized VFX]")]
   [ValueDropdown(nameof(burnVfxPrefabs))]
-  [SerializeField] private PSMeshRendererUpdater defaultBurnVfxPrefab;
-  [SerializeField] private List<PSMeshRendererUpdater> burnVfxPrefabs;
+  [SerializeField]
+  private PSMeshRendererUpdater defaultBurnVfxPrefab;
+  [SerializeField]
+  private List<PSMeshRendererUpdater> burnVfxPrefabs;
 
 
   private void DestroyAllMeshEffects(GameObject target) {

@@ -8,7 +8,7 @@ public static class RayUtils {
   public static Ray MouseRay => Camera.main.ScreenPointToRay(Input.mousePosition);
 
   /// <summary>
-  /// If ray casted from main camera to mouse position hit anything.
+  /// If ray casted from main camera to mouse position hit any collider.
   /// </summary>
   public static bool IsMouseRayHit => Physics.Raycast(MouseRay);
 

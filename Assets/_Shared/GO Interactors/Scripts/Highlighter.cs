@@ -8,11 +8,14 @@ using QFSW.QC;
 
 public class Highlighter : MonoBehaviour {
   // TODO: Replace by Collection
-  [ValueDropdown(nameof(highlightVfxPrefabs))] [SerializeField] private Outlinable currentHighlightVfx;
-  [SerializeField] private List<Outlinable> highlightVfxPrefabs;
+  [ValueDropdown(nameof(highlightVfxPrefabs))]
+  [SerializeField]
+  private Outlinable currentHighlightVfx;
+  [SerializeField]
+  private List<Outlinable> highlightVfxPrefabs;
 
-  public void Highlight(GameObject target) {
-    var outlinable = target.GetComponent<Outlinable>();
+  public void Highlight(GameObject go) {
+    var outlinable = go.GetComponent<Outlinable>();
     if (outlinable) {
       outlinable.enabled = true;
       return;
@@ -21,11 +24,17 @@ public class Highlighter : MonoBehaviour {
     // instantiate a new Outlinable to use as template instead of directly using SerializeField prefab 
     // to prevent linking (update in GameObject will cause update in prefab)
     Outlinable templateInstance = Instantiate(currentHighlightVfx, Vector3.zero, Quaternion.identity);
-    var outlinableToUse = target.AddComponent<Outlinable>().GetLinkedCopyOf(templateInstance);
+    var outlinableToUse = go.AddComponent<Outlinable>().GetLinkedCopyOf(templateInstance);
     Destroy(templateInstance.gameObject);
 
-    var outlineTarget = new OutlineTarget(target.GetComponent<Renderer>());
+    var outlineTarget = new OutlineTarget(go.GetComponent<Renderer>());
     outlinableToUse.OutlineTargets.Add(outlineTarget);
+  }
+
+  public void Highlight(GameObject[] gos) {
+    foreach (var go in gos) {
+      Highlight(go);
+    }
   }
 
   public void Unhighlight(GameObject target) {
@@ -37,18 +46,12 @@ public class Highlighter : MonoBehaviour {
     // Destroy(outlinable);
   }
 
-  public void HighlightMultiple(GameObject[] targets) {
-    foreach (var target in targets) {
-      Highlight(target);
-    }
-  }
-
   [Command(CommandPrefix.Highlight + "tag")]
   public void HighlightByTag(string tag) {
-    HighlightMultiple(GameObject.FindGameObjectsWithTag(tag));
+    Highlight(GameObject.FindGameObjectsWithTag(tag));
   }
 
-  // PROBLEM: this does not copy all deep parameters related to Fill Parameter
+  //! PROBLEM: this does not copy all deep parameters related to Fill Parameter
   private void CopyOutlinable(ref Outlinable outlinable, Outlinable template) {
     outlinable.RenderStyle = template.RenderStyle;
     outlinable.DrawingMode = template.DrawingMode;

@@ -1,11 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using DG.Tweening;
 
 public class Transformer : MonoBehaviour {
-  [SerializeField] MonoBehaviour currentPlayer;
-  [SerializeField] Rigidbody objectRigidbody;
+  [SerializeField]
+  MonoBehaviour currentPlayer;
+  [SerializeField]
+  Rigidbody objectRigidbody;
+
   private Vector3 previousPlayerPos;
   private Selector selector;
 
