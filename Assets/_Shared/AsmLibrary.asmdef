@@ -16,7 +16,8 @@
         "AsmIUnified",
         "ALINE",
         "Unity.Mathematics",
-        "Elringus.BlendModes.Runtime"
+        "Elringus.BlendModes.Runtime",
+        "AsmMegaFiers"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

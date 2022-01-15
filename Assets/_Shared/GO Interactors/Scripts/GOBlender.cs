@@ -8,8 +8,16 @@ using BlendModes;
 /// <summary>
 /// * Use cases: colorize GOs, see through, un-highlight
 /// </summary>
-public class GOBlender : GOInteractorEffectEnum<GOBlender, BlendModeEffect, BlendMode, Material> {
+public class GOBlender : GOI_EffectIsEnum<GOBlender, BlendModeEffect, BlendMode, Material> {
   protected override BlendMode InitEffectEnum() => BlendMode.Divide;
+
+  protected override void OnComponentAdded(GameObject go, BlendModeEffect component) {
+    component.SetShaderFamily("LwrpUnlitTransparent"); // ! String
+  }
+
+  protected override Material CacheObject(GameObject go) {
+    return go.GetComponent<Renderer>().material;
+  }
 
   public override void Interact(GameObject go, BlendMode blendMode) {
     AddOrGetCachedComponent(go).SetBlendMode(blendMode);
@@ -19,14 +27,6 @@ public class GOBlender : GOInteractorEffectEnum<GOBlender, BlendModeEffect, Blen
     //? implement caching old effect (use different data structure for _interactedGos)
     // old blend mode is not cached to restore, so for now, just set all to current blend mode 
     Interact(go);
-  }
-
-  protected override void OnComponentAdded(GameObject go, BlendModeEffect component) {
-    component.SetShaderFamily("LwrpUnlitTransparent"); // ! String
-  }
-
-  protected override Material CacheObject(GameObject go) {
-    return go.GetComponent<Renderer>().material;
   }
 
   // TODO: Handle blended GO in edit time

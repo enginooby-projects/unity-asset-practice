@@ -1,38 +1,22 @@
-// Dependencies: Mesh Effects
-
+// * Dependencies: Mesh Effects
 using System.Collections;
 using UnityEngine;
 
-public class GOMeshVFXer : GOInteractorEffectComponent<GOMeshVFXer, PSMeshRendererUpdater> {
+public class GOMeshVFXer : GOI_ComponentIsEffect<GOMeshVFXer, PSMeshRendererUpdater> {
   // Add a small delay when changing effect 
   // to prevent destroying the previous effect also destroy the material of the next effect
   const float TRANSITION_DELAY = 0.2f;
 
+  protected override void SetComponentActive(PSMeshRendererUpdater component, bool isActive) => component.IsActive = isActive;
+  protected override bool GetComponentActive(PSMeshRendererUpdater component) => component.IsActive;
+
   public override void Interact(GameObject go, PSMeshRendererUpdater effect) {
-    StartCoroutine(AddMeshVFXCoroutine(go, effect));
-  }
-
-  public override void InteractRevert(GameObject go) {
-    if (TryGetCachedComponent(go, out var meshUpdater)) {
-      meshUpdater.IsActive = false;
-    }
-  }
-
-  public override void InteractRestore(GameObject go) {
-    if (TryGetCachedComponent(go, out var meshUpdater)) {
-      meshUpdater.IsActive = true;
-    }
-  }
-
-  public override void InteractToggle(GameObject go) {
-    if (TryGetCachedComponent(go, out var meshUpdater)) {
-      meshUpdater.IsActive = !meshUpdater.IsActive;
-    }
+    StartCoroutine(AddComponentCoroutine(go, effect));
   }
 
   //! This completely replaces AddOrGetCachedComponent in base since it adds component to a child not this GO.
   // REFACTOR: Generalize and move to base class (AddChildComponentEffectCoroutine)
-  private IEnumerator AddMeshVFXCoroutine(GameObject go, PSMeshRendererUpdater effect) {
+  private IEnumerator AddComponentCoroutine(GameObject go, PSMeshRendererUpdater effect) {
     if (_interactedGos.ContainsKey(go)) _interactedGos.Remove(go);
 
     DestroyOldMeshVFXes(go);

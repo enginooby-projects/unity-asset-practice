@@ -2,17 +2,10 @@
 // * Prefab workflow. Interactor singleton need to be setup in scene.
 
 using System.Collections.Generic;
-using System.Linq;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
-/// <summary>
-/// TComponent: GOInteractor applies interacting effect by adding this component to the GO. <br/>
-/// TComponent is also the interacting effect which can be setup with prefabs.
-/// </summary>
-public abstract class GOInteractorEffectComponent<TSelf, TComponent> : GOInteractor<TSelf, TComponent>
-where TSelf : GOInteractorEffectComponent<TSelf, TComponent>
-where TComponent : MonoBehaviour {
+public abstract partial class GOI_ComponentIsEffect<TSelf, TComponent> {
   // TODO: Replace by Collection
   [ValueDropdown(nameof(_effectPrefabs))]
   [SerializeField]
@@ -42,9 +35,25 @@ where TComponent : MonoBehaviour {
   public override void DecrementInteractingEffect() => _currentEffect = _effectPrefabs.GetPrevious(_currentEffect);
 
   public abstract void Interact(GameObject go, TComponent effect);
-
   public override void Interact(GameObject go) => Interact(go, _currentEffect);
 
+  public override void InteractRestore(GameObject go) {
+    if (_interactedGos.TryGetValue(go, out var component)) {
+      SetComponentActive(component, true);
+    }
+  }
+
+  public override void InteractRevert(GameObject go) {
+    if (_interactedGos.TryGetValue(go, out var component)) {
+      SetComponentActive(component, false);
+    }
+  }
+
+  public override void InteractToggle(GameObject go) {
+    if (_interactedGos.TryGetValue(go, out var component)) {
+      SetComponentActive(component, !GetComponentActive(component));
+    }
+  }
 
   protected virtual TComponent AddOrGetCachedComponent(GameObject go) {
     TComponent component;
@@ -64,43 +73,5 @@ where TComponent : MonoBehaviour {
     return component;
   }
 
-  protected bool TryGetCachedComponent(GameObject go, out TComponent component) {
-    if (_interactedGos.ContainsKey(go)) {
-      component = _interactedGos[go];
-      return true;
-    }
-
-    component = null;
-    return false;
-  }
-
   protected virtual void OnComponentAdded(GameObject go, TComponent component) { }
-}
-
-
-/// <summary>
-/// Cache last effect (component) to compare with current when re-interacting.
-/// </summary>
-public abstract class GOInteractorEffectComponent<TSelf, TComponent, TLastEffect> : GOInteractorEffectComponent<TSelf, TComponent>
-where TSelf : GOInteractorEffectComponent<TSelf, TComponent, TLastEffect>
-where TComponent : MonoBehaviour {
-  protected new Dictionary<GameObject, CachedEffects<TComponent>> _interactedGos = new Dictionary<GameObject, CachedEffects<TComponent>>();
-  protected override void ClearInteractedGos() => _interactedGos.Clear();
-  public override List<GameObject> InteractedGos => _interactedGos.Keys.ToList();
-}
-
-
-public abstract class GOInteractorEffectComponentCacheLastEffect<TSelf, TComponent> : GOInteractorEffectComponent<TSelf, TComponent, TComponent>
-where TSelf : GOInteractorEffectComponentCacheLastEffect<TSelf, TComponent>
-where TComponent : MonoBehaviour {
-}
-
-public struct CachedEffects<TComponent> {
-  public TComponent ComponentEffect;
-  public TComponent LastEffect;
-
-  public CachedEffects(TComponent componentEffect, TComponent lastEffect) {
-    ComponentEffect = componentEffect;
-    LastEffect = lastEffect;
-  }
 }

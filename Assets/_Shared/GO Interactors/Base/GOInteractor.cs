@@ -8,7 +8,7 @@ using UnityEngine;
 // TODO
 // + Randomize effect
 
-public abstract class GOInteractor : MonoBehaviourSingleton<GOInteractor> {
+public abstract partial class GOInteractor {
   protected List<GameObject> _interactedGos = new List<GameObject>();
 
   public virtual List<GameObject> InteractedGos => _interactedGos;
@@ -16,6 +16,7 @@ public abstract class GOInteractor : MonoBehaviourSingleton<GOInteractor> {
   // TIP: Clear data of the singleton, ortherwise it will remain through Play sessions.
   private void OnApplicationQuit() {
     // ! Instance of the derived Singleton is not null
+    // print("ClearInteractedGos from " + gameObject.name);
     ClearInteractedGos();
   }
 
@@ -92,8 +93,7 @@ public abstract class GOInteractor : MonoBehaviourSingleton<GOInteractor> {
   }
 }
 
-public abstract class GOInteractor<TSelf> : GOInteractor
-where TSelf : GOInteractor<TSelf> {
+public abstract partial class GOInteractor<TSelf> {
   // TIP: Get instance of derived Singleton using "Self-passing generics"
   // This replaces Instance in base
   public new static TSelf Instance => MonoBehaviourSingleton<TSelf>.Instance;

@@ -4,18 +4,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using Object = UnityEngine.Object;
 
-/// <summary>
-/// TComponent: GOInteractor applies interacting effect by adding this component to the GO. <br/>
-/// TEffect: Effect variation when the GO is interacted. <br/>
-/// TCacheObject: Cached Object of the interated GO for implementing revert method. <br/>
-/// </summary>
-public abstract class GOInteractor<TSelf, TComponent, TEffect, TCacheObject> : GOInteractor<TSelf>
-where TSelf : GOInteractor<TSelf, TComponent, TEffect, TCacheObject>
-where TComponent : MonoBehaviour
-where TEffect : GOInteractEffect // TODO: Generalize interacting effect (enum/prefab). Wrap config in custom struct
-where TCacheObject : Object {
+
+public abstract partial class GOInteractor<TSelf, TComponent, TEffect, TCache> {
   [SerializeField]
   protected TEffect _effect; // ? Implement list
 
@@ -23,14 +14,14 @@ where TCacheObject : Object {
   public override void DecrementInteractingEffect() => _effect.Decrement();
   protected virtual TEffect InitInteractingEffect() => default(TEffect);
 
-  protected new Dictionary<GameObject, Tuple<TComponent, TCacheObject>> _interactedGos = new Dictionary<GameObject, Tuple<TComponent, TCacheObject>>();
+  protected new Dictionary<GameObject, Tuple<TComponent, TCache>> _interactedGos = new Dictionary<GameObject, Tuple<TComponent, TCache>>();
   protected override void ClearInteractedGos() => _interactedGos.Clear();
   public override List<GameObject> InteractedGos => _interactedGos.Keys.ToList();
 
   /// <summary>
   /// Cache necessary Object of the GO to implement reverting method.
   /// </summary>
-  protected abstract TCacheObject CacheObject(GameObject go);
+  protected abstract TCache CacheObject(GameObject go);
 
   public abstract void Interact(GameObject go, TEffect effect);
 
@@ -42,14 +33,14 @@ where TCacheObject : Object {
     if (_interactedGos.ContainsKey(go)) {
       component = _interactedGos[go].Item1;
     } else {
-      var cachedObject = CacheObject(go) as TCacheObject;
+      var cachedObject = CacheObject(go) as TCache;
 
       if (!go.TryGetComponent<TComponent>(out component)) {
         component = go.AddComponent<TComponent>();
         OnComponentAdded(go, component);
       }
 
-      var cache = new Tuple<TComponent, TCacheObject>(component, cachedObject);
+      var cache = new Tuple<TComponent, TCache>(component, cachedObject);
       _interactedGos.Add(go, cache);
     }
 
