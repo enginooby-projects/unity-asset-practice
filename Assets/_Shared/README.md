@@ -6,13 +6,14 @@ Specifically, there are many common base classes, serializable classes, extensio
 + **Graphics**: post-processing related.
 + **Wrapper** (vs. Asset Preset?): add more functionalites (public methods, editor) to the wrapped type.
 + **Component Operator**: manipulate wrapped Unity component in the runtime.
-+ **GameObject Interactor**: universal interactor which act in the same way for any GameObject, hence can be Singleton (e.g. highlighter can highlight any GameObject).
++ **GameObject Interactor (GOI)**: universal interactor which act in the same way for any GameObject, hence can be Singleton (e.g. highlighter can highlight any GameObject).
 + **GameObject Interator Controller**: wrapper for GameObject Interactor with control keys to perform interacting by input.
 + **Controller** (vs. Asset Operator?)
 + **Reference & Variable**: serializable reference for in-scene entities (GameObject, position, etc) and SO reference for value types (int, bool, etc) implementing with observer pattern.
 + **Stat**: variable + events + UIs. Two approaches - serializable class and scriptable object.
 + **Event**: two approaches - MonoBehaviour and scriptable object.
-+ **Area**: continuous area & decrete area (containing points). Used for spawner, vision, formation, etc.
++ **Area** ```Where things happen?```: continuous area & decrete area (containing points). Used for spawner, vision, formation, etc.
++ **Action Scheduler** ```"When things happen"```
 + **Input**: wrapper for simple keycode & Input Manager with additional modifier keys.
 + **Spawner**: many modes - auto (by time period), active (by input), trigger (using collider), wave. Pool implemented.
 + **Utils**: extension methods.
