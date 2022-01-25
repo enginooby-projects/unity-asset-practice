@@ -13,9 +13,9 @@ using DG.Tweening;
 /// Base class to create extension classes adding FXs for 3rd-party controllers.
 /// </summary>
 public class MovementFX : MonoBehaviour {
-  [SerializeField] protected Rigidbody _rigidBody;
+  [SerializeField]protected Rigidbody _rigidBody;
 
-  [SerializeField] protected InputModifier _flyKey = new InputModifier(inputType: InputModifier.InputType.Axis, inputAxis: InputAxis.Vertical);
+  [SerializeField]protected InputModifier _flyKey = new InputModifier(inputType: InputModifier.InputType.Axis, inputAxis: InputAxis.Vertical);
 
   [SerializeField] protected InputModifier _sprintFlyKey = new InputModifier(inputType: InputModifier.InputType.Axis, inputAxis: InputAxis.Vertical, modifierKey: ModifierKey.Lshift);
 
