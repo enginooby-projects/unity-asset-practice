@@ -8,20 +8,16 @@ using UnityEngine;
 // + VFX & SFX on changed
 
 // REFACTOR: Make ModelVariation SO
-[RequireComponent(typeof(Animator))]
 /// <summary>
 /// For changing character (visual) while keeping behaviours, camera.
 /// </summary>
 public class ModelSwitcher : MonoBehaviour {
   // * Clone data from preset to 
-  [SerializeField]
-  private Animator _animator;
+  [SerializeField] private List<Animator> _animators = new List<Animator>();
 
-  [SerializeField]
-  private Collider _collider;
+  [SerializeField] private List<Collider> _colliders = new List<Collider>();
 
-  [SerializeField]
-  private Rigidbody _rigidbody;
+  [SerializeField] private List<Rigidbody> _rigidbodies = new List<Rigidbody>();
 
   // * Switch
   // ? FX per model preset
@@ -64,12 +60,8 @@ public class ModelSwitcher : MonoBehaviour {
     _currentPreset = preset;
     _lastPreset.Model.SetActive(false);
     _currentPreset.Model.SetActive(true);
-    _animator.avatar = _currentPreset.Avatar;
+    _animators.ForEach(animator => animator.avatar = _currentPreset.Avatar);
     _switchVfx?.Play();
-  }
-
-  void Awake() {
-    _animator ??= GetComponent<Animator>();
   }
 
   void Update() {

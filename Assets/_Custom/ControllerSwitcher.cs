@@ -4,30 +4,31 @@ using UnityEngine;
 
 public class ControllerSwitcher : MonoBehaviour {
   [SerializeField] private InputModifier _switchKey;
-  [SerializeField] private List<GameObject> _controllers;
-  [ValueDropdown(nameof(_controllers))]
-  [SerializeField] private GameObject _currentController;
-  [SerializeField] private Camera _camera;
+  [SerializeField] private List<ControllerWrapper> _wrappers;
+  [ValueDropdown(nameof(_wrappers))]
+  [SerializeField] private ControllerWrapper _currentWrapper;
   [SerializeField] private GameObject _model;
+  [SerializeField] private Camera _transitionCamera;
 
-  void Start() {
-
-  }
 
   void Update() {
     if (_switchKey.IsTriggering) {
-      GameObject previousController = _currentController;
-      _currentController = _controllers.GetNext(previousController);
-      print(previousController.transform.position);
-      print(_currentController.transform.position);
-      _currentController.transform.CopyLocal(previousController.transform);
-      print(previousController.transform.position);
-      print(_currentController.transform.position);
-      previousController.SetActive(false);
-      _currentController.SetActive(true);
-      _model.transform.SetParent(_currentController.transform);
-      _camera.transform.SetParent(_currentController.transform);
-      FindObjectOfType<ThirdPersonOrbitCamBasic>().player = _currentController.transform;
+      var previousWrapper = _currentWrapper;
+      _currentWrapper = _wrappers.GetNext(previousWrapper);
+
+      _currentWrapper.gameObject.SetActive(true);
+
+      if (_currentWrapper.Controller.TryGetComponent<ControllerMover>(out var mover)) {
+        mover.CopyTransform(previousWrapper.Controller.transform);
+      } else {
+        _currentWrapper.Controller.transform.CopyLocal(previousWrapper.Controller.transform);
+      }
+      _model.transform.SetParent(_currentWrapper.Controller.transform);
+      _model.transform.ResetLocal();
+
+      previousWrapper.gameObject.SetActive(false);
+      _currentWrapper.Camera.transform.Copy(previousWrapper.Camera.transform);
+      // TODO: Transitioning camera from previous to current controller.
     }
   }
 }
