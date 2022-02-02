@@ -1,7 +1,10 @@
 using UnityEngine;
+#if UNITY_EDITOR
 using UnityEditor;
+#endif
 
 public class HelloEditorScripting {
+#if UNITY_EDITOR
   [MenuItem("GameObject/Create New GameObject (From HelloEditorScripting)")]
   private static void CreateNewGameObject() {
     if (EditorUtility.DisplayDialog(
@@ -13,4 +16,5 @@ public class HelloEditorScripting {
       new GameObject("Hello Editor Scripting");
     }
   }
+#endif
 }
