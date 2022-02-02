@@ -1,4 +1,3 @@
-using QFSW.QC;
 using UnityEngine;
 
 public class SelectionController : MonoBehaviour {
@@ -10,6 +9,7 @@ public class SelectionController : MonoBehaviour {
   [SerializeField] private KeyCodeModifier enablePreviousVfxKey = new KeyCodeModifier(keyCode: KeyCode.R);
   [SerializeField] private KeyCodeModifier enableNextVfxKey = new KeyCodeModifier(keyCode: KeyCode.Y);
 
+#if ASSET_MESH_EFFECTS
   [Header("[Directors]")]
   [SerializeField] private Selector selector;
   [SerializeField] private Highlighter highlighter;
@@ -39,16 +39,17 @@ public class SelectionController : MonoBehaviour {
     if (enableNextVfxKey.IsTriggering) vfxer?.AddNextMeshEffect(selection);
   }
 
-  [Command(CommandPrefix.Selection + "mvfx")]
-  [Command(CommandPrefix.MeshVfx + CommandTarget.Selection)]
+  [QFSW.QC.Command(CommandPrefix.Selection + "mvfx")]
+  [QFSW.QC.Command(CommandPrefix.MeshVfx + CommandTarget.Selection)]
   public void AddMeshEffectToSelection(int effectId) {
     vfxer?.AddMeshEffect(selector.CurrentSelectedObject, effectId);
   }
 
-  [Command(CommandPrefix.Selection + "mvfx-fire")]
-  [Command(CommandPrefix.MeshVfx + CommandTarget.Selection + "-fire")]
+  [QFSW.QC.Command(CommandPrefix.Selection + "mvfx-fire")]
+  [QFSW.QC.Command(CommandPrefix.MeshVfx + CommandTarget.Selection + "-fire")]
   public void AddFireMeshEffectToSelection(int effectId = -1) {
     if (effectId == -1) vfxer?.AddFireMeshEffect(selector.CurrentSelectedObject);
     else vfxer?.AddFireMeshEffect(selector.CurrentSelectedObject, effectId);
   }
+#endif
 }

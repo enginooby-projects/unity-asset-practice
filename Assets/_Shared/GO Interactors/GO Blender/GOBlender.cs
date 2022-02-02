@@ -1,5 +1,6 @@
-using UnityEngine;
+#if ASSET_BLEND_MODES
 using BlendModes;
+using UnityEngine;
 
 // REFACTOR: create wrapper for 3rd party asset if using muliple similar assets
 // TODO
@@ -40,3 +41,5 @@ public partial class GOBlender : GOI_EffectIsEnum<GOBlender, BlendModeEffect, Bl
   public override void InteractToggle(GameObject go) {
   }
 }
+#endif
+

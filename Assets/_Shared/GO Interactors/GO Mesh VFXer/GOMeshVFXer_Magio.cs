@@ -1,3 +1,4 @@
+#if MAGIO
 using Magio;
 using UnityEngine;
 
@@ -10,3 +11,4 @@ public class GOMeshVFXer_Magio : GOI_ComponentIsEffect_CacheEffect<GOMeshVFXer_M
     effectComponent.enabled = true;
   }
 }
+#endif
