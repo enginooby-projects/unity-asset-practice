@@ -1,6 +1,5 @@
 using UnityEditor.SceneManagement;
 using UnityEngine;
-using UnityEditor;
 
 namespace Enginoobz.Editor {
   public static class SceneUtils {
@@ -11,12 +10,8 @@ namespace Enginoobz.Editor {
 
     public static void CleanScene() {
       // ? Separate confirm dialog code   
-      if (EditorUtility.DisplayDialog(
-        "Clean Scene",
-        "Are you sure to remove all GameObjects?",
-        "Yes",
-        "No"
-      )) {
+      if (EditorUtils.DisplayDialog("Are you sure to remove all GameObjects?")) {
+        // UTIL
         var gos = Object.FindObjectsOfType<GameObject>();
         foreach (var go in gos) {
           GameObject.DestroyImmediate(go);
