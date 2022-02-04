@@ -5,6 +5,9 @@ using System;
 
 // ? Rename to ReflectionUtils
 public static class TypeUtils {
+  // TIP: Use generics to pass type as argument with shorter syntax
+  public static bool IsSubclassOf<T>(this Type type) => type.IsSubclassOf(typeof(T));
+
   public static List<Type> GetConcreteTypesOf<T>() {
     return GetTypesOf<T>(isClass: true, isAbstract: false);
     // return Assembly

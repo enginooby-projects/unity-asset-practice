@@ -4,13 +4,19 @@ namespace Enginoobz.Editor {
   public static class MenuItems {
     // Menu header hierarchy
     private const string H1 = "Enginoobz/";
-    private const string HSCENE = H1 + "Scene/";
+    private const string H_SCENE = H1 + "Scene/";
+    private const string H_GO = H1 + "GameObject/";
 
-    [MenuItem(HSCENE + "Create Empty Scene")]
+
+    [MenuItem(H_SCENE + "Create Empty Scene")]
     private static void CreateEmptyScene() => SceneUtils.CreateEmptyScene();
 
-    [MenuItem(HSCENE + "Clean Scene")]
+    [MenuItem(H_SCENE + "Clean Scene")]
     private static void CleanScene() => SceneUtils.CleanScene();
+
+    [MenuItem(H_GO + "Create Spawner")]
+    private static void CreateSpanwer() => GameObjectUtils.CreateGameObject(typeof(Spawner));
+
 
     // UTIL
     public static string ToSentenceCase(this string str) {

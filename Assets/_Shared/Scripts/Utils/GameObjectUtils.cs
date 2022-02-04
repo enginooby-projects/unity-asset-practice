@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
+using System;
 
 public static class GameObjectUtils {
   // ? Rename to SetPosition, reserver With... for duplication operations
@@ -58,9 +59,9 @@ public static class GameObjectUtils {
   /// </summary>
   public static void Destroy(this GameObject gameObject) {
     if (Application.isPlaying) {
-      Object.Destroy(gameObject);
+      UnityEngine.Object.Destroy(gameObject);
     } else {
-      Object.DestroyImmediate(gameObject);
+      UnityEngine.Object.DestroyImmediate(gameObject);
     }
   }
 
@@ -70,5 +71,19 @@ public static class GameObjectUtils {
   public static T TryAddComponent<T>(this GameObject go) where T : Component {
     if (go.TryGetComponent<T>(out T component)) return component;
     return go.AddComponent<T>();
+  }
+
+  /// <summary>
+  /// Create a new GameObject with given MonoBehaviour types with reset transform.
+  /// </summary>
+  /// <param name="monobehaviourTypes"></param>
+  public static void CreateGameObject(params Type[] monobehaviourTypes) {
+    var go = new GameObject();
+    go.transform.Reset();
+
+    foreach (var monoBehaviourType in monobehaviourTypes) {
+      if (!monoBehaviourType.IsSubclassOf<MonoBehaviour>()) return;
+      go.AddComponent(monoBehaviourType);
+    }
   }
 }
