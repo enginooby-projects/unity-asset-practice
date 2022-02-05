@@ -1,7 +1,15 @@
 using System;
+using System.Linq;
 using UnityEngine;
 
 public static class UnclassifiedUtils {
+  // TODO: Move to StringUtils or PrimiteTypeUtils
+  public static string RemoveWhitespace(this string input) {
+    return new string(input.ToCharArray()
+        .Where(c => !Char.IsWhiteSpace(c))
+        .ToArray());
+  }
+
   public static string ToSentenceCase(this string str) {
     return System.Text.RegularExpressions.Regex.Replace(str, "[a-z][A-Z]", m => m.Value[0] + " " + char.ToLower(m.Value[1]));
   }

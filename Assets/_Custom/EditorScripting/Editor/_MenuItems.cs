@@ -6,6 +6,7 @@ namespace Enginoobz.Editor {
     private const string H1 = "Enginoobz/";
     private const string H_SCENE = H1 + "Scene/";
     private const string H_GO = H1 + "GameObject/";
+    private const string H_GENERATOR = H1 + "Generator/";
 
 
     [MenuItem(H_SCENE + "Create Empty Scene")]
