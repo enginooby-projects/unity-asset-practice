@@ -90,6 +90,7 @@ Assets/Plugins/Rewired/Internal/Assets
 **/_Demo*
 /Assets/*
 !/Assets/_Custom
-!/Assets/_Practice
+#!/Assets/_Sandbox
 !/Assets/_Shared
 !/Assets/_Projects
+!/Assets/Gizmos
