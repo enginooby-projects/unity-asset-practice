@@ -76,7 +76,6 @@ public static class GameObjectUtils {
   /// <summary>
   /// Create a new GameObject with given MonoBehaviour types with reset transform.
   /// </summary>
-  /// <param name="monobehaviourTypes"></param>
   public static void CreateGameObject(params Type[] monobehaviourTypes) {
     var go = new GameObject();
     go.transform.Reset();
@@ -85,5 +84,15 @@ public static class GameObjectUtils {
       if (!monoBehaviourType.IsSubclassOf<MonoBehaviour>()) return;
       go.AddComponent(monoBehaviourType);
     }
+  }
+
+  /// <summary>
+  /// Create a new GameObject with the given MonoBehaviour type with reset transform.
+  /// Return the added MonoBehaviour.
+  /// </summary>
+  public static T CreateGameObject<T>() where T : MonoBehaviour {
+    var go = new GameObject();
+    go.transform.Reset();
+    return go.AddComponent<T>();
   }
 }

@@ -2,6 +2,10 @@ using System;
 using UnityEngine;
 
 public static class UnclassifiedUtils {
+  public static string ToSentenceCase(this string str) {
+    return System.Text.RegularExpressions.Regex.Replace(str, "[a-z][A-Z]", m => m.Value[0] + " " + char.ToLower(m.Value[1]));
+  }
+
   public static bool EqualIgnoreCase(this string string1, string string2) {
     return string.Equals(string1, string2, StringComparison.OrdinalIgnoreCase);
   }
