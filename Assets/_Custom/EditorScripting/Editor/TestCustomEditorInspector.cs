@@ -37,7 +37,6 @@ public class TestCustomEditorInspector : Editor {
     if (GUILayout.Button("Randomize Color", GUILayout.Height(2 * EditorGUIUtility.singleLineHeight)))
       _color = Random.ColorHSV();
     EditorGUILayout.EndHorizontal();
-
     GUI.enabled = oldEnabled;
   }
 }

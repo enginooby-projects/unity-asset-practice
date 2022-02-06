@@ -7,12 +7,4 @@ public class TestCustomEditor : MonoBehaviour {
     get => _level;
     set => _level = Mathf.Max(1, value);
   }
-
-  void Start() {
-
-  }
-
-  void Update() {
-
-  }
 }
