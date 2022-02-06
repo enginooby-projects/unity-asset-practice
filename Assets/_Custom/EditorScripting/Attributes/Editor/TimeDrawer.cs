@@ -11,7 +11,7 @@ public class TimeDrawer : PropertyDrawer {
   public override void OnGUI(Rect position, SerializedProperty property, GUIContent label) {
     if (property.IsInteger()) {
       property.intValue = EditorGUI.IntField(position.GetHalfTop(), label, Mathf.Max(0, property.intValue));
-      EditorGUI.LabelField(position.GetHalfBottom(), "", FormatTime(property.intValue));
+      EditorGUI.LabelField(position.GetHalfBottom(), " ", FormatTime(property.intValue));
     } else {
       EditorGUI.HelpBox(position, "Use Time attribute for an int", MessageType.Error);
     }

@@ -5,10 +5,14 @@ using UnityEngine;
 // [CanEditMultipleObjects]
 public class TestCustomEditorInspector : Editor {
   private TestCustomEditor _target;
+  private SerializedObject _serializedObject;
+  private SerializedProperty _serializedTimeLeft;
 
   private void OnEnable() {
     Debug.Log("OnEnable");
     _target = target as TestCustomEditor;
+    _serializedObject = new SerializedObject(_target);
+    _serializedTimeLeft = _serializedObject.FindProperty("_timeLeft");  // ! string error prone
   }
 
   private void OnDisable() {
@@ -38,5 +42,7 @@ public class TestCustomEditorInspector : Editor {
       _color = Random.ColorHSV();
     EditorGUILayout.EndHorizontal();
     GUI.enabled = oldEnabled;
+
+    EditorGUILayout.PropertyField(_serializedTimeLeft);
   }
 }
