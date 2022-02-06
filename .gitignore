@@ -10,6 +10,9 @@
 /[Ll]ogs/
 /[Mm]emoryCaptures/
 
+# Ignore all .meta file
+*.meta
+# But not source file with postfix. which is everything but a folder
 # Asset meta data should only be ignored when the corresponding asset is also ignored
 !/[Aa]ssets/**/*.meta
 
@@ -81,8 +84,6 @@ Thumbs.db
 # But keep the demo packages themselves.
 # !/Assets/Plugins/Sirenix/Demos/*.unitypackage
 
-# REWIRED
-Assets/Plugins/Rewired/Internal/Assets
 
 ### ASSET PACKS ###
 # Extensions folder (personal convention) contains productivity assets (editor)
