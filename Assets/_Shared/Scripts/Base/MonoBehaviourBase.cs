@@ -6,6 +6,7 @@ using System;
 // TODO:
 // + Timespan for component/gameobject
 // + Alternative fast Update()
+// + Create script template of this script
 
 /// <summary>
 /// * Common convenient public functions & extenstion methods (useful esp. in binding events w/o writing more code) for all custom Components (MonoBehaviours).
@@ -17,6 +18,21 @@ public abstract class MonoBehaviourBase : MonoBehaviour {
   protected virtual void Update() { }
   protected virtual void FixedUpdate() { }
   protected virtual void LateUpdate() { }
+  protected virtual void DrawGizmos() { }
+  protected virtual void DrawGizmosOnSelected() { }
+
+  // TIP: Best practice using static variable: cache old value and restore it after operation
+  private void OnDrawGizmos() {
+    var oldColor = Gizmos.color;
+    DrawGizmos();
+    Gizmos.color = oldColor;
+  }
+
+  private void OnDrawGizmosSelected() {
+    var oldColor = Gizmos.color;
+    DrawGizmosOnSelected();
+    Gizmos.color = oldColor;
+  }
 
   #region LAZY LOCAL COMPONENT CACHE
   // Alternative to CacheStaticUtils

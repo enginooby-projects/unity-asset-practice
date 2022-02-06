@@ -3,7 +3,7 @@ using System.IO;
 
 namespace Enginoobz.Editor {
   public static class Generator {
-    // REFACTOR
+    // REFACTOR: Generate file names
     // TODO: Auto execute on Gizmos directory change
     [MenuItem("Enginoobz/Generator/Generate Gizmos Icons")]
     public static void GenerateGizmosIcons() {
