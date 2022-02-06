@@ -1,11 +1,16 @@
+#if UNITY_EDITOR
+using UnityEditor;
+
 namespace Enginoobz.Utils {
   public static class EditorUtils {
     public static void StopPlayMode() {
-#if UNITY_EDITOR
       UnityEditor.EditorApplication.isPlaying = false;
-#else
-    Application.Quit();
-#endif
+      // Application.Quit();
+    }
+
+    public static bool IsInteger(this SerializedProperty property) {
+      return property.propertyType == SerializedPropertyType.Integer;
     }
   }
 }
+#endif
