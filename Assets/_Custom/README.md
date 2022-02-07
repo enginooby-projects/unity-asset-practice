@@ -1,0 +1,1 @@
+Customizations, configuration for 3rd-party assets. Mostly ScriptableObjects, prefabs.
