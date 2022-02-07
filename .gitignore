@@ -9,6 +9,8 @@
 /[Bb]uilds/
 /[Ll]ogs/
 /[Mm]emoryCaptures/
+# https://forum.unity.com/threads/whats-the-usersettings-directory.754436/
+/[Uu]serSettings/ 
 
 ### META FILES ###
 # Ignore all .meta file
