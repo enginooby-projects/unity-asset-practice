@@ -1,6 +1,19 @@
 using UnityEngine;
 
 public static class UnclassifiedUtils {
+  public static bool CompareTag(this Collider collider, string tag) => collider.gameObject.CompareTag(tag);
+  public static bool CompareTag(this Collision collision, string tag) => collision.gameObject.CompareTag(tag);
+
+  /// <summary>
+  ///   Return 1 if true, 0 if false.
+  /// </summary>
+  public static int ToInt(this bool value, int trueValue = 1, int falseValue = 0) => value ? trueValue : falseValue;
+
+  /// <summary>
+  ///   Return 1 if true, -1 if false.
+  /// </summary>
+  public static int To1OrMinus1(this bool value) => value ? 1 : -1;
+
   /// <summary>
   ///   Return true if value just below min, false if value just above max, null if value in range.
   /// </summary>

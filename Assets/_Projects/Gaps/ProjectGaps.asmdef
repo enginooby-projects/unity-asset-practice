@@ -1,0 +1,17 @@
+{
+    "name": "ProjectGaps",
+    "rootNamespace": "",
+    "references": [
+        "GUID:b6c19ef8de785f64e9e14f726b9b446b",
+        "GUID:776d03a35f1b52c4a9aed9f56d7b4229"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

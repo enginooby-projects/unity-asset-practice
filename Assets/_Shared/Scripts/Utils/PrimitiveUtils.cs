@@ -5,6 +5,15 @@ using UnityEngine;
 public static class PrimitiveUtils {
   private static readonly Dictionary<PrimitiveType, Mesh> _meshes = new Dictionary<PrimitiveType, Mesh>();
 
+  /// <summary>
+  ///   Convert the given enum to PrimitiveType, hence the string name must match. Useful for enum subset of PrimitiveType if
+  ///   don't want to include all primitive meshes.
+  /// </summary>
+  public static GameObject CreatePrimitive(Enum type, Color? color = null) {
+    Enum.TryParse(type.ToString(), out PrimitiveType primitiveType);
+    return CreatePrimitive(primitiveType, color);
+  }
+
   public static GameObject CreatePrimitive(PrimitiveType type, Color? color = null) {
     var go = new GameObject(type.ToString());
     var meshFilter = go.AddComponent<MeshFilter>();
@@ -40,8 +49,8 @@ public static class PrimitiveUtils {
   }
 
   /// <summary>
-  ///   Convert the given enum to PrimitiveType, hence the string name must match. Useful for enum subset of PrimitiveType if
-  ///   don't want to include all primitive meshes.
+  ///   Convert the given enum to PrimitiveType, hence the string name must match.
+  ///   Useful for enum subset of PrimitiveType if don't want to include all primitive meshes.
   /// </summary>
   public static Mesh GetPrimitiveMesh(Enum type) {
     Enum.TryParse(type.ToString(), out PrimitiveType primitiveType);

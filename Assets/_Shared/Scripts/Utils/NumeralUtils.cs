@@ -13,10 +13,22 @@ public static class NumeralUtils {
   public static bool IsOdd(this int value) => value % 2 != 0;
 
   /// <summary>
+  ///   Return false if 0.
+  /// </summary>
+  public static bool ToBool(this int value) => value != 0;
+
+  /// <summary>
+  /// Return a Vector3 whose x, y, z equal given value. E.g., 1 -> (1, 1, 1).
+  /// </summary>
+  public static Vector3 ToVector3(this float value) => new Vector3(value, value, value);
+
+  /// <summary>
   ///   Round the calculated degree to a given number of decimal places.
   /// </summary>
   public static decimal FromRadianToDegree(this float radian, int decimals = 0) =>
     decimal.Round((decimal) (radian * Mathf.Rad2Deg), decimals);
+
+  public static float FromDegreeToRadian(this float degree) => (float) Math.PI / 180f * degree;
 
   [Obsolete("Use FromRadianToDegree")]
   public static decimal ToDegree(this float radian, int decimals = 0) => radian.FromRadianToDegree();

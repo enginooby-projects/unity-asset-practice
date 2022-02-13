@@ -79,12 +79,18 @@ public abstract class MonoBehaviourBase : MonoBehaviour {
 
   // Cons: expose un-used/un-available components from a MonoBehaviour => use protected instead of public
   public Transform Transform => My<Transform>();
-  public Rigidbody Rigidbody => My<Rigidbody>();
-  public Collider Collider => My<Collider>();
-  public BoxCollider BoxCollider => My<BoxCollider>();
-  public MeshRenderer MeshRenderer => My<MeshRenderer>();
-  public MeshFilter MeshFilter => My<MeshFilter>();
-  public Animator Animator => My<Animator>();
+
+  protected Vector3 _position {
+    get => Transform.position;
+    set => Transform.position = value;
+  }
+
+  protected Rigidbody _rigidbody => My<Rigidbody>();
+  protected Collider _collider => My<Collider>();
+  protected BoxCollider _boxCollider => My<BoxCollider>();
+  protected MeshRenderer _meshRenderer => My<MeshRenderer>();
+  protected MeshFilter _meshFilter => My<MeshFilter>();
+  protected Animator _animator => My<Animator>();
 
   /// <summary>
   ///   Get cached singleton (on a GO) component.

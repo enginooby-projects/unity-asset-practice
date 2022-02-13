@@ -72,6 +72,9 @@ public static class VectorUtils {
 
   public static Vector3 WithX(this Vector3 vect, float newX) => new Vector3(newX, vect.y, vect.z);
 
+  public static Vector3 WithXRandom(this Vector3 vect, float minX, float maxX) =>
+    vect.WithX(UnityEngine.Random.Range(minX, maxX));
+
   public static Vector3 WithY(this Vector3 vect, float newY) => new Vector3(vect.x, newY, vect.z);
 
   public static Vector3 WithNegativeY(this Vector3 vect) => new Vector3(vect.x, -Mathf.Abs(vect.y), vect.z);
@@ -91,6 +94,8 @@ public static class VectorUtils {
   public static Vector3 SetY(this Vector3 vect, float newY) => new Vector3(vect.x, newY, vect.z);
 
   public static Vector3 SetZ(this Vector3 vect, float newZ) => new Vector3(vect.x, vect.y, newZ);
+
+  public static Vector2 GetXZ(this Vector3 vect) => new Vector2(vect.x, vect.z);
 
   /// <summary>
   ///   Return Vector3.zero if no flag.
