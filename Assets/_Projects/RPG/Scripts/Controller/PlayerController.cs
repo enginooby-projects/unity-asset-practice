@@ -16,11 +16,17 @@ namespace Project.RPG.Controller {
     [SerializeField, InlineEditor, LabelText("Cursor Preset")]
     private CursorDataPreset _cursor;
 
-    [AutoRef, SerializeField, HideInInspector]
+    [SerializeField, HideInInspector]
     private Enginoobz.Core.ActionScheduler _actionScheduler;
 
     // ! Set Event mask on Physics Raycaster to UI layer
     private bool CursorAtUI => EventSystem.current.IsPointerOverGameObject();
+
+    private void Awake() {
+      _actionScheduler = GetComponent<Enginoobz.Core.ActionScheduler>();
+      _mover = GetComponent<NavMeshAgentOperator>();
+      _fighter = GetComponent<Fighter>();
+    }
 
     private void Start() {
       _cursor?.Init();
@@ -41,7 +47,7 @@ namespace Project.RPG.Controller {
     }
 
     #region MOVEMENT ===================================================================================================================================
-    [AutoRef, SerializeField, HideInInspector]
+    [SerializeField, HideInInspector]
     private NavMeshAgentOperator _mover;
     private Ray _lastRay;
     private bool CanMoveToCursor => IsMouseRayHit;
@@ -60,7 +66,7 @@ namespace Project.RPG.Controller {
     #endregion ===================================================================================================================================
 
     #region COMBAT ===================================================================================================================================
-    [AutoRef, SerializeField, HideInInspector]
+    [SerializeField, HideInInspector]
     private Fighter _fighter;
     private List<Attackable> currentAttackableTargets = new List<Attackable>();
 

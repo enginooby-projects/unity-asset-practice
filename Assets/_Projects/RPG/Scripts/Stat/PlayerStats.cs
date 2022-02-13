@@ -14,7 +14,7 @@ namespace Project.RPG.Stats {
 
     private Stat _experienceToLevel = new Stat(StatName.ExperienceToLevel);
 
-    [AutoRef, SerializeField, HideInInspector]
+    [SerializeField, HideInInspector]
     private CharacterBaseStats _characterBaseStats;
     private List<int> _requiredXpOnLevel = new List<int>();
 
@@ -22,6 +22,7 @@ namespace Project.RPG.Stats {
 
 
     private void Start() {
+      _characterBaseStats = GetComponent<CharacterBaseStats>();
       _requiredXpOnLevel = _characterBaseStats.StatsProgressions.GetStatProgression(StatName.ExperienceToLevel, CharacterType.Player);
       UpdateLevel();
     }

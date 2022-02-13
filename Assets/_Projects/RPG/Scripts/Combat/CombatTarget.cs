@@ -17,10 +17,12 @@ namespace Project.RPG.Combat {
     [SerializeField]
     private AudioSourceOperator _audioSourceOpt;
 
-    [AutoRef, SerializeField, HideInInspector]
+    // [AutoRef]
+    [SerializeField, HideInInspector]
     private CharacterBaseStats _characterBaseStats;
 
-    [AutoRef, SerializeField, HideInInspector]
+    // [AutoRef]
+    [SerializeField, HideInInspector]
     private Animator _animator;
     private readonly int getHitHash = Animator.StringToHash("getHit");
     private readonly int dieHash = Animator.StringToHash("die");
@@ -28,6 +30,10 @@ namespace Project.RPG.Combat {
     private Attacker _lastAttacker;
     private int _experienceReward = 10;
 
+    private void Awake() {
+      _characterBaseStats = GetComponent<CharacterBaseStats>();
+      _animator = GetComponent<Animator>();
+    }
 
     private void Start() {
       UpdateStatsByLevel();
@@ -36,7 +42,7 @@ namespace Project.RPG.Combat {
     public override void GetAttacked(Attacker attacker, int damage) {
       // print(attacker.name + " attacked " + name + " - damage: " + damage);
       _lastAttacker = attacker;
-      healthStat.Update(-damage);
+      healthStat.Add(-damage);
       // OPTIM: cache?
       _damageLabelSpawner.Spawn().ForEach(label => {
         var damageTMP = label.GetComponent<TextMeshProUGUI>();

@@ -31,17 +31,23 @@ namespace Project.RPG.Controller {
     [SerializeField]
     private float _patrolSpeed = 2f;
 
-    [AutoRef, SerializeField, HideInInspector]
+    [SerializeField, HideInInspector]
     private Fighter _fighter;
 
-    [AutoRef, SerializeField, HideInInspector]
+    [SerializeField, HideInInspector]
     private navMove _navMover; // ? Create a wrapper for SWS.navMove
 
-    [AutoRef, SerializeField, HideInInspector]
+    [SerializeField, HideInInspector]
     private NavMeshAgentOperator _agentOpr;
 
     private bool isPatrolling;
     private bool _isAggravated;
+
+    private void Awake() {
+      _fighter = GetComponent<Fighter>();
+      _navMover = GetComponent<navMove>();
+      _agentOpr = GetComponent<NavMeshAgentOperator>();
+    }
 
     void Update() {
       if (_vision.Contains(_playerRef) || _isAggravated) {

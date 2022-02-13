@@ -1,13 +1,15 @@
-using UnityEngine;
+#if ASSET_SCPE
 using SCPE;
+using UnityEngine;
+
 // using QFSW.QC;
 
 namespace Enginoobz.Graphics {
   public partial class PostFxModifierSCPE : MonoBehaviour {
     private Colorize colorize;
-    private HueShift3D hueShift3D;
 
     private bool colorizeOriginalState;
+    private HueShift3D hueShift3D;
     private bool hueShift3DOriginalState;
 
     private void GetImageOriginalStates() {
@@ -28,8 +30,8 @@ namespace Enginoobz.Graphics {
     }
 
     private void GetImageSettings() {
-      Profile.TryGet<Colorize>(out colorize);
-      Profile.TryGet<HueShift3D>(out hueShift3D);
+      Profile.TryGet(out colorize);
+      Profile.TryGet(out hueShift3D);
     }
 
     // [Command(CommandPrefix.PostFx + "colorize-toggle")]
@@ -43,3 +45,4 @@ namespace Enginoobz.Graphics {
     }
   }
 }
+#endif

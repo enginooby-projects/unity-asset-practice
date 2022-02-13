@@ -1,12 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using Sirenix.OdinInspector;
-
 public class ArchievedTriggerScore : ArchievedTriggerStat<int> {
   // TIP: Reset() is invoked when Component first added or being Reset (in Inspector)
   // Hence useful for ovveride defaut values of base class 
-  public override string StatLabel { get => "Score amount"; }
+  public override string StatLabel => "Score amount";
+
   private void Reset() {
     statValue = 1;
     triggerEvent = TriggerEventType.OnTriggerEnter;

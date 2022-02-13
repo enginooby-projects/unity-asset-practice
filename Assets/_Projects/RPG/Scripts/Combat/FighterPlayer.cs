@@ -11,7 +11,7 @@ namespace Project.RPG.Combat {
     [SerializeField, HideLabel]
     private Stat _strengthStat = new Stat(StatName.Strength);
 
-    [AutoRef, SerializeField, HideInInspector]
+    [SerializeField, HideInInspector]
     private CharacterBaseStats _characterBaseStats;
     public Stat StrengthStat => _strengthStat;
 

@@ -1,11 +1,14 @@
-using UnityEngine;
-using Sirenix.OdinInspector;
-using System.Collections.Generic;
 using System;
-using UnityEngine.Events;
+#if ODIN_INSPECTOR
+using Sirenix.OdinInspector;
+
+#else
+using Enginoobz.Attribute;
+#endif
 
 namespace Enginoobz {
-
-  [Serializable, InlineProperty]
-  public class OnCollisionEnterEvent : ColliderEvent { }
+  [Serializable]
+  [InlineProperty]
+  public class OnCollisionEnterEvent : ColliderEvent {
+  }
 }

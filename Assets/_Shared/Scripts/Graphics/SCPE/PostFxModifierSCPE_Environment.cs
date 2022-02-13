@@ -1,15 +1,16 @@
-using UnityEngine;
+#if ASSET_SCPE
 using SCPE;
+using UnityEngine;
+
 // using QFSW.QC;
 
 namespace Enginoobz.Graphics {
   public partial class PostFxModifierSCPE : MonoBehaviour {
-    private CloudShadows cloudShadows;
     private Caustics caustics;
-    private Fog fog;
-
-    private bool cloudShadowsOriginalState;
     private bool causticsOriginalState;
+    private CloudShadows cloudShadows;
+    private bool cloudShadowsOriginalState;
+    private Fog fog;
     private bool fogOriginalState;
 
     private void GetEnviromentOriginalStates() {
@@ -19,9 +20,9 @@ namespace Enginoobz.Graphics {
     }
 
     private void GetEnvironmentSettings() {
-      Profile.TryGet<CloudShadows>(out cloudShadows);
-      Profile.TryGet<Caustics>(out caustics);
-      Profile.TryGet<Fog>(out fog);
+      Profile.TryGet(out cloudShadows);
+      Profile.TryGet(out caustics);
+      Profile.TryGet(out fog);
     }
 
     // [Command(CommandPrefix.Environment + "cloud-shadows-toggle")]
@@ -44,3 +45,4 @@ namespace Enginoobz.Graphics {
     }
   }
 }
+#endif

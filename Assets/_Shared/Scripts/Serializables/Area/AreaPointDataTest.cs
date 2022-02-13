@@ -1,13 +1,16 @@
 using System;
-using Sirenix.OdinInspector;
 using UnityEngine;
+#if ODIN_INSPECTOR
+using Sirenix.OdinInspector;
+
+#else
+using Enginoobz.Attribute;
+#endif
 
 public class AreaPointDataTest : MonoBehaviourBase {
-  [SerializeField, InlineEditor]
-  private AreaPointData _data;
+  [SerializeField] [InlineEditor] private AreaPointData _data;
 
-  [SerializeField]
-  private float _scale = 1f;
+  [SerializeField] private float _scale = 1f;
 
   // TODO:
   // + Color
@@ -23,6 +26,5 @@ public class AreaPointDataTest : MonoBehaviourBase {
 
 [Serializable]
 public class AreaPointModifier {
-  [SerializeField]
-  private float _scale = 1f;
+  [SerializeField] private float _scale = 1f;
 }

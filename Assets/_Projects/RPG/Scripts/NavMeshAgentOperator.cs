@@ -1,6 +1,5 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 using Enginoobz.Core;
@@ -12,8 +11,13 @@ namespace Enginoobz.Operator {
   /// * Use case: Mover (esp. on terrain)
   /// </summary>
   public class NavMeshAgentOperator : MonoBehaviourBase, IAction {
-    [AutoRef, SerializeField, HideInInspector]
+    [SerializeField, HideInInspector]
     private NavMeshAgent _agent;
+
+    protected override void Awake() {
+      _agent = GetComponent<NavMeshAgent>();
+      _animator = GetComponent<Animator>();
+    }
 
     /// <summary>
     /// Not in Update().
@@ -65,7 +69,7 @@ namespace Enginoobz.Operator {
     [SerializeField] private bool enableAnimation = true;
 
     // ! SPECIFIC
-    [AutoRef, SerializeField, HideInInspector]
+    [SerializeField, HideInInspector]
     private Animator _animator;
 
     private readonly int _forwardSpeedHash = Animator.StringToHash("forwardSpeed");
