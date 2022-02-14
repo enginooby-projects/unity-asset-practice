@@ -22,6 +22,13 @@ public static class TransformUtils {
   }
 
   /// <summary>
+  /// (DeltaTime multiplied)
+  /// </summary>
+  public static void RotateForward(this Transform transform, float speed) {
+    transform.Rotate(transform.forward, speed * Time.deltaTime);
+  }
+
+  /// <summary>
   ///   Rotate local X (red axis) to target.
   /// </summary>
   public static void LookAtX(this Transform transform, Transform target) {

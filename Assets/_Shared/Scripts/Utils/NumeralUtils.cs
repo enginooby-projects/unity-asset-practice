@@ -94,4 +94,9 @@ public static class NumeralUtils {
   /// </summary>
   public static float Map(this float value, float min, float max, float targetMin, float targetMax) =>
     (value - min) * ((targetMax - targetMin) / (max - min)) + targetMin;
+
+  public static int WithRandomSign(this int number) {
+    var sign = (UnityEngine.Random.Range(0, 100) > 50) ? 1 : -1;
+    return sign * number;
+  }
 }

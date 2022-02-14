@@ -137,10 +137,23 @@ public abstract class MonoBehaviourBase : MonoBehaviour {
   }
 
   /// <summary>
-  /// Instantiate at this component's position with Quaternion.identity
+  /// Instantiate at this component's position with Quaternion identity.
   /// </summary>
-  protected new T Instantiate<T>(T prefab) where T : Object {
+  protected new T Instantiate<T>(T prefab) where T : Component {
     return Object.Instantiate(prefab, transform.position, Quaternion.identity);
+  }
+
+  /// <summary>
+  /// Instantiate at this component's position with Quaternion identity. <br/>
+  /// After the given lifespan, the spawned GameObject/component is destroyed.
+  /// </summary>
+  protected T Instantiate<T>(T prefab, float lifespan, bool destroyGameObject = true) where T : Component {
+    var component = Instantiate(prefab);
+    if (destroyGameObject)
+      Destroy(component.gameObject, lifespan);
+    else
+      Destroy(component, lifespan);
+    return component;
   }
 
   #endregion ===========================================================================================================

@@ -1,3 +1,4 @@
+using System;
 using System.Linq;
 using UnityEngine;
 
@@ -9,6 +10,27 @@ public static class UnclassifiedUtils {
     collider.gameObject.GetComponent<T>();
 
   public static bool CompareTag(this Collider collider, string tag) => collider.gameObject.CompareTag(tag);
+
+  public static bool CompareTag(this Collider collider, string tag, Action trueAction, Action falseAction) {
+    var isTagMatched = collider.gameObject.CompareTag(tag);
+    if (isTagMatched)
+      trueAction?.Invoke();
+    else
+      falseAction?.Invoke();
+
+    return isTagMatched;
+  }
+
+  public static bool CompareTag(this Collider collider, string tag, Action<Collider> trueAction,
+    Action<Collider> falseAction) {
+    var isTagMatched = collider.gameObject.CompareTag(tag);
+    if (isTagMatched)
+      trueAction?.Invoke(collider);
+    else
+      falseAction?.Invoke(collider);
+
+    return isTagMatched;
+  }
 
   /// <summary>
   /// Check if GameObject of the given collider has one in the given tags
