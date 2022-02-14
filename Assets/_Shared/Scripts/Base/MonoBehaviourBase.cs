@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
+using Object = UnityEngine.Object;
 #if ODIN_INSPECTOR
 using Sirenix.OdinInspector;
 
@@ -117,12 +118,29 @@ public abstract class MonoBehaviourBase : MonoBehaviour {
   [FoldoutGroup("MonoBehaviour Common")] [SerializeField] [Min(0f)]
   private float lifespan;
 
-  public void DisableForSecs(float seconds) {
-    this.Disable(seconds);
+  public void DisableTemporarily<T>(float durationInSec) where T : MonoBehaviour {
+    // TODO
+    // My<T>().enabled = false;
   }
+
+  public void DisableColliderForSecs(float seconds) {
+    _collider.enabled = false;
+    Invoke(nameof(EnableCollider), seconds);
+  }
+
+  protected void EnableCollider() => _collider.enabled = true;
+
+  public void DisableForSecs(float seconds) => this.Disable(seconds);
 
 
   public void ToggleActive() {
+  }
+
+  /// <summary>
+  /// Instantiate at this component's position with Quaternion.identity
+  /// </summary>
+  protected new T Instantiate<T>(T prefab) where T : Object {
+    return Object.Instantiate(prefab, transform.position, Quaternion.identity);
   }
 
   #endregion ===========================================================================================================

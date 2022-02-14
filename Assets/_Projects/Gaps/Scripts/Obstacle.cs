@@ -61,7 +61,7 @@ namespace Project.Gaps {
       _obstacle = Transform.GetChild(0).gameObject;
       _position = _position.WithXRandom(randomXMin, randomXMax);
       var isClockwise = Random.Range(0, 100) < 50;
-      _rotationSpeedY = Random.Range(rotationSpeedMin, rotationSpeedMax) * isClockwise.ToInt(1,-1);
+      _rotationSpeedY = Random.Range(rotationSpeedMin, rotationSpeedMax) * isClockwise.ToInt(1, -1);
       InitLittleBalls();
     }
 

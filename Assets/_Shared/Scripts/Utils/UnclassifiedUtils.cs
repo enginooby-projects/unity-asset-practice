@@ -1,7 +1,20 @@
+using System.Linq;
 using UnityEngine;
 
 public static class UnclassifiedUtils {
+  public static T GetComponent<T>(this Collision collision) where T : Component =>
+    collision.gameObject.GetComponent<T>();
+
+  public static T GetComponent<T>(this Collider collider) where T : Component =>
+    collider.gameObject.GetComponent<T>();
+
   public static bool CompareTag(this Collider collider, string tag) => collider.gameObject.CompareTag(tag);
+
+  /// <summary>
+  /// Check if GameObject of the given collider has one in the given tags
+  /// </summary>
+  public static bool CompareTag(this Collider collider, params string[] tags) => tags.Any(collider.CompareTag);
+
   public static bool CompareTag(this Collision collision, string tag) => collision.gameObject.CompareTag(tag);
 
   /// <summary>

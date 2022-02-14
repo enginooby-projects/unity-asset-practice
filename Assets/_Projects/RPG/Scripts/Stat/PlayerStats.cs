@@ -8,14 +8,12 @@ namespace Project.RPG.Stats {
   /// </summary>
   // ? Merge into FighterPlayer
   public class PlayerStats : MonoBehaviour {
-    [SerializeField, HideLabel]
-    private Stat _experienceStat = new Stat(StatName.Experience);
+    [SerializeField, HideLabel] private Stat _experienceStat = new Stat(StatName.Experience);
 
 
     private Stat _experienceToLevel = new Stat(StatName.ExperienceToLevel);
 
-    [SerializeField, HideInInspector]
-    private CharacterBaseStats _characterBaseStats;
+    [SerializeField, HideInInspector] private CharacterBaseStats _characterBaseStats;
     private List<int> _requiredXpOnLevel = new List<int>();
 
     public Stat ExperienceStat => _experienceStat;
@@ -23,7 +21,8 @@ namespace Project.RPG.Stats {
 
     private void Start() {
       _characterBaseStats = GetComponent<CharacterBaseStats>();
-      _requiredXpOnLevel = _characterBaseStats.StatsProgressions.GetStatProgression(StatName.ExperienceToLevel, CharacterType.Player);
+      _requiredXpOnLevel =
+        _characterBaseStats.StatsProgressions.GetStatProgression(StatName.ExperienceToLevel, CharacterType.Player);
       UpdateLevel();
     }
 

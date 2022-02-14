@@ -2,18 +2,15 @@ using UnityEngine;
 
 namespace Project.Gaps {
   public class AudioManager : MonoBehaviourSingleton<AudioManager> {
-    [Header("Audio Sources")] 
-    public AudioSource efxSource;
+    [Header("Audio Sources")] public AudioSource efxSource;
 
     public AudioSource musicSource;
 
-    [Header("Background Music")] 
-    public AudioClip bgMusic;
+    [Header("Background Music")] public AudioClip bgMusic;
 
     public AudioClip gameMusic;
 
-    [Header("Sound Effects")] 
-    public AudioClip buttonClick;
+    [Header("Sound Effects")] public AudioClip buttonClick;
 
     public AudioClip crash;
 

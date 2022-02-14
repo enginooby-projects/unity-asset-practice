@@ -7,38 +7,28 @@ using SWS;
 
 namespace Project.RPG.Controller {
   public class AIController : MonoBehaviour {
-    [SerializeField]
-    private Reference _playerRef;
+    [SerializeField] private Reference _playerRef;
 
-    [SerializeField, HideLabel]
-    private AreaCircular _vision = new AreaCircular(label: "Vision", radius: 5, angle: 90);
+    [SerializeField, HideLabel] private AreaCircular _vision = new AreaCircular(label: "Vision", radius: 5, angle: 90);
 
-    [Tooltip("Duration enemy stay in place before return patrolling when lose track of player.")]
-    [SerializeField]
+    [Tooltip("Duration enemy stay in place before return patrolling when lose track of player.")] [SerializeField]
     private Vector2Wrapper _suspiciousTime = new Vector2Wrapper(new Vector2(2, 5), 0, 10);
 
-    [Tooltip("Enemy stays triggered duration this duration when get attacked.")]
-    [SerializeField]
+    [Tooltip("Enemy stays triggered duration this duration when get attacked.")] [SerializeField]
     private Vector2 _aggravationTime = new Vector2(3f, 5f);
 
-    [Tooltip("When get attacked, notify other enemies within this radius.")]
-    [SerializeField]
+    [Tooltip("When get attacked, notify other enemies within this radius.")] [SerializeField]
     private float _notifyDistance = 5f; // TODO: draw Gizmos
 
-    [SerializeField]
-    private bool _notifyOnAttack;
+    [SerializeField] private bool _notifyOnAttack;
 
-    [SerializeField]
-    private float _patrolSpeed = 2f;
+    [SerializeField] private float _patrolSpeed = 2f;
 
-    [SerializeField, HideInInspector]
-    private Fighter _fighter;
+    [SerializeField, HideInInspector] private Fighter _fighter;
 
-    [SerializeField, HideInInspector]
-    private navMove _navMover; // ? Create a wrapper for SWS.navMove
+    [SerializeField, HideInInspector] private navMove _navMover; // ? Create a wrapper for SWS.navMove
 
-    [SerializeField, HideInInspector]
-    private NavMeshAgentOperator _agentOpr;
+    [SerializeField, HideInInspector] private NavMeshAgentOperator _agentOpr;
 
     private bool isPatrolling;
     private bool _isAggravated;
@@ -52,7 +42,8 @@ namespace Project.RPG.Controller {
     void Update() {
       if (_vision.Contains(_playerRef) || _isAggravated) {
         HandleAttacking();
-      } else {
+      }
+      else {
         HandlePatrolling();
       }
     }

@@ -16,8 +16,7 @@ namespace Project.RPG.Controller {
     [SerializeField, InlineEditor, LabelText("Cursor Preset")]
     private CursorDataPreset _cursor;
 
-    [SerializeField, HideInInspector]
-    private Enginoobz.Core.ActionScheduler _actionScheduler;
+    [SerializeField, HideInInspector] private Enginoobz.Core.ActionScheduler _actionScheduler;
 
     // ! Set Event mask on Physics Raycaster to UI layer
     private bool CursorAtUI => EventSystem.current.IsPointerOverGameObject();
@@ -35,20 +34,23 @@ namespace Project.RPG.Controller {
     void Update() {
       if (CursorAtUI) {
         _cursor?.Set(CursorName.UI);
-      } else if (CursorAtAttacker) {
+      }
+      else if (CursorAtAttacker) {
         HandleCombat();
         _cursor?.Set(CursorName.Attack);
-      } else if (CanMoveToCursor) {
+      }
+      else if (CanMoveToCursor) {
         HandleMovement();
         _cursor?.Set(CursorName.Move);
-      } else {
+      }
+      else {
         _cursor?.Set(CursorName.None);
       }
     }
 
     #region MOVEMENT ===================================================================================================================================
-    [SerializeField, HideInInspector]
-    private NavMeshAgentOperator _mover;
+
+    [SerializeField, HideInInspector] private NavMeshAgentOperator _mover;
     private Ray _lastRay;
     private bool CanMoveToCursor => IsMouseRayHit;
 
@@ -63,11 +65,12 @@ namespace Project.RPG.Controller {
         _mover.MoveTo(hit.point);
       }
     }
+
     #endregion ===================================================================================================================================
 
     #region COMBAT ===================================================================================================================================
-    [SerializeField, HideInInspector]
-    private Fighter _fighter;
+
+    [SerializeField, HideInInspector] private Fighter _fighter;
     private List<Attackable> currentAttackableTargets = new List<Attackable>();
 
     private bool CursorAtAttacker {
@@ -83,7 +86,7 @@ namespace Project.RPG.Controller {
       _actionScheduler.SwitchAction(_fighter);
       currentAttackableTargets.ForEach(_fighter.Attack);
     }
-    #endregion ===================================================================================================================================
 
+    #endregion ===================================================================================================================================
   }
 }

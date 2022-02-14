@@ -66,6 +66,10 @@ public static class GameObjectUtils {
       Object.DestroyImmediate(gameObject);
   }
 
+  public static void Destroy(this GameObject gameObject, bool @if) {
+    if (@if) gameObject.Destroy();
+  }
+
   /// <summary>
   ///   Add component if not exist.
   /// </summary>

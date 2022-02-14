@@ -10,21 +10,16 @@ namespace Project.RPG.Combat {
   /// Chasing attacker. 
   /// </summary>
   public class Fighter : Attacker, IAction {
-    [Tooltip("Override agent speed when approaching target before attack.")]
-    [SerializeField, Min(0.5f)]
+    [Tooltip("Override agent speed when approaching target before attack.")] [SerializeField, Min(0.5f)]
     private float _chaseSpeed = 5f;
 
-    [SerializeField]
-    private Transform handRight;
+    [SerializeField] private Transform handRight;
 
-    [SerializeField]
-    private Transform handLeft;
+    [SerializeField] private Transform handLeft;
 
-    [InlineEditor, SerializeField]
-    private WeaponData _weaponData;
+    [InlineEditor, SerializeField] private WeaponData _weaponData;
 
-    [SerializeField]
-    private AudioSource _audioSource;
+    [SerializeField] private AudioSource _audioSource;
 
     private NavMeshAgentOperator _agentOpr;
     private Animator _animator;
@@ -41,10 +36,19 @@ namespace Project.RPG.Combat {
     private ParticleSystem[] weaponVfxs;
 
     protected virtual int AttackDamage => _weaponData.Damage;
-    public float ChaseSpeed { get => _chaseSpeed; set { if (value > 0.5f) _chaseSpeed = value; } }
 
-    protected virtual void OnEnable() { }
-    protected virtual void OnDisable() { }
+    public float ChaseSpeed {
+      get => _chaseSpeed;
+      set {
+        if (value > 0.5f) _chaseSpeed = value;
+      }
+    }
+
+    protected virtual void OnEnable() {
+    }
+
+    protected virtual void OnDisable() {
+    }
 
     protected virtual void Start() {
       _animator = GetComponent<Animator>();
@@ -87,7 +91,8 @@ namespace Project.RPG.Combat {
         // FIX: agent does not guarantee to arrive at the range (e.g target is on the air)
         _agentOpr.MoveTo(_currentTarget.transform.position, _weaponData.Range);
         _isLookingAtCurrentTarget = true; // agent auto turn towards to the destination (target)
-      } else {
+      }
+      else {
         if (Time.time - timeSinceLastAttack > _weaponData.Cooldown) {
           LookAtAndAttackCurrentTarget();
           timeSinceLastAttack = Time.time;
@@ -98,7 +103,8 @@ namespace Project.RPG.Combat {
     private void LookAtAndAttackCurrentTarget() {
       if (!_isLookingAtCurrentTarget && !_isTurningToCurrentTarget) {
         TurnToCurrentTarget();
-      } else
+      }
+      else
         AttackCurrentTarget();
     }
 
@@ -111,13 +117,13 @@ namespace Project.RPG.Combat {
       _isTurningToCurrentTarget = true;
       _animator.SetBool(isTurning, true);
       transform.DOLookAt(_currentTarget.transform.position, 400)
-              .SetSpeedBased()
-              .OnComplete(() => {
-                _isLookingAtCurrentTarget = true;
-                _isTurningToCurrentTarget = false;
-                _animator.SetBool(isTurning, false);
-                AttackCurrentTarget();
-              });
+        .SetSpeedBased()
+        .OnComplete(() => {
+          _isLookingAtCurrentTarget = true;
+          _isTurningToCurrentTarget = false;
+          _animator.SetBool(isTurning, false);
+          AttackCurrentTarget();
+        });
     }
 
     /// <summary>
@@ -134,6 +140,7 @@ namespace Project.RPG.Combat {
     }
 
     #region ANIMATION EVENTS ===================================================================================================================================
+
     void OnAttackTriggeredByAnim() {
       if (!_currentTarget || _currentTarget.IsDead) {
         _isAttacking = false;
@@ -151,7 +158,8 @@ namespace Project.RPG.Combat {
             projectile.onHitAttackableTarget += OnProjectileHit;
           }
         });
-      } else {
+      }
+      else {
         _currentTarget?.GetAttacked(this, AttackDamage);
       }
 
@@ -185,6 +193,7 @@ namespace Project.RPG.Combat {
     void Shoot() {
       OnShoot();
     }
+
     #endregion ===================================================================================================================================
   }
 }

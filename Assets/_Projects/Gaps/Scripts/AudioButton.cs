@@ -1,6 +1,5 @@
 using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.UI;
 
 namespace Project.Gaps {
   public class AudioButton : MonoBehaviourUIBase {

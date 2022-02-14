@@ -18,26 +18,25 @@ namespace Project.RPG.Combat {
 
     [Tooltip("Move to target and stop at this distance to attack.")]
     public float Range = 2;
+
     public int Damage = 1;
 
-    [Tooltip("Delay between attacks - Opposite of rate.")]
-    [Min(0.5f)] public float Cooldown = 1f;
+    [Tooltip("Delay between attacks - Opposite of rate.")] [Min(0.5f)]
+    public float Cooldown = 1f;
+
     public bool IsRightHand = true;
 
-    [SerializeField, InlineEditor]
-    [LabelText("SFXs On Launch")]
+    [SerializeField, InlineEditor] [LabelText("SFXs On Launch")]
     private SFXData _sfxsOnLaunch;
 
-    [SerializeField, InlineEditor]
-    [LabelText("SFXs On Hit")]
+    [SerializeField, InlineEditor] [LabelText("SFXs On Hit")]
     private SFXData _sfxsOnHit; // ? Enable if HasProjectile
 
     [OnValueChanged(nameof(GetProjectileSpawner))]
     [InfoBox("If use projectile, make sure animation has OnShoot/Shoot/OnHit/Hit() event")]
     public bool HasProjectile;
 
-    [ShowIf(nameof(HasProjectile))]
-    [InlineEditor(InlineEditorModes.FullEditor)]
+    [ShowIf(nameof(HasProjectile))] [InlineEditor(InlineEditorModes.FullEditor)]
     // TODO: Validate if projectile spawner exist in prefab
     // this links to Spawner in prefab, hence changes auto update
     public Spawner ProjectileSpawner;
@@ -56,7 +55,8 @@ namespace Project.RPG.Combat {
       var overrideController = animator.runtimeAnimatorController as AnimatorOverrideController;
       if (AnimController) {
         animator.runtimeAnimatorController = AnimController;
-      } else if (overrideController) {
+      }
+      else if (overrideController) {
         animator.runtimeAnimatorController = overrideController.runtimeAnimatorController;
       }
 

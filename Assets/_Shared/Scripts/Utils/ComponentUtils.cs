@@ -7,8 +7,8 @@ public static class ComponentUtils {
   /// <summary>
   ///   Destroy this component's GameObject if component is not null (safely).
   /// </summary>
-  public static void DestroyGameObject(this Component component) {
-    if (component != null) Object.Destroy(component.gameObject);
+  public static void DestroyGameObject(this Component component, float delayInSec = 0f) {
+    if (component != null) Object.Destroy(component.gameObject, delayInSec);
   }
 
   /// <summary>

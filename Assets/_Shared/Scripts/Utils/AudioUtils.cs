@@ -11,6 +11,13 @@ public static class AudioUtils {
   }
 
   /// <summary>
+  ///   Play the audio source if the given condition is true.
+  /// </summary>
+  public static void Play(this AudioSource audioSource, bool @if) {
+    if (@if) audioSource.Play();
+  }
+
+  /// <summary>
   ///   Play one shot the given clip if the given condition is true.
   /// </summary>
   public static void PlayOneShot(this AudioSource audioSource, AudioClip audioClip, bool condition) {

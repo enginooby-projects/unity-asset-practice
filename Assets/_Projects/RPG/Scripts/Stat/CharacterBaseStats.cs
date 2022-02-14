@@ -15,17 +15,13 @@ namespace Project.RPG.Stats {
   /// Centralize all stats for each type of character based on level.
   /// </summary>
   public class CharacterBaseStats : MonoBehaviour {
-    [SerializeField]
-    private CharacterType _characterType;
+    [SerializeField] private CharacterType _characterType;
 
-    [SerializeField, HideLabel]
-    private Stat _levelStat = new Stat(StatName.Level, initialValue: 1);
+    [SerializeField, HideLabel] private Stat _levelStat = new Stat(StatName.Level, initialValue: 1);
 
-    [SerializeField]
-    private ParticleSystem _levelUpVfx;  // TODO: Implement FXs in Stat
+    [SerializeField] private ParticleSystem _levelUpVfx; // TODO: Implement FXs in Stat
 
-    [SerializeField, InlineEditor]
-    private StatsProgressions _statsProgressions;
+    [SerializeField, InlineEditor] private StatsProgressions _statsProgressions;
 
     public Stat LevelStat => _levelStat;
     public StatsProgressions StatsProgressions => _statsProgressions;

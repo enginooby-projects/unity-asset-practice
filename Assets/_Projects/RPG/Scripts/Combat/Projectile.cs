@@ -11,7 +11,9 @@ namespace Project.RPG.Combat {
     [SerializeField] private float _speed = 10f;
     [SerializeField] private bool _chasingTarget;
 
-    [SerializeField, LabelText("Impact VFX")] private ParticleSystem impactVfx;
+    [SerializeField, LabelText("Impact VFX")]
+    private ParticleSystem impactVfx;
+
     private float impactDuration;
 
     [SerializeField] private bool _stayOnCollisionPoint;
@@ -26,6 +28,7 @@ namespace Project.RPG.Combat {
     /// If not chasing target, then only aim at inital position.
     /// </summary>
     private Vector3 initialTargetPos;
+
     private PoolObject poolComponent;
     private bool enableFlying = true;
 
@@ -84,7 +87,8 @@ namespace Project.RPG.Combat {
       if (!_stayOnCollisionPoint) {
         meshRenderer.enabled = false;
         yield return new WaitForSeconds(impactDuration);
-      } else {
+      }
+      else {
         Transform initialParent = transform.parent;
         transform.SetParent(other.transform);
         Vector3 initialScale = transform.localScale;

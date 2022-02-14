@@ -12,7 +12,9 @@ namespace Project.RPG.Stats {
   /// </summary>
   class StatsProgressionIndividual : SerializedScriptableObject {
     // TODO: multiply factor for each stats (game difficulity)
-    [HideLabel, EnumToggleButtons, SerializeField] private CharacterType _characterType;
+    [HideLabel, EnumToggleButtons, SerializeField]
+    private CharacterType _characterType;
+
     [SerializeField] private Dictionary<StatName, List<int>> _statsProgression = new Dictionary<StatName, List<int>>();
 
     public CharacterType CharacterType => _characterType;

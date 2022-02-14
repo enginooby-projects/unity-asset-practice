@@ -7,12 +7,11 @@ namespace Project.RPG.Combat {
   /// <summary>
   /// Extend Chatacter Fighter to give extra specific play stats related to Attacker (Combat)
   /// </summary>
-  public class FighterPlayer : Fighter { // TODO: Create IStatContainer w/ UpdateStats() (for class have any stat need to update)
-    [SerializeField, HideLabel]
-    private Stat _strengthStat = new Stat(StatName.Strength);
+  public class FighterPlayer : Fighter {
+    // TODO: Create IStatContainer w/ UpdateStats() (for class have any stat need to update)
+    [SerializeField, HideLabel] private Stat _strengthStat = new Stat(StatName.Strength);
 
-    [SerializeField, HideInInspector]
-    private CharacterBaseStats _characterBaseStats;
+    [SerializeField, HideInInspector] private CharacterBaseStats _characterBaseStats;
     public Stat StrengthStat => _strengthStat;
 
     protected override int AttackDamage => base.AttackDamage + _strengthStat.CurrentValue;

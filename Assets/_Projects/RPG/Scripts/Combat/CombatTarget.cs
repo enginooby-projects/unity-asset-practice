@@ -8,22 +8,17 @@ using Enginoobz.Audio;
 namespace Project.RPG.Combat {
   // ? Rename AttackableTarget implementing IAttackable (TakeDamage, Die)
   public class CombatTarget : Attackable {
-    [SerializeField, HideLabel]
-    private Stat healthStat = new Stat(StatName.Health, 10);
+    [SerializeField, HideLabel] private Stat healthStat = new Stat(StatName.Health, 10);
 
-    [SerializeField]
-    private Spawner _damageLabelSpawner;
+    [SerializeField] private Spawner _damageLabelSpawner;
 
-    [SerializeField]
-    private AudioSourceOperator _audioSourceOpt;
+    [SerializeField] private AudioSourceOperator _audioSourceOpt;
 
     // [AutoRef]
-    [SerializeField, HideInInspector]
-    private CharacterBaseStats _characterBaseStats;
+    [SerializeField, HideInInspector] private CharacterBaseStats _characterBaseStats;
 
     // [AutoRef]
-    [SerializeField, HideInInspector]
-    private Animator _animator;
+    [SerializeField, HideInInspector] private Animator _animator;
     private readonly int getHitHash = Animator.StringToHash("getHit");
     private readonly int dieHash = Animator.StringToHash("die");
 
@@ -61,6 +56,7 @@ namespace Project.RPG.Combat {
       if (_lastAttacker.TryGetComponent<PlayerStats>(out PlayerStats playerStats)) {
         playerStats.ExperienceStat.Add(_experienceReward);
       }
+
       _audioSourceOpt?.Play(SFXAction.Die);
       Destroy(this);
     }
@@ -70,6 +66,7 @@ namespace Project.RPG.Combat {
     }
 
     #region STAT
+
     private void OnEnable() {
       if (!_characterBaseStats) _characterBaseStats = GetComponent<CharacterBaseStats>();
       healthStat.enableMax = true;
@@ -87,10 +84,12 @@ namespace Project.RPG.Combat {
         healthStat.MaxValue = currentHealthValue.Value;
       }
 
-      if (!gameObject.CompareTag("Player")) { // REFACTOR
+      if (!gameObject.CompareTag("Player")) {
+        // REFACTOR
         _experienceReward = _characterBaseStats.GetStatValue(StatName.ExperienceReward).Value;
       }
     }
+
     #endregion
   }
 }

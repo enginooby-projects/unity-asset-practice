@@ -101,8 +101,7 @@ public static class VectorUtils {
   ///   Return Vector3.zero if no flag.
   /// </summary>
   public static Vector3 ToVector3(this AxisFlag axisFlag) {
-    if (axisFlag.HasFlag(AxisFlag.X) && axisFlag.HasFlag(AxisFlag.Y) && axisFlag.HasFlag(AxisFlag.Z))
-      return Vector3.one;
+    if (axisFlag.HasFlags(AxisFlag.X, AxisFlag.Y, AxisFlag.Z)) return Vector3.one;
     if (!axisFlag.HasFlag(AxisFlag.X) && !axisFlag.HasFlag(AxisFlag.Y) && !axisFlag.HasFlag(AxisFlag.Z))
       return Vector3.zero;
     if (!axisFlag.HasFlag(AxisFlag.X) && axisFlag.HasFlag(AxisFlag.Y) && axisFlag.HasFlag(AxisFlag.Z)) return v011;

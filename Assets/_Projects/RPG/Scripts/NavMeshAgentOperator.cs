@@ -11,8 +11,7 @@ namespace Enginoobz.Operator {
   /// * Use case: Mover (esp. on terrain)
   /// </summary>
   public class NavMeshAgentOperator : MonoBehaviourBase, IAction {
-    [SerializeField, HideInInspector]
-    private NavMeshAgent _agent;
+    [SerializeField, HideInInspector] private NavMeshAgent _agent;
 
     protected override void Awake() {
       _agent = GetComponent<NavMeshAgent>();
@@ -48,6 +47,7 @@ namespace Enginoobz.Operator {
     }
 
     #region PUBLIC METHODS ===================================================================================================================================
+
     // TODO: Declare method for IOperator
     /// <summary>
     /// Destroy the operator along with its component
@@ -63,20 +63,22 @@ namespace Enginoobz.Operator {
     public void SetSpeed(float value) {
       _agent.speed = value;
     }
+
     #endregion ===================================================================================================================================
 
     #region ANIMATION ===================================================================================================================================
+
     [SerializeField] private bool enableAnimation = true;
 
     // ! SPECIFIC
-    [SerializeField, HideInInspector]
-    private Animator _animator;
+    [SerializeField, HideInInspector] private Animator _animator;
 
     private readonly int _forwardSpeedHash = Animator.StringToHash("forwardSpeed");
 
     private void HandleAnimation() {
       _animator.SetFloat(_forwardSpeedHash, LocalVelocity.z);
     }
+
     #endregion ===================================================================================================================================
   }
 }

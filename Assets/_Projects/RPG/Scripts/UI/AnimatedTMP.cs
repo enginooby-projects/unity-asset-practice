@@ -4,8 +4,7 @@ using TMPro;
 
 // TODO: Move to Library
 public class AnimatedTMP : MonoBehaviour, IPoolObject {
-  [SerializeField]
-  private float _duration = 1f;
+  [SerializeField] private float _duration = 1f;
 
   private TextMeshProUGUI _tmp;
   private Tweener _fadeTweener;
@@ -33,5 +32,4 @@ public class AnimatedTMP : MonoBehaviour, IPoolObject {
     _fontSizeTweener = _tmp.DOFontSize(1.2f, _duration).SetAutoKill(false);
     _moveTweener = transform.DOLocalMoveY(6f, _duration).SetAutoKill(false);
   }
-
 }
