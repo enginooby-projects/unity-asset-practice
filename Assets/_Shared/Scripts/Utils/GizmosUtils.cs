@@ -23,7 +23,7 @@ public static class GizmosUtils {
   public static void DrawGizmozRangeFromPos(Vector3 pos, Vector2 range, Axis axisRange, Color? color = null,
     float thickness = 2f) {
 #if UNITY_EDITOR
-    Handles.color = color is null ? Color.magenta : color.Value;
+    Handles.color = color ?? Color.magenta;
     var lowerBound = new Vector3();
     var higherBound = new Vector3();
 

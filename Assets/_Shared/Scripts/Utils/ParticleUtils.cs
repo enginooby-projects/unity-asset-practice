@@ -1,7 +1,8 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public static class ParticleUtils {
-  public static void Play(this ParticleSystem[] particles) {
+  public static void Play(this IEnumerable<ParticleSystem> particles) {
     foreach (var particle in particles) particle?.Play();
   }
 

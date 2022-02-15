@@ -39,7 +39,7 @@ namespace Project.Gaps {
     public void ToggleMusic() {
       PlayerPrefs.SetInt(MuteMusicPrefs, IsMusicMuted.ToInt());
       IsMusicMuted = !IsMusicMuted;
-      musicSource.PlayOrStopMusic(bgMusic, !IsMusicMuted);
+      musicSource.PlayOrStop(bgMusic, !IsMusicMuted);
     }
 
     public void ToggleSfx() {

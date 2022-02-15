@@ -14,7 +14,7 @@ public static class ComponentUtils {
   /// <summary>
   ///   Destroy all GameObjects of components if component is not null.
   /// </summary>
-  public static void DestroyGameObjects(this Component[] components) {
+  public static void DestroyGameObjects(this IEnumerable<Component> components) {
     foreach (var component in components) component.DestroyGameObject();
   }
 

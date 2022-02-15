@@ -136,8 +136,7 @@ public static class TransformUtils {
   ///   Destroy all child GameObjects safely.
   /// </summary>
   public static void DestroyChildren(this Transform transform) {
-    // OPTIM: not convert to array
-    transform.gameObject.GetComponentsInChildrenOnly<Transform>().ToArray().DestroyGameObjects();
+    transform.gameObject.GetComponentsInChildrenOnly<Transform>().DestroyGameObjects();
   }
 
   #region RESET =======================================================================================================================================================================
