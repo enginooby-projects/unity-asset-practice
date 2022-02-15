@@ -7,25 +7,12 @@ TagManager:
   - Stair
   - Climb
   - Fly
-  - Collection
-  - PW - Prop
-  - PW - Nature
-  - PW - Building
-  - Animal
-  - Synty Medium Farm
-  - Synty Tree
-  - Synty Small Farm
-  - LittleBall
-  - SideTrigger
-  - Obstacle
-  - Prism Instance
-  - Cube Instance
-  - Sphere Instance
+  - Pipe
   - DeathParticle
   - BasicParticle
   - Skin
+  - Prism Instance
   - Token
-  - Pipe
   layers:
   - Default
   - TransparentFX
@@ -35,13 +22,13 @@ TagManager:
   - UI
   - 
   - 
+  - TrafficCar
   - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Barrier
+  - Asphalt
+  - RCC
+  - TrafficCarVolume
+  - PP
   - 
   - 
   - 

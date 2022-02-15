@@ -9,9 +9,8 @@ namespace Project.ShapeTunnel {
     private Touch initTouch = new Touch();
     private bool touching = false;
 
-    void Start() {
+    private void Start() =>
       transform.GetChild(0).GetComponent<Animation>().Play(); //Rotates the player (plays player's animation)
-    }
 
     void Update() {
       foreach (Touch touch in Input.touches) {

@@ -3,6 +3,10 @@ using System.Linq;
 using UnityEngine;
 
 public static class UnclassifiedUtils {
+  public static bool Overlap(this Collider collider, Collider target) {
+    return collider.transform.Contains(collider.bounds, target.bounds);
+  }
+
   public static T GetComponent<T>(this Collision collision) where T : Component =>
     collision.gameObject.GetComponent<T>();
 

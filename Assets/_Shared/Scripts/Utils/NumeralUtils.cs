@@ -6,21 +6,21 @@ public static class NumeralUtils {
   ///   Returns whether the value is greater than or equal to a minimal value
   ///   and smaller than or equal to a maximum value.
   /// </summary>
-  public static bool IsInRange(this int value, int min, int max) => value >= min && value <= max;
+  public static bool IsInRange(this int number, int min, int max) => number >= min && number <= max;
 
-  public static bool IsEven(this int value) => value % 2 == 0;
+  public static bool IsEven(this int number) => number % 2 == 0;
 
-  public static bool IsOdd(this int value) => value % 2 != 0;
+  public static bool IsOdd(this int number) => number % 2 != 0;
 
   /// <summary>
   ///   Return false if 0.
   /// </summary>
-  public static bool ToBool(this int value) => value != 0;
+  public static bool ToBool(this int number) => number != 0;
 
   /// <summary>
   /// Return a Vector3 whose x, y, z equal given value. E.g., 1 -> (1, 1, 1).
   /// </summary>
-  public static Vector3 ToVector3(this float value) => new Vector3(value, value, value);
+  public static Vector3 ToVector3(this float number) => new Vector3(number, number, number);
 
   /// <summary>
   ///   Round the calculated degree to a given number of decimal places.
@@ -87,13 +87,13 @@ public static class NumeralUtils {
   /// <summary>
   ///   Returns the normalized (between 0 and 1) value.
   /// </summary>
-  public static float Normalize(this float value, float min, float max) => (value - min) / (max - min);
+  public static float Normalize(this float number, float min, float max) => (number - min) / (max - min);
 
   /// <summary>
   ///   Returns the value mapped to a new scale.
   /// </summary>
-  public static float Map(this float value, float min, float max, float targetMin, float targetMax) =>
-    (value - min) * ((targetMax - targetMin) / (max - min)) + targetMin;
+  public static float Map(this float number, float min, float max, float targetMin, float targetMax) =>
+    (number - min) * ((targetMax - targetMin) / (max - min)) + targetMin;
 
   public static int WithRandomSign(this int number) {
     var sign = (UnityEngine.Random.Range(0, 100) > 50) ? 1 : -1;

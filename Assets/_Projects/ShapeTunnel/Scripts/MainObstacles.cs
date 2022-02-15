@@ -2,7 +2,7 @@
 using UnityEngine;
 
 namespace Project.ShapeTunnel {
-  // ? Rotator
+  // REFACTOR: Create in Library - Rotator
   public class MainObstacles : MonoBehaviour {
     [SerializeField] private RandomInt rotateSpeed = new RandomInt(14, 34);
     private bool _isClockwise;

@@ -76,6 +76,7 @@ public static class VectorUtils {
     vect.WithX(UnityEngine.Random.Range(minX, maxX));
 
   public static Vector3 WithY(this Vector3 vect, float newY) => new Vector3(vect.x, newY, vect.z);
+  public static Vector3 WithYZ(this Vector3 vect, float newValue) => new Vector3(vect.x, newValue, newValue);
 
   public static Vector3 WithNegativeY(this Vector3 vect) => new Vector3(vect.x, -Mathf.Abs(vect.y), vect.z);
 

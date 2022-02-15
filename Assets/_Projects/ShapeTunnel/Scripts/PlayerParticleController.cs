@@ -8,8 +8,8 @@ namespace Project.ShapeTunnel {
     private void Start() => InitializeParticles();
 
     public void InitializeParticles() {
-      _basicParticle = FindGameObjectWithTag("BasicParticle").GetComponent<ParticleSystem>(); //Gets the basicParticle
-      _deathParticle = FindGameObjectWithTag("DeathParticle").GetComponent<ParticleSystem>(); //Gets the deathParticle
+      _basicParticle = FindGameObjectWithTag("BasicParticle").GetComponent<ParticleSystem>();
+      _deathParticle = FindGameObjectWithTag("DeathParticle").GetComponent<ParticleSystem>();
       _basicParticle.Play();
     }
 

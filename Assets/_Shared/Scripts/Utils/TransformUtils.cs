@@ -3,6 +3,11 @@ using static VectorUtils;
 
 // namespace ExtentionMethods {
 public static class TransformUtils {
+  // ?
+  public static bool Contains(this Transform transform, Bounds bounds, Bounds target) {
+    return bounds.Contains(target.ClosestPoint(transform.position));
+  }
+
   public static float DistanceFrom(this Transform transform, Vector3 targetPos) {
     // optimizer than Vector3.Distance()
     var x = Vector3.SqrMagnitude(transform.position - targetPos);
