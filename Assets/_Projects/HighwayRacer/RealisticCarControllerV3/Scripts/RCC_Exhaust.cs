@@ -169,7 +169,7 @@ public class RCC_Exhaust : RCC_Core {
         }
       }
       else {
-        subEmission.enabled = false;
+        subEmission.enabled = false; 
 
         if (flameLight)
           flameLight.intensity = 0f;

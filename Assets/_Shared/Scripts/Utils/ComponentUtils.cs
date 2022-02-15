@@ -62,8 +62,7 @@ public static class ComponentUtils {
         try {
           pinfo.SetValue(comp, pinfo.GetValue(other, null), null);
         }
-        catch {
-        } // In case of NotImplementedException being thrown. For some reason specifying that exception didn't seem to catch it, so I didn't catch anything specific.
+        catch { } // In case of NotImplementedException being thrown. For some reason specifying that exception didn't seem to catch it, so I didn't catch anything specific.
 
     var finfos = type.GetFields(flags);
     foreach (var finfo in finfos) finfo.SetValue(comp, finfo.GetValue(other));

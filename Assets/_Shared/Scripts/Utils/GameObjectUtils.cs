@@ -90,10 +90,10 @@ public static class GameObjectUtils {
   }
 
   /// <summary>
-  ///   Create a new GameObject with the given MonoBehaviour type with reset transform.
+  ///   Create a new GameObject with the given component type with reset transform.
   ///   Return the added MonoBehaviour.
   /// </summary>
-  public static T CreateGameObject<T>() where T : MonoBehaviour {
+  public static T CreateGameObject<T>() where T : Component {
     var go = new GameObject();
     go.transform.Reset();
     return go.AddComponent<T>();

@@ -25,7 +25,7 @@ namespace Project.HighwayRacer {
 
     internal Renderer[] referenceRenderers;
     internal Renderer[] targetRenderers;
-    
+
     public void AlignLightmaps(GameObject referenceMainGameObject, GameObject targetMainGameObject) {
       referenceRenderers = referenceMainGameObject.GetComponentsInChildren<Renderer>();
       targetRenderers = targetMainGameObject.GetComponentsInChildren<Renderer>();

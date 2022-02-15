@@ -17,8 +17,8 @@ namespace Project.HighwayRacer {
       var forceSide = collisionSide == CollisionSide.Right ? -1 : 1;
       _playerRigid ??= col.gameObject.GetComponentInParent<RCC_CarControllerV3>().rigid;
       _playerRigid.AddForce(Vector3.right * 50f * forceSide, ForceMode.Acceleration);
-      _playerRigid.velocity = _playerRigid.velocity.WithX(0f);
-      _playerRigid.angularVelocity = _playerRigid.angularVelocity.WithYZ(0f);
+      _playerRigid.ZeroizeVelocityX();
+      _playerRigid.ZeroizeAngularVelocityYZ();
     }
 
     private void OnDrawGizmos() {

@@ -38,6 +38,8 @@ namespace Project.HighwayRacer {
       Bomb
     }
 
+    public bool IsBombMode => mode == Mode.Bomb;
+
     [Header("UI Canvases For GamePlay and GameOver")]
     public Canvas gameplayCanvas;
 
@@ -121,8 +123,7 @@ namespace Project.HighwayRacer {
       StartCoroutine(WaitForGameStart());
     }
 
-    void HR_PlayerHandler_OnNearMiss(HR_PlayerHandler player, int score, HR_DynamicScoreDisplayer.Side side) {
-    }
+    void HR_PlayerHandler_OnNearMiss(HR_PlayerHandler player, int score, HR_DynamicScoreDisplayer.Side side) { }
 
     void HR_PlayerHandler_OnPlayerDied(HR_PlayerHandler player) {
       StartCoroutine(OnGameOver(1f));

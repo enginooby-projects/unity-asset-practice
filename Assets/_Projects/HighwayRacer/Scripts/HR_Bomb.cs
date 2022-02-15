@@ -9,10 +9,7 @@ namespace Project.HighwayRacer {
 
     private AudioClip bombTimerAudioClip => HR_HighwayRacerProperties.Instance.bombTimerAudioClip;
 
-    private void Awake() {
-      var isBombMode = HR_GamePlayHandler.Instance.mode == HR_GamePlayHandler.Mode.Bomb;
-      gameObject.SetActive(isBombMode);
-    }
+    private void Awake() => gameObject.SetActive(HR_GamePlayHandler.Instance.IsBombMode);
 
     private void Start() {
       _handler = GetComponentInParent<HR_PlayerHandler>();

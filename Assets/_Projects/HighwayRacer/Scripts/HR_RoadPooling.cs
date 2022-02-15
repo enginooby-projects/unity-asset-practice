@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Project.HighwayRacer {
   public class HR_RoadPooling : MonoBehaviour {
-    private Transform reference;
+    private Transform _reference;
     private bool animateNow = true;
 
     [System.Serializable]
@@ -29,7 +29,7 @@ namespace Project.HighwayRacer {
     private int index = 0;
 
     void Awake() {
-      reference = Camera.main.transform;
+      _reference = Camera.main.transform;
       roadLength = new float[roadObjects.Length];
 
       for (int i = 0; i < roadObjects.Length; i++) {
@@ -100,7 +100,7 @@ namespace Project.HighwayRacer {
 
     void AnimateRoads() {
       for (int i = 0; i < roads.Count; i++) {
-        if (reference.transform.position.z > (roads[i].transform.position.z + (roadLength[index] * 2f))) {
+        if (_reference.transform.position.z > (roads[i].transform.position.z + (roadLength[index] * 2f))) {
           roads[i].transform.position = new Vector3(0f, roads[i].transform.position.y,
             (roads[i].transform.position.z + (roadLength[index] * roads.Count)));
         }

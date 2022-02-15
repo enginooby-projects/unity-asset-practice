@@ -21,20 +21,15 @@ using Enginoobz.Attribute;
 ///   * vs. ComponentOperator base is for built-in Unity Components
 /// </summary>
 public abstract class MonoBehaviourBase : MonoBehaviour {
-  protected virtual void Awake() {
-  }
+  protected virtual void Awake() { }
 
-  protected virtual void Start() {
-  }
+  protected virtual void Start() { }
 
-  protected virtual void Update() {
-  }
+  protected virtual void Update() { }
 
-  protected virtual void FixedUpdate() {
-  }
+  protected virtual void FixedUpdate() { }
 
-  protected virtual void LateUpdate() {
-  }
+  protected virtual void LateUpdate() { }
 
   // TIP: Best practice using static variable: cache old value and restore it after operation
   private void OnDrawGizmos() {
@@ -49,11 +44,9 @@ public abstract class MonoBehaviourBase : MonoBehaviour {
     Gizmos.color = oldColor;
   }
 
-  protected virtual void DrawGizmos() {
-  }
+  protected virtual void DrawGizmos() { }
 
-  protected virtual void DrawGizmosOnSelected() {
-  }
+  protected virtual void DrawGizmosOnSelected() { }
 
   // [SerializeField, HideInInspector]
   // private Vector3? _initalPosition = null;
@@ -84,6 +77,11 @@ public abstract class MonoBehaviourBase : MonoBehaviour {
   protected Vector3 _position {
     get => Transform.position;
     set => Transform.position = value;
+  }
+
+  protected Quaternion _rotation {
+    get => Transform.rotation;
+    set => Transform.rotation = value;
   }
 
   protected Rigidbody _rigidbody => My<Rigidbody>();
@@ -133,8 +131,7 @@ public abstract class MonoBehaviourBase : MonoBehaviour {
   public void DisableForSecs(float seconds) => this.Disable(seconds);
 
 
-  public void ToggleActive() {
-  }
+  public void ToggleActive() { }
 
   /// <summary>
   /// Instantiate at this component's position with Quaternion identity.

@@ -243,6 +243,25 @@ public static class TransformUtils {
     transform.localScale = target.transform.localScale;
   }
 
+  /// <summary>
+  /// Used for smooth position lerping.
+  /// </summary>
+  public static void SmoothApproach(this Transform transform, Vector3 pastPosition, Vector3 pastTargetPosition,
+    Vector3 targetPosition,
+    float delta) {
+    if (Time.timeScale == 0 || float.IsNaN(delta) || float.IsInfinity(delta) || delta == 0 ||
+        pastPosition == Vector3.zero || pastTargetPosition == Vector3.zero || targetPosition == Vector3.zero)
+      return;
+
+    var t = (Time.deltaTime * delta) + .00001f;
+    var v = (targetPosition - pastTargetPosition) / t;
+    var f = pastPosition - pastTargetPosition + v;
+    var l = targetPosition - v + f * Mathf.Exp(-t);
+
+    if (l != Vector3.negativeInfinity && l != Vector3.positiveInfinity && l != Vector3.zero)
+      transform.position = l;
+  }
+
   #endregion POSITION ================================================================================================================================
 
   #region SCALE ===================================================================================================================================
