@@ -120,26 +120,22 @@ public static class CollectionUtils {
   ///   Return true if the element exists and not null.
   /// </summary>
   public static bool TryGetById<T>(this IList<Object> objects, int id, out T element) where T : Object {
-    if (objects.Count > id) {
-      element = objects[id] as T;
-      return element ? true : false;
-    }
+    // TIP: Return object (implicitly casted to bool) w/o using conditional statement
+    // E.g., return element ? true : false;
+    if (objects.HasIndex(id))
+      return element = objects[id] as T;
 
-    element = null;
-    return false;
+    return element = null;
   }
 
   /// <summary>
   ///   Return true if the element exists in the array and not null.
   /// </summary>
   public static bool TryGetById<T>(this T[] objects, int id, out T element) where T : Object {
-    if (objects.Length > id) {
-      element = objects[id] as T;
-      return element ? true : false;
-    }
+    if (objects.HasIndex(id))
+      return element = objects[id];
 
-    element = null;
-    return false;
+    return element = null;
   }
 
   /// <summary>
@@ -148,7 +144,7 @@ public static class CollectionUtils {
   public static bool TryGetById(this Object[] objects, int id, out Object element) {
     if (objects.Length > id) {
       element = objects[id];
-      return element ? true : false;
+      return element;
     }
 
     element = null;

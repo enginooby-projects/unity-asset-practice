@@ -13,7 +13,8 @@ public static class GizmosUtils {
     // TODO: draw decorative arrow & length number
     color ??= Color.magenta;
     Handles.color = color.Value;
-    Handles.DrawLine(go.transform.position, go.transform.position + offset, thickness);
+    var position = go.transform.position;
+    Handles.DrawLine(position, position + offset, thickness);
 #endif
   }
 
@@ -47,7 +48,7 @@ public static class GizmosUtils {
   }
 
   /// <summary>
-  ///   Draw a boundary line from gameobject position on the given axis.
+  ///   Draw a boundary line from GameObject position on the given axis.
   /// </summary>
   public static void DrawGizmozRangeFromPos(this MonoBehaviour monoBehaviour, Vector2 range, Axis axisRange,
     Color? color = null, float thickness = 2f) {

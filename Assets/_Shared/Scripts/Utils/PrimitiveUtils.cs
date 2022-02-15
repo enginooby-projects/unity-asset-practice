@@ -19,8 +19,9 @@ public static class PrimitiveUtils {
     var meshFilter = go.AddComponent<MeshFilter>();
     var meshRenderer = go.AddComponent<MeshRenderer>();
     meshFilter.mesh = GetPrimitiveMesh(type);
-    meshRenderer.material = new Material(Shader.Find("Universal Render Pipeline/Lit"));
-    meshRenderer.material.color = color ?? Color.white;
+    meshRenderer.material = new Material(Shader.Find("Universal Render Pipeline/Lit")) {
+      color = color ?? Color.white
+    };
     return go;
   }
 

@@ -1,7 +1,7 @@
+using System;
 using UnityEngine;
 using static VectorUtils;
 
-// namespace ExtentionMethods {
 public static class TransformUtils {
   // ?
   public static bool Contains(this Transform transform, Bounds bounds, Bounds target) {
@@ -87,17 +87,19 @@ public static class TransformUtils {
   ///   Translate on local Y (included deltaTime).
   /// </summary>
   public static void MoveY(this Transform transform, float distance = 1f) {
-    transform.Translate(v010 * Time.deltaTime * distance);
+    transform.Translate(v010 * distance * Time.deltaTime);
   }
 
   /// <summary>
   ///   This looping movement is based on Time.time so don't need extra direction flag in the MonoBehaviour<br />
-  ///   Howerver, if the speed is changed in runtime, the position may be teleported.
+  ///   However, if the speed is changed in runtime, the position may be teleported.
   /// </summary>
   public static void MoveYInRange(this Transform transform, float minY, float maxY, float speed = 1f) {
-    var pos1 = transform.position.WithY(minY);
-    var pos2 = transform.position.WithY(maxY);
-    transform.position = Vector3.Lerp(pos1, pos2, (Mathf.Sin(speed * Time.time) + 1.0f) / 2.0f);
+    var position = transform.position;
+    var pos1 = position.WithY(minY);
+    var pos2 = position.WithY(maxY);
+    position = Vector3.Lerp(pos1, pos2, (Mathf.Sin(speed * Time.time) + 1.0f) / 2.0f);
+    transform.position = position;
     // transform.position = Vector3.Lerp(pos1, pos2, Mathf.PingPong(Time.time * speed, 1.0f));
   }
 
@@ -176,41 +178,37 @@ public static class TransformUtils {
   #region POSITION ===================================================================================================================================
 
   public static void SetPosX(this Transform transform, float x) {
-    transform.position = new Vector3(x, transform.position.y, transform.position.z);
+    transform.position = transform.position.WithX(x);
   }
 
   public static void SetPosY(this Transform transform, float y) {
-    transform.position = new Vector3(transform.position.x, y, transform.position.z);
+    transform.position = transform.position.WithY(y);
   }
 
   public static void SetPosZ(this Transform transform, float z) {
-    transform.position = new Vector3(transform.position.x, transform.position.y, z);
+    transform.position = transform.position.WithZ(z);
   }
 
   public static void SetPos(this Transform transform, Vector3 pos) {
     transform.position = pos;
   }
 
-  // + REMOVE
-  public static void PosX(this Transform transform, float x) {
-    transform.position = new Vector3(x, transform.position.y, transform.position.z);
-  }
+  [Obsolete("Use " + nameof(SetPosX))]
+  public static void PosX(this Transform transform, float x) => transform.SetPosX(x);
 
-  public static void PosY(this Transform transform, float y) {
-    transform.position = new Vector3(transform.position.x, y, transform.position.z);
-  }
+  [Obsolete("Use " + nameof(SetPosY))]
+  public static void PosY(this Transform transform, float y) => transform.SetPosY(y);
 
-  public static void PosZ(this Transform transform, float z) {
-    transform.position = new Vector3(transform.position.x, transform.position.y, z);
-  }
+  [Obsolete("Use " + nameof(SetPosZ))]
+  public static void PosZ(this Transform transform, float z) => transform.SetPosZ(z);
 
   /// <summary>
   ///   E.g. Update (1, 1, 1) with (2, 2, 2) with Axis.XZ => (2, 1, 2)
   /// </summary>
   public static void UpdatePosOnAxis(this Transform transform, Transform target, AxisFlag axis) {
-    if (axis.HasFlag(AxisFlag.X)) transform.PosX(target.position.x);
-    if (axis.HasFlag(AxisFlag.Y)) transform.PosY(target.position.y);
-    if (axis.HasFlag(AxisFlag.Z)) transform.PosZ(target.position.z);
+    if (axis.HasFlag(AxisFlag.X)) transform.SetPosX(target.position.x);
+    if (axis.HasFlag(AxisFlag.Y)) transform.SetPosY(target.position.y);
+    if (axis.HasFlag(AxisFlag.Z)) transform.SetPosZ(target.position.z);
   }
 
   /// <summary>
@@ -268,13 +266,12 @@ public static class TransformUtils {
   /// <summary>
   ///   Multiply transform.localScale.y by the given factor.
   /// </summary>
-  /// <param name="transform"></param>
   public static void MultiplyScaleY(this Transform transform, float factor) {
     transform.SetScaleY(transform.localScale.y * factor);
   }
 
-  public static void SetScaleY(this Transform transform, float value) {
-    transform.localScale = new Vector3(transform.localScale.x, value, transform.localScale.z);
+  public static void SetScaleY(this Transform transform, float y) {
+    transform.localScale = transform.localScale.WithY(y);
   }
 
   /// <summary>

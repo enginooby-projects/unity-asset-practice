@@ -3,7 +3,7 @@ using UnityEngine;
 
 public static class ParticleUtils {
   public static void Play(this IEnumerable<ParticleSystem> particles) {
-    foreach (var particle in particles) particle?.Play();
+    foreach (var particle in particles) particle.Play();
   }
 
   public static ParticleSystem WithColor(this ParticleSystem vfx, Color color) {

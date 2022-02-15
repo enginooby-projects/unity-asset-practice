@@ -1,7 +1,9 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Reflection;
 using UnityEngine;
+using Object = UnityEngine.Object;
 
 public static class ComponentUtils {
   /// <summary>
@@ -56,20 +58,22 @@ public static class ComponentUtils {
     if (type != other.GetType()) return null; // type mis-match
     var flags = BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.Default |
                 BindingFlags.DeclaredOnly;
-    var pinfos = type.GetProperties(flags);
-    foreach (var pinfo in pinfos)
-      if (pinfo.CanWrite)
+    var propertyInfos = type.GetProperties(flags);
+    foreach (var propertyInfo in propertyInfos)
+      if (propertyInfo.CanWrite)
         try {
-          pinfo.SetValue(comp, pinfo.GetValue(other, null), null);
+          propertyInfo.SetValue(comp, propertyInfo.GetValue(other, null), null);
         }
-        catch { } // In case of NotImplementedException being thrown. For some reason specifying that exception didn't seem to catch it, so I didn't catch anything specific.
+        catch (Exception) {
+          // ignored
+        } // In case of NotImplementedException being thrown. For some reason specifying that exception didn't seem to catch it, so I didn't catch anything specific.
 
-    var finfos = type.GetFields(flags);
-    foreach (var finfo in finfos) finfo.SetValue(comp, finfo.GetValue(other));
+    var fieldInfos = type.GetFields(flags);
+    foreach (var fieldInfo in fieldInfos) fieldInfo.SetValue(comp, fieldInfo.GetValue(other));
     return comp as T;
   }
 
-  /// <summary>If RigidBody exists, just leave it as it be (respect the exsiting RigidBody)</summary>
+  /// <summary>If RigidBody exists, just leave it as it be (respect the existing RigidBody)</summary>
   public static Rigidbody AddRigidBodyIfNotExist(this MonoBehaviour monoBehaviour, bool useGravity = true,
     float mass = 1) {
     var theRb = monoBehaviour.gameObject.GetComponent<Rigidbody>();
