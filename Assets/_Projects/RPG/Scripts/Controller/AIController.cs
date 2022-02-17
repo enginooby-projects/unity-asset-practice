@@ -2,7 +2,7 @@ using System.Collections;
 using UnityEngine;
 using Sirenix.OdinInspector;
 using Project.RPG.Combat;
-using Enginoobz.Operator;
+using Enginooby.Operator;
 using SWS;
 
 namespace Project.RPG.Controller {

@@ -1,7 +1,7 @@
 using UnityEngine;
 using Sirenix.OdinInspector;
 using Giezi.Tools;
-using Enginoobz.Audio;
+using Enginooby.Audio;
 
 namespace Project.RPG.Combat {
   [SOVariant]

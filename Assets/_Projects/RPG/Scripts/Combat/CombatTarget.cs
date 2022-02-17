@@ -3,7 +3,7 @@ using Sirenix.OdinInspector;
 using Project.RPG.Stats;
 using System;
 using TMPro;
-using Enginoobz.Audio;
+using Enginooby.Audio;
 
 namespace Project.RPG.Combat {
   // ? Rename AttackableTarget implementing IAttackable (TakeDamage, Die)

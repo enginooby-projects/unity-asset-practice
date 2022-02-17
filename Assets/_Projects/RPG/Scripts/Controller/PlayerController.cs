@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
-using Enginoobz.Operator;
-using Enginoobz.UI;
+using Enginooby.Operator;
+using Enginooby.UI;
 using Project.RPG.Combat;
 using Sirenix.OdinInspector;
 using static RayUtils;
@@ -16,13 +16,13 @@ namespace Project.RPG.Controller {
     [SerializeField, InlineEditor, LabelText("Cursor Preset")]
     private CursorDataPreset _cursor;
 
-    [SerializeField, HideInInspector] private Enginoobz.Core.ActionScheduler _actionScheduler;
+    [SerializeField, HideInInspector] private Enginooby.Core.ActionScheduler _actionScheduler;
 
     // ! Set Event mask on Physics Raycaster to UI layer
     private bool CursorAtUI => EventSystem.current.IsPointerOverGameObject();
 
     private void Awake() {
-      _actionScheduler = GetComponent<Enginoobz.Core.ActionScheduler>();
+      _actionScheduler = GetComponent<Enginooby.Core.ActionScheduler>();
       _mover = GetComponent<NavMeshAgentOperator>();
       _fighter = GetComponent<Fighter>();
     }

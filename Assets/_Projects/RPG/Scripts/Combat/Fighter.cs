@@ -2,8 +2,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 using Sirenix.OdinInspector;
-using Enginoobz.Operator;
-using Enginoobz.Core;
+using Enginooby.Operator;
+using Enginooby.Core;
 
 namespace Project.RPG.Combat {
   /// <summary>
@@ -44,11 +44,9 @@ namespace Project.RPG.Combat {
       }
     }
 
-    protected virtual void OnEnable() {
-    }
+    protected virtual void OnEnable() { }
 
-    protected virtual void OnDisable() {
-    }
+    protected virtual void OnDisable() { }
 
     protected virtual void Start() {
       _animator = GetComponent<Animator>();

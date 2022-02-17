@@ -1,11 +1,11 @@
 using System;
 using System.Collections;
+using Enginooby.Core;
 using UnityEngine;
 using UnityEngine.AI;
-using Enginoobz.Core;
 
 // TODO: Move into Library
-namespace Enginoobz.Operator {
+namespace Enginooby.Operator {
   [RequireComponent(typeof(NavMeshAgent))]
   /// <summary>
   /// * Use case: Mover (esp. on terrain)
