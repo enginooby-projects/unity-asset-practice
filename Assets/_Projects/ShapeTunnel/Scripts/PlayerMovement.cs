@@ -1,39 +1,41 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System;
 using UnityEngine;
 
 namespace Project.ShapeTunnel {
   public class PlayerMovement : MonoBehaviour {
     public float computerSpeed, movementSpeed;
 
-    private Touch initTouch = new Touch();
-    private bool touching = false;
+    private Touch _initTouch;
+    private bool _isTouching;
 
     private void Start() =>
       transform.GetChild(0).GetComponent<Animation>().Play(); //Rotates the player (plays player's animation)
 
-    void Update() {
-      foreach (Touch touch in Input.touches) {
-        if (touch.phase == TouchPhase.Began) //If finger touches the screen
-        {
-          if (touching == false) {
-            touching = true;
-            initTouch = touch;
+    private void Update() {
+      foreach (var touch in Input.touches) {
+        switch (touch.phase) {
+          //If finger touches the screen 
+          case TouchPhase.Began: {
+            if (!_isTouching) {
+              _isTouching = true;
+              _initTouch = touch;
+            }
+
+            break;
           }
-        }
-        else if (touch.phase == TouchPhase.Moved) //iIf finger moves while touching the screen
-        {
-          float deltaX = initTouch.position.x - touch.position.x;
-          transform.RotateAround(Vector3.zero, transform.forward,
-            deltaX * movementSpeed * Time.deltaTime); //Rotates the player around the x axis
-
-
-          initTouch = touch;
-        }
-        else if (touch.phase == TouchPhase.Ended) //If finger releases the screen
-        {
-          initTouch = new Touch();
-          touching = false;
+          //iIf finger moves while touching the screen
+          case TouchPhase.Moved: {
+            var deltaX = _initTouch.position.x - touch.position.x;
+            transform.RotateAround(Vector3.zero, transform.forward,
+              deltaX * movementSpeed * Time.deltaTime); //Rotates the player around the x axis
+            _initTouch = touch;
+            break;
+          }
+          //If finger releases the screen
+          case TouchPhase.Ended:
+            _initTouch = new Touch();
+            _isTouching = false;
+            break;
         }
       }
 

@@ -33,7 +33,8 @@ namespace Project.ShapeTunnel {
     public void CallAdmobAds() {
       FindObjectOfType<AdManager>().ShowAdmobBanner(); //Shows Banner Ad when game starts
       if (Math.Abs(Time.time - Time.timeSinceLevelLoad) > .1f)
-        FindObjectOfType<AdManager>().ShowAdmobInterstitial(); //Shows Interstitial Ad when game starts (except for the first time)
+        FindObjectOfType<AdManager>()
+          .ShowAdmobInterstitial(); //Shows Interstitial Ad when game starts (except for the first time)
     }
 
     public void Initialize() {
@@ -94,13 +95,11 @@ namespace Project.ShapeTunnel {
       startPanel.SetActive(false);
     }
 
-    public void RestartButton() {
-      SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-    }
+    public void RestartButton() => SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
 
-    public void SkinsBackButton() {
-      StartPanelActivation();
-    }
+    public void SkinsBackButton() => StartPanelActivation();
+
+    public void SkinsButton() => SkinsPanelActivation();
 
     public void AudioButton() {
       if (PlayerPrefs.GetInt("Audio", 0) == 0)
@@ -108,10 +107,6 @@ namespace Project.ShapeTunnel {
       else
         PlayerPrefs.SetInt("Audio", 0);
       AudioCheck();
-    }
-
-    public void SkinsButton() {
-      SkinsPanelActivation();
     }
   }
 }

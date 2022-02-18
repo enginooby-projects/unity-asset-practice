@@ -22,8 +22,9 @@ namespace Project.ShapeTunnel {
       }
     }
 
-    private void HitShapeObstacle(Collider other) => other.CompareTag(_meshFilter.mesh.name,
-      trueAction: HitCorrectObstacle, falseAction: HitWrongObstacle);
+    private void HitShapeObstacle(Collider other) =>
+      other.CompareTag(_meshFilter.mesh.name,
+        trueAction: HitCorrectObstacle, falseAction: HitWrongObstacle);
 
     private void HitCorrectObstacle() {
       basicParticleRenderer.material = _meshRenderer.material = playerMaterials.GetRandom();
@@ -48,7 +49,7 @@ namespace Project.ShapeTunnel {
       //FindObjectOfType<JumpManager>().enabled = false;
     }
 
-    private void CollectToken(Collider token) {
+    private void CollectToken(Component token) {
       FindObjectOfType<AudioManager>().PlayTokenSound();
       FindObjectOfType<ScoreManager>().IncrementToken();
       Destroy(token.gameObject);

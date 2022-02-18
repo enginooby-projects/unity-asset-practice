@@ -3,8 +3,14 @@ using UnityEngine;
 public static class RandomUtils {
   public static float RandomTwoSides(this float range) => Random.Range(-Mathf.Abs(range), Mathf.Abs(range));
 
+  /// <summary>
+  ///   Out of 100%.
+  /// </summary>
   public static bool Percent(this int percent) => Random.Range(0, 100) < percent;
 
+  /// <summary>
+  ///   Out of 100%.
+  /// </summary>
   public static bool Percent(this float percent) => Random.Range(0f, 100f) < percent;
 
   /// <summary>E.g. Vector (1, 1, 1) with offset range (1, 2, 3) results (0->2, -1->3, -2->4) </summary>

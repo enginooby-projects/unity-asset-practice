@@ -12,14 +12,12 @@ namespace Project.ShapeTunnel {
     public bool
       unityAds = true; //Set this false if you want to use Admob, set this true if you want to use Unity Ads!!!
 
-    private static BannerView bannerView;
-    private InterstitialAd interstitialView;
-    RewardBasedVideoAd rewardBasedVideoAd;
-
+    private static BannerView _bannerView;
+    private InterstitialAd _interstitialView;
+    private RewardBasedVideoAd _rewardBasedVideoAd;
 
     public static bool firstTime = true;
-
-    public static AdManager admanagerInstance = null;
+    public static AdManager admanagerInstance;
 
     //These IDs have to be changed to the actual app and ad IDs!!
     [SerializeField] private string appID = "";
@@ -27,7 +25,7 @@ namespace Project.ShapeTunnel {
     [SerializeField] private string interstitialID = "ca-app-pub-3940256099942544/1033173712";
     [SerializeField] private string rewardVideoID = "ca-app-pub-3940256099942544/5224354917";
 
-    void Awake() {
+    private void Awake() {
       if (admanagerInstance == null) {
         admanagerInstance = this;
       }
@@ -45,37 +43,37 @@ namespace Project.ShapeTunnel {
       }
     }
 
-    void Start() {
+    private void Start() {
       // Called when an ad request has successfully loaded.
-      bannerView.OnAdLoaded += HandleOnAdLoaded;
+      _bannerView.OnAdLoaded += HandleOnAdLoaded;
       // Called when an ad request failed to load.
-      bannerView.OnAdFailedToLoad += HandleOnAdFailedToLoad;
+      _bannerView.OnAdFailedToLoad += HandleOnAdFailedToLoad;
       // Called when an ad is clicked.
-      bannerView.OnAdOpening += HandleOnAdOpened;
+      _bannerView.OnAdOpening += HandleOnAdOpened;
       // Called when the user returned from the app after an ad click.
-      bannerView.OnAdClosed += HandleOnAdClosed;
+      _bannerView.OnAdClosed += HandleOnAdClosed;
       // Called when the ad click caused the user to leave the application.
-      bannerView.OnAdLeavingApplication += HandleOnAdLeavingApplication;
+      _bannerView.OnAdLeavingApplication += HandleOnAdLeavingApplication;
 
       //Reward
       // Get singleton reward based video ad reference.
-      admanagerInstance.rewardBasedVideoAd = RewardBasedVideoAd.Instance;
+      admanagerInstance._rewardBasedVideoAd = RewardBasedVideoAd.Instance;
 
       //Video Ad Events
       // Called when an ad request has successfully loaded.
-      rewardBasedVideoAd.OnAdLoaded += HandleRewardBasedVideoLoaded;
+      _rewardBasedVideoAd.OnAdLoaded += HandleRewardBasedVideoLoaded;
       // Called when an ad request failed to load.
-      rewardBasedVideoAd.OnAdFailedToLoad += HandleRewardBasedVideoFailedToLoad;
+      _rewardBasedVideoAd.OnAdFailedToLoad += HandleRewardBasedVideoFailedToLoad;
       // Called when an ad is shown.
-      rewardBasedVideoAd.OnAdOpening += HandleRewardBasedVideoOpened;
+      _rewardBasedVideoAd.OnAdOpening += HandleRewardBasedVideoOpened;
       // Called when the ad starts to play.
-      rewardBasedVideoAd.OnAdStarted += HandleRewardBasedVideoStarted;
+      _rewardBasedVideoAd.OnAdStarted += HandleRewardBasedVideoStarted;
       // Called when the user should be rewarded for watching a video.
-      rewardBasedVideoAd.OnAdRewarded += HandleRewardBasedVideoRewarded;
+      _rewardBasedVideoAd.OnAdRewarded += HandleRewardBasedVideoRewarded;
       // Called when the ad is closed.
-      rewardBasedVideoAd.OnAdClosed += HandleRewardBasedVideoClosed;
+      _rewardBasedVideoAd.OnAdClosed += HandleRewardBasedVideoClosed;
       // Called when the ad click caused the user to leave the application.
-      rewardBasedVideoAd.OnAdLeavingApplication += HandleRewardBasedVideoLeftApplication;
+      _rewardBasedVideoAd.OnAdLeavingApplication += HandleRewardBasedVideoLeftApplication;
 
       //request reward video
       admanagerInstance.RequestRewardBasedVideo();
@@ -108,21 +106,21 @@ namespace Project.ShapeTunnel {
 
     #endregion
 
-    public void ShowAdmobBanner() => bannerView?.Show();
-    public void HideAdmobBanner() => bannerView?.Hide();
+    public void ShowAdmobBanner() => _bannerView?.Show();
+    public void HideAdmobBanner() => _bannerView?.Hide();
 
     //Call this to show interstitial ad
     public void ShowAdmobInterstitial() {
-      if (admanagerInstance.interstitialView.IsLoaded())
-        admanagerInstance.interstitialView.Show();
+      if (admanagerInstance._interstitialView.IsLoaded())
+        admanagerInstance._interstitialView.Show();
 
       RequestInterstitial();
     }
 
     //Call this to show reward video ad
     public void ShowAdmobRewardVideo() {
-      if (rewardBasedVideoAd.IsLoaded()) {
-        rewardBasedVideoAd.Show();
+      if (_rewardBasedVideoAd.IsLoaded()) {
+        _rewardBasedVideoAd.Show();
         //When completed this function is called : HandleRewardBasedVideoRewarded
       }
     }
@@ -131,7 +129,7 @@ namespace Project.ShapeTunnel {
     #region AdmobRequests
 
     private void RequestBanner() {
-      bannerView = new BannerView(bannerID, AdSize.Banner, AdPosition.Bottom);
+      _bannerView = new BannerView(bannerID, AdSize.Banner, AdPosition.Bottom);
 
       AdRequest request = null;
       if (!TestAds)
@@ -144,15 +142,15 @@ namespace Project.ShapeTunnel {
           .Build();
       }
 
-      bannerView.LoadAd(request);
+      _bannerView.LoadAd(request);
     }
 
     private void RequestInterstitial() {
-      if (admanagerInstance.interstitialView != null) {
-        admanagerInstance.interstitialView.Destroy();
+      if (admanagerInstance._interstitialView != null) {
+        admanagerInstance._interstitialView.Destroy();
       }
 
-      admanagerInstance.interstitialView = new InterstitialAd(interstitialID); //orignal
+      admanagerInstance._interstitialView = new InterstitialAd(interstitialID); //orignal
       // Create an empty ad request.
 
       AdRequest request = null;
@@ -167,7 +165,7 @@ namespace Project.ShapeTunnel {
           .Build();
       }
 
-      admanagerInstance.interstitialView.LoadAd(request);
+      admanagerInstance._interstitialView.LoadAd(request);
     }
 
     private void RequestRewardBasedVideo() {
@@ -175,7 +173,7 @@ namespace Project.ShapeTunnel {
       AdRequest request = new AdRequest.Builder().Build();
 
       // Load the rewarded video ad with the request.
-      admanagerInstance.rewardBasedVideoAd.LoadAd(request, rewardVideoID);
+      admanagerInstance._rewardBasedVideoAd.LoadAd(request, rewardVideoID);
     }
 
     #endregion

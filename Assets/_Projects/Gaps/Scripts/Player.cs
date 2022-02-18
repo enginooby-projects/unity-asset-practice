@@ -11,20 +11,16 @@ namespace Project.Gaps {
     public float MoveForwardSpeed = 2f;
 
     private GamePlayManager GamePlayManagerScript;
-
     private Vector3 _movingPos;
-
     private Vector2 _tempPos;
-
     private float _angle;
-
     private bool _isTouchingObstacle;
 
     public bool IsDead { get; private set; }
 
     protected override void Start() {
       Time.timeScale = 1f;
-      GamePlayManagerScript = GameObject.Find("GamePlayManager").GetComponent<GamePlayManager>();
+      GamePlayManagerScript = FindObjectOfType<GamePlayManager>();
       _movingPos = new Vector3(0f, 0f, MoveForwardSpeed);
     }
 
