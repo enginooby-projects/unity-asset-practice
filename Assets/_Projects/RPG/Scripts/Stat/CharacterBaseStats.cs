@@ -17,29 +17,22 @@ namespace Project.RPG.Stats {
   public class CharacterBaseStats : MonoBehaviour {
     [SerializeField] private CharacterType _characterType;
 
-    [SerializeField, HideLabel] private Stat _levelStat = new Stat(StatName.Level, initialValue: 1);
+    [SerializeField] [HideLabel] private Stat _levelStat = new Stat(StatName.Level, 1);
 
     [SerializeField] private ParticleSystem _levelUpVfx; // TODO: Implement FXs in Stat
 
-    [SerializeField, InlineEditor] private StatsProgressions _statsProgressions;
+    [SerializeField] [InlineEditor] private StatsProgressions _statsProgressions;
 
     public Stat LevelStat => _levelStat;
     public StatsProgressions StatsProgressions => _statsProgressions;
 
-    private void OnEnable() {
-      _levelStat.OnStatIncreaseEvent += OnLevelUp;
-    }
+    private void OnEnable() => _levelStat.OnStatIncreaseEvent += OnLevelUp;
 
-    private void OnDisable() {
-      _levelStat.OnStatIncreaseEvent -= OnLevelUp;
-    }
+    private void OnDisable() => _levelStat.OnStatIncreaseEvent -= OnLevelUp;
 
-    public Nullable<int> GetStatValue(StatName statName) {
-      return _statsProgressions.GetStatValue(statName, _levelStat.CurrentValue, _characterType);
-    }
+    public int? GetStatValue(StatName statName) =>
+      _statsProgressions.GetStatValue(statName, _levelStat.CurrentValue, _characterType);
 
-    private void OnLevelUp() {
-      _levelUpVfx?.Play();
-    }
+    private void OnLevelUp() => _levelUpVfx?.Play();
   }
 }

@@ -12,21 +12,17 @@ public class AnimatedTMP : MonoBehaviour, IPoolObject {
   private Tweener _fontSizeTweener;
   private Tweener _moveTweener;
 
-  public void OnPoolReuse() {
-    ReplayAnimations();
-  }
+  public void OnPoolReuse() => ReplayAnimations();
 
-  public void ReplayAnimations() {
+  private void ReplayAnimations() {
     _fadeTweener?.Restart();
     _fontSizeTweener?.Restart();
     _moveTweener?.Restart();
   }
 
-  private void Awake() {
-    _tmp = GetComponent<TextMeshProUGUI>();
-  }
+  private void Awake() => _tmp = GetComponent<TextMeshProUGUI>();
 
-  void Start() {
+  private void Start() {
     // TODO: parameterize
     _fadeTweener = _tmp.DOFade(0, _duration).SetAutoKill(false);
     _fontSizeTweener = _tmp.DOFontSize(1.2f, _duration).SetAutoKill(false);

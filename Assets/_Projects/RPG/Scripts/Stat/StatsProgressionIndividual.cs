@@ -6,13 +6,13 @@ using System;
 using System.Linq;
 
 namespace Project.RPG.Stats {
-  [CreateAssetMenu(fileName = "StatsProgression", menuName = "Project/RPG/Stats Progression Individual", order = 0)]
   /// <summary>
   /// Centralized file of all stats for individual type of character based on level.
   /// </summary>
-  class StatsProgressionIndividual : SerializedScriptableObject {
+  [CreateAssetMenu(fileName = "StatsProgression", menuName = "Project/RPG/Stats Progression Individual", order = 0)]
+  public class StatsProgressionIndividual : SerializedScriptableObject {
     // TODO: multiply factor for each stats (game difficulity)
-    [HideLabel, EnumToggleButtons, SerializeField]
+    [HideLabel] [EnumToggleButtons] [SerializeField]
     private CharacterType _characterType;
 
     [SerializeField] private Dictionary<StatName, List<int>> _statsProgression = new Dictionary<StatName, List<int>>();
