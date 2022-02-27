@@ -1,0 +1,123 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e251860fcd970734c9f14ebd98a146c3, type: 3}
+  m_Name: GS-20211006 - 154731
+  m_EditorClassIdentifier: 
+  m_name: Session 20211006-154731
+  m_description: 'Rocking out at Creativity Central!
+
+
+    If you like Gaia please
+    consider rating it :)'
+  m_previewImage: {fileID: 0}
+  m_dateCreated: 10/6/2021 3:47:31 PM
+  m_terrainWidth: 1024
+  m_terrainDepth: 1024
+  m_terrainHeight: 1024
+  m_seaLevel: 25
+  m_spawnDensity: 1.3
+  m_isLocked: 0
+  m_previewImageBytes: 
+  m_previewImageWidth: 0
+  m_previewImageHeight: 0
+  m_operations:
+  - m_description: Clear World
+    m_operationType: 10
+    m_isActive: 1
+    m_affectedTerrainNames: []
+    m_operationDateTime: 10/6/2021 3:48:55 PM
+    scriptableObjectAssetGUID: 
+    m_isFoldedOut: 0
+    sessionPlaybackState: 1
+    m_terrainsFoldedOut: 0
+    m_serializedExternalAction: 
+  - m_description: 'Creating World: 1 x 1 tiles, tile size: 1024'
+    m_operationType: 0
+    m_isActive: 1
+    m_affectedTerrainNames: []
+    m_operationDateTime: 10/6/2021 3:48:56 PM
+    scriptableObjectAssetGUID: f5f1debc962ae2449b35e5e17f7a2bf2
+    m_isFoldedOut: 0
+    sessionPlaybackState: 1
+    m_terrainsFoldedOut: 0
+    m_serializedExternalAction: 
+  - m_description: Spawning - GaiaPro-Village(Clone)
+    m_operationType: 7
+    m_isActive: 1
+    m_affectedTerrainNames:
+    - Terrain_0_0-20211006 - 154855
+    m_operationDateTime: 10/6/2021 3:50:48 PM
+    scriptableObjectAssetGUID: d252791818ad12c428bd4df88b889fd3
+    m_isFoldedOut: 0
+    sessionPlaybackState: 1
+    m_terrainsFoldedOut: 0
+    m_serializedExternalAction: 
+  - m_description: Spawning - GaiaPro-Village(Clone)
+    m_operationType: 7
+    m_isActive: 1
+    m_affectedTerrainNames:
+    - Terrain_0_0-20211006 - 154855
+    m_operationDateTime: 10/6/2021 3:51:25 PM
+    scriptableObjectAssetGUID: d980d1f186daa6f48951c293d19b6dc1
+    m_isFoldedOut: 0
+    sessionPlaybackState: 1
+    m_terrainsFoldedOut: 0
+    m_serializedExternalAction: 
+  - m_description: Spawning - GaiaPro-Village(Clone)
+    m_operationType: 7
+    m_isActive: 1
+    m_affectedTerrainNames:
+    - Terrain_0_0-20211006 - 154855
+    m_operationDateTime: 10/6/2021 3:51:57 PM
+    scriptableObjectAssetGUID: 0d7f6b11a86a5b445af472f2319e966b
+    m_isFoldedOut: 0
+    sessionPlaybackState: 1
+    m_terrainsFoldedOut: 0
+    m_serializedExternalAction: 
+  - m_description: Spawning - GaiaPro-Village(Clone)
+    m_operationType: 7
+    m_isActive: 1
+    m_affectedTerrainNames:
+    - Terrain_0_0-20211006 - 154855
+    m_operationDateTime: 10/6/2021 3:52:12 PM
+    scriptableObjectAssetGUID: 77bfcba73eff996459db0a912cd37d8c
+    m_isFoldedOut: 0
+    sessionPlaybackState: 1
+    m_terrainsFoldedOut: 0
+    m_serializedExternalAction: 
+  m_terrainMinMaxCache:
+  - guid: Worldmap
+    isWorldmap: 1
+    recalculate: 0
+    min: 0
+    max: 143.83719
+  - guid: 24a3416b56c190d479f49043c76ad7e3
+    isWorldmap: 0
+    recalculate: 1
+    min: 0
+    max: 251.28508
+  m_bakedMaskCacheEntries:
+  - fileName: Terrain_0_0-20211006 - 154855_LayerGameObject_3584_12
+    assetPath: Assets/Procedural Worlds/Gaia/TerrainCollisionData/Terrain_0_0-20211006
+      - 154855/Terrain_0_0-20211006 - 154855_LayerGameObject_3584_12
+    fullPath: C:/Users/enginoobz/Desktop/unity projects/The Free World/Assets/Procedural
+      Worlds/Gaia/TerrainCollisionData/Terrain_0_0-20211006 - 154855/Terrain_0_0-20211006
+      - 154855_LayerGameObject_3584_12
+    texture: {fileID: 0}
+  - fileName: Terrain_0_0-20211006 - 154855_LayerTree_3584_5
+    assetPath: Assets/Procedural Worlds/Gaia/TerrainCollisionData/Terrain_0_0-20211006
+      - 154855/Terrain_0_0-20211006 - 154855_LayerTree_3584_5
+    fullPath: C:/Users/enginoobz/Desktop/unity projects/The Free World/Assets/Procedural
+      Worlds/Gaia/TerrainCollisionData/Terrain_0_0-20211006 - 154855/Terrain_0_0-20211006
+      - 154855_LayerTree_3584_5
+    texture: {fileID: 0}
+  m_worldBiomeMaskSettings: {fileID: 0}

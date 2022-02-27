@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8bf996bd940696a4b814912e16c3d5ac, type: 3}
+  m_Name: StylizedGardenBiome
+  m_EditorClassIdentifier: 
+  m_orderNumber: 0
+  m_spawnerPresetList:
+  - m_autoAssignPrototypes: 1
+    m_spawnerSettings: {fileID: 11400000, guid: 05d96cc19dae7c64e8a8bf1c7bd15fe3,
+      type: 2}
+    m_isActiveInStamper: 0
+    m_isActiveInBiome: 1
+  - m_autoAssignPrototypes: 1
+    m_spawnerSettings: {fileID: 11400000, guid: 5f7cc9f826f677148b32a63158c3896d,
+      type: 2}
+    m_isActiveInStamper: 0
+    m_isActiveInBiome: 1
+  - m_autoAssignPrototypes: 1
+    m_spawnerSettings: {fileID: 11400000, guid: b2f6f5236ddcc1f4299437b6d19cc47a,
+      type: 2}
+    m_isActiveInStamper: 0
+    m_isActiveInBiome: 1
+  - m_autoAssignPrototypes: 1
+    m_spawnerSettings: {fileID: 11400000, guid: 0dc21faa8ac57634ab2690074bcadab6,
+      type: 2}
+    m_isActiveInStamper: 0
+    m_isActiveInBiome: 1
+  m_postProcessingProfileGUID: 
+  m_gaiaSceneCullingProfile: {fileID: 0}
