@@ -101,5 +101,9 @@ Thumbs.db
 !/Assets/_Shared
 !/Assets/_Projects
 !/Assets/Gizmos
+
+### ASSET GAIA ###
 !/Assets/Gaia User Data/
+# large sessions
 Assets/Gaia User Data/Sessions/GS-20211005 - 015354/
+Assets/Gaia User Data/Sessions/GS-20211013 - 081536/
