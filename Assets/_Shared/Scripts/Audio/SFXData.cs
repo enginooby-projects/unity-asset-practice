@@ -1,20 +1,21 @@
 using System.Collections.Generic;
+using Enginooby.Utils;
 using UnityEditor;
 using UnityEngine;
 #if ODIN_INSPECTOR
 using Sirenix.OdinInspector;
 
 #else
-using Enginoobz.Attribute;
+using Enginooby.Attribute;
 #endif
 
 // TODO: Rename to SFXVariation
 
 namespace Enginooby.Audio {
-  [CreateAssetMenu(fileName = "SFX_", menuName = "Audio/SFX Data", order = 0)]
   /// <summary>
-  /// List of audio clips for a certain event (e.g. play taked damage, enemy dead).
+  ///   List of audio clips for a certain event (e.g. play take damage, enemy dead).
   /// </summary>
+  [CreateAssetMenu(fileName = "SFX_", menuName = "Audio/SFX Data", order = 0)]
   public class SFXData : ScriptableObject {
     // TODO: Turn mode: random, random iterate, iterate, random other than last
 
@@ -36,14 +37,14 @@ namespace Enginooby.Audio {
     [LabelText("Global Pitch")]
     private Vector2 _globalPitchRange = Vector2.one;
 
-    [SerializeField] [HideLabel] private List<AudioClipWrapper> _audioClipWrappers = new List<AudioClipWrapper>();
+    [SerializeField] [HideLabel] private List<AudioClipWrapper> _audioClipWrappers = new();
 
     private AudioClipWrapper _lastClipWrapper;
 
     private AudioSource _previewAudioSource;
 
     // [SerializeField]
-    // [InlineEditor]
+    // 
     // [HideInInspector]
     // private List<AudioClip> _clips = new List<AudioClip>();
 

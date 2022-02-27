@@ -1,11 +1,12 @@
 using System.Collections.Generic;
+using Enginooby.Utils;
 using UnityEngine;
 using UnityEngine.Rendering;
 #if ODIN_INSPECTOR
 using Sirenix.OdinInspector;
 
 #else
-using Enginoobz.Attribute;
+using Enginooby.Attribute;
 #endif
 
 // TODO: Rename to VolumeProfileVariation extending SO
@@ -35,12 +36,12 @@ public class VolumeEditor : MonoBehaviour {
   }
 
   public void SwitchNextVolume() {
-    currentProfile = profiles.NavNext(currentProfile);
+    currentProfile = profiles.GetNext(currentProfile);
     volume.profile = currentProfile;
   }
 
   public void SwitchPreviousVolume() {
-    currentProfile = profiles.NavPrevious(currentProfile);
+    currentProfile = profiles.GetPrevious(currentProfile);
     volume.profile = currentProfile;
   }
 

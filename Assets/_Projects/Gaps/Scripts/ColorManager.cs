@@ -1,4 +1,5 @@
 using System.Collections;
+using Enginooby.Utils;
 using UnityEngine;
 
 namespace Project.Gaps {
@@ -38,7 +39,11 @@ namespace Project.Gaps {
     }
 
     // UTIL: Decouple Player
-    private IEnumerator TweenColorCoroutine(Material mat, Color startColor, Color endColor, float time,
+    private IEnumerator TweenColorCoroutine(
+      Material mat,
+      Color startColor,
+      Color endColor,
+      float time,
       float alpha = 1f) {
       var t = 0f;
 

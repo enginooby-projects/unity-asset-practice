@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using BlendModes;
+using Enginooby.Utils;
 
 // TODO
 //+ Create customized effects
@@ -13,34 +14,26 @@ using BlendModes;
 public class Blender : MonoBehaviour {
   // GO between camera and target turns transparent, then inverse if no longer.
   // Normally used for player to be always visible
-  [SerializeField]
-  private GameObject _trackingTarget; //? Implement multiple targets
-  [SerializeField]
-  private bool _enableBlendThrough = true; // if disable, don't blend GOs behind the 1st one.
-  [SerializeField]
-  private InputModifier _blendKey = new InputModifier(); // detect by collider
-  [SerializeField]
-  private InputModifier _revertKey = new InputModifier();
-  [SerializeField]
-  private InputModifier _blendSelectedKey = new InputModifier(); // blend current selected GO from Selector
-  [SerializeField]
-  private InputModifier _blendGlobalKey = new InputModifier(); // set all blended GOs to current blend mode
-  [SerializeField]
-  private InputModifier _revertGlobalKey = new InputModifier(); // revert all blended GOs
-  [SerializeField]
-  private InputModifier _changeEffectKey = new InputModifier();
-  [SerializeField]
-  private BlendMode _blendMode;
+  [SerializeField] private GameObject _trackingTarget; //? Implement multiple targets
+  [SerializeField] private bool _enableBlendThrough = true; // if disable, don't blend GOs behind the 1st one.
+  [SerializeField] private InputModifier _blendKey = new(); // detect by collider
+  [SerializeField] private InputModifier _revertKey = new();
+  [SerializeField] private InputModifier _blendSelectedKey = new(); // blend current selected GO from Selector
+  [SerializeField] private InputModifier _blendGlobalKey = new(); // set all blended GOs to current blend mode
+  [SerializeField] private InputModifier _revertGlobalKey = new(); // revert all blended GOs
+  [SerializeField] private InputModifier _changeEffectKey = new();
+  [SerializeField] private BlendMode _blendMode;
 
   private Selector _selector;
+
   // original material //? Multiple materials
-  private Dictionary<GameObject, Material> _blendedGos = new Dictionary<GameObject, Material>();
+  private Dictionary<GameObject, Material> _blendedGos = new();
 
   private void Awake() {
     _selector = FindObjectOfType<Selector>();
   }
 
-  void Update() {
+  private void Update() {
     // ProcessTrackingTarget();
     ProcessBlendedGos();
     ProcessBlendingByRayCast();
@@ -55,25 +48,21 @@ public class Blender : MonoBehaviour {
   private void ProcessBlendingByRayCast() {
     if (!_blendKey.IsTriggering || !RayUtils.IsMouseRayHit) return;
 
-    if (_enableBlendThrough) {
-      foreach (var hit in RayUtils.HitsFromMouseRay) { //? How to detect w/o Collider
+    if (_enableBlendThrough)
+      foreach (var hit in RayUtils.HitsFromMouseRay) //? How to detect w/o Collider
         SetBlendMode(hit.transform.gameObject, _blendMode);
-      }
-    } else {
+    else
       SetBlendMode(RayUtils.HitsFromMouseRay[0].transform.gameObject, _blendMode);
-    }
   }
 
   private void ProcessRevertingByRayCast() {
     if (!_revertKey.IsTriggering || !RayUtils.IsMouseRayHit) return;
 
-    if (_enableBlendThrough) {
-      foreach (var hit in RayUtils.HitsFromMouseRay) {
+    if (_enableBlendThrough)
+      foreach (var hit in RayUtils.HitsFromMouseRay)
         RevertBlending(hit.transform.gameObject);
-      }
-    } else {
+    else
       RevertBlending(RayUtils.HitsFromMouseRay[0].transform.gameObject);
-    }
   }
 
   private void ProcessBlendingSeletedObject() {
@@ -82,17 +71,13 @@ public class Blender : MonoBehaviour {
   }
 
   private void ProcessBlendedGos() {
-    if (_blendGlobalKey.IsTriggering) {
-      foreach (var go in _blendedGos.Keys) {
+    if (_blendGlobalKey.IsTriggering)
+      foreach (var go in _blendedGos.Keys)
         SetBlendMode(go, _blendMode);
-      }
-    }
 
-    if (_revertGlobalKey.IsTriggering) {
-      foreach (var go in _blendedGos.Keys) {
+    if (_revertGlobalKey.IsTriggering)
+      foreach (var go in _blendedGos.Keys)
         RevertBlending(go);
-      }
-    }
   }
 
   private void ProcessTrackingTarget() {
@@ -124,7 +109,7 @@ public class Blender : MonoBehaviour {
 
   // TODO: Handle blended GO in edit time
   public void RevertBlending(GameObject go) {
-    if (_blendedGos.TryGetValue(go, out Material originalMaterial)) {
+    if (_blendedGos.TryGetValue(go, out var originalMaterial)) {
       go.GetComponent<BlendModeEffect>().enabled = false;
       go.GetComponent<Renderer>().material = originalMaterial;
     }

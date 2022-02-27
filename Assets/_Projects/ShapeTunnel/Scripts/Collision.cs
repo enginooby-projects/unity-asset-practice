@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Enginooby.Utils;
+using UnityEngine;
 
 namespace Project.ShapeTunnel {
   /// <summary>
@@ -14,17 +15,14 @@ namespace Project.ShapeTunnel {
 
     public void OnTriggerEnter(Collider other) {
       // PARAM: Serialize tags
-      if (other.CompareTag("Cube Instance", "Sphere Instance", "Prism Instance")) {
+      if (other.CompareTag("Cube Instance", "Sphere Instance", "Prism Instance"))
         HitShapeObstacle(other);
-      }
-      else if (other.CompareTag("Token")) {
-        CollectToken(other);
-      }
+      else if (other.CompareTag("Token")) CollectToken(other);
     }
 
     private void HitShapeObstacle(Collider other) =>
       other.CompareTag(_meshFilter.mesh.name,
-        trueAction: HitCorrectObstacle, falseAction: HitWrongObstacle);
+        HitCorrectObstacle, HitWrongObstacle);
 
     private void HitCorrectObstacle() {
       basicParticleRenderer.material = _meshRenderer.material = playerMaterials.GetRandom();
@@ -64,8 +62,8 @@ namespace Project.ShapeTunnel {
       FindObjectOfType<PlayerParticleController>().PlayDeathParticle();
     }
 
-    public void SpawnCollisionVfx() => Instantiate(collisionParticle, lifespan: 1f).WithColorOf(_meshRenderer).Play();
+    public void SpawnCollisionVfx() => Instantiate(collisionParticle, 1f).WithColorOf(_meshRenderer).Play();
 
-    public void SpawnTokenVfx() => Instantiate(tokenParticle, lifespan: 1f);
+    public void SpawnTokenVfx() => Instantiate(tokenParticle, 1f);
   }
 }

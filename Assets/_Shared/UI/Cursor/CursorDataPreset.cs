@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using Enginooby.Attribute;
 using UnityEngine;
 
 namespace Enginooby.UI {
@@ -7,9 +6,9 @@ namespace Enginooby.UI {
   // Collection of cursors in a certain style (e.g. pixel, modern), used in a certain game theme (e.g. RPG, racing).
   [CreateAssetMenu(fileName = "CSPreset_", menuName = "UI/Cusor Data Preset", order = 0)]
   public class CursorDataPreset : ScriptableObject {
-    [InlineEditor] [SerializeField] private List<CursorData> _cursorDatas;
+    [SerializeField] private List<CursorData> _cursorDatas;
 
-    private CursorData _currentCursor;
+    private CursorData _currentCursor; // dirty flag
 
     // ! Not work. Must invoke in MonoBehaviour's Awake/Start() instead.
     private void Awake() {
@@ -27,7 +26,7 @@ namespace Enginooby.UI {
 
     /// <summary>
     ///   [Safe-Update method]
-    ///   Change cursor if given cursor name is different than curren's.
+    ///   Change cursor if given cursor name is different than current's.
     ///   If not found in the preset, set to the first cursor.
     /// </summary>
     public void Set(CursorName cursorName) {

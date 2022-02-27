@@ -1,13 +1,12 @@
 using UnityEngine;
 #if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
 
 #else
-using Enginoobz.Attribute;
+using Enginooby.Attribute;
 #endif
 
 public class TransformProfileOperator : ComponentOperator<Transform> {
-  [SerializeField] [InlineEditor] private TransformProfile _transformProfile;
+  [SerializeField] private TransformProfile _transformProfile;
 
   private void Start() {
     _transformProfile?.InitTranslation(transform);

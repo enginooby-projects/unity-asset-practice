@@ -8,7 +8,7 @@ using UnityEngine.SceneManagement;
 using Sirenix.OdinInspector;
 
 #else
-using Enginoobz.Attribute;
+using Enginooby.Attribute;
 #endif
 
 // ? CONSIDER
@@ -16,11 +16,14 @@ using Enginoobz.Attribute;
 // ? Difficulty stat
 
 public class GameManager : MonoBehaviourSingleton<GameManager> {
-  #region GAME LOAD ===================================================================================================================================
+  // ===================================================================================================================
 
-  private const string gameLoadGroupName = "GAME LOAD";
+  #region GAME LOAD
 
-  [FoldoutGroup("$gameLoadGroupName")] public UnityEvent OnGameLoad = new UnityEvent();
+  private const string GameLoadGroupName = "GAME LOAD";
+
+  [FoldoutGroup("$" + nameof(GameLoadGroupName))]
+  public UnityEvent OnGameLoad = new();
 
   private void Setup() {
     SetupStats();
@@ -38,32 +41,34 @@ public class GameManager : MonoBehaviourSingleton<GameManager> {
 
   #endregion
 
-  #region GAME START ===================================================================================================================================
+  // ===================================================================================================================
+
+  #region GAME START
 
   private void Start() {
     Setup();
     if (autoStartGame) StartGame();
   }
 
-  private const string gameStartGroupName = "GAME START";
+  private const string GameStartGroupName = "GAME START";
 
-  [FoldoutGroup("$gameStartGroupName")] [SerializeField]
+  [FoldoutGroup("$GameStartGroupName")] [SerializeField]
   private bool autoStartGame = true;
 
-  [FoldoutGroup("$gameStartGroupName")] [EnumToggleButtons] [LabelText("Enable Spawners")] [SerializeField]
+  [FoldoutGroup("$GameStartGroupName")] [EnumToggleButtons] [LabelText("Enable Spawners")] [SerializeField]
   private Target spawnersToEnableTarget = Target.All;
 
-  [FoldoutGroup("$gameStartGroupName")]
+  [FoldoutGroup("$GameStartGroupName")]
   [SceneObjectsOnly]
   [ShowIf(nameof(spawnersToEnableTarget), Target.Custom)]
   [SerializeField]
   private Spawner[] spawnersToEnable;
 
-  [FoldoutGroup("$gameStartGroupName")] public UnityEvent OnGameStart = new UnityEvent();
+  [FoldoutGroup("$GameStartGroupName")] public UnityEvent OnGameStart = new();
 
   // TODO: Object to activate
 
-  [FoldoutGroup("$gameStartGroupName")]
+  [FoldoutGroup("$GameStartGroupName")]
   [Button]
   [GUIColor(1f, .6f, .6f)]
   public void StartGame() {
@@ -85,7 +90,9 @@ public class GameManager : MonoBehaviourSingleton<GameManager> {
 
   #endregion
 
-  #region GAME OVER ===================================================================================================================================
+  // ===================================================================================================================
+
+  #region GAME OVER
 
   private const string gameOverGroupName = "GAME OVER";
 
@@ -93,7 +100,7 @@ public class GameManager : MonoBehaviourSingleton<GameManager> {
 
   private enum Target {
     All,
-    Custom
+    Custom,
   }
 
   [FoldoutGroup("$gameOverGroupName")] [EnumToggleButtons] [LabelText("Stop Projectiles")] [SerializeField]
@@ -126,7 +133,7 @@ public class GameManager : MonoBehaviourSingleton<GameManager> {
   [FoldoutGroup("$gameOverGroupName")] [SceneObjectsOnly] [LabelText("Destroy Objects")] [SerializeField]
   private GameObject[] objectsToDestroy;
 
-  [FoldoutGroup("$gameOverGroupName")] public UnityEvent OnGameOver = new UnityEvent();
+  [FoldoutGroup("$gameOverGroupName")] public UnityEvent OnGameOver = new();
 
   [FoldoutGroup("$gameOverGroupName")]
   [Button]
@@ -136,31 +143,35 @@ public class GameManager : MonoBehaviourSingleton<GameManager> {
 
     gameOver = true;
     OnGameOver.Invoke();
+    gameOverLabel.gameObject.SetActive(true);
+    restartButton.SetActive(true);
+
     if (projectilesToStopTarget == Target.All) projectilesToStop = FindObjectsOfType<ArchievedProjectile>();
     if (transformingToStopTarget == Target.All) transformingToStop = FindObjectsOfType<TransformOperator>();
     if (spawnersToStopTarget == Target.All) spawnersToStop = FindObjectsOfType<Spawner>();
+
     foreach (var obj in projectilesToStop) obj.Stop();
     foreach (var obj in transformingToStop) obj.Stop();
     foreach (var obj in spawnersToStop) obj.AutoSpawnScheduler.Disable();
     foreach (var obj in objectsToDestroy) Destroy(obj);
-    gameOverLabel.gameObject.SetActive(true);
-    restartButton.SetActive(true);
   }
 
-  #endregion ===================================================================================================================================
+  #endregion
 
-  #region STATS & UI ===================================================================================================================================
+  // ===================================================================================================================
+
+  #region STATS & UI
 
   private const string statsGroupName = "STATS & UI";
 
   [FoldoutGroup("$statsGroupName")] [GUIColor("@Color.cyan")] [SerializeField] [HideLabel]
-  public StatGame livesStat = new StatGame("Lives", triggerGameOverValue: StatGame.StatEvent.Zero);
+  public StatGame livesStat = new("Lives", triggerGameOverValue: StatGame.StatEvent.Zero);
 
   [FoldoutGroup("$statsGroupName")] [GUIColor("@Color.yellow")] [SerializeField] [HideLabel]
-  public StatGame scoresStat = new StatGame("Scores");
+  public StatGame scoresStat = new("Scores");
 
   [FoldoutGroup("$statsGroupName")] [GUIColor("@Color.cyan")] [SerializeField] [HideLabel]
-  public StatGame timerStat = new StatGame("Timer", triggerGameOverValue: StatGame.StatEvent.Zero);
+  public StatGame timerStat = new("Timer", triggerGameOverValue: StatGame.StatEvent.Zero);
 
   public void UpdateLives(int amountToAdd) {
     livesStat.Update(amountToAdd);
@@ -186,7 +197,9 @@ public class GameManager : MonoBehaviourSingleton<GameManager> {
 
   #endregion
 
-  #region GAME UI ===================================================================================================================================
+  // ===================================================================================================================
+
+  #region GAME UI
 
   private const string gameUIGroupName = "GAME UI";
 
@@ -199,9 +212,11 @@ public class GameManager : MonoBehaviourSingleton<GameManager> {
   [FoldoutGroup("$gameUIGroupName")] [SerializeField]
   private GameObject restartButton;
 
-  #endregion ===================================================================================================================================
+  #endregion
 
-  #region AUDIO ===================================================================================================================================
+  // ===================================================================================================================
+
+  #region AUDIO
 
   private const string audioGroupName = "AUDIO";
 
@@ -212,5 +227,7 @@ public class GameManager : MonoBehaviourSingleton<GameManager> {
   [FoldoutGroup("$audioGroupName")] [SerializeField]
   private AudioClip backgroundMusic;
 
-  #endregion ===================================================================================================================================
+  #endregion
+
+  // ===================================================================================================================
 }

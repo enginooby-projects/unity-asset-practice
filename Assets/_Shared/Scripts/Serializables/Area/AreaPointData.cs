@@ -1,12 +1,13 @@
 using System.Collections.Generic;
+using Enginooby.Utils;
 using UnityEngine;
 #if ODIN_INSPECTOR
 using Sirenix.OdinInspector;
 using Sirenix.Serialization;
 
 #else
-using Enginoobz.Attribute;
-using Enginoobz.Core;
+using Enginooby.Attribute;
+using Enginooby.Core;
 #endif
 
 // ? Rename to CollectionVector3
@@ -31,7 +32,7 @@ public class AreaPointData : SerializedScriptableObject {
   }
 
   public void DrawGizmos(Vector3 origin, float scale = 1f, Color? color = null) {
-    if (Points.IsUnset()) return;
+    if (Points.IsNullOrEmpty()) return;
 
     color ??= Color.red;
     Gizmos.color = color.Value;

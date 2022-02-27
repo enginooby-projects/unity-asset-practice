@@ -1,14 +1,13 @@
 using System;
 using UnityEngine;
 #if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
 
 #else
-using Enginoobz.Attribute;
+using Enginooby.Attribute;
 #endif
 
 public class AreaPointDataTest : MonoBehaviourBase {
-  [SerializeField] [InlineEditor] private AreaPointData _data;
+  [SerializeField] private AreaPointData _data;
 
   [SerializeField] private float _scale = 1f;
 

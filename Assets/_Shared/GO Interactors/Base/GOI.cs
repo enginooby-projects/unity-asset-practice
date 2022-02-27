@@ -1,13 +1,9 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Enginooby.Attribute;
+using Enginooby.Utils;
 using UnityEngine;
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-
-#else
-using Enginoobz.Attribute;
-#endif
 
 // REFACTOR: Extend Interactor<GameObject>
 // TODO
@@ -17,7 +13,7 @@ using Enginoobz.Attribute;
 ///   GameObject Interactor base class.
 /// </summary>
 public abstract partial class GOI {
-  protected List<GameObject> _interactedGos = new List<GameObject>();
+  protected List<GameObject> _interactedGos = new();
 
   public virtual List<GameObject> InteractedGos => _interactedGos;
 
