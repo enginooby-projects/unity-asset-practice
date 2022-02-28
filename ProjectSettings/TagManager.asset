@@ -13,6 +13,9 @@ TagManager:
   - Skin
   - Prism Instance
   - Token
+  - Enemy
+  - TMPro
+  - LookAt
   layers:
   - Default
   - TransparentFX
