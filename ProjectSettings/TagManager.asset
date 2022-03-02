@@ -16,6 +16,10 @@ TagManager:
   - Enemy
   - TMPro
   - LookAt
+  - Collection
+  - PW - Prop
+  - PW - Building
+  - PW - Nature
   layers:
   - Default
   - TransparentFX
