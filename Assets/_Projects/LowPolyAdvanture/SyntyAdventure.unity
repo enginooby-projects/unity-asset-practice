@@ -15390,7 +15390,7 @@ MonoBehaviour:
     m_MinimumZOffset: 0
     m_SingleHit: 0
     m_SurfaceImpact: {fileID: 0}
-  m_TrailLocation: {fileID: 0}
+  m_TrailLocation: {fileID: 1330733430}
 --- !u!114 &377883012
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15432,7 +15432,7 @@ MonoBehaviour:
   m_UseRate: 0.1
   m_CanEquipEmptyItem: 1
   m_FaceTarget: 0
-  m_StopUseAbilityDelay: 1
+  m_StopUseAbilityDelay: 0
   m_UseEvent:
     m_WaitForAnimationEvent: 1
     m_Duration: 0.2
@@ -15527,8 +15527,8 @@ MonoBehaviour:
       m_AudioClipSet:
         m_AudioConfig: {fileID: 0}
         m_AudioClips: []
-  m_Trail: {fileID: 0}
-  m_TrailVisibility: 0
+  m_Trail: {fileID: 8647733904220290018, guid: f14254663b52205459ae6b4a155310e8, type: 3}
+  m_TrailVisibility: 1
   m_TrailSpawnDelay: 0
   m_AttackStopTrailEvent:
     m_WaitForAnimationEvent: 0
@@ -26930,6 +26930,43 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 698210575}
   m_PrefabAsset: {fileID: 0}
+--- !u!84 &698240300
+RenderTexture:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_ImageContentsHash:
+    serializedVersion: 2
+    Hash: 00000000000000000000000000000000
+  m_ForcedFallbackFormat: 4
+  m_DownscaleFallback: 0
+  m_IsAlphaChannelOptional: 0
+  serializedVersion: 5
+  m_Width: 1024
+  m_Height: 1024
+  m_AntiAliasing: 1
+  m_MipCount: -1
+  m_DepthStencilFormat: 94
+  m_ColorFormat: 4
+  m_MipMap: 0
+  m_GenerateMips: 1
+  m_SRGB: 1
+  m_UseDynamicScale: 0
+  m_BindMS: 0
+  m_EnableCompatibleFormat: 1
+  m_TextureSettings:
+    serializedVersion: 2
+    m_FilterMode: 1
+    m_Aniso: 1
+    m_MipBias: 0
+    m_WrapU: 1
+    m_WrapV: 1
+    m_WrapW: 1
+  m_Dimension: 2
+  m_VolumeDepth: 1
+  m_ShadowSamplingMode: 2
 --- !u!1001 &708399831
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -32620,43 +32657,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 863687495}
   m_PrefabAsset: {fileID: 0}
---- !u!84 &865523383
-RenderTexture:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: 
-  m_ImageContentsHash:
-    serializedVersion: 2
-    Hash: 00000000000000000000000000000000
-  m_ForcedFallbackFormat: 4
-  m_DownscaleFallback: 0
-  m_IsAlphaChannelOptional: 0
-  serializedVersion: 5
-  m_Width: 1024
-  m_Height: 1024
-  m_AntiAliasing: 1
-  m_MipCount: -1
-  m_DepthStencilFormat: 94
-  m_ColorFormat: 4
-  m_MipMap: 0
-  m_GenerateMips: 1
-  m_SRGB: 1
-  m_UseDynamicScale: 0
-  m_BindMS: 0
-  m_EnableCompatibleFormat: 1
-  m_TextureSettings:
-    serializedVersion: 2
-    m_FilterMode: 1
-    m_Aniso: 1
-    m_MipBias: 0
-    m_WrapU: 1
-    m_WrapV: 1
-    m_WrapW: 1
-  m_Dimension: 2
-  m_VolumeDepth: 1
-  m_ShadowSamplingMode: 2
 --- !u!1001 &870718915
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -33430,7 +33430,7 @@ MonoBehaviour:
   m_UseRate: 0.1
   m_CanEquipEmptyItem: 1
   m_FaceTarget: 0
-  m_StopUseAbilityDelay: 1
+  m_StopUseAbilityDelay: 0
   m_UseEvent:
     m_WaitForAnimationEvent: 1
     m_Duration: 0.2
@@ -33479,6 +33479,19 @@ MonoBehaviour:
       m_RequireGrounded: 0
       m_StateName: 
       m_ItemSubstateIndex: 3
+      m_AudioClipSet:
+        m_AudioConfig: {fileID: 0}
+        m_AudioClips: []
+    - m_States:
+      - m_Name: Default
+        m_Preset: {fileID: 0}
+        m_BlockList: []
+        m_Default: 1
+      m_Enabled: 1
+      m_AllowDuringMovement: 1
+      m_RequireGrounded: 0
+      m_StateName: 
+      m_ItemSubstateIndex: 4
       m_AudioClipSet:
         m_AudioConfig: {fileID: 0}
         m_AudioClips: []
@@ -33590,8 +33603,8 @@ MonoBehaviour:
   m_FullInventoryDrop: 0
   m_DropConsumableItems: 1
   m_EquipEvent:
-    m_WaitForAnimationEvent: 1
-    m_Duration: 0.3
+    m_WaitForAnimationEvent: 0
+    m_Duration: 0
     m_WaitForSlotEvent: 0
   m_EquipCompleteEvent:
     m_WaitForAnimationEvent: 0
@@ -33620,8 +33633,8 @@ MonoBehaviour:
         m_AudioConfig: {fileID: 0}
         m_AudioClips: []
   m_UnequipEvent:
-    m_WaitForAnimationEvent: 1
-    m_Duration: 0.3
+    m_WaitForAnimationEvent: 0
+    m_Duration: 0
     m_WaitForSlotEvent: 0
   m_UnequipCompleteEvent:
     m_WaitForAnimationEvent: 0
@@ -33635,7 +33648,20 @@ MonoBehaviour:
       m_Values: 000080bf
       m_UnityObjects: []
       m_Version: 3.1
-    m_States: []
+    m_States:
+    - m_States:
+      - m_Name: Default
+        m_Preset: {fileID: 0}
+        m_BlockList: []
+        m_Default: 1
+      m_Enabled: 1
+      m_AllowDuringMovement: 1
+      m_RequireGrounded: 0
+      m_StateName: 
+      m_ItemSubstateIndex: 0
+      m_AudioClipSet:
+        m_AudioConfig: {fileID: 0}
+        m_AudioClips: []
   m_UIMonitorID: 0
   m_Icon: {fileID: 0}
   m_ShowCrosshairsOnAim: 1
@@ -51770,6 +51796,37 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1326175774}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1330733429
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1330733430}
+  m_Layer: 30
+  m_Name: Trail
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1330733430
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1330733429}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.005, y: -1.08, z: 0.001}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2143098963}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1332255510
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -66010,7 +66067,7 @@ MonoBehaviour:
       - {fileID: 0}
       m_State: 
       m_Enabled: 1
-      m_CanSwitchTo: 1
+      m_CanSwitchTo: 0
       m_DisabledIndex: -1
     - m_States:
       - m_Name: Default
@@ -84110,7 +84167,7 @@ Camera:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingPath: -1
-  m_TargetTexture: {fileID: 865523383}
+  m_TargetTexture: {fileID: 698240300}
   m_TargetDisplay: 0
   m_TargetEye: 3
   m_HDR: 1
@@ -86007,7 +86064,8 @@ Transform:
   m_LocalPosition: {x: 0.052, y: 0.033, z: -0.049}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1330733430}
   m_Father: {fileID: 1074675694}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -62.45, y: -38.5, z: -144.6}
