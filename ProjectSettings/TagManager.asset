@@ -53,7 +53,7 @@ TagManager:
   - VisualEffect
   - Overlay
   - POLARIS RAYCAST
-  - POLARIS SPLINE
+  - Player
   m_SortingLayers:
   - name: Default
     uniqueID: 0
