@@ -21,6 +21,39 @@ TagManager:
   - PW - Building
   - PW - Nature
   - Animal
+  - FxTemporaire
+  - HerdChild
+  - Stop
+  - Esquina
+  - Water
+  - ColliderStreamerManager
+  - concrete
+  - dirt
+  - wood
+  - Marcador
+  - Blocks
+  - LittleBall
+  - Synty Tree
+  - Synty Medium Farm
+  - Synty Small Farm
+  - Obstacle
+  - IaCar
+  - Sound
+  - Cube Instance
+  - a_Listener
+  - Head
+  - charaVoiceOverAudioSource
+  - Sphere Instance
+  - ShipCamera
+  - Ship
+  - Waypoint
+  - SideTrigger
+  - Collide
+  - water
+  - Music
+  - SceneStreamer
+  - LevelGoal
+  - WorldMover
   layers:
   - Default
   - TransparentFX
@@ -53,7 +86,7 @@ TagManager:
   - VisualEffect
   - Overlay
   - POLARIS RAYCAST
-  - Player
+  - POLARIS SPLINE
   m_SortingLayers:
   - name: Default
     uniqueID: 0

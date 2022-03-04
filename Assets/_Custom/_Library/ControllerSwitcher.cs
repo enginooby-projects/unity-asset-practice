@@ -13,7 +13,6 @@ public class ControllerSwitcher : MonoBehaviour {
   [SerializeField] private GameObject _model;
   [SerializeField] private Camera _transitionCamera;
 
-
   private void Update() {
     if (_switchKey.IsTriggering) {
       var previousWrapper = _currentWrapper;

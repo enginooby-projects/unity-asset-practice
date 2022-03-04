@@ -9,7 +9,7 @@ using UnityEngine;
 public class ControllerMover : MonoBehaviour {
   private KinematicCharacterMotor _controller;
 
-  void Start() {
+  private void Start() {
     _controller = GetComponent<KinematicCharacterMotor>();
   }
 
@@ -28,9 +28,5 @@ public class ControllerMover : MonoBehaviour {
   public void RotateTo(Quaternion rot) {
     // _controller.RotateCharacter(rot);
     _controller?.SetRotation(rot);
-  }
-
-  void Update() {
-
   }
 }
