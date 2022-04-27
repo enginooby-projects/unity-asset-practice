@@ -53,10 +53,12 @@ public static class GameObjectUtils {
   ///   DestroyImmediate if in Edit Mode.
   /// </summary>
   public static void Destroy(this GameObject go) {
-    if (Application.isPlaying)
+    if (Application.isPlaying) {
       Object.Destroy(go);
-    else
+    }
+    else {
       Object.DestroyImmediate(go);
+    }
   }
 
   public static void Destroy(this GameObject go, bool @if) {
@@ -99,8 +101,10 @@ public static class GameObjectUtils {
     var nearestGoIndex = 0;
     var currentMinDist = Mathf.Infinity;
 
-    for (var i = 0; i < gos.Count(); i++) {
-      var go = gos.ElementAt(i);
+    var gameObjects = gos as GameObject[] ?? gos.ToArray();
+
+    for (var i = 0; i < gameObjects.Count(); i++) {
+      var go = gameObjects.ElementAt(i);
       var distToPos = go.transform.GetDistanceTo(pos);
       if (distToPos < currentMinDist) {
         currentMinDist = distToPos;
@@ -108,41 +112,33 @@ public static class GameObjectUtils {
       }
     }
 
-    return gos.ElementAt(nearestGoIndex);
+    return gameObjects.ElementAt(nearestGoIndex);
   }
 
   /// <summary>
   /// Get all GameObjects by name in the active scene.
   /// </summary>
   public static IEnumerable<GameObject> FindAllGameObjects(string name) {
-    var gos = new List<GameObject>();
     var rootGos = SceneManager.GetActiveScene().GetRootGameObjects();
     // Use scene roots to iterate and check each GameObject.
-
     foreach (var rootGo in rootGos) {
       // If the name matches, add the root GameObject to the target list.
-      if (rootGo.name == name) gos.Add(rootGo);
+      if (rootGo.name == name) yield return rootGo;
       // Get the number of children of the scene root GameObject.
       var childCount = rootGo.transform.childCount;
 
       for (var i = 0; i < childCount; i++) {
         var childGo = rootGo.transform.GetChild(i).gameObject;
-        if (childGo.name == name) gos.Add(childGo);
+        if (childGo.name == name) yield return childGo;
       }
     }
-
-    return gos;
   }
 
   public static IEnumerable<GameObject> GetChildGameObjects(this GameObject go) {
-    var childGos = new List<GameObject>();
-
     for (var i = 0; i < go.transform.childCount; i++) {
       var childGo = go.transform.GetChild(i).gameObject;
-      childGos.Add(childGo);
+      yield return childGo;
     }
-
-    return childGos;
   }
 
   /// <summary>

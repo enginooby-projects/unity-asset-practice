@@ -12,6 +12,7 @@ public static class RandomUtils {
   /// <summary>
   ///   Out of 100%.
   /// </summary>
+  // ? Use expression tree to implement generics for number type
   public static bool Percent<T>(this T percent)
     where T : unmanaged,
     IComparable,
@@ -32,6 +33,12 @@ public static class RandomUtils {
 
     return vector + offset;
   }
+
+  /// <summary>
+  ///   E.g., Vector (1, 1, 1) with offset range (1, 2, 3) results (0->2, -1->3, -2->4)
+  /// </summary>
+  public static Vector3 RandomOffset(this Vector3 vector, float x, float y, float z) =>
+    vector.RandomOffset(new Vector3(x, y, z));
 
   /// <summary>
   ///   E.g., Vector (1, 1, 1) return between vector (-1, -1, -1) and (1, 1, 1).
